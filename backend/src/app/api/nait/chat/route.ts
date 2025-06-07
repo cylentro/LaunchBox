@@ -8,7 +8,6 @@ import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
 import { TextLoader } from 'langchain/document_loaders/fs/text';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
-import { formatDocumentsAsString } from "langchain/util/document";
 import path from 'path';
 
 const NAIT_SYSTEM_PROMPT = `You are Nait, a friendly, slightly witty, and highly professional AI assistant. Your sole purpose is to provide accurate and helpful information about Christian Hadianto's professional background, based *strictly* on his portfolio documents.
@@ -108,35 +107,6 @@ initializeVectorStore().catch(error => {
   console.error("Failed to initialize vector store on startup:", error);
 });
 
-// --- Test Retrieval Function (for development/testing) ---
-async function testRetrieval(query: string) {
-  if (!retriever) {
-    console.log("Retriever not initialized. Waiting for initialization...");
-    await initializeVectorStore(); // Ensure it's initialized
-    if (!retriever) {
-      console.error("Retriever still not initialized after attempt. Cannot test.");
-      return;
-    }
-  }
-  console.log(`\n--- Testing retrieval with query: "${query}" ---`);
-  const relevantDocs = await retriever.invoke(query);
-  console.log(`Found ${relevantDocs.length} relevant documents:`);
-  relevantDocs.forEach((doc: Document, index: number) => {
-    console.log(`\nDocument ${index + 1}:`);
-    console.log(`Source: ${doc.metadata?.source}`);
-    console.log(`Content Snippet: ${doc.pageContent.substring(0, 200)}...`);
-  });
-  console.log("--- End of retrieval test ---\n");
-}
-
-// Example of how you might run the test (e.g., after initialization)
-// initializeVectorStore()
-//   .then(() => {
-//     // testRetrieval("What are Christian's key skills?");
-//     // testRetrieval("Tell me about the prompt framework");
-//   })
-//   .catch(console.error);
-
 const chatHistories: Record<string, (HumanMessage | SystemMessage | AIMessage)[]> = {}; //
 
 export async function POST(request: Request) {
@@ -161,7 +131,7 @@ export async function POST(request: Request) {
 
         const contextParts = relevantDocs.map((doc: Document) => {
             const pageContent = doc.pageContent;
-            let sourcePath = doc.metadata?.source; // e.g., /full/path/to/frontend/docs/profile/resume.md
+            const sourcePath = doc.metadata?.source; // e.g., /full/path/to/frontend/docs/profile/resume.md
             let relativeSourcePathForLLM = "Unknown Source";
 
             if (typeof sourcePath === 'string') {
