@@ -1,0 +1,44 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.VPDoc > .container > .content {
+    padding-bottom: 0px !important;
+}
+
+.message-bubble > .prose > * {
+    padding-bottom: 10px !important;
+}
+
+/* Target lists within the .prose container specifically in your chat bubbles */
+.message-bubble .prose ul,
+.message-bubble .prose ol {
+  list-style-position: outside; /* Ensures markers are outside the text flow */
+  padding-left: 1.5em; /* Adjust as needed for indentation */
+  margin-top: 0.5em; /* Add some space above the list */
+  margin-bottom: 0.5em; /* Add some space below the list */
+}
+
+.message-bubble .prose ul {
+  list-style-type: disc; /* For <ul>, use disc bullets */
+}
+
+.message-bubble .prose ol {
+  list-style-type: decimal; /* For <ol>, use numbers */
+}
+
+.message-bubble .prose li {
+  margin-bottom: 0.25em; /* Space between list items */
+}
+
+.message-bubble .prose a {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.message-bubble .prose a:hover {
+  color: var(--vp-c-brand-2); /* VitePress brand link hover color */
+}
+
