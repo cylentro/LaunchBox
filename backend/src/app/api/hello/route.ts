@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  return NextResponse.json({ message: "Hello from Nait's Brain!" })
+
+  const productionOrigin = process.env.FRONTEND_URL ?? "";
+  return NextResponse.json({ message: "url: " + productionOrigin })
 }
