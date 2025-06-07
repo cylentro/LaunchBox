@@ -24,11 +24,11 @@
             }">
 
             <div class="w-full mx-auto">
-                <div class="example-prompts mb-8">
-                    <p class="text-lg text-slate-600 dark:text-slate-300 mb-4">Ask Nait about Christian, or try:</p>
+                <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">Ask Nait about Christian, or try:</p>
+                <div class="example-prompts mb-4">
                     <div class="prompts-carousel-wrapper relative flex items-center">
                         <button :disabled="!showInitialLeftCaret" @click="scrollPrompts('initial', 'left')"
-                                class="caret-btn absolute left-0 z-10 p-2 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
+                                class="caret-btn absolute left-0 z-10 p-1.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
                                        disabled:opacity-50 disabled:cursor-not-allowed disabled:text-slate-300 dark:disabled:text-neutral-600"
                                 aria-label="Scroll left">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-600 dark:text-slate-300">
@@ -36,7 +36,7 @@
                             </svg>
                         </button>
                         <div ref="initialPromptsScrollRef"
-                             class="prompts-scroll-container overflow-x-hidden whitespace-nowrap select-none"
+                             class="prompts-scroll-container overflow-x-hidden whitespace-nowrap select-none "
                              @scroll="() => handleScroll('initial')"
                              @mousedown="onMouseDown('initial', $event)"
                              @mouseleave="onMouseLeave('initial')"
@@ -45,15 +45,15 @@
                              @touchstart.passive="onTouchStart('initial', $event)"
                              @touchmove="onTouchMove('initial', $event)"
                              @touchend="onTouchEnd('initial')">
-                            <div ref="initialPromptsInnerRef" class="prompts-inner-container inline-flex gap-2 px-1 py-1">
+                            <div ref="initialPromptsInnerRef" class="prompts-inner-container inline-flex gap-2 py-1">
                                 <button v-for="prompt in examplePrompts" :key="prompt + '-initial'" @click="sendExamplePrompt(prompt)"
-                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium py-2 px-4 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-slate-200 dark:focus:ring-neutral-500 whitespace-nowrap flex-shrink-0">
+                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium py-1 px-3 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-slate-300 dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-slate-200 dark:focus:ring-neutral-500 whitespace-nowrap flex-shrink-0">
                                     {{ prompt }}
                                 </button>
                             </div>
                         </div>
                         <button :disabled="!showInitialRightCaret" @click="scrollPrompts('initial', 'right')"
-                                class="caret-btn absolute right-0 z-10 p-2 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
+                                class="caret-btn absolute right-0 z-10 p-1.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
                                        disabled:opacity-50 disabled:cursor-not-allowed disabled:text-slate-300 dark:disabled:text-neutral-600"
                                 aria-label="Scroll right">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-600 dark:text-slate-300">
@@ -692,18 +692,12 @@ const sendMessage = async () => {
 /* --- New Prompt Carousel Styles --- */
 .prompts-carousel-wrapper {
     /* Increased padding to create space between carets and scrollable content */
-    padding-left: 2.5rem; /* Was 2.5rem */
-    padding-right: 2.5rem; /* Was 2.5rem */
+    padding-left: 2.5rem; 
+    padding-right: 2.5rem; 
 }
 .prompts-carousel-wrapper .caret-btn {
     transform: translateY(-50%);
     top: 50%;
-}
-.prompts-carousel-wrapper .caret-btn.left-0 {
-    left: 0.25rem; 
-}
-.prompts-carousel-wrapper .caret-btn.right-0 {
-    right: 0.25rem; 
 }
 
 .prompts-scroll-container {

@@ -44,8 +44,10 @@
                     class="chat-messages flex-grow overflow-y-auto px-4 space-y-3 py-4 min-h-0 flex flex-col"
                     :class="{ 'justify-center': !chatMessages.length && !isLoading && !isSummarizing }">
                     <div v-if="!chatMessages.length && !isLoading && !isSummarizing"
-                        class="text-center text-slate-500 dark:text-slate-400 py-8">
-                        Ask Nait anything or request a summary!
+                        class="text-center text-slate-500 dark:text-slate-400 py-8 text-lg">
+                        Ask Nait anything about Christian or 
+                        <br>
+                        request a summary of this page!
                     </div>
                     <TransitionGroup name="bubble-popup" tag="div">
                         <div v-for="(chat, index) in chatMessages" :key="chat.id || index" :class="['message-bubble flex flex-col py-2 px-3 rounded-lg shadow w-fit break-words',
@@ -64,7 +66,7 @@
                 </div>
 
                 <div v-if="actualExamplePrompts.length > 0"
-                    class="example-prompts-in-popup p-2 border-t border-slate-200 dark:border-neutral-700 flex-shrink-0">
+                    class="example-prompts-in-popup pl-0.5 pr-0.5 pt-2 pb-2 border-t border-slate-200 dark:border-neutral-700 flex-shrink-0">
                     <div class="prompts-carousel-wrapper relative flex items-center">
                         <button :disabled="!showLeftCaret" @click="scrollPrompts('left')"
                             class="caret-btn absolute left-1 top-1/2 -translate-y-1/2 z-10 p-1.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
@@ -75,7 +77,7 @@
                             </svg>
                         </button>
                         <div ref="promptsScrollRef"
-                            class="prompts-scroll-container overflow-x-hidden whitespace-nowrap select-none mx-8"
+                            class="prompts-scroll-container overflow-x-hidden whitespace-nowrap select-none mx-7"
                             @scroll="handleScroll" @mousedown="onMouseDown" 
                             @mouseleave="onMouseLeave" @mouseup="onMouseUp" @mousemove="onMouseMove"
                             @touchstart.passive="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"
@@ -543,7 +545,7 @@ const openPopup = () => {
                 },
                 75 // Use a slightly faster speed for greetings (default is 30ms)
             );
-        }, 500);
+        }, 1000);
     }
 };
 watch(actualExamplePrompts, () => { if (isPopupOpen.value) nextTick(setupPromptCarousel); }, { immediate: true, deep: true });
@@ -729,9 +731,6 @@ const sendMessage = async () => { // Standard chat message sending
 </script>
 
 <style scoped>
-/* Styles remain largely the same as previous version */
-/* ... (copy styles from previous NaitBubble.vue version) ... */
-/* --- Prompt Carousel Styles (adapted from NaitChat.vue) --- */
 .prompts-carousel-wrapper {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
