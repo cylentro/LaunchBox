@@ -159,7 +159,7 @@
             <div
                 class="chat-input-form-active p-2 sm:p-3 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 mt-auto sticky bottom-0">
                 <form @submit.prevent="sendMessage" class="flex items-center relative">
-                    <textarea ref="activeTextareaRef" v-model="userInput" @keydown.enter="handleEnter"
+                    <textarea ref="activeTextareaRef" v-model="userInput" @keydown.enter="handleEnter" @focus="scrollToBottom"
                         placeholder="Message Nait..." :disabled="isLoading" rows="1"
                         class="w-full p-3 pr-12 text-base border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none dark:bg-neutral-700 dark:text-slate-100 dark:border-neutral-600 dark:placeholder-slate-400"
                         style="min-height: 52px;"></textarea>
