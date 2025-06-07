@@ -1,6 +1,6 @@
 <template>
     <div class="nait-chat-interface mx-auto flex flex-col transition-all duration-500 ease-in-out"
-        :style="{ maxHeight: isChatActive ? 'calc(100vh - var(--vp-nav-height, 0px))' : 'auto', width: '100%', maxWidth: '800px' }"
+        :style="{ maxHeight: isChatActive ? 'calc(100vh - var(--vp-nav-height, 0px))' : 'auto' }"
         :class="[
             isChatActive ? 'h-[calc(100vh-var(--vp-nav-height,0px))] overflow-hidden' : 'py-8'
         ]">
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div v-show="isChatActive" class="active-chat-wrapper flex flex-col flex-grow w-full overflow-hidden pt-4">
+        <div v-show="isChatActive" class="active-chat-wrapper flex flex-col flex-grow w-full overflow-hidden">
             <div
                 class="chat-header relative p-2 sm:p-3 border-b border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800">
                 <button v-if="isChatActive" @click="closeChatSession"
@@ -714,20 +714,15 @@ const sendMessage = async () => {
 .prompts-scroll-container::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
 }
-.prompts-inner-container {
-    /* inline-flex is used in the template */
-    /* gap is used in the template */
-}
 
 .prompts-inner-container > button {
     flex-shrink: 0;
     white-space: nowrap; 
 }
 
-
-/* --- Existing Styles (ensure they are preserved) --- */
 .nait-chat-interface {
-    /* ... */
+    width: 100%;
+    max-width: 800px;
 }
 
 .chat-messages::-webkit-scrollbar {
