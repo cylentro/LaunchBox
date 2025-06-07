@@ -3,7 +3,7 @@ title: Prompt Frameworks
 layout: doc
 ---
 <script setup lang="ts">
-import NaitBubble from '/components/NaitBubble.vue'; // Adjust path as necessary
+import NaitBubble from '/components/assistant/NaitBubble.vue'; // Adjust path as necessary
 </script>
 
 <NaitBubble />

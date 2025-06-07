@@ -38,7 +38,7 @@ export default defineConfig({
                     { text: 'Resume', link: '/profile/resume' },
                     { text: 'Projects', link: '/profile/projects' },
                     { text: 'Stacks', link: '/profile/stacks' },
-                    { text: 'What They Say', link: '/profile/what-they-say' },
+                    // { text: 'What They Say', link: '/profile/what-they-say' },
                 ]
             },
             {
@@ -46,7 +46,7 @@ export default defineConfig({
                 items: [
                     { text: 'AI Showcase', link: '/gailerry/ai-showcase' },
                     { text: 'Prompt Framework', link: '/gailerry/prompt-framework' },
-                    { text: 'Prompt Collection', link: '/gailerry/prompt-collection' }
+                    // { text: 'Prompt Collection', link: '/gailerry/prompt-collection' }
                 ]
             },
             {
@@ -54,7 +54,7 @@ export default defineConfig({
                 items: [
                     { text: 'About Me', link: '/about/about-me' },
                     { text: 'Time Machine', link: '/about/time-machine' },
-                    { text: 'Gears', link: '/about/gears' },
+                    // { text: 'Gears', link: '/about/gears' },
                 ]
             },
         ],
