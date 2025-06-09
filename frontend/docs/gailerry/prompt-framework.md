@@ -2,10 +2,6 @@
 title: Prompt Frameworks
 layout: doc
 ---
-<script setup lang="ts">
-import NaitBubble from '/components/assistant/NaitBubble.vue'; // Adjust path as necessary
-</script>
-
 <NaitBubble />
 
 # Prompt Frameworks: Your AI Whisperer Toolkit 🤫

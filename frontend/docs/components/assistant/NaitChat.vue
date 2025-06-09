@@ -65,14 +65,14 @@
 
                 <form @submit.prevent="sendMessage" class="chat-input-form-initial w-full relative">
                     <textarea ref="initialTextareaRef" v-model="userInput" @keydown.enter="handleEnter"
-                        :placeholder="dynamicInitialPlaceholder" :disabled="isLoading" rows="1"
+                        @focus="handleInitialTextareaFocus" :placeholder="dynamicInitialPlaceholder" :disabled="isLoading" rows="1"
                         class="w-full p-4 pr-16 text-lg border border-slate-300 rounded-xl shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none dark:bg-neutral-800 dark:text-slate-100 dark:border-neutral-600 dark:placeholder-slate-400"
                         style="min-height: 60px;"></textarea>
                     <button type="submit" :disabled="isLoading || !userInput.trim()"
-                        class="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-40"
-                        aria-label="Send message">
+                        class="absolute right-3 top-[45%] -translate-y-1/2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-40"
+                        aria-label="Send message" title="Send message">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                            :class="['w-7 h-7 transition-colors', userInput.trim() ? 'text-blue-600 dark:text-blue-500' : 'text-slate-400 dark:text-slate-500']">
+                            :class="['w-6 h-6 transition-colors', userInput.trim() ? 'text-blue-600 dark:text-blue-500' : 'text-slate-400 dark:text-slate-500']">
                             <path
                                 d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
                         </svg>
@@ -86,23 +86,34 @@
 
         <div v-show="isChatActive" class="active-chat-wrapper flex flex-col flex-grow w-full overflow-hidden">
             <div
-                class="chat-header relative p-2 sm:p-3 border-b border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800">
-                <button v-if="isChatActive" @click="closeChatSession"
-                    class="absolute top-1/2 -translate-y-1/2 right-2 sm:right-3 z-20 p-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-700"
-                    aria-label="Close chat"
-                    title="Close chat">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-5 h-5 sm:w-6 sm:h-6">
-                        <path fill-rule="evenodd"
-                            d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </button>
-                <div class="h-6"></div>
+                class="chat-header flex justify-between items-center p-2 sm:p-3 border-b border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 flex-shrink-0">
+                <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100" style="margin-top:0">Nait</h3>
+                <div class="flex items-center">
+                    <button @click="clearSession"
+                        class="text-xs bg-red-600 text-white hover:bg-red-700 mr-2 p-1 rounded"
+                        title="Clear Session">
+                        Clear Session
+                    </button>
+                    <button @click="closeChatSession"
+                        class="p-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-700 flex items-center justify-center"
+                        aria-label="Close chat" title="Close chat">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-5 h-5 sm:w-6 sm:h-6">
+                            <path fill-rule="evenodd"
+                                d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <Transition name="messages-container-transition">
-                <div v-if="isChatActive" ref="chatMessagesContainerRef" class="chat-messages flex-grow overflow-y-auto px-4 space-y-3 pb-4">
+                <div v-if="isChatActive" ref="chatMessagesContainerRef" 
+                     class="chat-messages flex flex-col flex-grow overflow-y-auto px-4 space-y-3 py-4"
+                     :class="{ 'justify-center': !chatMessages.length && !isLoading }">
+                     <div v-if="!chatMessages.length && !isLoading" class="text-center text-slate-500 dark:text-slate-400 text-base">
+                        Ask Nait anything!
+                    </div>
                     <TransitionGroup name="bubble" tag="div">
                         <div v-for="(chat, index) in chatMessages" :key="chat.id || index"
                             :class="['message-bubble py-2 px-3 rounded-lg shadow w-fit break-words',
@@ -365,26 +376,59 @@ const setupPromptCarousel = (type: 'initial' | 'active') => {
     });
 };
 
+const handleInitialTextareaFocus = () => {
+    // If chat is not active but there are existing messages, activate the chat.
+    // The watcher on `isChatActive` will handle focusing the activeTextareaRef.
+    if (!isChatActive.value && chatMessages.value.length > 0) {
+        isChatActive.value = true;
+    }
+};
+
+const generateNewSessionId = () => `session_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+
 
 // --- Existing Logic ---
 const closeChatSession = () => {
     stopTypingIndicator();
     isChatActive.value = false;
-    chatMessages.value = [];
+    // chatMessages.value = []
+    // chatMessages are preserved, session continues
     userInput.value = '';
     isLoading.value = false;
 
-    sessionId.value = `session_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
-    console.log(`Chat closed. New session started: ${sessionId.value}`);
+    // sessionId is preserved
+    // sessionId.value = generateNewSessionId();
+    // console.log(`Chat closed. New session started: ${sessionId.value}`);
+    console.log(`NaitChat: Chat view closed. Session ${sessionId.value} remains available.`);
 
     nextTick(() => {
-        if (!isChatActive.value && initialTextareaRef.value) {
-            setTimeout(() => {
-                initialTextareaRef.value?.focus();
-            }, 50);
-        }
+        // When closing, do not automatically re-focus the initial textarea.
+        // User should manually focus to re-engage and trigger handleInitialTextareaFocus.
+        if (initialTextareaRef.value) adjustTextareaHeight(initialTextareaRef.value); // Still adjust height as userInput is cleared.
         setupPromptCarousel('initial'); 
     });
+};
+
+const clearSession = () => {
+    stopTypingIndicator();
+    chatMessages.value = []; // This will trigger the watcher which calls saveChatToLocalStorage
+    userInput.value = '';
+    isLoading.value = false;
+    
+    sessionId.value = generateNewSessionId(); // Update sessionId ref
+
+    // Call saveChatToLocalStorage directly to ensure it uses the new sessionId
+    // and clears messages from localStorage immediately.
+    saveChatToLocalStorage(); 
+
+    nextTick(() => {
+        if (isChatActive.value && activeTextareaRef.value) {
+            activeTextareaRef.value.focus();
+            adjustTextareaHeight(activeTextareaRef.value);
+        }
+        scrollToBottom(); // Adjust view
+    });
+    console.log(`NaitChat: Session cleared. New session ID: ${sessionId.value}`);
 };
 
 const globalMouseUpListener = () => {
@@ -399,7 +443,7 @@ const globalTouchEndListener = () => {
 onMounted(() => {
     loadChatFromLocalStorage();
     if (!sessionId.value) {
-        sessionId.value = `session_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+        sessionId.value = generateNewSessionId();
     }
 
     if (isChatActive.value) {
@@ -428,7 +472,8 @@ watch(isChatActive, (newValue) => {
             activeTextareaRef.value.focus();
             adjustTextareaHeight(activeTextareaRef.value);
         } else if (!newValue && initialTextareaRef.value) {
-            initialTextareaRef.value.focus();
+            // Do not auto-focus initialTextareaRef here.
+            // This prevents the loop if handleInitialTextareaFocus is also present.
             adjustTextareaHeight(initialTextareaRef.value);
         }
     });
@@ -535,7 +580,7 @@ const loadChatFromLocalStorage = () => {
              setupPromptCarousel('initial');
         }
     } else {
-        sessionId.value = `session_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+        sessionId.value = generateNewSessionId();
         localStorage.setItem(LS_SESSION_ID_KEY, sessionId.value);
          setupPromptCarousel('initial');
     }

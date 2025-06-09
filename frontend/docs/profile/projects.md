@@ -3,12 +3,6 @@ title: My Work and Wanderings
 layout: doc
 aside: false
 ---
-
-<script setup lang="ts">
-  import NaitBubble from '/components/assistant/NaitBubble.vue'; // Adjust path as necessary
-  import Projects from '/components/Projects.vue'; // Adjust path as necessary
-</script>
-
 <NaitBubble />
 
 # My Work and Wanderings

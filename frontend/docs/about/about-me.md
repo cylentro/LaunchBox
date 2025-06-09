@@ -24,6 +24,8 @@ features:
     details: Primary Domain Expertise
 
 ---
+<NaitBubble />
+
 ## Welcome to my corner of the internet!
 
 I'm Christian, a Senior Product Manager with 7+ years of dedicated PM experience, built on a solid foundation of 10 years in the logistics industry. My ongoing mission? To make logistics less, well, "logistical" and more logical (and user-friendly!). My latest obsession? Figuring out how Generative AI can sprinkle some magic on everything.

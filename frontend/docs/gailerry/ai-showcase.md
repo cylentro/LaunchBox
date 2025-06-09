@@ -3,10 +3,6 @@ title: My AI Playground
 layout: doc
 aside: false
 ---
-<script setup lang="ts">
-import NaitBubble from '/components/assistant/NaitBubble.vue'; // Adjust path as necessary
-</script>
-
 <NaitBubble />
 
 # My AI Playground
