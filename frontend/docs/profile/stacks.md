@@ -119,11 +119,17 @@ Every builder needs a good set of tools. This is my go-to arsenal for turning id
                         class="tooltip-text">VS Code</span><img class="icon-img"
                         src="/icons/vscode.svg"
                         alt="VS Code"></a></div>
+            <div class="tooltip-container"><a href="https://cloud.google.com/gemini/code-assist" target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center justify-center h-14 w-14 bg-white dark:bg-gray-800 p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow"><span
+                        class="tooltip-text">Gemini Code Assist</span><img class="icon-img"
+                        src="/icons/gemini.svg"
+                        alt="Gemini Code Assist"></a></div>
         </div>
     </div>
-    <!-- AI & Vibe Coding -->
+    <!-- AI -->
     <div>
-        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">AI & Vibe Coding</h2>
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">AI</h2>
         <p class="mt-3 text-lg text-gray-600 dark:text-gray-400">My intelligent partners for research, brainstorming,
             and accelerating the development workflow from concept to completion.</p>
         <div class="mt-6 flex flex-wrap gap-3">
@@ -157,12 +163,6 @@ Every builder needs a good set of tools. This is my go-to arsenal for turning id
                         class="tooltip-text">Google AI Studio</span><img class="icon-img"
                         src="/icons/googleaistudio.svg"
                         alt="Google AI Studio"></a></div>
-            <div class="tooltip-container"><a href="https://cloud.google.com/gemini/code-assist" target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center justify-center h-14 w-14 bg-white dark:bg-gray-800 p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow"><span
-                        class="tooltip-text">Gemini Code Assist</span><img class="icon-img"
-                        src="/icons/gemini.svg"
-                        alt="Gemini Code Assist"></a></div>
             <div class="tooltip-container"><a href="https://ai.meta.com/docs/instagram/" target="_blank"
                     rel="noopener noreferrer"
                     class="flex items-center justify-center h-14 w-14 bg-white dark:bg-gray-800 p-3 rounded-lg shadow-md hover:shadow-xl transition-shadow"><span

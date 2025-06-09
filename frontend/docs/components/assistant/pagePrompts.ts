@@ -7,30 +7,54 @@ export interface PagePrompts {
 }
 
 export const pageSpecificPrompts: PagePrompts = {
+  'about/about-me.md': [
+    "What is Christian's mission?",
+    "How did Christian start in tech?",
+    "What are his analog hobbies?",
+    "What was his role at Anteraja?",
+    "How did he become a PM?",
+    "What's his digital vice?"
+  ],
   'profile/resume.md': [
-    "What are Christian's core competencies according to this resume?",
-    "Summarize Christian's professional experience listed here.",
-    "What key projects are highlighted in Christian's resume?",
-    "Tell me about Christian's educational background from this page.",
-    "What technologies is Christian proficient in based on this resume?",
-    "Can you identify the most recent role Christian held?"
+    "Key achievements at Anteraja?",
+    "Summarize his role at QRIM Express.",
+    "What are his main Gen AI projects?",
+    "What was his first job?",
+    "What are his Gen AI certifications?",
+    "Tell me about his mentoring."
   ],
-  'gailerry/promptframework.md': [
-    "What is the main purpose of the Prompt Framework described here?",
-    "How can I use this Prompt Framework effectively?",
-    "What are the key components of this framework?",
-    "Give me an example of a good prompt using this framework from the document.",
-    "What common mistakes should I avoid when writing prompts, according to this page?",
-    "How does this framework help in achieving better AI responses?"
+  'profile/projects.md': [
+    "What are his professional projects?",
+    "Describe the NaniNani Podcast.",
+    "Tech stack for LaunchBox & Nait?",
+    "What does the Garoupa project do?",
+    "Tell me about the Instagram AI agents.",
+    "What was the JETExpress Ecosystem?"
   ],
-  'about/aboutme.md': [
-    "Who is Christian, based on this 'About Me' page?",
-    "What is Christian's personal mission or vision as stated here?",
-    "Tell me something interesting about Christian from this page.",
-    "What are Christian's main interests mentioned in this document?",
-    "What are the key skills Christian highlights about themself here?",
-    "How does Christian describe their journey or background?"
+  'profile/stacks.md': [
+    "What are his PM tools?",
+    "What AI tools does he use?",
+    "What are his design tools?",
+    "What's in his Creative Suite?",
+    "What coding languages does he use?",
+    "What are his communication tools?"
   ],
+  'gailerry/ai-showcase.md': [
+    "What is the NaniNani Podcast?",
+    "AI workflow for NaniNani Podcast?",
+    "Why was the Nait assistant built?",
+    "What is Nait's tech stack?",
+    "Tech behind the Instagram agents?",
+    "Purpose of the Instagram agents?"
+  ],
+  'gailerry/prompt-framework.md': [
+    "What is the CASTR framework for?",
+    "What is the PICTURE framework?",
+    "RIDER vs. CASTR framework?",
+    "What is the PRISM framework for?",
+    "What is the ACTION framework?",
+    "Why use prompt frameworks?"
+  ]
 };
 export const NUMBER_OF_RANDOM_PROMPTS_TO_SHOW = 2;
 

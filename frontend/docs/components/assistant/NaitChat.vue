@@ -218,9 +218,9 @@ const LS_CHAT_MESSAGES_KEY = 'naitChatMessages';
 const examplePrompts = ref([
     "What you can do?",
     "Surprise me!",
-    "Who is Christian?",
-    "What are Christian's key skills?",
-    "Tell me about recent projects"
+    "Who is Chris?",
+    "How to contact Chris?",
+    "What are Chris's key skills?"
 ]);
 
 // --- Refs for Prompt Carousels ---

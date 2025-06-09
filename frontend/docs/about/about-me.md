@@ -5,8 +5,8 @@ hero:
   name: "Christian Hadianto"
   text: "Product Manager"
   image:
-    src: /self.png
-    alt: My Photo
+    src: /self.webp
+    alt: Chris
   actions:
     - theme: brand
       text: Explore Projects

@@ -4,15 +4,6 @@ layout: doc
 ---
 
 <NaitBubble />
-<!-- 
-<div class="grid grid-cols-4">
-  <div class="col-start-4 col-end-5" style="text-align:right">
-    <a href="https://drive.google.com/file/d/1X_Z1w4oEtmBuYajt370sabAw05rmhWXX/view?usp=sharing" style="color:white;text-decoration:none" target="_blank" class="bg-blue-500 hover:bg-blue-800font-bold py-2 px-4 rounded inline-flex items-center">
-      <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-      <span>Download</span>
-    </a>
-  </div>
-</div> -->
 
 # CHRISTIAN HADIANTO
 
@@ -20,13 +11,60 @@ layout: doc
 
 *Singapore Permanent Resident*
 
+<style>
+.download-resume-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background-color: #1e88e5; /* Original blue */
+  color: white !important; /* Ensure text color stays white */
+  text-align: center;
+  text-decoration: none !important; /* Ensure no underline */
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none; /* Remove default border if any */
+  /* 3D edge effect (darker blue) + original blue glow */
+  box-shadow: 0 4px 0px #1565c0, 0 6px 14px 0 rgba(0, 118, 255, 0.3);
+  position: relative; /* Allows for 'top' animation */
+  top: 0;
+  transition: all 0.15s ease-out; /* Smooth transition for all properties */
+}
+
+.download-resume-button:hover {
+  background-color: #1976d2; /* Slightly darker blue on hover */
+  top: 2px; /* Move button down slightly */
+  /* Adjust shadow for "pressed" look */
+  box-shadow: 0 2px 0px #1565c0, 0 4px 10px 0 rgba(0, 118, 255, 0.25);
+}
+
+.download-resume-button:active {
+  background-color: #1565c0; /* Even darker blue on active/click */
+  top: 4px; /* Move button further down */
+  /* Flatten shadow more for "fully pressed" look */
+  box-shadow: 0 0px 0px #1565c0, 0 2px 6px 0 rgba(0, 118, 255, 0.2);
+}
+</style>
+
 [in/chrishadi90/](https://www.linkedin.com/in/chrishadi90) | <christian.hadianto@gmail.com> | (65) 8120 4587
+
+<div style="text-align: center; margin-top: 20px; margin-bottom: 25px;">
+  <a href="https://drive.google.com/file/d/1ehg3UZAt1FMo45OVkXlIz0Xv1wEFK1cz/view?usp=sharing" target="_blank" rel="noopener noreferrer"
+     class="download-resume-button" style="display: inline-flex; align-items: center; justify-content: center;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+      <polyline points="14 2 14 8 20 8"></polyline>
+      <line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line>
+      <polyline points="10 9 9 9 8 9"></polyline>
+    </svg>
+    Download Full Resume
+  </a>
+</div>
 
 ## SUMMARY
 
 Product Manager with over 7 years of experience building and scaling impactful digital solutions, now focused on leveraging Generative AI to drive business growth. Proven success leading 0-to-1 products, demonstrated by driving 500% user growth and laying the foundational groundwork for AI-powered personalization and risk assessment in previous roles. Combines deep expertise in process automation, customer experience enhancement (boosting satisfaction to 75%), and insurance product management with hands-on experience developing Gen AI applications, including conversational agents and AI-driven content creation projects.
 
-## WORK EXPERIENCE
+## WORK EXPERIENCE 
 
 ### Anteraja | Jakarta, Indonesia
 
@@ -105,7 +143,7 @@ An IT solutions provider delivering enterprise platforms for logistics, finance,
 
 ## EDUCATION
 
-**Bachelor of Computer Science**
+**Bachelor of Computer Science** 
 
 Aug 2012 | Bina Nusantara University | Jakarta, Indonesia
 
@@ -163,19 +201,50 @@ Machine Learning & Data Analytics
 
 ## SKILLS
 
-Product Management & Business:
+### Product Management & Business:
 
 - Product Strategy & Roadmap, Discovery, Launch & GTM
 - Product Development Lifecycle
 - Business Acumen, Analytics, Project Management
 - Cross-functional Team Collaboration
 
-Methods & Technical:
+### Methods & Technical:
 
 - Agile Scrum Methodologies
 - Prompt Design & Engineering
 
-Tools & Data:
+### Tools & Data:
 
-- Excel, SQL, PowerBI, Looker Studio
-- Jira, Confluence, Miro, ClickUp, Notion, NotebookLM
+Product & Project Management
+
+- Jira
+- Redmine
+- Confluence
+- Outline
+- Obsidian
+- Notion
+
+Design & Whiteboarding
+
+- Excalidraw
+- Miro
+- Mermaid
+- Draw.io
+
+Development & Coding
+
+- SQL
+- Python
+- HTML
+- CSS
+- JavaScript
+- Visual Studio Code
+- Gemini Code Assists
+
+AI Tools
+
+- Gemini
+- ChatGPT
+- Perplexity
+- NotebookLM
+- Google AI Studio

@@ -74,6 +74,10 @@ export default defineConfig({
         ],
         search: {
             provider: 'local',
+        },
+        footer:{
+            message: 'Released under the <a href="/license">MIT License</a>.',
+            copyright: 'Copyright © 2025-present <a href="https://github.com/cylentro">Christian Hadianto</a>'
         }
     }
 })
