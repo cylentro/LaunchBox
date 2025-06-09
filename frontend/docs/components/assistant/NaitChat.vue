@@ -13,7 +13,7 @@
             }"
             :style="{ zIndex: isChatActive ? 0 : 10 }">
             <h2 class="text-4xl font-bold text-slate-800 dark:text-slate-100">Nait</h2>
-            <p class="text-slate-500 dark:text-slate-400">Chris' AIssistant</p>
+            <p class="text-slate-500 dark:text-slate-400">I passed my Turing test. I think</p>
         </div>
 
         <div v-show="!isChatActive" class="initial-view-wrapper text-center px-4"
@@ -24,7 +24,8 @@
             }">
 
             <div class="w-full mx-auto">
-                <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">Ask Nait about Christian, or try:</p>
+                <p class="text-lg text-slate-600 dark:text-slate-300 mt-10 mb-10">Ask me about Chris. My memory is better than his.</p>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">Or you could try:</p>
                 <div class="example-prompts mb-4">
                     <div class="prompts-carousel-wrapper relative flex items-center">
                         <button :disabled="!showInitialLeftCaret" @click="scrollPrompts('initial', 'left')"
@@ -171,7 +172,7 @@
                 class="chat-input-form-active p-2 sm:p-3 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 mt-auto sticky bottom-0">
                 <form @submit.prevent="sendMessage" class="flex items-center relative">
                     <textarea ref="activeTextareaRef" v-model="userInput" @keydown.enter="handleEnter" @focus="scrollToBottom"
-                        placeholder="Message Nait..." :disabled="isLoading" rows="1"
+                        :placeholder="dynamicInitialPlaceholder" :disabled="isLoading" rows="1"
                         class="w-full p-3 pr-12 text-base border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none dark:bg-neutral-700 dark:text-slate-100 dark:border-neutral-600 dark:placeholder-slate-400"
                         style="min-height: 52px;"></textarea>
                     <button type="submit" :disabled="isLoading || !userInput.trim()"
@@ -244,9 +245,9 @@ const scrollLeftActive = ref(0);
 const { width: windowWidth } = useWindowSize();
 const dynamicInitialPlaceholder = computed(() => {
     if (windowWidth.value < 480) { // Adjust breakpoint as needed
-        return "Ask Nait...";
+        return "Go on, I'm listening...";
     }
-    return "Ask anything about Christian...";
+    return "Ask me anything... just don't ask me to do your laundry.";
 });
 
 // --- Prompt Carousel Logic ---
@@ -633,7 +634,7 @@ const sendMessage = async () => {
         const apiHost = import.meta.env.VITE_API_HOST || ''; // Example: 'http://localhost:3000/'
         let url = `${apiHost}api/nait/chat`;
         if (!apiHost && typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV) { // Fallback for local dev if VITE_API_HOST is not set on window
-            url = 'http://localhost:3001/api/nait/chat';
+            url = 'http://localhost:3000/api/nait/chat';
             console.warn("NaitChat: VITE_API_HOST not found on window, using default dev URL:", url);
         } else if (!apiHost) {
             console.error("NaitChat: VITE_API_HOST is not configured.");

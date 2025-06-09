@@ -106,7 +106,7 @@
                     class="chat-input-form-popup p-3 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 mt-auto flex-shrink-0 sm:rounded-b-lg items-center">
                     <form @submit.prevent="sendMessage" class="flex items-start relative">
                         <textarea ref="activeTextareaRef" v-model="userInput" @keydown.enter="handleEnter" :rows="1"
-                            placeholder="Message Nait..." :disabled="isLoading || isSummarizing"
+                            :placeholder="dynamicInitialPlaceholder" :disabled="isLoading || isSummarizing"
                             class="w-full p-3 pr-12 text-base border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none dark:bg-neutral-700 dark:text-slate-100 dark:border-neutral-600 dark:placeholder-slate-400 max-h-28 overflow-y-auto"
                             style="min-height: 52px;"></textarea>
                         <button type="submit" :disabled="isLoading || isSummarizing || !userInput.trim()"
@@ -131,6 +131,7 @@ import { marked } from 'marked';
 import { useData } from 'vitepress';
 // IMPORT PATH: Ensure this path is correct for your project structure
 import { getPromptsForPage, NUMBER_OF_RANDOM_PROMPTS_TO_SHOW } from './pagePrompts';
+import { useWindowSize } from '@vueuse/core';
 
 
 interface ChatMessage {
@@ -171,6 +172,14 @@ const NAIT_GREETINGS = [
     "Hey! Good to see you. What can I do for you?",
     "Greetings! I'm here to help you navigate and understand this page. Ask away!"
 ];
+
+const { width: windowWidth } = useWindowSize();
+const dynamicInitialPlaceholder = computed(() => {
+    if (windowWidth.value < 480) { // Adjust breakpoint as needed
+        return "Go on, I'm listening...";
+    }
+    return "My circuits are buzzing to answer you";
+});
 
 const { page } = useData();
 

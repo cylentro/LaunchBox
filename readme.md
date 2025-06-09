@@ -53,44 +53,36 @@ To get a local copy up and running, follow these simple steps.
    ```
    git clone https://github.com/cylentro/LaunchBox.git
    cd your-repo-name
-
    ```
 2. Set up the Backend (Nait):
    * Navigate to the backend directory.
      ```
      cd backend
-
      ```
    * Install the dependencies.
      ```
      npm install
-
      ```
    * Create a `.env.local` file in the `backend` directory and add your Google Gemini API key. The API uses this environment variable.
      ```
      GEMINI_API_KEY=YOUR_API_KEY_HERE
-
      ```
    * Start the backend development server (runs on `http://localhost:3000`).
      ```
      npm run dev
-
      ```
 3. Set up the Frontend (LaunchBox):
    * In a new terminal, navigate to the frontend directory.
      ```
      cd frontend
-
      ```
    * Install the dependencies.
      ```
      npm install
-
      ```
    * Start the frontend development server (runs on `http://localhost:5173`). The command is `vitepress dev docs`.
      ```
      npm run docs:dev
-
      ```
 4. Explore!
    * Open your browser and go to `http://localhost:5173` to see the portfolio website.
