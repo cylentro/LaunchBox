@@ -35,7 +35,6 @@ The repository is organized into two main directories:
 .
 ├── backend/      # Contains the Next.js application for the Nait AI assistant
 └── frontend/     # Contains the VitePress portfolio website (LaunchBox)
-
 ```
 
 ## ⚙️ Getting Started
