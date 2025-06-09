@@ -45,9 +45,12 @@
                     :class="{ 'justify-center': !chatMessages.length && !isLoading && !isSummarizing }">
                     <div v-if="!chatMessages.length && !isLoading && !isSummarizing"
                         class="text-center text-slate-500 dark:text-slate-400 py-8 text-lg">
-                        Ask Nait anything about Christian or 
+                        Ask me about Chris. 
                         <br>
-                        request a summary of this page!
+                        My memory is better than his.
+                        <br>
+                        <br>
+                        Too lazy to read? Ask for the tl;dr
                     </div>
                     <TransitionGroup name="bubble-popup" tag="div">
                         <div v-for="(chat, index) in chatMessages" :key="chat.id || index" :class="['message-bubble flex flex-col py-2 px-3 rounded-lg shadow w-fit break-words',
@@ -337,12 +340,11 @@ const simulateStreaming = (
     nextChunk();
 };
 
-const handleSummarizePage = async () => {
+const handleSummarizePage = async (userRequestText: string) => {
     if (!page.value?.relativePath || page.value.relativePath === 'index.md') return;
-    userInput.value = ''; // Clear user input
 
     // Add user's request message
-    chatMessages.value.push({ id: `user_req_summary_${Date.now()}`, text: "Please summarize this page.", isNait: false });
+    chatMessages.value.push({ id: `user_req_summary_${Date.now()}`, text: userRequestText, isNait: false });
     const pagePath = page.value.relativePath;
     const cached = getCachedSummary(pagePath);
 
@@ -390,7 +392,7 @@ const handleSummarizePage = async () => {
         const apiHost = import.meta.env.VITE_API_HOST || '';
         let url = `${apiHost}api/nait/summarize`;
         if (!apiHost && typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV) {
-            url = 'http://localhost:3001/api/nait/summarize'; // Ensure this port is correct
+            url = 'http://localhost:3000/api/nait/summarize'; // Ensure this port is correct
         } else if (!apiHost) {
             throw new Error("API host not configured for summarization.");
         }
@@ -656,12 +658,33 @@ const adjustTextareaHeight = (el: HTMLTextAreaElement | null) => { if (!el) retu
 watch(userInput, () => { if (isPopupOpen.value) adjustTextareaHeight(activeTextareaRef.value); });
 
 const handleEnter = (e: KeyboardEvent) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (userInput.value.trim() && !isLoading.value && !isSummarizing.value) sendMessage(); } };
-const handleExamplePromptClick = (prompt: ExamplePrompt) => { if (prompt.action === 'summarize') handleSummarizePage(); else sendExampleChatPrompt(prompt.text); };
+
+const handleExamplePromptClick = (prompt: ExamplePrompt) => {
+    if (prompt.action === 'summarize') {
+        handleSummarizePage(prompt.text); // Pass the prompt's text
+        userInput.value = ''; // Clear input field if user typed something else before clicking
+        nextTick(() => adjustTextareaHeight(activeTextareaRef.value));
+    } else {
+        sendExampleChatPrompt(prompt.text);
+    }
+};
 const sendExampleChatPrompt = (promptText: string) => { userInput.value = promptText; nextTick(() => { activeTextareaRef.value?.focus(); sendMessage(); }); };
 
 const sendMessage = async () => { // Standard chat message sending
     const messageText = userInput.value.trim();
     if (!messageText || isLoading.value || isSummarizing.value) return;
+
+    const lowerCaseMessage = messageText.toLowerCase();
+    // Regex to find "tl" followed by optional whitespace/semicolon and then "dr"
+    // The 'i' flag makes it case-insensitive, though lowerCaseMessage is already lowercase.
+    const tldrRegex = /tl\s*;?\s*dr/i; 
+
+    if (tldrRegex.test(lowerCaseMessage) || lowerCaseMessage === "summary") {
+        handleSummarizePage(messageText); // Pass the original user message
+        userInput.value = ''; // Clear input after handling
+        nextTick(() => adjustTextareaHeight(activeTextareaRef.value));
+        return;
+    }
 
     chatMessages.value.push({ id: `msg_popup_${Date.now()}`, text: messageText, isNait: false });
     userInput.value = '';
