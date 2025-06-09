@@ -675,11 +675,10 @@ const sendMessage = async () => { // Standard chat message sending
     if (!messageText || isLoading.value || isSummarizing.value) return;
 
     const lowerCaseMessage = messageText.toLowerCase();
-    // Regex to find "tl" followed by optional whitespace/semicolon and then "dr"
-    // The 'i' flag makes it case-insensitive, though lowerCaseMessage is already lowercase.
-    const tldrRegex = /tl\s*;?\s*dr/i; 
+    // Regex to find "tldr" or variations of "summary", "sum", "sums", "summ" as whole words.
+    const summarizeKeywordsRegex = /\b(summary|sumary|summarize|sumarize|sums|summ|sum)\b|tl\s*;?\s*dr/i;
 
-    if (tldrRegex.test(lowerCaseMessage) || lowerCaseMessage === "summary") {
+    if (summarizeKeywordsRegex.test(lowerCaseMessage)) {
         handleSummarizePage(messageText); // Pass the original user message
         userInput.value = ''; // Clear input after handling
         nextTick(() => adjustTextareaHeight(activeTextareaRef.value));
