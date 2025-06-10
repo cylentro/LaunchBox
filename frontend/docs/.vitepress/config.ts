@@ -38,6 +38,7 @@ export default defineConfig({
                     { text: 'Resume', link: '/profile/resume' },
                     { text: 'Projects', link: '/profile/projects' },
                     { text: 'Stacks', link: '/profile/stacks' },
+                    { text: 'Christian 101', link: '/profile/101' },
                     // { text: 'What They Say', link: '/profile/what-they-say' },
                 ]
             },
