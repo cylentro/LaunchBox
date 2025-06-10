@@ -9,7 +9,11 @@ export default {
     "./docs/**/*.vue"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'spotify-green': '#1DB954',
+      },
+    },
   },
   plugins: [],
 }
