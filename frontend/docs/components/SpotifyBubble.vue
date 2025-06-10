@@ -10,7 +10,8 @@
         <Transition name="popup-slide-fade-left">
             <div v-if="isPopupOpen"
                  :class="['fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700',
-                          { 'minimized-popup': isMinimized },'inset-0 rounded-none sm:inset-auto sm:bottom-8 sm:left-8 sm:w-[400px] sm:h-[70vh] sm:max-h-[245px] sm:rounded-lg']">
+                          { 'minimized-popup': isMinimized },'bottom-8 left-4 right-4 rounded-lg max-h-[245px] sm:inset-auto sm:left-8 sm:w-[400px] sm:h-[70vh]'
+                          ]">
                 <div
                     class="p-3 border-b border-slate-200 dark:border-neutral-700 flex justify-between items-center flex-shrink-0">
                     <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100" style="margin-top:0">Naninani Podcast
@@ -33,7 +34,7 @@
                 <div class="flex-grow p-4 overflow-auto">
                     <iframe style="border-radius:15px"
                         src="https://open.spotify.com/embed/show/6uiSJvabU9E0R4RCK9IRCb?utm_source=generator" width="100%" height="152"
-                        frameBorder="0" allowfullscreen=""
+                        frameBorder="0" allowfullscreen
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
 

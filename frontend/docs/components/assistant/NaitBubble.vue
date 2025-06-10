@@ -13,10 +13,12 @@
         </button>
 
         <Transition name="popup-slide-fade">
-            <div v-if="isPopupOpen" class="fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700
+            <div v-if="isPopupOpen"
+                 class="fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700
                        inset-0 rounded-none /* Mobile default: use inset-0 for fullscreen dimensions */
                        sm:inset-auto sm:bottom-8 sm:right-8 sm:w-[400px] sm:h-[70vh] sm:max-h-[600px] sm:rounded-lg /* Desktop overrides: original positioning, size, and rounding */
-                      ">
+                      "
+                 :style="{ zIndex: 60 }">
                 <div
                     class="p-3 border-b border-slate-200 dark:border-neutral-700 flex justify-between items-center flex-shrink-0">
                     <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100" style="margin-top:0">Nait Chat
@@ -45,12 +47,9 @@
                     :class="{ 'justify-center': !chatMessages.length && !isLoading && !isSummarizing }">
                     <div v-if="!chatMessages.length && !isLoading && !isSummarizing"
                         class="text-center text-slate-500 dark:text-slate-400 py-8 text-lg">
-                        Ask me about Chris. 
+                        Ask Nait anything about Christian or 
                         <br>
-                        My memory is better than his.
-                        <br>
-                        <br>
-                        Too lazy to read? Ask for the tl;dr
+                        request a summary of this page!
                     </div>
                     <TransitionGroup name="bubble-popup" tag="div">
                         <div v-for="(chat, index) in chatMessages" :key="chat.id || index" :class="['message-bubble flex flex-col py-2 px-3 rounded-lg shadow w-fit break-words',
@@ -178,10 +177,10 @@ const NAIT_GREETINGS = [
 
 const { width: windowWidth } = useWindowSize();
 const dynamicInitialPlaceholder = computed(() => {
-    if (windowWidth.value < 600) { // Adjust breakpoint as needed
+    if (windowWidth.value < 480) { // Adjust breakpoint as needed
         return "Go on, I'm listening...";
     }
-    return "My circuits are buzzing to answer you";
+    return "Ask me anything... just don't ask me to do your laundry.";
 });
 
 const { page } = useData();
@@ -340,11 +339,12 @@ const simulateStreaming = (
     nextChunk();
 };
 
-const handleSummarizePage = async (userRequestText: string) => {
+const handleSummarizePage = async () => {
     if (!page.value?.relativePath || page.value.relativePath === 'index.md') return;
+    userInput.value = ''; // Clear user input
 
     // Add user's request message
-    chatMessages.value.push({ id: `user_req_summary_${Date.now()}`, text: userRequestText, isNait: false });
+    chatMessages.value.push({ id: `user_req_summary_${Date.now()}`, text: "Please summarize this page.", isNait: false });
     const pagePath = page.value.relativePath;
     const cached = getCachedSummary(pagePath);
 
@@ -392,7 +392,7 @@ const handleSummarizePage = async (userRequestText: string) => {
         const apiHost = import.meta.env.VITE_API_HOST || '';
         let url = `${apiHost}api/nait/summarize`;
         if (!apiHost && typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV) {
-            url = 'http://localhost:3000/api/nait/summarize'; // Ensure this port is correct
+            url = 'http://localhost:3001/api/nait/summarize'; // Ensure this port is correct
         } else if (!apiHost) {
             throw new Error("API host not configured for summarization.");
         }
@@ -658,32 +658,12 @@ const adjustTextareaHeight = (el: HTMLTextAreaElement | null) => { if (!el) retu
 watch(userInput, () => { if (isPopupOpen.value) adjustTextareaHeight(activeTextareaRef.value); });
 
 const handleEnter = (e: KeyboardEvent) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (userInput.value.trim() && !isLoading.value && !isSummarizing.value) sendMessage(); } };
-
-const handleExamplePromptClick = (prompt: ExamplePrompt) => {
-    if (prompt.action === 'summarize') {
-        handleSummarizePage(prompt.text); // Pass the prompt's text
-        userInput.value = ''; // Clear input field if user typed something else before clicking
-        nextTick(() => adjustTextareaHeight(activeTextareaRef.value));
-    } else {
-        sendExampleChatPrompt(prompt.text);
-    }
-};
+const handleExamplePromptClick = (prompt: ExamplePrompt) => { if (prompt.action === 'summarize') handleSummarizePage(); else sendExampleChatPrompt(prompt.text); };
 const sendExampleChatPrompt = (promptText: string) => { userInput.value = promptText; nextTick(() => { activeTextareaRef.value?.focus(); sendMessage(); }); };
 
 const sendMessage = async () => { // Standard chat message sending
     const messageText = userInput.value.trim();
     if (!messageText || isLoading.value || isSummarizing.value) return;
-
-    const lowerCaseMessage = messageText.toLowerCase();
-    // Regex to find "tldr" or variations of "summary", "sum", "sums", "summ" as whole words.
-    const summarizeKeywordsRegex = /\b(summary|sumary|summarize|sumarize|sums|summ|sum)\b|tl\s*;?\s*dr/i;
-
-    if (summarizeKeywordsRegex.test(lowerCaseMessage)) {
-        handleSummarizePage(messageText); // Pass the original user message
-        userInput.value = ''; // Clear input after handling
-        nextTick(() => adjustTextareaHeight(activeTextareaRef.value));
-        return;
-    }
 
     chatMessages.value.push({ id: `msg_popup_${Date.now()}`, text: messageText, isNait: false });
     userInput.value = '';
