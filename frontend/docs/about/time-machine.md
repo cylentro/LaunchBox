@@ -1,7 +1,6 @@
 ---
-title: Time Machine
-layout: doc
-aside: false
+w
+
 ---
 # Time Machine
 
