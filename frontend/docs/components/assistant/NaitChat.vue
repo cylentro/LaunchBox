@@ -2,7 +2,7 @@
     <div class="nait-chat-interface mx-auto flex flex-col transition-all duration-500 ease-in-out"
         :style="{ maxHeight: isChatActive ? 'calc(100vh - var(--vp-nav-height, 0px))' : 'auto' }"
         :class="[
-            isChatActive ? 'h-[calc(100vh-var(--vp-nav-height,0px))] overflow-hidden' : 'py-8'
+            isChatActive ? 'h-[calc(100vh-var(--vp-nav-height,0px))] overflow-hidden relative z-60' : 'py-8'
         ]">
 
         <div class="title-wrapper mb-8 text-center"
