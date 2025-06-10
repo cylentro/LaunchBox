@@ -2,7 +2,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Define the single, specific origin for your production frontend
-const productionOrigin = process.env.FRONTEND_URL ?? "";
+const vercelURL = process.env.VERCEL_URL ?? ""; 
+const hostname = process.env.HOSTNAME ?? ""; // Expects "HostName.me" or similar hostname from .env
 
 function getOrigin(request: NextRequest): string {
   const requestOrigin = request.headers.get('origin') ?? '';
@@ -13,21 +14,25 @@ function getOrigin(request: NextRequest): string {
       return requestOrigin;
     }
   }
-
-  // In production, only allow the specific frontend origin
-  if (requestOrigin === productionOrigin) {
-    return productionOrigin;
+  
+  if (vercelURL && requestOrigin === vercelURL) {
+    return vercelURL;
   }
 
-  // If the origin is not allowed, we can return an empty string or a default
-  // Returning the production origin is a safe default.
-  return productionOrigin;
+  if (hostname) {
+    const hostNameOrigin = `https://${hostname}`;
+    const wwwHostNameOrigin = `https://www.${hostname}`; 
+    if (requestOrigin === hostNameOrigin || requestOrigin === wwwHostNameOrigin) {
+      return requestOrigin;
+    }
+  }
+
+  return vercelURL; 
 }
 
 export function middleware(request: NextRequest) {
   const origin = getOrigin(request);
 
-  // For preflight (OPTIONS) requests, respond with CORS headers
   if (request.method === 'OPTIONS') {
     return new NextResponse(null, {
       status: 204,
@@ -48,7 +53,6 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
-// Apply this middleware to all API routes
 export const config = {
   matcher: '/api/:path*',
 };

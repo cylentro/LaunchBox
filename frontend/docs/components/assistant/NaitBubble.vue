@@ -178,7 +178,7 @@ const NAIT_GREETINGS = [
 
 const { width: windowWidth } = useWindowSize();
 const dynamicInitialPlaceholder = computed(() => {
-    if (windowWidth.value < 480) { // Adjust breakpoint as needed
+    if (windowWidth.value < 600) { // Adjust breakpoint as needed
         return "Go on, I'm listening...";
     }
     return "My circuits are buzzing to answer you";

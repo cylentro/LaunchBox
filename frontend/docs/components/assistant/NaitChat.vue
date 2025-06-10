@@ -113,7 +113,7 @@
                      class="chat-messages flex flex-col flex-grow overflow-y-auto px-4 space-y-3 py-4"
                      :class="{ 'justify-center': !chatMessages.length && !isLoading }">
                      <div v-if="!chatMessages.length && !isLoading" class="text-center text-slate-500 dark:text-slate-400 text-base">
-                        Ask Nait anything!
+                        Ask me about Chris. My memory is better than his.
                     </div>
                     <TransitionGroup name="bubble" tag="div">
                         <div v-for="(chat, index) in chatMessages" :key="chat.id || index"
@@ -244,10 +244,10 @@ const scrollLeftActive = ref(0);
 // --- Dynamic Placeholder Logic ---
 const { width: windowWidth } = useWindowSize();
 const dynamicInitialPlaceholder = computed(() => {
-    if (windowWidth.value < 480) { // Adjust breakpoint as needed
+    if (windowWidth.value < 600) { 
         return "Go on, I'm listening...";
     }
-    return "Ask me anything... just don't ask me to do your laundry.";
+    return "Ask me anything... just don't ask me to do your laundry";
 });
 
 // --- Prompt Carousel Logic ---
