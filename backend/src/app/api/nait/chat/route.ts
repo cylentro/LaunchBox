@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */ 
 
 import { NextResponse } from 'next/server';
-import { ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings, HarmBlockThreshold, HarmCategory } from '@langchain/google-genai';
+import { ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings } from '@langchain/google-genai';
+import { HarmBlockThreshold, HarmCategory } from '@google/generative-ai'
 import { HumanMessage, SystemMessage, AIMessage, BaseMessageChunk } from '@langchain/core/messages'; // AIMessageChunk might be BaseMessageChunk or specific type
 import { Document } from '@langchain/core/documents'; // Import Document type
 import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
@@ -60,12 +61,12 @@ const llm = new ChatGoogleGenerativeAI({
   temperature: 0.5,
   maxOutputTokens: 2048,
   safetySettings: [ // Added safety settings
-    { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
-    { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
-    { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_NONE },
-    { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
+    { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE },
+    { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE },
+    { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE },
+    { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE },
     // Consider BLOCK_MEDIUM_AND_ABOVE or BLOCK_LOW_AND_ABOVE for stricter filtering if needed
-    // { category: HarmCategory.HARM_CATEGORY_UNSPECIFIED, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH },
+    { category: HarmCategory.HARM_CATEGORY_UNSPECIFIED, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH },
   ],
   streaming: true, // Ensure this is true
 });
