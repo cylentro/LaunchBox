@@ -17,7 +17,7 @@ import NaitBubble from '../../components/assistant/NaitBubble.vue'
 
 const { Layout } = DefaultTheme
 const { page } = useData()
-const pagesToHideBubble = ['index.md', 'time-machine.md'];
+const pagesToHideBubble = ['index.md', 'license.md'];
 const isBubbleHiddenPage = computed(() => {
   return pagesToHideBubble.includes(page.value.relativePath);
 });

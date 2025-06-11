@@ -38,7 +38,7 @@ export default defineConfig({
                     { text: 'Resume', link: '/profile/resume' },
                     { text: 'Projects', link: '/profile/projects' },
                     { text: 'Stacks', link: '/profile/stacks' },
-                    { text: 'Christian 101', link: '/profile/101' },
+                    { text: 'Christian 101', link: '/profile/working-with-me' },
                     // { text: 'What They Say', link: '/profile/what-they-say' },
                 ]
             },
@@ -78,7 +78,7 @@ export default defineConfig({
         },
         footer:{
             message: 'Released under the <a href="/license">MIT License</a>.',
-            copyright: 'Copyright © 2025-present <a href="https://github.com/cylentro">Christian Hadianto</a>'
+            copyright: 'Copyright © 2025-present <a href="https://github.com/cylentro" target="_blank">Christian Hadianto</a> | Powered by <a href="https://vitepress.dev/" target="_blank">Vitepress</a>'
         }
     }
 })
