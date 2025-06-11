@@ -46,7 +46,7 @@ layout: doc
 [in/chrishadi90/](https://www.linkedin.com/in/chrishadi90) | <christian.hadianto@gmail.com> | [(65) 8120 4587](https://wa.me/6581204587)
 
 <div style="text-align: center; margin-top: 20px; margin-bottom: 25px;">
-  <a href="https://drive.google.com/file/d/1ehg3UZAt1FMo45OVkXlIz0Xv1wEFK1cz/view?usp=sharing" target="_blank" rel="noopener noreferrer"
+  <a href="https://drive.google.com/file/d/1riCRT7VR11cwJJiR9u2MRI2X3cFdzAlw/view?usp=sharing" target="_blank" rel="noopener noreferrer"
      class="download-resume-button" style="display: inline-flex; align-items: center; justify-content: center;">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
