@@ -43,7 +43,7 @@ layout: doc
 }
 </style>
 
-[in/chrishadi90/](https://www.linkedin.com/in/chrishadi90) | <christian.hadianto@gmail.com> | (65) 8120 4587
+[in/chrishadi90/](https://www.linkedin.com/in/chrishadi90) | <christian.hadianto@gmail.com> | [(65) 8120 4587](https://wa.me/6581204587)
 
 <div style="text-align: center; margin-top: 20px; margin-bottom: 25px;">
   <a href="https://drive.google.com/file/d/1ehg3UZAt1FMo45OVkXlIz0Xv1wEFK1cz/view?usp=sharing" target="_blank" rel="noopener noreferrer"
@@ -62,7 +62,7 @@ layout: doc
 
 Product Manager with over 7 years of experience building and scaling impactful digital solutions, now focused on leveraging Generative AI to drive business growth. Proven success leading 0-to-1 products, demonstrated by driving 500% user growth and laying the foundational groundwork for AI-powered personalization and risk assessment in previous roles. Combines deep expertise in process automation, customer experience enhancement (boosting satisfaction to 75%), and insurance product management with hands-on experience developing Gen AI applications, including conversational agents and AI-driven content creation projects.
 
-## WORK EXPERIENCE 
+## WORK EXPERIENCE
 
 ### Anteraja | Jakarta, Indonesia
 
@@ -70,7 +70,7 @@ Anteraja is a tech-enabled logistics company. It is a subsidiary of Adi Sarana A
 
 #### Digital Product Lead | Sept 2023 – Present
 
-- Drove 500% user growth and a 350% revenue increase for the AAPRO loyal retail customer product (contributing to 50% of monthly retail transactions) by offering exclusive discounts, COD, and innovative seller tools (e.g., admin-fee-free order forms), while addressing user adoption hurdles.
+- Drove 500% user growth and a 350% revenue increase for the AAPRO loyal retail customer product (contributing to 50% of monthly retail transactions) while addressing user adoption hurdles.
 - Launched and managed retail and B2B insurance offerings.
   - Led end-to-end development by identified needs with stakeholders (Ops, QA, CS), selected partners, solutioned product, and oversaw engine development. creating a data-rich foundation for future AI-powered risk assessment and fraud detection models.
   - Achieved 60% adoption, generating IDR 17M/month revenue and reducing claim expenses by 25% of retail insurance.
@@ -82,7 +82,7 @@ Anteraja is a tech-enabled logistics company. It is a subsidiary of Adi Sarana A
 #### Digital Platform Lead | Mar 2021 – Sept 2023
 
 - Led the launch of PayOD (Payment on Delivery) via QRIS, streamlining COD processes for millions of transactions, enhancing user satisfaction for seller and business deliveries.
-- Spearheaded market entry strategy for Anteraja Pro (Subscription) and Loyalty programs, acquiring 300 SMEs within 1 month by leveraging attribution tools and social media.
+- Spearheaded market entry strategy for Anteraja Pro (Subscription) and Loyalty programs, converted 30% of retail customers within 1 month
 - Partnered with Unilever (Rinso) for a recycling campaign, boosting brand visibility and community engagement.
 - Leveraged data analytics to implement promotion cost analysis, leading to a 50% reduction in marketing spend through data-driven insights and optimization.
 - Enhanced the end-to-end customer experience by redesigning the mobile app's order journey, boosting user satisfaction to 75%. This streamlined flow created the ideal foundation for integrating a Gen AI-powered conversational agent to offer personalized assistance.
@@ -124,9 +124,16 @@ An IT solutions provider delivering enterprise platforms for logistics, finance,
 
 ## GENERATIVE AI PROJECTS
 
-[Naninani Podcast](https://open.spotify.com/show/6uiSJvabU9E0R4RCK9IRCb?si=8f670cc7750542b3) | NotebookLM, Gemini, Prompt Engineering
+[NAIT](https://bychris.me) | Vitepress, Vue3, Tailwind, Next.js, Gemini API
+<br/><small>*A personal AI assistant for my portfolio website.*</small>
 
-- Architected and manage an end-to-end content pipeline for a virtual podcast, demonstrating a full-cycle application of Gen AI product creation.
+- Developed a personalized knowledge retrieval system by implementing a Retrieval-Augmented Generation (RAG) pipeline on a collection of Markdown files.
+- Architected a full-stack solution, integrating a static Vitepress/Vue.js front-end with a Next.js back-end to serve the Gemini API, demonstrating advanced system integration for AI applications.
+
+[Naninani Podcast](https://open.spotify.com/show/6uiSJvabU9E0R4RCK9IRCb?si=8f670cc7750542b3) | NotebookLM, Gemini, Prompt Engineering
+<br/><small>*An AI-generated podcast focusing on education, learning, and self-growth.*</small>
+
+- Architected and manage an end-to-end content pipeline for an AI podcast, demonstrating a full-cycle application of Gen AI product creation.
 - Engineered a sophisticated workflow: from information extraction using RAG principles, to generating audio, transcripts, titles, and marketing descriptions.
 
 [Garoupa API - Machine Learning](https://github.com/cylentro/garoupa-api) | Python, API Development
@@ -141,9 +148,8 @@ An IT solutions provider delivering enterprise platforms for logistics, finance,
 
 ## EDUCATION
 
-**Bachelor of Computer Science** 
-
-Aug 2012 | Bina Nusantara University | Jakarta, Indonesia
+**Bachelor of Computer Science**
+<br>3.75/4.00 | Aug 2012 | Bina Nusantara University | Jakarta, Indonesia
 
 ## [CERTIFICATION](https://www.linkedin.com/in/chrishadi90/details/certifications/)
 
@@ -190,8 +196,6 @@ Machine Learning & Data Analytics
 - Led student groups in developing innovative 0-to-1 products for Anteraja, fostering practical learning and real-world application.
 - Achieved "Best Performing Group in C5 Introduction" and "2nd Best Performing Group in C5 Intermediate" awards with mentored teams.
 
-### Apiary Academy
-
 #### Product Management Trainer | Oct 2022
 
 - Developed and delivered a presentation on the "Strategy of Product Success" to bootcamp participants.
@@ -199,19 +203,19 @@ Machine Learning & Data Analytics
 
 ## SKILLS
 
-### Product Management & Business:
+### Product Management & Business
 
 - Product Strategy & Roadmap, Discovery, Launch & GTM
 - Product Development Lifecycle
 - Business Acumen, Analytics, Project Management
 - Cross-functional Team Collaboration
 
-### Methods & Technical:
+### Methods & Technical
 
 - Agile Scrum Methodologies
 - Prompt Design & Engineering
 
-### Tools & Data:
+### Tools & Data
 
 Product & Project Management
 
