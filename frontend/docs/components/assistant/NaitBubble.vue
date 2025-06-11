@@ -2,7 +2,7 @@
     <div class="nait-bubble-widget">
         <button v-show="!isPopupOpen" @click="openPopup"
             class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 z-50 transition-opacity duration-300 ease-in-out"
-            aria-label="Open Nait Chat" title="Open Nait Chat">
+            aria-label="Open Nait" title="Open Nait">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-8 h-8">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -21,7 +21,7 @@
                  :style="{ zIndex: 60 }">
                 <div
                     class="p-3 border-b border-slate-200 dark:border-neutral-700 flex justify-between items-center flex-shrink-0">
-                    <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100" style="margin-top:0">Nait Chat
+                    <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100" style="margin-top:0">Nait
                     </h3>
                     <div class="flex items-center">
                         <button @click="clearAndCloseSession"
@@ -47,9 +47,14 @@
                     :class="{ 'justify-center': !chatMessages.length && !isLoading && !isSummarizing }">
                     <div v-if="!chatMessages.length && !isLoading && !isSummarizing"
                         class="text-center text-slate-500 dark:text-slate-400 py-8 text-lg">
-                        Ask Nait anything about Christian or 
-                        <br>
-                        request a summary of this page!
+                        Ask me about Chris. 
+                        <br />
+                        My memory is better than his.
+                        <br />
+                        <br />
+                        Or, I can give you the highlights. 
+                        <br />
+                        He tends to be... <i>thorough</i>.
                     </div>
                     <TransitionGroup name="bubble-popup" tag="div">
                         <div v-for="(chat, index) in chatMessages" :key="chat.id || index" :class="['message-bubble flex flex-col py-2 px-3 rounded-lg shadow w-fit break-words',
