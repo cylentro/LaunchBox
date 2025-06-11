@@ -3,7 +3,6 @@ title: My Work and Wanderings
 layout: doc
 aside: false
 ---
-<NaitBubble />
 
 # My Work and Wanderings
 

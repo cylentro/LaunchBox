@@ -24,7 +24,6 @@ features:
     details: Primary Domain Expertise
 
 ---
-<NaitBubble />
 
 ## Welcome to my corner of the internet!
 

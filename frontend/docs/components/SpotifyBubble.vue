@@ -1,5 +1,5 @@
 <template>
-    <div class="spotify-caret-widget z-0">
+    <div class="spotify-caret-widget z-11">
         <button @click="togglePanel"
             class="spotify-caret-button fixed left-0 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center shadow-xl focus:outline-none transition-all duration-500 ease-in-out"
             :class="{ 'is-open': isPanelOpen }" aria-label="Toggle Spotify Panel" title="Toggle Spotify">

@@ -193,7 +193,7 @@
 <script setup lang="ts">
 import { ref, onMounted, nextTick, watch, onBeforeUnmount, computed } from 'vue';
 import { marked } from 'marked';
-import { useWindowSize } from '@vueuse/core';
+import { getRandomPlaceholder } from '../inputPlaceholder';
 
 let typingInterval: ReturnType<typeof setInterval> | null = null
 
@@ -241,13 +241,8 @@ const isDraggingActive = ref(false);
 const startXActive = ref(0);
 const scrollLeftActive = ref(0);
 
-// --- Dynamic Placeholder Logic ---
-const { width: windowWidth } = useWindowSize();
 const dynamicInitialPlaceholder = computed(() => {
-    if (windowWidth.value < 600) { 
-        return "Go on, I'm listening...";
-    }
-    return "Ask me anything... just don't ask me to do your laundry";
+    return getRandomPlaceholder();
 });
 
 // --- Prompt Carousel Logic ---

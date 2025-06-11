@@ -2,7 +2,6 @@
 title: Prompt Frameworks
 layout: doc
 ---
-<NaitBubble />
 
 # Prompt Frameworks: Your AI Whisperer Toolkit 🤫
 

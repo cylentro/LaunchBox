@@ -3,8 +3,6 @@ title: Prompt Frameworks
 layout: doc
 ---
 
-<NaitBubble />
-
 # CHRISTIAN HADIANTO
 
 <span style="font-size:25px">PRODUCT MANAGER</span>

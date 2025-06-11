@@ -3,7 +3,6 @@ title: My Digital Toolbox & Stacks
 layout: doc
 aside: false
 ---
-<NaitBubble />
 
 # My Digital Toolbox & Other Shiny Things
 

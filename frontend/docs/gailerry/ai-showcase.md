@@ -3,7 +3,6 @@ title: My AI Playground
 layout: doc
 aside: false
 ---
-<NaitBubble />
 
 # My AI Playground
 

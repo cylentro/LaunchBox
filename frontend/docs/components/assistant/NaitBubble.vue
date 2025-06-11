@@ -133,8 +133,7 @@ import { marked } from 'marked';
 import { useData } from 'vitepress';
 // IMPORT PATH: Ensure this path is correct for your project structure
 import { getPromptsForPage, NUMBER_OF_RANDOM_PROMPTS_TO_SHOW } from './pagePrompts';
-import { useWindowSize } from '@vueuse/core';
-
+import { getRandomPlaceholder } from '../inputPlaceholder'
 
 interface ChatMessage {
     id?: string;
@@ -175,12 +174,8 @@ const NAIT_GREETINGS = [
     "Greetings! I'm here to help you navigate and understand this page. Ask away!"
 ];
 
-const { width: windowWidth } = useWindowSize();
 const dynamicInitialPlaceholder = computed(() => {
-    if (windowWidth.value < 480) { // Adjust breakpoint as needed
-        return "Go on, I'm listening...";
-    }
-    return "Ask me anything... just don't ask me to do your laundry.";
+    return getRandomPlaceholder();
 });
 
 const { page } = useData();
