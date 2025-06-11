@@ -169,7 +169,7 @@
                 </div>
             </div>
             <div
-                class="chat-input-form-active p-2 sm:p-3 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 mt-auto sticky bottom-0">
+                class="chat-input-form-active p-2 sm:p-3 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 sticky bottom-0">
                 <form @submit.prevent="sendMessage" class="flex items-center relative">
                     <textarea ref="activeTextareaRef" v-model="userInput" @keydown.enter="handleEnter" @focus="scrollToBottom"
                         :placeholder="dynamicInitialPlaceholder" :disabled="isLoading" rows="1"
