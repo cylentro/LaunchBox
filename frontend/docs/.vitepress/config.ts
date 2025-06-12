@@ -8,24 +8,35 @@ export default defineConfig({
 
     head:
         [
-            [
-                "link",
-                {
-                    rel: "icon",
-                    type: "image/png",
-                    sizes: "32x32",
-                    href: "/logo.png",
-                },
-            ],
-            [
-                "link",
-                {
-                    rel: "icon",
-                    type: "image/png",
-                    sizes: "16x16",
-                    href: "/logo.png",
-                },
-            ],
+            ['meta', { name: 'robots', content: 'index, follow' }], 
+            ['meta', { name: 'keywords', content: 'Christian Hadianto, ChrisHadi, Senior Product Manager, Product Manager Singapore, Generative AI, Logistics, Prompt Engineering, Prompt Framework, Portfolio' }],
+            ['meta', { name: 'author', content: 'Christian Hadianto' }],
+
+            // --- Open Graph (OG) Tags for Social Sharing ---
+            ['meta', { property: 'og:title', content: 'Christian Hadianto | Senior Product Manager & AI Enthusiast' }],
+            ['meta', { property: 'og:description', content: 'Explore the portfolio of Christian Hadianto, a Senior Product Manager with 10 years of experience in logistics and a passion for building innovative products with Generative AI.' }],
+            ['meta', { property: 'og:type', content: 'website' }],
+            ['meta', { property: 'og:image', content: 'https://bychris.me/self_banner.jpg' }],
+            ['meta', { property: 'og:url', content: 'https://bychris.me' }],
+
+            // --- Twitter Card Tags ---
+            ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+            ['meta', { name: 'twitter:title', content: 'Christian Hadianto | Senior Product Manager & AI Enthusiast' }],
+            ['meta', { name: 'twitter:description', content: 'Discover the work and insights of Christian Hadianto, a product leader in logistics and AI.' }],
+            ['meta', { name: 'twitter:image', content: 'https://bychris.me/self_banner.jpg' }],
+
+            ['link', { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' }],
+            ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-96x96.png' }],
+            ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon.svg' }],
+            ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon-96x96.png' }],
+            ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
+            ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
+            ['link', { rel: 'manifest', href: '/site.webmanifest' }],
+
+            ['link', { rel: 'mask-icon', href: '/favicon.svg', color: '#EB0100' }],
+            ['meta', { name: 'msapplication-TileColor', content: '#EB0100' }],
+            ['meta', { name: 'theme-color', content: '#EB0100' }], // Sets the browser toolbar color
+
         ],
 
     themeConfig: {
@@ -39,14 +50,13 @@ export default defineConfig({
                     { text: 'Projects', link: '/profile/projects' },
                     { text: 'Stacks', link: '/profile/stacks' },
                     { text: 'Christian 101', link: '/profile/working-with-me' },
-                    // { text: 'What They Say', link: '/profile/what-they-say' },
                 ]
             },
             {
                 text: 'G[AI]lerry',
                 items: [
                     { text: 'AI Showcase', link: '/gailerry/ai-showcase' },
-                    { text: 'Prompt Framework', link: '/gailerry/prompt-framework' },
+                    { text: 'Prompt Framework', link: '/gailerry/prompt-frameworks' },
                     // { text: 'Prompt Collection', link: '/gailerry/prompt-collection' }
                 ]
             },
@@ -55,7 +65,6 @@ export default defineConfig({
                 items: [
                     { text: 'About Me', link: '/about/about-me' },
                     { text: 'Time Machine', link: '/about/time-machine' },
-                    // { text: 'Gears', link: '/about/gears' },
                 ]
             },
         ],
@@ -76,9 +85,12 @@ export default defineConfig({
         search: {
             provider: 'local',
         },
-        footer:{
+        footer: {
             message: 'Released under the <a href="/license">MIT License</a>.',
             copyright: 'Copyright © 2025-present <a href="https://github.com/cylentro" target="_blank">Christian Hadianto</a> | Powered by <a href="https://vitepress.dev/" target="_blank">Vitepress</a>'
         }
+    },
+    sitemap: {
+        hostname: 'https://bychris.me',
     }
 })

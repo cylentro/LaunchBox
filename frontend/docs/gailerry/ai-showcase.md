@@ -11,7 +11,7 @@ Welcome to my AI playground! This is where I experiment, build, and explore the 
 <div class="space-y-16">
   <!-- NaniNani Podcast Project -->
   <div class="p-8 bg-white dark:bg-gray-800/50 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-    <p class="text-3xl font-bold text-gray-900 dark:text-white">NaniNani Podcast</p>
+    <p class="text-3xl font-bold text-gray-900 dark:text-white" id="naninani">NaniNani Podcast</p>
     <p class="mt-2 text-lg text-teal-500 dark:text-teal-400 font-semibold">An AI-hosted podcast focused on education.
     </p>
     <div class="mt-6 grid md:grid-cols-2 gap-x-8 gap-y-6">
@@ -48,7 +48,7 @@ Welcome to my AI playground! This is where I experiment, build, and explore the 
   </div>
   <!-- Nait Project -->
   <div class="p-8 bg-white dark:bg-gray-800/50 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-    <p class="text-3xl font-bold text-gray-900 dark:text-white">Nait</p>
+    <p class="text-3xl font-bold text-gray-900 dark:text-white" id="nait">Nait</p>
     <p class="mt-2 text-lg text-blue-500 dark:text-blue-400 font-semibold">An AI assistant for my personal
       portfolio.</p>
     <div class="mt-6 grid md:grid-cols-2 gap-x-8 gap-y-6">
@@ -81,7 +81,7 @@ Welcome to my AI playground! This is where I experiment, build, and explore the 
   </div>
   <!-- Instagram Personas Project -->
   <div class="p-8 bg-white dark:bg-gray-800/50 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-    <p class="text-3xl font-bold text-gray-900 dark:text-white">Instagram AI Agents</p>
+    <p class="text-3xl font-bold text-gray-900 dark:text-white" id="instagram-ai-agents">Instagram AI Agents</p>
     <p class="mt-2 text-lg text-rose-500 dark:text-rose-400 font-semibold">Creating digital personas with purpose.
     </p>
     <div class="mt-6 grid md:grid-cols-2 gap-x-8 gap-y-6">

@@ -136,7 +136,7 @@ Building a custom AI agent? PRISM helps you lay down the law. This involves clar
 * **S - Scope & Service:** What is its specific area of expertise, and what can it do?
 * **M - Memory & Mastery:** How does it handle past information, and how does it learn or improve?
 
-### PRISM in Action: The "Portfolio Pal" Agent
+### PRISM in Action: [The "Portfolio Pal" Agent](ai-showcase#instagram-ai-agents)
 
 #### 👎 The "Vague Bot" (Bad) Example:
 
