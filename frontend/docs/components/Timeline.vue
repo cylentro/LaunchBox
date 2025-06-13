@@ -4,8 +4,7 @@ import { ref, computed, watch } from 'vue';
 const timelineEvents = ref([
   // Personal
   { year: 2023, date: '2023-01-01', type: 'Personal', company: 'N/A', title: 'Got Married & Moved to Singapore', description: 'Started a new co-op campaign by getting married and relocating to a new server: Singapore.' },
-  { year: 2024, date: '2024-01-01', type: 'Personal', company: 'N/A', title: 'Became a Father', description: 'Unlocked the "Dad" achievement. A new main quest has begun!' },
-
+  
   // Professional
   { year: 2012, date: '2012-06-01', type: 'Professional', company: 'Moonlay Technologies', title: 'Started Career as Full Stack Developer', description: 'Kicked off my tech career, learning to build robust applications from the ground up.' },
   { year: 2015, date: '2015-01-01', type: 'Professional', company: 'Moonlay Technologies', title: 'Shifted to Project Management', description: 'Traded my compiler for a Gantt chart and transitioned from code to coordination, leading projects to successful completion.' },
