@@ -3,9 +3,6 @@ import { ref, computed, watch } from 'vue';
 
 const timelineEvents = ref([
   // Personal
-  { year: 1991, date: '1991-01-01', type: 'Personal', company: 'N/A', title: 'TOF Surgery', description: 'My first major system reboot! Underwent a successful Tetralogy of Fallot surgery and came back online with improved performance.' },
-  { year: 2012, date: '2012-01-01', type: 'Personal', company: 'N/A', title: 'PVR Surgery & Endocarditis', description: 'The year of unscheduled maintenance. Faced a double-feature of a Pulmonary Valve Replacement and then Endocarditis. 10/10 would not recommend, but the comeback was epic.' },
-  { year: 2013, date: '2013-01-01', type: 'Personal', company: 'N/A', title: '2nd PVR Surgery', description: 'Heart 3.0! Rolled out the second PVR upgrade. This version came with extra resilience and a lifetime warranty on being awesome.' },
   { year: 2023, date: '2023-01-01', type: 'Personal', company: 'N/A', title: 'Got Married & Moved to Singapore', description: 'Started a new co-op campaign by getting married and relocating to a new server: Singapore.' },
   { year: 2024, date: '2024-01-01', type: 'Personal', company: 'N/A', title: 'Became a Father', description: 'Unlocked the "Dad" achievement. A new main quest has begun!' },
 
