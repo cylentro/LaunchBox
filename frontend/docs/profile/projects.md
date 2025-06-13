@@ -15,10 +15,10 @@ energy into, both in the office and in my free time.
     <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
       Here's a look at some of the key projects I've managed and developed in a professional capacity.
     </p>
-    <div class="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+    <div class="mt-8 grid gap-8 md:grid-cols-1 lg:grid-cols-1">
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Anteraja Digital Platform</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">Anteraja Digital Platform</span>
         <p class="mt-2 text-sm font-medium text-indigo-600 dark:text-indigo-400">Product Manager</p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">Guided the product strategy for Anteraja's
           public-facing digital assets, including their website, a B2B platform ("Bisnis Aja"), and highly-rated iOS &
@@ -44,7 +44,7 @@ energy into, both in the office and in my free time.
       </div>
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">JETExpress Ecosystem</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">JETExpress Ecosystem</span>
         <p class="mt-2 text-sm font-medium text-indigo-600 dark:text-indigo-400">Full-Stack Developer, QA, Project
           Manager</p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">Spearheaded the development and management of a
@@ -65,7 +65,7 @@ energy into, both in the office and in my free time.
       </div>
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">QRIM Retail Ecosystem</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">QRIM Retail Ecosystem</span>
         <p class="mt-2 text-sm font-medium text-indigo-600 dark:text-indigo-400">Product Manager</p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">As Product Manager, I orchestrated the creation of a
           mobile-first retail ecosystem. This included a customer-facing order management app and a dedicated courier
@@ -88,10 +88,10 @@ energy into, both in the office and in my free time.
     <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
       When I'm not on the clock, I'm still creating. Here are some of the passion projects that keep me busy.
     </p>
-    <div class="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+    <div class="mt-8 grid gap-8 md:grid-cols-1 lg:grid-cols-1">
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">NaniNani Podcast</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">NaniNani Podcast</span>
         <p class="mt-2 text-sm font-medium text-teal-600 dark:text-teal-400">Ideator, Executor, Planner, Creative</p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">Your companion for exploring history, science, and
           more in engaging, bitesize episodes. I conceptualized and launched this AI-leveraged podcast, which is hosted
@@ -100,7 +100,7 @@ energy into, both in the office and in my free time.
           <span
             class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">AI</span>
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Gemini</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://gemini.google.com/">Gemini</a></span>
           <span
             class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Creative</span>
         </div>
@@ -112,7 +112,7 @@ energy into, both in the office and in my free time.
       </div>
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">LaunchBox & Nait</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">LaunchBox & Nait</span>
         <p class="mt-2 text-sm font-medium text-teal-600 dark:text-teal-400">Product Manager, Programmer (Vibe Coding)
         </p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">This very portfolio! I developed the VitePress
@@ -120,16 +120,15 @@ energy into, both in the office and in my free time.
           about me in an interactive way.</p>
         <div class="mt-4 flex flex-wrap gap-2">
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">VitePress</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://vitepress.dev/">VitePress</a></span>
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Vue3</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://vuejs.org/">Vue.js</a></span>
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Next.js</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://nextjs.org/">Next.js</a></span>
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Gemini
-            API</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://aistudio.google.com/">Gemini API</a></span>
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">LangChain</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://www.langchain.com/">LangChain</a></span>
         </div>
         <div class="mt-4">
           <a href="https://github.com/cylentro/LaunchBox" target="_blank" rel="noopener noreferrer"
@@ -138,7 +137,7 @@ energy into, both in the office and in my free time.
       </div>
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Garoupa</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">Garoupa</span>
         <p class="mt-2 text-sm font-medium text-teal-600 dark:text-teal-400">Product Manager, Programmer (Vibe Coding)
         </p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">A small but mighty machine learning project in Python
@@ -146,9 +145,9 @@ energy into, both in the office and in my free time.
           processing.</p>
         <div class="mt-4 flex flex-wrap gap-2">
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Python</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://www.python.org/">Python</a></span>
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Pandas</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://pandas.pydata.org/">Pandas</a></span>
           <span
             class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">ML</span>
         </div>
@@ -159,7 +158,7 @@ energy into, both in the office and in my free time.
       </div>
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">3D Printed Fidget Toys</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">3D Printed Fidget Toys</span>
         <p class="mt-2 text-sm font-medium text-teal-600 dark:text-teal-400">Designer</p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">Designing and sharing 3D models of fun and functional
           fidget toys. A creative outlet that combines design thinking with the satisfaction of making something
@@ -169,7 +168,7 @@ energy into, both in the office and in my free time.
             class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">3D
             Modeling</span>
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">FreeCAD</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://www.freecad.org/">FreeCAD</a></span>
         </div>
         <div class="mt-4">
           <a href="https://cults3d.com/en/users/Triplequadcore/3d-models" target="_blank" rel="noopener noreferrer"
@@ -178,14 +177,14 @@ energy into, both in the office and in my free time.
       </div>
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">MediBot</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">MediBot</span>
         <p class="mt-2 text-sm font-medium text-teal-600 dark:text-teal-400">Developer</p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">A helpful chatbot built with the Microsoft Bot
           Framework. It scrapes the web to provide up-to-date doctor schedules in Jakarta, solving a real-world problem
           with a clever tech solution.</p>
         <div class="mt-4 flex flex-wrap gap-2">
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Node.js</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://nodejs.org/en">Node.js</a></span>
           <span
             class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Chatbot</span>
         </div>
@@ -196,7 +195,7 @@ energy into, both in the office and in my free time.
       </div>
       <div
         class="p-6 bg-white dark:bg-gray-800/50 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Calligraphy</h3>
+        <span class="text-xl font-semibold text-gray-900 dark:text-white">Calligraphy</span>
         <p class="mt-2 text-sm font-medium text-teal-600 dark:text-teal-400">Designer</p>
         <p class="mt-3 text-base text-gray-700 dark:text-gray-300">Exploring the art of digital calligraphy. It's a
           relaxing and rewarding way to blend technology with traditional art forms. I occasionally share my work on
@@ -206,7 +205,7 @@ energy into, both in the office and in my free time.
             class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Digital
             Art</span>
           <span
-            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Procreate</span>
+            class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://procreate.com/">Procreate</a></span>
         </div>
         <div class="mt-4">
           <a href="https://www.instagram.com/chrishadi90/" target="_blank" rel="noopener noreferrer"
@@ -216,8 +215,8 @@ energy into, both in the office and in my free time.
       <div class="mt-4">
         <div
           class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out md:col-span-2 lg:col-span-3">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Instagram AI Agents</h3>
-          <p class="mt-2 text-sm font-medium text-purple-500 dark:text-purple-400">Prompt Engineer</p>
+          <span class="text-xl font-semibold text-gray-900 dark:text-white">Instagram AI Agents</span>
+          <p class="mt-2 text-sm font-medium text-purple-500 dark:text-purple-400"><a style="text-decoration:none" href="https://www.promptingguide.ai/">Prompt Engineer</a></p>
           <p class="mt-3 text-base text-gray-700 dark:text-gray-300">A collection of specialized AI agents built on
             Meta's AI Studio. Each is designed with a unique personality and purpose, from professional coaching to
             creative fun. Click any link to start a chat!</p>
@@ -229,10 +228,9 @@ energy into, both in the office and in my free time.
               class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">AI
               Agents</span>
             <span
-              class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">Meta
-              AI Studio</span>
+              class="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full"><a style="text-decoration:none" href="https://aistudio.instagram.com/">Meta AI Studio</a></span>
           </div>
-          <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-4">
+          <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <div>
               <h4 class="font-semibold text-gray-800 dark:text-gray-200">Professional Coaches:</h4>
               <div class="flex flex-col items-start mt-2 space-y-2">

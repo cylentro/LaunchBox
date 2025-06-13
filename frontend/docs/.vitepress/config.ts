@@ -3,26 +3,26 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: "Christian Hadianto", // This is the main title of your site
-    titleTemplate: ":title | ChrisHadi",
-    description: "Christian's Personal Website",
+    titleTemplate: ":title",
+    description: "Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
 
     head:
         [
             ['meta', { name: 'robots', content: 'index, follow' }], 
-            ['meta', { name: 'keywords', content: 'Christian Hadianto, ChrisHadi, Senior Product Manager, Product Manager Singapore, Generative AI, Logistics, Prompt Engineering, Prompt Framework, Portfolio' }],
+            ['meta', { name: 'keywords', content: 'Christian Hadianto, ChrisHadi, Digital Product Manager, Product Manager, Product Manager Singapore, Generative AI, Gen AI, GenAI, Logistics, Prompt Engineering, Prompt Frameworks, RAG, LangChain, Vitepress, AI Portfolio, Anteraja, Logistik, Pengiriman, Moonlay Technologies' }],
             ['meta', { name: 'author', content: 'Christian Hadianto' }],
 
             // --- Open Graph (OG) Tags for Social Sharing ---
-            ['meta', { property: 'og:title', content: 'Christian Hadianto | Senior Product Manager & AI Enthusiast' }],
-            ['meta', { property: 'og:description', content: 'Explore the portfolio of Christian Hadianto, a Senior Product Manager with 10 years of experience in logistics and a passion for building innovative products with Generative AI.' }],
+            ['meta', { property: 'og:title', content: 'Christian Hadianto | Product Manager & AI Enthusiast' }],
+            ['meta', { property: 'og:description', content: 'Explore the portfolio of Christian Hadianto, a Product Manager with 10 years of experience in logistics and a passion for building innovative products with Generative AI.' }],
             ['meta', { property: 'og:type', content: 'website' }],
             ['meta', { property: 'og:image', content: 'https://bychris.me/self_banner.jpg' }],
             ['meta', { property: 'og:url', content: 'https://bychris.me' }],
 
             // --- Twitter Card Tags ---
             ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-            ['meta', { name: 'twitter:title', content: 'Christian Hadianto | Senior Product Manager & AI Enthusiast' }],
-            ['meta', { name: 'twitter:description', content: 'Discover the work and insights of Christian Hadianto, a product leader in logistics and AI.' }],
+            ['meta', { name: 'twitter:title', content: 'Christian Hadianto | Product Manager & AI Enthusiast' }],
+            ['meta', { name: 'twitter:description', content: 'Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.' }],
             ['meta', { name: 'twitter:image', content: 'https://bychris.me/self_banner.jpg' }],
 
             ['link', { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' }],
@@ -33,9 +33,9 @@ export default defineConfig({
             ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
             ['link', { rel: 'manifest', href: '/site.webmanifest' }],
 
-            ['link', { rel: 'mask-icon', href: '/favicon.svg', color: '#EB0100' }],
-            ['meta', { name: 'msapplication-TileColor', content: '#EB0100' }],
-            ['meta', { name: 'theme-color', content: '#EB0100' }], // Sets the browser toolbar color
+            ['link', { rel: 'mask-icon', href: '/favicon.svg', color: '#1e88e5' }],
+            ['meta', { name: 'msapplication-TileColor', content: '#1e88e5' }],
+            ['meta', { name: 'theme-color', content: '#1e88e5' }], // Sets the browser toolbar color
 
         ],
 

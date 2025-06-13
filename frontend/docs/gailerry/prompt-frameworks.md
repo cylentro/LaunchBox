@@ -1,6 +1,8 @@
 ---
 title: Prompt Frameworks
 layout: doc
+description: A complete guide to advanced prompt engineering frameworks like CASTR, RIDER, PICTURE, and PRISM for improving AI-generated text, images, and agents.
+
 ---
 
 # Prompt Frameworks: Your AI Whisperer Toolkit 🤫

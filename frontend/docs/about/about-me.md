@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "Christian Hadianto"
-  text: "Product Manager"
+  text: "Product Manager | GenAI"
   image:
     src: /self.webp
     alt: Chris
