@@ -8,9 +8,12 @@ export default defineConfig({
 
     head:
         [
-            ['meta', { name: 'robots', content: 'index, follow' }], 
+            ['meta', { name: 'robots', content: 'index, follow' }],
             ['meta', { name: 'keywords', content: 'Christian Hadianto, ChrisHadi, Digital Product Manager, Product Manager, Product Manager Singapore, Generative AI, Gen AI, GenAI, Logistics, Prompt Engineering, Prompt Frameworks, RAG, LangChain, Vitepress, AI Portfolio, Anteraja, Logistik, Pengiriman, Moonlay Technologies' }],
             ['meta', { name: 'author', content: 'Christian Hadianto' }],
+
+            // Canonical URL
+            ["link", { rel: "canonical", href: "https://stevanussatria.com" }],
 
             // --- Open Graph (OG) Tags for Social Sharing ---
             ['meta', { property: 'og:title', content: 'Christian Hadianto | Product Manager & AI Enthusiast' }],
@@ -18,6 +21,7 @@ export default defineConfig({
             ['meta', { property: 'og:type', content: 'website' }],
             ['meta', { property: 'og:image', content: 'https://bychris.me/self_banner.jpg' }],
             ['meta', { property: 'og:url', content: 'https://bychris.me' }],
+            ["meta", { property: "og:locale", content: "en_US" }],
 
             // --- Twitter Card Tags ---
             ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
@@ -37,6 +41,45 @@ export default defineConfig({
             ['meta', { name: 'msapplication-TileColor', content: '#1e88e5' }],
             ['meta', { name: 'theme-color', content: '#1e88e5' }], // Sets the browser toolbar color
 
+            // --- Structured Data ---
+            [
+                "script",
+                {
+                    type: "application/ld+json",
+                    innerHTML: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Person",
+                        name: "Christian Hadianto",
+                        jobTitle: "AI & Full-Stack Developer",
+                        description: "AI & Full-Stack Developer specializing in building intelligent applications with Next.js, Vue.js, and AI technologies like Google Gemini and LangChain.js.",
+                        url: "https://bychris.me",
+                        image: "/logo.png", 
+                        sameAs: [ 
+                            "https://linkedin.com/in/chrishadi90",
+                            "https://github.com/cylentro",
+                            "https://discordapp.com/users/cylentro",
+                            "https://instagram.com/chrishadi90"
+                        ],
+                        knowsAbout: [ 
+                            "Product Management",
+                            "Logistics",
+                            "Generative AI",
+                            "Prompt Engineering",
+                            "Prompt Frameworks",
+                            "Artificial Intelligence",
+                            "Retrieval-Augmented Generation (RAG)",
+                            "Google Gemini",
+                            "ChatGPT",
+                            "VitePress",
+                            "Next.js",
+                            "Vue.js",
+                            "TypeScript",
+                            "LangChain.js",
+                            "Tailwind CSS"
+                        ]
+                    }),
+                },
+            ]
         ],
 
     themeConfig: {

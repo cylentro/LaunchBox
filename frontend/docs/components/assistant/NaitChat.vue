@@ -11,7 +11,8 @@
                 'opacity-0 -translate-y-full pointer-events-none absolute w-full top-0 left-0': isChatActive,
                 'opacity-100 translate-y-0 relative': !isChatActive
             }"
-            :style="{ zIndex: isChatActive ? 0 : 10 }">
+            :style="{ zIndex: isChatActive ? 0 : 10 }">            
+            <img class="m-3 w-20 h-20 mx-auto" :src="naitIconSrc" alt="Nait Icon">
             <h2 class="text-4xl font-bold text-slate-800 dark:text-slate-100">Nait</h2>
             <p class="text-slate-500 dark:text-slate-400">I passed my Turing test. I think</p>
         </div>
@@ -208,6 +209,7 @@ const chatMessages = ref<ChatMessage[]>([]);
 const isLoading = ref(false);
 const sessionId = ref('');
 const isChatActive = ref(false);
+const isDarkMode = ref(false);
 
 const initialTextareaRef = ref<HTMLTextAreaElement | null>(null);
 const activeTextareaRef = ref<HTMLTextAreaElement | null>(null);
@@ -243,6 +245,10 @@ const scrollLeftActive = ref(0);
 
 const dynamicInitialPlaceholder = computed(() => {
     return getRandomPlaceholder();
+});
+
+const naitIconSrc = computed(() => {
+    return isDarkMode.value ? '../../icons/nait-light.svg' : '../../icons/nait-dark.svg';
 });
 
 // --- Prompt Carousel Logic ---
@@ -436,6 +442,7 @@ const globalTouchEndListener = () => {
     if (isDraggingActive.value) onTouchEnd('active');
 };
 
+let themeObserver: MutationObserver | null = null;
 onMounted(() => {
     loadChatFromLocalStorage();
     if (!sessionId.value) {
@@ -449,11 +456,25 @@ onMounted(() => {
     }
     window.addEventListener('mouseup', globalMouseUpListener);
     window.addEventListener('touchend', globalTouchEndListener);
+
+    // Check initial theme
+    isDarkMode.value = document.documentElement.classList.contains('dark');
+
+    // Observe theme changes
+    themeObserver = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                isDarkMode.value = document.documentElement.classList.contains('dark');
+            }
+        }
+    });
+    themeObserver.observe(document.documentElement, { attributes: true });
 });
 
 onBeforeUnmount(() => {
     window.removeEventListener('mouseup', globalMouseUpListener);
     window.removeEventListener('touchend', globalTouchEndListener);
+    if (themeObserver) themeObserver.disconnect();
 });
 
 

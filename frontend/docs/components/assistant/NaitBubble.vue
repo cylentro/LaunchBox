@@ -3,13 +3,7 @@
         <button v-show="!isPopupOpen" @click="openPopup"
             class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 z-50 transition-opacity duration-300 ease-in-out"
             aria-label="Open Nait" title="Open Nait">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.006 3 11.5c0 2.581 1.228 4.893 3.199 6.339L7.5 21.75l2.25-2.25c.88.198 1.797.3 2.75.3z" />
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375" />
-            </svg>
+            <img class="m-3" :src="naitIconSrc" alt="Nait Icon">
         </button>
 
         <Transition name="popup-slide-fade">
@@ -163,6 +157,7 @@ const isLoading = ref(false); // For regular chat messages
 const isSummarizing = ref(false); // For summary generation
 const sessionId = ref('');
 let typingInterval: ReturnType<typeof setInterval> | null = null;
+const isDarkMode = ref(false);
 
 const activeTextareaRef = ref<HTMLTextAreaElement | null>(null);
 const chatMessagesContainerRef = ref<HTMLElement | null>(null);
@@ -181,6 +176,10 @@ const NAIT_GREETINGS = [
 
 const dynamicInitialPlaceholder = computed(() => {
     return getRandomPlaceholder();
+});
+
+const naitIconSrc = computed(() => {
+    return isDarkMode.value ? '../../icons/nait-dark.svg' : '../../icons/nait-light.svg';
 });
 
 const { page } = useData();
@@ -569,12 +568,28 @@ const clearAndCloseSession = () => {
     cleanupOldSummaries(); // Also cleanup summaries on full session clear
 };
 
+let themeObserver: MutationObserver | null = null;
+
 onMounted(() => {
     let storedId = localStorage.getItem(LS_SESSION_ID_KEY);
     if (!storedId) { storedId = generateNewSessionId(); localStorage.setItem(LS_SESSION_ID_KEY, storedId); }
     sessionId.value = storedId;
     window.addEventListener('mouseup', globalMouseUpListenerBubble);
     window.addEventListener('touchend', globalTouchEndListenerBubble);
+
+    // Check initial theme
+    isDarkMode.value = document.documentElement.classList.contains('dark');
+
+    // Observe theme changes
+    themeObserver = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                isDarkMode.value = document.documentElement.classList.contains('dark');
+            }
+        }
+    });
+    themeObserver.observe(document.documentElement, { attributes: true });
+
     cleanupOldSummaries();
 });
 onBeforeUnmount(() => { window.removeEventListener('mouseup', globalMouseUpListenerBubble); window.removeEventListener('touchend', globalTouchEndListenerBubble); });
