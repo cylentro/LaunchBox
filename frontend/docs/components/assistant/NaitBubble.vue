@@ -8,10 +8,12 @@
 
         <Transition name="popup-slide-fade">
             <div v-if="isPopupOpen"
-                 class="fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700
-                       inset-0 rounded-none /* Mobile default: use inset-0 for fullscreen dimensions */
-                       sm:inset-auto sm:bottom-8 sm:right-8 sm:w-[400px] sm:h-[70vh] sm:max-h-[600px] sm:rounded-lg /* Desktop overrides: original positioning, size, and rounding */
-                      "
+                 :class="[
+                    'fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700',
+                    isMaximized
+                        ? 'inset-0 sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[80vw] sm:h-[85vh] sm:max-h-[800px] sm:rounded-lg' /* Maximized state */
+                        : 'inset-0 rounded-none sm:inset-auto sm:bottom-8 sm:right-8 sm:w-[400px] sm:h-[70vh] sm:max-h-[600px] sm:rounded-lg' /* Normal state */
+                 ]"
                  :style="{ zIndex: 60 }">
                 <div
                     class="p-3 border-b border-slate-200 dark:border-neutral-700 flex justify-between items-center flex-shrink-0">
@@ -22,6 +24,19 @@
                             class="text-xs bg-red-600 text-white hover:bg-red-700 mr-2 p-1 rounded"
                             title="Clear Session">
                             Clear Session
+                        </button>
+                        <button @click="toggleMaximize"
+                            class="p-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-700 flex items-center justify-center mr-1.5"
+                            :title="isMaximized ? 'Restore Down' : 'Maximize'"
+                            :aria-label="isMaximized ? 'Restore chat popup to normal size' : 'Maximize chat popup'">
+                            <!-- Maximize Icon -->
+                            <svg v-if="!isMaximized" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75v4.5m0-4.5h-4.5m4.5 0L15 9m5.25 11.25v-4.5m0 4.5h-4.5m4.5 0L15 15" />
+                            </svg>
+                            <!-- Restore Down Icon -->
+                            <svg v-if="isMaximized" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9V4.5M15 9h4.5M15 9l5.25-5.25M15 15v4.5M15 15h4.5M15 15l5.25 5.25" />
+                            </svg>
                         </button>
                         <button @click="closePopup"
                             class="p-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-700 flex items-center justify-center"
@@ -156,6 +171,7 @@ const chatMessages = ref<ChatMessage[]>([]);
 const isLoading = ref(false); // For regular chat messages
 const isSummarizing = ref(false); // For summary generation
 const sessionId = ref('');
+const isMaximized = ref(false);
 let typingInterval: ReturnType<typeof setInterval> | null = null;
 const isDarkMode = ref(false);
 
@@ -330,9 +346,9 @@ const simulateStreaming = (
             index += chunkSize;
             setTimeout(nextChunk, speed * (chunk.includes('\n') ? 3 : 1)); // Slower for newlines
         } else {
-            onComplete();
             isSimulatingStream.value = false;
             isSummarizing.value = false; // Re-enable UI
+            onComplete(); // Call onComplete AFTER flags are reset
         }
     }
     nextChunk();
@@ -547,11 +563,10 @@ const openPopup = () => {
                 },
                 () => { // onComplete for simulateStreaming
                     // isSummarizing and isSimulatingStream are reset to false by simulateStreaming
-                    if (isPopupOpen.value) {
                         nextTick(() => {
                             activeTextareaRef.value?.focus(); // Focus input after greeting
                         });
-                    }
+                    
                 },
                 75 // Use a slightly faster speed for greetings (default is 30ms)
             );
@@ -559,13 +574,35 @@ const openPopup = () => {
     }
 };
 watch(actualExamplePrompts, () => { if (isPopupOpen.value) nextTick(setupPromptCarousel); }, { immediate: true, deep: true });
-const closePopup = () => { isPopupOpen.value = false; };
+
+const toggleMaximize = () => {
+    isMaximized.value = !isMaximized.value;
+    nextTick(() => {
+        scrollToBottom(); // Adjust scroll after resize
+        if (activeTextareaRef.value) {
+            adjustTextareaHeight(activeTextareaRef.value); // Adjust textarea height
+        }
+        setupPromptCarousel(); // Re-initialize carousel for new dimensions
+    });
+};
+
+const closePopup = () => {
+    isPopupOpen.value = false;
+    isMaximized.value = false; // Reset maximized state when closing
+};
 
 const clearAndCloseSession = () => {
     stopTypingIndicator(); chatMessages.value = []; userInput.value = '';
     isLoading.value = false; isSummarizing.value = false;
+    // isMaximized.value = false; // Retain current maximized state on session clear
     sessionId.value = generateNewSessionId(); saveChatToLocalStorage();
     cleanupOldSummaries(); // Also cleanup summaries on full session clear
+    nextTick(() => {
+        if (isPopupOpen.value && activeTextareaRef.value) {
+            activeTextareaRef.value.focus();
+        }
+    });
+    // Optionally, close the popup as well: isPopupOpen.value = false;
 };
 
 let themeObserver: MutationObserver | null = null;
