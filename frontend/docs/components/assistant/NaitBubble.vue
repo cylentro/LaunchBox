@@ -1,7 +1,7 @@
 <template>
     <div class="nait-bubble-widget">
         <button v-show="!isPopupOpen" @click="openPopup"
-            class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 z-50 transition-opacity duration-300 ease-in-out"
+            class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 z-50 transition-opacity duration-1000 ease-in-out"
             aria-label="Open Nait" title="Open Nait">
             <img class="m-3" :src="naitIconSrc" alt="Nait Icon">
         </button>
@@ -9,7 +9,7 @@
         <Transition name="popup-slide-fade">
             <div v-if="isPopupOpen"
                  :class="[
-                    'fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700',
+                    'fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700 transition-all duration-300 ease-in-out',
                     isMaximized
                         ? 'inset-0 sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[80vw] sm:h-[85vh] sm:max-h-[800px] sm:rounded-lg' /* Maximized state */
                         : 'inset-0 rounded-none sm:inset-auto sm:bottom-8 sm:right-8 sm:w-[400px] sm:h-[70vh] sm:max-h-[600px] sm:rounded-lg' /* Normal state */
