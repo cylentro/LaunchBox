@@ -2,8 +2,8 @@
 title: My AI Playground
 layout: doc
 aside: false
+description: See Christian Hadianto's Generative AI projects in action. Explore innovative AI showcases, including custom agents, RAG implementations, and more.
 ---
-
 # My AI Playground
 
 Welcome to my AI playground! This is where I experiment, build, and explore the creative and practical potential of artificial intelligence. I believe AI is more than just a tool; it's a new medium for creation and a partner in problem-solving. Below are a few of my passion projects that showcase this belief in action.
@@ -75,7 +75,7 @@ Welcome to my AI playground! This is where I experiment, build, and explore the 
     <div class="mt-6 text-center">
       <a href="https://github.com/cylentro/LaunchBox" target="_blank" rel="noopener noreferrer"
         class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors" style="color:white; text-decoration:none">
-        View the Code on GitHub &rarr;
+        View the Code on GitHub →
       </a>
     </div>
   </div>
@@ -111,16 +111,16 @@ Welcome to my AI playground! This is where I experiment, build, and explore the 
           <div class="flex flex-col items-start mt-2 space-y-2">
             <a href="https://aistudio.instagram.com/ai/1403510227686869/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Yura
-              (Career Coach) &rarr;</a>
+              (Career Coach) →</a>
             <a href="https://aistudio.instagram.com/ai/666514312506610/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Novella
-              (Learning Coach) &rarr;</a>
+              (Learning Coach) →</a>
             <a href="https://aistudio.instagram.com/ai/1314530753158889/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Aether
-              (Product Coach) &rarr;</a>
+              (Product Coach) →</a>
             <a href="https://aistudio.instagram.com/ai/1714271579122372/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Lumina
-              (Data Buddy) &rarr;</a>
+              (Data Buddy) →</a>
           </div>
         </div>
         <div>
@@ -128,13 +128,13 @@ Welcome to my AI playground! This is where I experiment, build, and explore the 
           <div class="flex flex-col items-start mt-2 space-y-2">
             <a href="https://aistudio.instagram.com/ai/1300011535157323/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Aiko
-              (Discuss Anything) &rarr;</a>
+              (Discuss Anything) →</a>
             <a href="https://aistudio.instagram.com/ai/1409230216943352/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Travy
-              (Travel Companion) &rarr;</a>
+              (Travel Companion) →</a>
             <a href="https://aistudio.instagram.com/ai/1343307683578918/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Dungeon
-              Master (D&D) &rarr;</a>
+              Master (D&D) →</a>
           </div>
         </div>
         <div>
@@ -142,10 +142,10 @@ Welcome to my AI playground! This is where I experiment, build, and explore the 
           <div class="flex flex-col items-start mt-2 space-y-2">
             <a href="https://aistudio.instagram.com/ai/826655436344222/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Lelouch vi
-              Britannia &rarr;</a>
+              Britannia →</a>
             <a href="https://aistudio.instagram.com/ai/965783475736829/?utm_source=share" target="_blank"
               rel="noopener noreferrer" class="text-sm text-rose-600 dark:text-rose-400 hover:underline">Shiroe (Log
-              Horizon) &rarr;</a>
+              Horizon) →</a>
           </div>
         </div>
       </div>

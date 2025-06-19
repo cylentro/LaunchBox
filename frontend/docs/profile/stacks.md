@@ -2,8 +2,8 @@
 title: My Digital Toolbox & Stacks
 layout: doc
 aside: false
+description: Discover the technology stacks Christian Hadianto utilizes, from produt management tools to Generative AI tools like LangChain and Gemini.
 ---
-
 # My Digital Toolbox & Other Shiny Things
 
 Every builder needs a good set of tools. This is my go-to arsenal for turning ideas into reality, whether I'm managing a complex project, writing code, or diving into a creative pursuit.

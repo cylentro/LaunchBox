@@ -2,8 +2,8 @@
 title: My Work and Wanderings
 layout: doc
 aside: false
+description: Explore a curated list of Christian Hadianto's key projects in Product Management, AI development, and logistics, demonstrating practical application and innovation.
 ---
-
 # My Work and Wanderings
 
 I believe the best way to get to know someone is through their work. Below is a collection of projects I've poured my
@@ -83,7 +83,7 @@ energy into, both in the office and in my free time.
     </div>
   </div>
 
-  <div>
+<div>
     <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Personal Projects & Hobbies</h2>
     <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
       When I'm not on the clock, I'm still creating. Here are some of the passion projects that keep me busy.
@@ -236,16 +236,16 @@ energy into, both in the office and in my free time.
               <div class="flex flex-col items-start mt-2 space-y-2">
                 <a href="https://aistudio.instagram.com/ai/1403510227686869/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Yura
-                  (Career Coach) &rarr;</a>
+                  (Career Coach) →</a>
                 <a href="https://aistudio.instagram.com/ai/666514312506610/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Novella
-                  (Learning Coach) &rarr;</a>
+                  (Learning Coach) →</a>
                 <a href="https://aistudio.instagram.com/ai/1314530753158889/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Aether
-                  (Product Coach) &rarr;</a>
+                  (Product Coach) →</a>
                 <a href="https://aistudio.instagram.com/ai/1714271579122372/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Lumina
-                  (Data Buddy) &rarr;</a>
+                  (Data Buddy) →</a>
               </div>
             </div>
             <div>
@@ -253,13 +253,13 @@ energy into, both in the office and in my free time.
               <div class="flex flex-col items-start mt-2 space-y-2">
                 <a href="https://aistudio.instagram.com/ai/1300011535157323/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Aiko
-                  (Discuss Anything) &rarr;</a>
+                  (Discuss Anything) →</a>
                 <a href="https://aistudio.instagram.com/ai/1409230216943352/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Travy
-                  (Travel Companion) &rarr;</a>
+                  (Travel Companion) →</a>
                 <a href="https://aistudio.instagram.com/ai/1343307683578918/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Dungeon
-                  Master (D&D) &rarr;</a>
+                  Master (D&D) →</a>
               </div>
             </div>
             <div>
@@ -267,10 +267,10 @@ energy into, both in the office and in my free time.
               <div class="flex flex-col items-start mt-2 space-y-2">
                 <a href="https://aistudio.instagram.com/ai/826655436344222/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Lelouch
-                  vi Britannia &rarr;</a>
+                  vi Britannia →</a>
                 <a href="https://aistudio.instagram.com/ai/965783475736829/?utm_source=share" target="_blank"
                   rel="noopener noreferrer" class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Shiroe
-                  (Log Horizon) &rarr;</a>
+                  (Log Horizon) →</a>
               </div>
             </div>
           </div>

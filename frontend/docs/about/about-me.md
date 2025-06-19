@@ -1,6 +1,8 @@
 ---
 layout: home
 
+description: Learn more about Christian Hadianto, his journey as a Product Manager, passion for AI, professional philosophy, and what drives his innovative spirit.
+
 hero:
   name: "Christian Hadianto"
   text: "Product Manager | GenAI"

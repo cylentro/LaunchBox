@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, type HeadConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,8 +12,8 @@ export default defineConfig({
             ['meta', { name: 'keywords', content: 'Christian Hadianto, ChrisHadi, Digital Product Manager, Product Manager, Product Manager Singapore, Generative AI, Gen AI, GenAI, Logistics, Prompt Engineering, Prompt Frameworks, RAG, LangChain, Vitepress, AI Portfolio, Anteraja, Logistik, Pengiriman, Moonlay Technologies' }],
             ['meta', { name: 'author', content: 'Christian Hadianto' }],
 
-            // Canonical URL
-            ["link", { rel: "canonical", href: "https://stevanussatria.com" }],
+            // Canonical URL will be handled by transformHead for page-specificity
+            // ["link", { rel: "canonical", href: "https://bychris.me" }], // Remove or comment out global canonical
 
             // --- Open Graph (OG) Tags for Social Sharing ---
             ['meta', { property: 'og:title', content: 'Christian Hadianto | Product Manager & AI Enthusiast' }],
@@ -82,6 +82,39 @@ export default defineConfig({
             ]
         ],
 
+    async transformHead({ pageData, siteData }) {
+        const newHead: HeadConfig[] = [];
+
+        const siteUrl = 'https://bychris.me'; // Your site's base URL
+        // Ensure clean URLs: remove .html, and index.html for root/section paths
+        let pagePath = pageData.relativePath.replace(/\.md$/, '.html');
+        if (pagePath.endsWith('index.html')) {
+            pagePath = pagePath.substring(0, pagePath.length - 'index.html'.length);
+        } else if (pagePath.endsWith('.html')) {
+            pagePath = pagePath.substring(0, pagePath.length - '.html'.length);
+        }
+        const pageUrl = `${siteUrl}/${pagePath}`.replace(/\/$/, ''); // Remove trailing slash if any, except for base URL
+
+        // Page Title (pageData.title is already formatted by titleTemplate)
+        const title = pageData.title || siteData.title;
+
+        // Page Description (VitePress uses pageData.frontmatter.description for <meta name="description">, falling back to siteData.description)
+        const description = pageData.frontmatter.description || siteData.description;
+
+        // Override canonical URL
+        newHead.push(['link', { rel: 'canonical', href: pageUrl }]);
+
+        // Override OG tags
+        newHead.push(['meta', { property: 'og:title', content: title }]);
+        newHead.push(['meta', { property: 'og:description', content: description }]);
+        newHead.push(['meta', { property: 'og:url', content: pageUrl }]);
+
+        // Override Twitter tags
+        newHead.push(['meta', { name: 'twitter:title', content: title }]);
+        newHead.push(['meta', { name: 'twitter:description', content: description }]);
+
+        return newHead;
+    },
     themeConfig: {
         logo: '/logo.png',
         nav: [
@@ -100,7 +133,6 @@ export default defineConfig({
                 items: [
                     { text: 'AI Showcase', link: '/gailerry/ai-showcase' },
                     { text: 'Prompt Framework', link: '/gailerry/prompt-frameworks' },
-                    // { text: 'Prompt Collection', link: '/gailerry/prompt-collection' }
                 ]
             },
             {
