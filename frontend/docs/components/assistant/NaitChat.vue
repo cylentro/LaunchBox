@@ -230,7 +230,9 @@ const examplePrompts = ref([
 	"Surprise me!",
 	"Who is Chris?",
 	"How to contact Chris?",
-	"What are Chris's key skills?",
+	"Tell me about 'Prompting 101'",
+	"What are Chris' key skills?",
+	"What's Chris' working style?"
 ]);
 
 // --- Refs for Prompt Carousels ---
@@ -629,30 +631,19 @@ const loadChatFromLocalStorage = () => {
 		if (storedMessages) {
 			try {
 				const parsedMessages = JSON.parse(storedMessages);
-				if (Array.isArray(parsedMessages) && parsedMessages.length > 0) {
+				if (Array.isArray(parsedMessages)) {
 					chatMessages.value = parsedMessages;
-					isChatActive.value = true;
-					nextTick(() => {
-						if (isChatActive.value)
-							adjustTextareaHeight(activeTextareaRef.value);
-						scrollToBottom();
-						setupPromptCarousel("active");
-					});
-				} else {
-					setupPromptCarousel("initial");
+					// By default, the chat is not active on load.
+					// The user must interact with it to open the active chat view.
 				}
 			} catch (e) {
 				console.error("Error parsing stored chat messages:", e);
 				localStorage.removeItem(LS_CHAT_MESSAGES_KEY);
-				setupPromptCarousel("initial");
 			}
-		} else {
-			setupPromptCarousel("initial");
 		}
 	} else {
 		sessionId.value = generateNewSessionId();
 		localStorage.setItem(LS_SESSION_ID_KEY, sessionId.value);
-		setupPromptCarousel("initial");
 	}
 };
 
