@@ -25,6 +25,9 @@ features:
     details: Specialty
   - title: 🚐 Logistics
     details: Primary Domain Expertise
+  - title: 📚 Prompting 101
+    details: Your Jargon-Free AI Playbook
+    link: /gaillery/prompting-101/introduction
 ---
 ## Welcome to my corner of the internet!
 
