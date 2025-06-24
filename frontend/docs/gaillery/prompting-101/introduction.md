@@ -72,7 +72,7 @@ Upon completion of this course, you will be able to:
 </style>
 
 <div style="text-align: center; margin-top: 20px; margin-bottom: 25px;">
-  <a href="/gaillery/prompting-101/chapter-1_what-is-ai"
+  <a href="/gaillery/prompting-101/chapter-1_what-is-generative-ai"
      class="start-course-button" style="display: inline-flex; align-items: center; justify-content: center;">
     Get Started
   </a>
