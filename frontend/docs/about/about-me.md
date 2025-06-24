@@ -31,7 +31,7 @@ features:
 ---
 ## Welcome to my corner of the internet!
 
-I'm Christian, a Senior Product Manager with 7+ years of dedicated PM experience, built on a solid foundation of 10 years in the logistics industry. My ongoing mission? To make logistics less, well, "logistical" and more logical (and user-friendly!). My latest obsession? Figuring out how [Generative AI](/gailerry/prompt-frameworks) can sprinkle some magic on everything. In fact, I've just launched a comprehensive new course, [Prompting 101: The Playbook for Everyone](/gaillery/prompting-101/introduction), to help others master the art of communicating with AI!
+I'm Christian, a Senior Product Manager with 7+ years of dedicated PM experience, built on a solid foundation of 10 years in the logistics industry. My ongoing mission? To make logistics less, well, "logistical" and more logical (and user-friendly!). My latest obsession? Figuring out how [Generative AI](/gaillery/prompt-frameworks) can sprinkle some magic on everything. In fact, I've just launched a comprehensive new course, [Prompting 101: The Playbook for Everyone](/gaillery/prompting-101/introduction), to help others master the art of communicating with AI!
 
 My origin story isn't your typical PM tale. I started as a Full-Stack Developer at **[Moonlay Technologies](https://moonlay.com/)** – think of it as a tech bootcamp where I got to wear all the hats: coder, analyst, bug-hunter, client-charmer, and project-wrangler. It was a wild ride building cool stuff for diverse clients. This multi-faceted start taught me to speak fluent "dev" and "business" – a handy skill in the product world!
 
