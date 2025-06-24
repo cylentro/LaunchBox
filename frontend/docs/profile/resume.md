@@ -10,6 +10,8 @@ description: View the resume of Christian Hadianto, a Product Manager with 7+ ye
 
 *Singapore Permanent Resident*
 
+[in/chrishadi90/](https://www.linkedin.com/in/chrishadi90) | <christian.hadianto@gmail.com> | [(65) 8120 4587](https://wa.me/6581204587)
+
 <style>
 .download-resume-button {
   display: inline-block;
@@ -43,8 +45,6 @@ description: View the resume of Christian Hadianto, a Product Manager with 7+ ye
   box-shadow: 0 0px 0px #1565c0, 0 2px 6px 0 rgba(0, 118, 255, 0.2);
 }
 </style>
-
-[in/chrishadi90/](https://www.linkedin.com/in/chrishadi90) | <christian.hadianto@gmail.com> | [(65) 8120 4587](https://wa.me/6581204587)
 
 <div style="text-align: center; margin-top: 20px; margin-bottom: 25px;">
   <a href="https://drive.google.com/file/d/1riCRT7VR11cwJJiR9u2MRI2X3cFdzAlw/view?usp=sharing" target="_blank" rel="noopener noreferrer"

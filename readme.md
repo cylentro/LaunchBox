@@ -2,8 +2,9 @@
 
 Welcome to my interactive portfolio, a project designed to showcase my work, skills, and passion for technology in a more engaging way. This repository contains two main components:
 
-1. **LaunchBox** : The frontend of my portfolio, built with VitePress. It's a static site that houses all the content about my professional experience, projects, and tech stacks.
-2. **Nait** : The AI assistant that powers the conversational experience on the site. It's a backend service built with Next.js and integrated with the Google Gemini API to answer questions about me based on the portfolio's content.
+1.  **LaunchBox**: The frontend of my portfolio, built with VitePress. It's a static site that houses all the content about my professional experience, projects, and tech stacks.
+    > The name 'LaunchBox' is a fun wordplay on 'lunchbox.' Everybody likes a lunchbox, and it's full of surprise, flavor, and love—which is exactly what I aimed for with this project!
+2.  **Nait**: The AI assistant that powers the conversational experience on the site. It's a backend service built with Next.js and integrated with the Google Gemini API to answer questions about me based on the portfolio's content.
 
 ## 🚀 Key Features
 

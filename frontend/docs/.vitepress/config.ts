@@ -53,14 +53,14 @@ export default defineConfig({
                         jobTitle: "AI & Full-Stack Developer",
                         description: "AI & Full-Stack Developer specializing in building intelligent applications with Next.js, Vue.js, and AI technologies like Google Gemini and LangChain.js.",
                         url: "https://bychris.me",
-                        image: "/logo.png", 
-                        sameAs: [ 
+                        image: "/logo.png",
+                        sameAs: [
                             "https://linkedin.com/in/chrishadi90",
                             "https://github.com/cylentro",
                             "https://discordapp.com/users/cylentro",
                             "https://instagram.com/chrishadi90"
                         ],
-                        knowsAbout: [ 
+                        knowsAbout: [
                             "Product Management",
                             "Logistics",
                             "Generative AI",
@@ -129,10 +129,16 @@ export default defineConfig({
                 ]
             },
             {
-                text: 'G[AI]lerry',
+                text: 'G[AI]llery',
                 items: [
-                    { text: 'AI Showcase', link: '/gailerry/ai-showcase' },
-                    { text: 'Prompt Framework', link: '/gailerry/prompt-frameworks' },
+                    { text: 'AI Showcase', link: '/gaillery/ai-showcase' },
+                    { text: 'Prompt Framework', link: '/gaillery/prompt-frameworks' },
+                    {
+                        text: 'How To',
+                        items: [
+                            { text: 'Prompting 101: The Playbook for Everyone', link: '/gaillery/prompting-101/introduction' }
+                        ],
+                    }
                 ]
             },
             {
@@ -143,7 +149,46 @@ export default defineConfig({
                 ]
             },
         ],
-
+        sidebar: {
+            '/gaillery/prompting-101/': [
+                {
+                    text: 'Prompting 101: The Playbook for Everyone',
+                    link: '/gaillery/prompting-101/introduction'
+                },
+                {
+                    text: 'The Complete Course Manuscript',
+                    collapsed: false,
+                    items: [
+                        { text: 'Chapter 1: What is Generative AI?', link: '/gaillery/prompting-101/chapter-1_what-is-generative-ai' },
+                        { text: 'Chapter 2: The Art of the Conversation', link: '/gaillery/prompting-101/chapter-2_the-art-of-the-conversation_your-first-prompts' },
+                        { text: 'Chapter 3: Advanced Prompting', link: '/gaillery/prompting-101/chapter-3_advance-prompting-techniques' },
+                        { text: 'Chapter 4: AI in Your Workflow', link: '/gaillery/prompting-101/chapter-4_ai-in-your-daily-workflow' },
+                        { text: 'Chapter 5: How AI Works', link: '/gaillery/prompting-101/chapter-5_a-peek-under-the-hood' },
+                        { text: 'Chapter 6: Ethics & Limitations', link: '/gaillery/prompting-101/chapter-6_staying-safe-and-smart' },
+                        { text: 'Chapter 7: What\'s Next?', link: '/gaillery/prompting-101/chapter-7_the-future-is-now-whats-next' }
+                    ]
+                },
+                {
+                    text: 'Knowledge Check Quiz',
+                    link: '/gaillery/prompting-101/quiz'
+                },
+                {
+                    text: 'Implementation & Assessment',
+                    collapsed: false,
+                    items: [
+                        { text: 'Teaching Methodology', link: '/gaillery/prompting-101/recommended-teaching-methodology' },
+                        { text: 'Capstone Project', link: '/gaillery/prompting-101/capstone-project' }
+                    ]
+                },
+                {
+                    text: 'Additional Resources',
+                    collapsed: false,
+                    items: [
+                        { text: 'Glossary of AI Terms', link: '/gaillery/prompting-101/glossary' }
+                    ]
+                }
+            ]
+        },
         socialLinks: [
             { icon: 'linkedin', link: 'https://linkedin.com/in/chrishadi90' },
             { icon: 'github', link: 'https://github.com/cylentro' },

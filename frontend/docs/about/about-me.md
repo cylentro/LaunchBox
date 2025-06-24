@@ -1,6 +1,7 @@
 ---
 layout: home
 
+title: Christian Hadianto | Product Manager | GenAI
 description: Learn more about Christian Hadianto, his journey as a Product Manager, passion for AI, professional philosophy, and what drives his innovative spirit.
 
 hero:
@@ -27,7 +28,7 @@ features:
 ---
 ## Welcome to my corner of the internet!
 
-I'm Christian, a Senior Product Manager with 7+ years of dedicated PM experience, built on a solid foundation of 10 years in the logistics industry. My ongoing mission? To make logistics less, well, "logistical" and more logical (and user-friendly!). My latest obsession? Figuring out how [Generative AI](/gailerry/prompt-frameworks) can sprinkle some magic on everything.
+I'm Christian, a Senior Product Manager with 7+ years of dedicated PM experience, built on a solid foundation of 10 years in the logistics industry. My ongoing mission? To make logistics less, well, "logistical" and more logical (and user-friendly!). My latest obsession? Figuring out how [Generative AI](/gailerry/prompt-frameworks) can sprinkle some magic on everything. In fact, I've just launched a comprehensive new course, [Prompting 101: The Playbook for Everyone](/gaillery/prompting-101/introduction), to help others master the art of communicating with AI!
 
 My origin story isn't your typical PM tale. I started as a Full-Stack Developer at **[Moonlay Technologies](https://moonlay.com/)** – think of it as a tech bootcamp where I got to wear all the hats: coder, analyst, bug-hunter, client-charmer, and project-wrangler. It was a wild ride building cool stuff for diverse clients. This multi-faceted start taught me to speak fluent "dev" and "business" – a handy skill in the product world!
 
@@ -40,6 +41,7 @@ You know how some people need a "social media detox"? I'm the opposite. I need a
 * Paracord Weaving: Turning string into surprisingly cool bracelets. It's like coding, but with knots.
 * Rubik's Cubes: Because solving colorful, twisty puzzles is my kind of fun.
 * Calligraphy: Making letters look fancy. It's the OG font design.
+* Gaming: Because sometimes, virtual worlds are more fun than the real one.
 * Mandala Drawing: Getting lost in symmetrical patterns. Cheaper than therapy.
 * Marketplace Scrolling: My one true digital vice. It's not social media, it's research. Yeah, let's go with that.
 

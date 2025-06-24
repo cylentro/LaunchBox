@@ -1,61 +1,178 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch } from "vue";
 
 const timelineEvents = ref([
-  // Personal
-  { year: 2023, date: '2023-01-01', type: 'Personal', company: 'N/A', title: 'Got Married & Moved to Singapore', description: 'Started a new co-op campaign by getting married and relocating to a new server: Singapore.' },
-  
-  // Professional
-  { year: 2012, date: '2012-06-01', type: 'Professional', company: 'Moonlay Technologies', title: 'Started Career as Full Stack Developer', description: 'Kicked off my tech career, learning to build robust applications from the ground up.' },
-  { year: 2015, date: '2015-01-01', type: 'Professional', company: 'Moonlay Technologies', title: 'Shifted to Project Management', description: 'Traded my compiler for a Gantt chart and transitioned from code to coordination, leading projects to successful completion.' },
-  { year: 2016, date: '2016-01-01', type: 'Professional', company: 'Moonlay Technologies', title: 'Launched JetExpress Core System', description: 'Led the charge in launching the JetExpress core system, the digital backbone for a major logistics operation.' },
-  { year: 2017, date: '2017-01-01', type: 'Professional', company: 'Moonlay Technologies', title: 'Best Employee & PM Shift', description: 'Recognized as Best Employee and pivoted into Project Management' },
-  { year: 2017, date: '2017-06-01', type: 'Professional', company: 'QRIM Express', title: 'Joined Red Carpet Logistics', description: 'Began a new chapter at Red Carpet Logistics (which later became QRIM Express), diving into new challenges in the logistics world as Product Manager. Aligning my passion for tech with user-centric solutions.' },
-  { year: 2019, date: '2019-01-01', type: 'Professional', company: 'QRIM Express', title: 'Won "Mission Impossible" Award', description: 'Honored for being the go-to problem solver who could tackle any challenge, anytime, anywhere. Cue the theme music.' },
-  { year: 2020, date: '2020-04-01', type: 'Professional', company: 'QRIM Express', title: 'Experienced a "Surprise Career Pivot"', description: 'Navigated a company-wide retrenchment due to COVID-19 (aka "The Great Reset"). Used the time to recharge, rethink, and bounce back stronger.' },
-  { year: 2020, date: '2020-05-01', type: 'Professional', company: 'Anteraja', title: 'Joined Anteraja', description: 'Started a new role at Anteraja, ready to tackle fresh challenges in the logistics space.' },
-  { year: 2020, date: '2020-08-01', type: 'Professional', company: 'Anteraja', title: 'Launched Travylite', description: 'Made an immediate impact by launching a new travel-focused service just a few months after joining.' },
-  { year: 2021, date: '2021-01-01', type: 'Professional', company: 'Anteraja', title: 'Launched Rinso Collaboration', description: 'Spearheaded a successful partnership with a major brand (Rinso) to promote sustainability and reduce packaging waste.' },
-  { year: 2021, date: '2021-07-01', type: 'Professional', company: 'Anteraja', title: 'Promoted to Assistant Manager', description: 'Leveled up! My contributions and leadership were recognized with a promotion.' },
-  { year: 2023, date: '2023-07-01', type: 'Professional', company: 'Anteraja', title: 'Promoted to Department Head', description: 'Entrusted with leading a department, driving strategy and team growth to new heights.' },
-  { year: 2025, date: '2025-01-01', type: 'Professional', company: 'Assa Logistics Ecosystem', title: 'Collaborate with Kedai Sayur', description: 'Continuing to expand my impact by forging a new collaboration in the fast-paced logistics ecosystem.' },
+	// Personal
+	{
+		year: 2023,
+		date: "2023-01-01",
+		type: "Personal",
+		company: "N/A",
+		title: "Got Married & Moved to Singapore",
+		description:
+			"Started a new co-op campaign by getting married and relocating to a new server: Singapore.",
+	},
+
+	// Professional
+	{
+		year: 2012,
+		date: "2012-06-01",
+		type: "Professional",
+		company: "Moonlay Technologies",
+		title: "Started Career as Full Stack Developer",
+		description:
+			"Kicked off my tech career, learning to build robust applications from the ground up.",
+	},
+	{
+		year: 2015,
+		date: "2015-01-01",
+		type: "Professional",
+		company: "Moonlay Technologies",
+		title: "Shifted to Project Management",
+		description:
+			"Traded my compiler for a Gantt chart and transitioned from code to coordination, leading projects to successful completion.",
+	},
+	{
+		year: 2016,
+		date: "2016-01-01",
+		type: "Professional",
+		company: "Moonlay Technologies",
+		title: "Launched JetExpress Core System",
+		description:
+			"Led the charge in launching the JetExpress core system, the digital backbone for a major logistics operation.",
+	},
+	{
+		year: 2017,
+		date: "2017-01-01",
+		type: "Professional",
+		company: "Moonlay Technologies",
+		title: "Best Employee & PM Shift",
+		description:
+			"Recognized as Best Employee and pivoted into Project Management",
+	},
+	{
+		year: 2017,
+		date: "2017-06-01",
+		type: "Professional",
+		company: "QRIM Express",
+		title: "Joined Red Carpet Logistics",
+		description:
+			"Began a new chapter at Red Carpet Logistics (which later became QRIM Express), diving into new challenges in the logistics world as Product Manager. Aligning my passion for tech with user-centric solutions.",
+	},
+	{
+		year: 2019,
+		date: "2019-01-01",
+		type: "Professional",
+		company: "QRIM Express",
+		title: 'Won "Mission Impossible" Award',
+		description:
+			"Honored for being the go-to problem solver who could tackle any challenge, anytime, anywhere. Cue the theme music.",
+	},
+	{
+		year: 2020,
+		date: "2020-04-01",
+		type: "Professional",
+		company: "QRIM Express",
+		title: 'Experienced a "Surprise Career Pivot"',
+		description:
+			'Navigated a company-wide retrenchment due to COVID-19 (aka "The Great Reset"). Used the time to recharge, rethink, and bounce back stronger.',
+	},
+	{
+		year: 2020,
+		date: "2020-05-01",
+		type: "Professional",
+		company: "Anteraja",
+		title: "Joined Anteraja",
+		description:
+			"Started a new role at Anteraja, ready to tackle fresh challenges in the logistics space.",
+	},
+	{
+		year: 2020,
+		date: "2020-08-01",
+		type: "Professional",
+		company: "Anteraja",
+		title: "Launched Travylite",
+		description:
+			"Made an immediate impact by launching a new travel-focused service just a few months after joining.",
+	},
+	{
+		year: 2021,
+		date: "2021-01-01",
+		type: "Professional",
+		company: "Anteraja",
+		title: "Launched Rinso Collaboration",
+		description:
+			"Spearheaded a successful partnership with a major brand (Rinso) to promote sustainability and reduce packaging waste.",
+	},
+	{
+		year: 2021,
+		date: "2021-07-01",
+		type: "Professional",
+		company: "Anteraja",
+		title: "Promoted to Assistant Manager",
+		description:
+			"Leveled up! My contributions and leadership were recognized with a promotion.",
+	},
+	{
+		year: 2023,
+		date: "2023-07-01",
+		type: "Professional",
+		company: "Anteraja",
+		title: "Promoted to Department Head",
+		description:
+			"Entrusted with leading a department, driving strategy and team growth to new heights.",
+	},
+	{
+		year: 2025,
+		date: "2025-01-01",
+		type: "Professional",
+		company: "Assa Logistics Ecosystem",
+		title: "Collaborate with Kedai Sayur",
+		description:
+			"Continuing to expand my impact by forging a new collaboration in the fast-paced logistics ecosystem.",
+	},
 ]);
 
 // Filters
-const selectedType = ref('All');
-const selectedCompany = ref('All');
+const selectedType = ref("All");
+const selectedCompany = ref("All");
 
 // When the type filter changes, check if we should reset the company filter.
 watch(selectedType, (newType) => {
-  if (newType === 'Personal' || newType === 'All') {
-    selectedCompany.value = 'All';
-  }
+	if (newType === "Personal" || newType === "All") {
+		selectedCompany.value = "All";
+	}
 });
 
 const companies = computed(() => {
-  const professionalEvents = timelineEvents.value.filter(e => e.type === 'Professional');
-  const companyNames = professionalEvents.map(e => e.company);
-  return ['All', ...new Set(companyNames)];
+	const professionalEvents = timelineEvents.value.filter(
+		(e) => e.type === "Professional",
+	);
+	const companyNames = professionalEvents.map((e) => e.company);
+	return ["All", ...new Set(companyNames)];
 });
 
 const filteredTimeline = computed(() => {
-  return timelineEvents.value
-    .filter(event => {
-      const typeMatch = selectedType.value === 'All' || event.type === selectedType.value;
-      const companyMatch = selectedCompany.value === 'All' || event.company === selectedCompany.value;
-      return typeMatch && companyMatch;
-    })
-    .sort((a, b) => {
-        // First sort by year descending, then by date descending to handle same-year events
-        if (b.year !== a.year) {
-            return b.year - a.year;
-        }
-        return new Date(b.date) - new Date(a.date);
-    });
+	return timelineEvents.value
+		.filter((event) => {
+			const typeMatch =
+				selectedType.value === "All" || event.type === selectedType.value;
+			const companyMatch =
+				selectedCompany.value === "All" ||
+				event.company === selectedCompany.value;
+			return typeMatch && companyMatch;
+		})
+		.sort((a, b) => {
+			// First sort by year descending, then by date descending to handle same-year events
+			if (b.year !== a.year) {
+				return b.year - a.year;
+			}
+			return new Date(b.date) - new Date(a.date);
+		});
 });
 
 const getIconColor = (type) => {
-  return type === 'Personal' ? 'bg-pink-500' : 'bg-indigo-500';
+	return type === "Personal" ? "bg-pink-500" : "bg-indigo-500";
 };
 </script>
 

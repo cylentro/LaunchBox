@@ -9,16 +9,16 @@
 </template>
 
 <script setup>
-import DefaultTheme from 'vitepress/theme'
-import { useData } from 'vitepress'
-import { computed } from 'vue'
-import SpotifyBubble from '../../components/SpotifyBubble.vue' 
-import NaitBubble from '../../components/assistant/NaitBubble.vue'
+import DefaultTheme from "vitepress/theme";
+import { useData } from "vitepress";
+import { computed } from "vue";
+import SpotifyBubble from "../../components/SpotifyBubble.vue";
+import NaitBubble from "../../components/assistant/NaitBubble.vue";
 
-const { Layout } = DefaultTheme
-const { page } = useData()
-const pagesToHideBubble = ['index.md', 'license.md'];
+const { Layout } = DefaultTheme;
+const { page } = useData();
+const pagesToHideBubble = ["index.md", "license.md", '404.md','gaillery/prompting-101/quiz.md'];
 const isBubbleHiddenPage = computed(() => {
-  return pagesToHideBubble.includes(page.value.relativePath);
+	return pagesToHideBubble.includes(page.value.relativePath);
 });
 </script>

@@ -49,46 +49,47 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch } from "vue";
 
 const isPanelOpen = ref(false);
-const spotifyEmbedBaseUrl = "https://open.spotify.com/embed/show/6uiSJvabU9E0R4RCK9IRCb?utm_source=generator";
+const spotifyEmbedBaseUrl =
+	"https://open.spotify.com/embed/show/6uiSJvabU9E0R4RCK9IRCb?utm_source=generator";
 const currentIframeSrc = ref(""); // Reactive src for the iframe
 
 const openPanelFully = () => {
-    isPanelOpen.value = true;
-    // Set src only if it's not already set to the base URL, or if it's empty
-    if (currentIframeSrc.value !== spotifyEmbedBaseUrl) {
-        currentIframeSrc.value = spotifyEmbedBaseUrl;
-    }
+	isPanelOpen.value = true;
+	// Set src only if it's not already set to the base URL, or if it's empty
+	if (currentIframeSrc.value !== spotifyEmbedBaseUrl) {
+		currentIframeSrc.value = spotifyEmbedBaseUrl;
+	}
 };
 
 const togglePanel = () => {
-    if (isPanelOpen.value) {
-        // If panel is open, main toggle (caret or title) acts as minimize
-        minimizePanel();
-    } else {
-        // If panel is closed (either fully or minimized), open it fully
-        openPanelFully();
-    }
+	if (isPanelOpen.value) {
+		// If panel is open, main toggle (caret or title) acts as minimize
+		minimizePanel();
+	} else {
+		// If panel is closed (either fully or minimized), open it fully
+		openPanelFully();
+	}
 };
 
 const closePanel = () => {
-    isPanelOpen.value = false;
-    currentIframeSrc.value = ""; // Clear src to stop music & unload iframe
+	isPanelOpen.value = false;
+	currentIframeSrc.value = ""; // Clear src to stop music & unload iframe
 };
 
 const minimizePanel = () => {
-    isPanelOpen.value = false;
-    // Panel is hidden via v-show.
-    // currentIframeSrc remains set if it was already playing, so music continues.
+	isPanelOpen.value = false;
+	// Panel is hidden via v-show.
+	// currentIframeSrc remains set if it was already playing, so music continues.
 };
 
 // Watcher to ensure iframe loads when panel is opened after a full close
 watch(isPanelOpen, (newVal) => {
-    if (newVal === true && currentIframeSrc.value === "") {
-        currentIframeSrc.value = spotifyEmbedBaseUrl;
-    }
+	if (newVal === true && currentIframeSrc.value === "") {
+		currentIframeSrc.value = spotifyEmbedBaseUrl;
+	}
 });
 </script>
 

@@ -142,35 +142,46 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick, watch, onBeforeUnmount, computed, shallowRef } from 'vue';
-import { marked } from 'marked';
-import { useData } from 'vitepress';
+import {
+	ref,
+	onMounted,
+	nextTick,
+	watch,
+	onBeforeUnmount,
+	computed,
+	shallowRef,
+} from "vue";
+import { marked } from "marked";
+import { useData } from "vitepress";
 // IMPORT PATH: Ensure this path is correct for your project structure
-import { getPromptsForPage, NUMBER_OF_RANDOM_PROMPTS_TO_SHOW } from './pagePrompts';
-import { getRandomPlaceholder } from '../inputPlaceholder'
+import {
+	getPromptsForPage,
+	NUMBER_OF_RANDOM_PROMPTS_TO_SHOW,
+} from "./pagePrompts";
+import { getRandomPlaceholder } from "../inputPlaceholder";
 
 interface ChatMessage {
-    id?: string;
-    text: string;
-    isNait: boolean;
+	id?: string;
+	text: string;
+	isNait: boolean;
 }
 
 interface ExamplePrompt {
-    text: string;
-    action?: 'summarize' | 'chat';
+	text: string;
+	action?: "summarize" | "chat";
 }
 
 interface StoredSummary {
-    summary: string;
-    timestamp: number;
+	summary: string;
+	timestamp: number;
 }
 
 const isPopupOpen = ref(false);
-const userInput = ref('');
+const userInput = ref("");
 const chatMessages = ref<ChatMessage[]>([]);
 const isLoading = ref(false); // For regular chat messages
 const isSummarizing = ref(false); // For summary generation
-const sessionId = ref('');
+const sessionId = ref("");
 const isMaximized = ref(false);
 let typingInterval: ReturnType<typeof setInterval> | null = null;
 const isDarkMode = ref(false);
@@ -178,114 +189,144 @@ const isDarkMode = ref(false);
 const activeTextareaRef = ref<HTMLTextAreaElement | null>(null);
 const chatMessagesContainerRef = ref<HTMLElement | null>(null);
 
-const LS_SESSION_ID_KEY = 'naitSessionId';
-const LS_CHAT_MESSAGES_KEY = 'naitChatMessages';
-const LS_PAGE_SUMMARIES_KEY_PREFIX = 'naitPageSummary_';
+const LS_SESSION_ID_KEY = "naitSessionId";
+const LS_CHAT_MESSAGES_KEY = "naitChatMessages";
+const LS_PAGE_SUMMARIES_KEY_PREFIX = "naitPageSummary_";
 
 const NAIT_GREETINGS = [
-    "Hello there! How can I assist you today?",
-    "Hi! I'm Nait, ready to help. What's on your mind?",
-    "Welcome! Feel free to ask me anything or request a summary.",
-    "Hey! Good to see you. What can I do for you?",
-    "Greetings! I'm here to help you navigate and understand this page. Ask away!"
+	"Hello there! How can I assist you today?",
+	"Hi! I'm Nait, ready to help. What's on your mind?",
+	"Welcome! Feel free to ask me anything or request a summary.",
+	"Hey! Good to see you. What can I do for you?",
+	"Greetings! I'm here to help you navigate and understand this page. Ask away!",
 ];
 
 const dynamicInitialPlaceholder = computed(() => {
-    return getRandomPlaceholder();
+	return getRandomPlaceholder();
 });
 
 const naitIconSrc = computed(() => {
-    return isDarkMode.value ? '../../icons/nait-dark.svg' : '../../icons/nait-light.svg';
+	return isDarkMode.value
+		? "../../icons/nait-dark.svg"
+		: "../../icons/nait-light.svg";
 });
 
 const { page } = useData();
 
 // --- Typing Indicator Functions (Modified) ---
-const startTypingIndicator = (messageIndex: number, baseText: string = "Nait is thinking") => {
-    stopTypingIndicator();
-    let dotCount = 1;
-    if (chatMessages.value[messageIndex]) {
-        chatMessages.value[messageIndex].text = baseText + '.';
-    }
+const startTypingIndicator = (
+	messageIndex: number,
+	baseText: string = "Nait is thinking",
+) => {
+	stopTypingIndicator();
+	let dotCount = 1;
+	if (chatMessages.value[messageIndex]) {
+		chatMessages.value[messageIndex].text = baseText + ".";
+	}
 
-    typingInterval = setInterval(() => {
-        dotCount = (dotCount % 3) + 1;
-        if (chatMessages.value[messageIndex]) {
-            chatMessages.value[messageIndex].text = baseText + '.'.repeat(dotCount);
-        } else {
-            stopTypingIndicator();
-        }
-    }, 500);
+	typingInterval = setInterval(() => {
+		dotCount = (dotCount % 3) + 1;
+		if (chatMessages.value[messageIndex]) {
+			chatMessages.value[messageIndex].text = baseText + ".".repeat(dotCount);
+		} else {
+			stopTypingIndicator();
+		}
+	}, 500);
 };
 
 const stopTypingIndicator = () => {
-    if (typingInterval) {
-        clearInterval(typingInterval);
-        typingInterval = null;
-    }
+	if (typingInterval) {
+		clearInterval(typingInterval);
+		typingInterval = null;
+	}
 };
 
-
 const cleanupOldSummaries = () => {
-    const now = new Date();
-    try {
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key && key.startsWith(LS_PAGE_SUMMARIES_KEY_PREFIX)) {
-                const storedItem = localStorage.getItem(key);
-                if (storedItem) {
-                    try {
-                        const data = JSON.parse(storedItem) as StoredSummary;
-                        if (data.timestamp) {
-                            const storedDate = new Date(data.timestamp);
-                            if (storedDate.getFullYear() < now.getFullYear() ||
-                                (storedDate.getFullYear() === now.getFullYear() && storedDate.getMonth() < now.getMonth()) ||
-                                (storedDate.getFullYear() === now.getFullYear() && storedDate.getMonth() === now.getMonth() && storedDate.getDate() < now.getDate())) {
-                                localStorage.removeItem(key); i--;
-                            }
-                        } else { localStorage.removeItem(key); i--; }
-                    } catch (e) { localStorage.removeItem(key); i--; }
-                }
-            }
-        }
-    } catch (error) { console.error("NaitBubble: Error during proactive summary cleanup:", error); }
+	const now = new Date();
+	try {
+		for (let i = 0; i < localStorage.length; i++) {
+			const key = localStorage.key(i);
+			if (key && key.startsWith(LS_PAGE_SUMMARIES_KEY_PREFIX)) {
+				const storedItem = localStorage.getItem(key);
+				if (storedItem) {
+					try {
+						const data = JSON.parse(storedItem) as StoredSummary;
+						if (data.timestamp) {
+							const storedDate = new Date(data.timestamp);
+							if (
+								storedDate.getFullYear() < now.getFullYear() ||
+								(storedDate.getFullYear() === now.getFullYear() &&
+									storedDate.getMonth() < now.getMonth()) ||
+								(storedDate.getFullYear() === now.getFullYear() &&
+									storedDate.getMonth() === now.getMonth() &&
+									storedDate.getDate() < now.getDate())
+							) {
+								localStorage.removeItem(key);
+								i--;
+							}
+						} else {
+							localStorage.removeItem(key);
+							i--;
+						}
+					} catch (e) {
+						localStorage.removeItem(key);
+						i--;
+					}
+				}
+			}
+		}
+	} catch (error) {
+		console.error("NaitBubble: Error during proactive summary cleanup:", error);
+	}
 };
 
 const DEFAULT_PROMPTS: string[] = [
-    "What can you help me with?",
-    "Explain a key concept from this page."
+	"What can you help me with?",
+	"Explain a key concept from this page.",
 ];
 const SUMMARIZE_PROMPT_TEXT = "Summarize this page";
 
 const getRandomPrompts = (prompts: string[], count: number): string[] => {
-    if (!prompts || prompts.length === 0) return [];
-    const shuffled = [...prompts].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, Math.min(count, prompts.length));
+	if (!prompts || prompts.length === 0) return [];
+	const shuffled = [...prompts].sort(() => 0.5 - Math.random());
+	return shuffled.slice(0, Math.min(count, prompts.length));
 };
 
 const actualExamplePrompts = computed<ExamplePrompt[]>(() => {
-    let randomPromptsForDisplay: ExamplePrompt[] = [];
-    const defaultPromptsMapped = getRandomPrompts(DEFAULT_PROMPTS, NUMBER_OF_RANDOM_PROMPTS_TO_SHOW)
-        .map(p => ({ text: p, action: 'chat' as 'chat' }));
+	let randomPromptsForDisplay: ExamplePrompt[] = [];
+	const defaultPromptsMapped = getRandomPrompts(
+		DEFAULT_PROMPTS,
+		NUMBER_OF_RANDOM_PROMPTS_TO_SHOW,
+	).map((p) => ({ text: p, action: "chat" as "chat" }));
 
-    if (page.value && page.value.relativePath && page.value.relativePath !== 'index.md') {
-        const pageSpecificRaw = getPromptsForPage(page.value.relativePath);
-        if (pageSpecificRaw && pageSpecificRaw.length > 0) {
-            randomPromptsForDisplay = getRandomPrompts(pageSpecificRaw, NUMBER_OF_RANDOM_PROMPTS_TO_SHOW)
-                .map(p => ({ text: p, action: 'chat' as 'chat' }));
-        } else {
-            randomPromptsForDisplay = defaultPromptsMapped;
-        }
-    } else {
-        randomPromptsForDisplay = defaultPromptsMapped;
-    }
+	if (
+		page.value &&
+		page.value.relativePath &&
+		page.value.relativePath !== "index.md"
+	) {
+		const pageSpecificRaw = getPromptsForPage(page.value.relativePath);
+		if (pageSpecificRaw && pageSpecificRaw.length > 0) {
+			randomPromptsForDisplay = getRandomPrompts(
+				pageSpecificRaw,
+				NUMBER_OF_RANDOM_PROMPTS_TO_SHOW,
+			).map((p) => ({ text: p, action: "chat" as "chat" }));
+		} else {
+			randomPromptsForDisplay = defaultPromptsMapped;
+		}
+	} else {
+		randomPromptsForDisplay = defaultPromptsMapped;
+	}
 
-    const allPrompts: ExamplePrompt[] = [];
-    if (page.value && page.value.relativePath && page.value.relativePath !== 'index.md') {
-        allPrompts.push({ text: SUMMARIZE_PROMPT_TEXT, action: 'summarize' });
-    }
-    allPrompts.push(...randomPromptsForDisplay);
-    return allPrompts;
+	const allPrompts: ExamplePrompt[] = [];
+	if (
+		page.value &&
+		page.value.relativePath &&
+		page.value.relativePath !== "index.md"
+	) {
+		allPrompts.push({ text: SUMMARIZE_PROMPT_TEXT, action: "summarize" });
+	}
+	allPrompts.push(...randomPromptsForDisplay);
+	return allPrompts;
 });
 
 const promptsScrollRef = ref<HTMLElement | null>(null);
@@ -295,501 +336,691 @@ const isDragging = ref(false);
 const startX = ref(0);
 const scrollLeft = ref(0);
 
-const getSummaryStorageKey = (pageRelativePath: string) => `${LS_PAGE_SUMMARIES_KEY_PREFIX}${pageRelativePath}`;
+const getSummaryStorageKey = (pageRelativePath: string) =>
+	`${LS_PAGE_SUMMARIES_KEY_PREFIX}${pageRelativePath}`;
 
 const getCachedSummary = (pageRelativePath: string): StoredSummary | null => {
-    const key = getSummaryStorageKey(pageRelativePath);
-    const storedItem = localStorage.getItem(key);
-    if (!storedItem) return null;
-    try {
-        const data = JSON.parse(storedItem) as StoredSummary;
-        const now = new Date();
-        const storedDate = new Date(data.timestamp);
-        if (storedDate.getFullYear() < now.getFullYear() ||
-            (storedDate.getFullYear() === now.getFullYear() && storedDate.getMonth() < now.getMonth()) ||
-            (storedDate.getFullYear() === now.getFullYear() && storedDate.getMonth() === now.getMonth() && storedDate.getDate() < now.getDate())) {
-            localStorage.removeItem(key); return null;
-        }
-        return data;
-    } catch (e) { localStorage.removeItem(key); return null; }
+	const key = getSummaryStorageKey(pageRelativePath);
+	const storedItem = localStorage.getItem(key);
+	if (!storedItem) return null;
+	try {
+		const data = JSON.parse(storedItem) as StoredSummary;
+		const now = new Date();
+		const storedDate = new Date(data.timestamp);
+		if (
+			storedDate.getFullYear() < now.getFullYear() ||
+			(storedDate.getFullYear() === now.getFullYear() &&
+				storedDate.getMonth() < now.getMonth()) ||
+			(storedDate.getFullYear() === now.getFullYear() &&
+				storedDate.getMonth() === now.getMonth() &&
+				storedDate.getDate() < now.getDate())
+		) {
+			localStorage.removeItem(key);
+			return null;
+		}
+		return data;
+	} catch (e) {
+		localStorage.removeItem(key);
+		return null;
+	}
 };
 
 const cacheSummary = (pageRelativePath: string, summary: string) => {
-    const key = getSummaryStorageKey(pageRelativePath);
-    const data: StoredSummary = { summary, timestamp: Date.now() };
-    try { localStorage.setItem(key, JSON.stringify(data)); }
-    catch (e) { console.error("NaitBubble: Error saving summary to localStorage", e); }
+	const key = getSummaryStorageKey(pageRelativePath);
+	const data: StoredSummary = { summary, timestamp: Date.now() };
+	try {
+		localStorage.setItem(key, JSON.stringify(data));
+	} catch (e) {
+		console.error("NaitBubble: Error saving summary to localStorage", e);
+	}
 };
 
 const isSimulatingStream = shallowRef(false);
 
 const simulateStreaming = (
-    text: string,
-    onChunk: (chunk: string) => void,
-    onComplete: () => void,
-    speed: number = 30
+	text: string,
+	onChunk: (chunk: string) => void,
+	onComplete: () => void,
+	speed: number = 30,
 ) => {
-    let index = 0;
-    isSimulatingStream.value = true;
-    isSummarizing.value = true; // Keep UI disabled during simulated stream
+	let index = 0;
+	isSimulatingStream.value = true;
+	isSummarizing.value = true; // Keep UI disabled during simulated stream
 
-    function nextChunk() {
-        if (index < text.length) {
-            let chunkSize = 1;
-            if (text[index] === ' ') { chunkSize = 1; }
-            else {
-                const nextSpace = text.indexOf(' ', index);
-                chunkSize = (nextSpace > -1 && (nextSpace - index) < 15) ? (nextSpace - index + 1) : Math.min(5, text.length - index);
-            }
-            const chunk = text.substring(index, index + chunkSize);
-            onChunk(chunk);
-            index += chunkSize;
-            setTimeout(nextChunk, speed * (chunk.includes('\n') ? 3 : 1)); // Slower for newlines
-        } else {
-            isSimulatingStream.value = false;
-            isSummarizing.value = false; // Re-enable UI
-            onComplete(); // Call onComplete AFTER flags are reset
-        }
-    }
-    nextChunk();
+	function nextChunk() {
+		if (index < text.length) {
+			let chunkSize = 1;
+			if (text[index] === " ") {
+				chunkSize = 1;
+			} else {
+				const nextSpace = text.indexOf(" ", index);
+				chunkSize =
+					nextSpace > -1 && nextSpace - index < 15
+						? nextSpace - index + 1
+						: Math.min(5, text.length - index);
+			}
+			const chunk = text.substring(index, index + chunkSize);
+			onChunk(chunk);
+			index += chunkSize;
+			setTimeout(nextChunk, speed * (chunk.includes("\n") ? 3 : 1)); // Slower for newlines
+		} else {
+			isSimulatingStream.value = false;
+			isSummarizing.value = false; // Re-enable UI
+			onComplete(); // Call onComplete AFTER flags are reset
+		}
+	}
+	nextChunk();
 };
 
 const handleSummarizePage = async () => {
-    if (!page.value?.relativePath || page.value.relativePath === 'index.md') return;
-    userInput.value = ''; // Clear user input
+	if (!page.value?.relativePath || page.value.relativePath === "index.md")
+		return;
+	userInput.value = ""; // Clear user input
 
-    // Add user's request message
-    chatMessages.value.push({ id: `user_req_summary_${Date.now()}`, text: "Please summarize this page.", isNait: false });
-    const pagePath = page.value.relativePath;
-    const cached = getCachedSummary(pagePath);
+	// Add user's request message
+	chatMessages.value.push({
+		id: `user_req_summary_${Date.now()}`,
+		text: "Please summarize this page.",
+		isNait: false,
+	});
+	const pagePath = page.value.relativePath;
+	const cached = getCachedSummary(pagePath);
 
-    const naitSummaryMessageId = `nait_summary_stream_${Date.now()}`;
-    chatMessages.value.push({ id: naitSummaryMessageId, text: '', isNait: true });
-    const naitMessageIndex = chatMessages.value.length - 1;
+	const naitSummaryMessageId = `nait_summary_stream_${Date.now()}`;
+	chatMessages.value.push({ id: naitSummaryMessageId, text: "", isNait: true });
+	const naitMessageIndex = chatMessages.value.length - 1;
 
-    if (cached) {
-        isSummarizing.value = false; // Set flag for UI state (e.g., disable input)
-        // but isSimulatingStream will control actual text animation
-        chatMessages.value[naitMessageIndex].text = "Nait is recalling the summary..."; // Initial text
-        scrollToBottom(); // Scroll to show "recalling" message
+	if (cached) {
+		isSummarizing.value = false; // Set flag for UI state (e.g., disable input)
+		// but isSimulatingStream will control actual text animation
+		chatMessages.value[naitMessageIndex].text =
+			"Nait is recalling the summary..."; // Initial text
+		scrollToBottom(); // Scroll to show "recalling" message
 
-        // Short delay before starting simulated stream to make "recalling" visible
-        setTimeout(() => {
-            if (chatMessages.value[naitMessageIndex]) { // Check if message still exists
-                chatMessages.value[naitMessageIndex].text = ""; // Clear "recalling" before streaming
-            }
-            simulateStreaming(
-                cached.summary,
-                (chunk) => {
-                    if (chatMessages.value[naitMessageIndex]) {
-                        chatMessages.value[naitMessageIndex].text += chunk;
-                        scrollToBottom();
-                    }
-                },
-                () => { // onComplete for simulateStreaming
-                    // isSummarizing is set to false inside simulateStreaming's onComplete
-                    if (isPopupOpen.value) {
-                        nextTick(() => {
-                            setupPromptCarousel();
-                            activeTextareaRef.value?.focus();
-                        });
-                    }
-                }
-            );
-        }, 750); // 750ms delay
-        return;
-    }
+		// Short delay before starting simulated stream to make "recalling" visible
+		setTimeout(() => {
+			if (chatMessages.value[naitMessageIndex]) {
+				// Check if message still exists
+				chatMessages.value[naitMessageIndex].text = ""; // Clear "recalling" before streaming
+			}
+			simulateStreaming(
+				cached.summary,
+				(chunk) => {
+					if (chatMessages.value[naitMessageIndex]) {
+						chatMessages.value[naitMessageIndex].text += chunk;
+						scrollToBottom();
+					}
+				},
+				() => {
+					// onComplete for simulateStreaming
+					// isSummarizing is set to false inside simulateStreaming's onComplete
+					if (isPopupOpen.value) {
+						nextTick(() => {
+							setupPromptCarousel();
+							activeTextareaRef.value?.focus();
+						});
+					}
+				},
+			);
+		}, 750); // 750ms delay
+		return;
+	}
 
-    let accumulatedSummary = "";
-    let firstChunkReceived = false;
+	let accumulatedSummary = "";
+	let firstChunkReceived = false;
 
-    try {
-        const apiHost = import.meta.env.VITE_API_HOST || '';
-        let url = `${apiHost}api/nait/summarize`;
-        if (!apiHost && typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV) {
-            url = 'http://localhost:3001/api/nait/summarize'; // Ensure this port is correct
-        } else if (!apiHost) {
-            throw new Error("API host not configured for summarization.");
-        }
-        // --- If not cached, proceed with fetching from backend ---
-        isSummarizing.value = true; // This is for the API call
-        startTypingIndicator(naitMessageIndex, "Nait is summarizing the page"); // Specific text for API call
+	try {
+		const apiHost = import.meta.env.VITE_API_HOST || "";
+		let url = `${apiHost}api/nait/summarize`;
+		if (
+			!apiHost &&
+			typeof import.meta !== "undefined" &&
+			import.meta.env &&
+			import.meta.env.DEV
+		) {
+			url = "http://localhost:3001/api/nait/summarize"; // Ensure this port is correct
+		} else if (!apiHost) {
+			throw new Error("API host not configured for summarization.");
+		}
+		// --- If not cached, proceed with fetching from backend ---
+		isSummarizing.value = true; // This is for the API call
+		startTypingIndicator(naitMessageIndex, "Nait is summarizing the page"); // Specific text for API call
 
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ pagePath }),
-        });
+		const response = await fetch(url, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ pagePath }),
+		});
 
-        stopTypingIndicator(); // Stop "summarizing" indicator once stream starts or fails
+		stopTypingIndicator(); // Stop "summarizing" indicator once stream starts or fails
 
-        if (!response.ok || !response.body) {
-            const errorText = response.ok ? "Response body is null." : await response.text();
-            if (chatMessages.value[naitMessageIndex]) {
-                chatMessages.value[naitMessageIndex].text = `Sorry, Nait encountered an error. (${response.status})`;
-            }
-            throw new Error(`API Error: ${response.status} ${errorText}`);
-        }
+		if (!response.ok || !response.body) {
+			const errorText = response.ok
+				? "Response body is null."
+				: await response.text();
+			if (chatMessages.value[naitMessageIndex]) {
+				chatMessages.value[naitMessageIndex].text =
+					`Sorry, Nait encountered an error. (${response.status})`;
+			}
+			throw new Error(`API Error: ${response.status} ${errorText}`);
+		}
 
-        if (chatMessages.value[naitMessageIndex]) { // Clear "Nait is summarizing..." text
-            chatMessages.value[naitMessageIndex].text = "";
-        }
+		if (chatMessages.value[naitMessageIndex]) {
+			// Clear "Nait is summarizing..." text
+			chatMessages.value[naitMessageIndex].text = "";
+		}
 
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let done = false;
-        let partialChunk = '';
+		const reader = response.body.getReader();
+		const decoder = new TextDecoder();
+		let done = false;
+		let partialChunk = "";
 
-        while (!done) {
-            const { value, done: readerDone } = await reader.read();
-            done = readerDone;
-            const chunkString = partialChunk + decoder.decode(value, { stream: !done });
-            const sseMessages = chunkString.split('\n\n');
+		while (!done) {
+			const { value, done: readerDone } = await reader.read();
+			done = readerDone;
+			const chunkString =
+				partialChunk + decoder.decode(value, { stream: !done });
+			const sseMessages = chunkString.split("\n\n");
 
-            if (!done) partialChunk = sseMessages.pop() || ''; else partialChunk = '';
+			if (!done) partialChunk = sseMessages.pop() || "";
+			else partialChunk = "";
 
-            for (const sseMessage of sseMessages) {
-                if (sseMessage.startsWith('data: ')) {
-                    const jsonData = sseMessage.substring(5).trim();
-                    if (jsonData) {
-                        try {
-                            const parsedData = JSON.parse(jsonData);
-                            if (parsedData.type === "summary_end") {
-                                done = true; break;
-                            }
-                            if (parsedData.text) {
-                                if (!firstChunkReceived) firstChunkReceived = true;
-                                accumulatedSummary += parsedData.text;
-                                if (chatMessages.value[naitMessageIndex]) {
-                                    chatMessages.value[naitMessageIndex].text += parsedData.text;
-                                    scrollToBottom();
-                                }
-                            }
-                        } catch (e) { console.error("NaitBubble: Error parsing JSON from summary stream:", jsonData, e); }
-                    }
-                }
-            }
-        }
+			for (const sseMessage of sseMessages) {
+				if (sseMessage.startsWith("data: ")) {
+					const jsonData = sseMessage.substring(5).trim();
+					if (jsonData) {
+						try {
+							const parsedData = JSON.parse(jsonData);
+							if (parsedData.type === "summary_end") {
+								done = true;
+								break;
+							}
+							if (parsedData.text) {
+								if (!firstChunkReceived) firstChunkReceived = true;
+								accumulatedSummary += parsedData.text;
+								if (chatMessages.value[naitMessageIndex]) {
+									chatMessages.value[naitMessageIndex].text += parsedData.text;
+									scrollToBottom();
+								}
+							}
+						} catch (e) {
+							console.error(
+								"NaitBubble: Error parsing JSON from summary stream:",
+								jsonData,
+								e,
+							);
+						}
+					}
+				}
+			}
+		}
 
-        if (firstChunkReceived && accumulatedSummary.trim() !== "") {
-            cacheSummary(pagePath, accumulatedSummary);
-        } else if (!firstChunkReceived) {
-            if (chatMessages.value[naitMessageIndex]) {
-                chatMessages.value[naitMessageIndex].text = "Nait couldn't generate a summary for this page at the moment.";
-            }
-        }
-
-    } catch (error) {
-        stopTypingIndicator(); // Ensure indicator stops on error
-        console.error('NaitBubble Summarize Fetch/Stream Error:', error);
-        const errText = error instanceof Error ? error.message : 'Sorry, an issue occurred while summarizing.';
-        if (chatMessages.value[naitMessageIndex]) {
-            chatMessages.value[naitMessageIndex].text = `Error: ${errText}`;
-        } else { // Should not happen if we add bubble first
-            chatMessages.value.push({ id: `nait_summary_error_${Date.now()}`, text: `Error: ${errText}`, isNait: true });
-        }
-    } finally {
-        isSummarizing.value = false; // This will re-enable UI if not already done by simulateStreaming
-        stopTypingIndicator(); // Final stop just in case
-        scrollToBottom();
-        nextTick(() => {
-            if (isPopupOpen.value) {
-                setupPromptCarousel();
-                activeTextareaRef.value?.focus();
-            }
-        });
-    }
+		if (firstChunkReceived && accumulatedSummary.trim() !== "") {
+			cacheSummary(pagePath, accumulatedSummary);
+		} else if (!firstChunkReceived) {
+			if (chatMessages.value[naitMessageIndex]) {
+				chatMessages.value[naitMessageIndex].text =
+					"Nait couldn't generate a summary for this page at the moment.";
+			}
+		}
+	} catch (error) {
+		stopTypingIndicator(); // Ensure indicator stops on error
+		console.error("NaitBubble Summarize Fetch/Stream Error:", error);
+		const errText =
+			error instanceof Error
+				? error.message
+				: "Sorry, an issue occurred while summarizing.";
+		if (chatMessages.value[naitMessageIndex]) {
+			chatMessages.value[naitMessageIndex].text = `Error: ${errText}`;
+		} else {
+			// Should not happen if we add bubble first
+			chatMessages.value.push({
+				id: `nait_summary_error_${Date.now()}`,
+				text: `Error: ${errText}`,
+				isNait: true,
+			});
+		}
+	} finally {
+		isSummarizing.value = false; // This will re-enable UI if not already done by simulateStreaming
+		stopTypingIndicator(); // Final stop just in case
+		scrollToBottom();
+		nextTick(() => {
+			if (isPopupOpen.value) {
+				setupPromptCarousel();
+				activeTextareaRef.value?.focus();
+			}
+		});
+	}
 };
 
-const generateNewSessionId = () => `session_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+const generateNewSessionId = () =>
+	`session_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
 
 const loadChatFromLocalStorage = () => {
-    const storedSessionId = localStorage.getItem(LS_SESSION_ID_KEY);
-    if (storedSessionId) {
-        sessionId.value = storedSessionId;
-        const storedMessages = localStorage.getItem(LS_CHAT_MESSAGES_KEY);
-        if (storedMessages) {
-            try {
-                chatMessages.value = JSON.parse(storedMessages);
-            } catch (e) { localStorage.removeItem(LS_CHAT_MESSAGES_KEY); chatMessages.value = []; }
-        } else chatMessages.value = [];
-    } else {
-        sessionId.value = generateNewSessionId();
-        localStorage.setItem(LS_SESSION_ID_KEY, sessionId.value);
-        chatMessages.value = [];
-    }
-    if (isPopupOpen.value) {
-        nextTick(() => { scrollToBottom(); activeTextareaRef.value?.focus(); setupPromptCarousel(); adjustTextareaHeight(activeTextareaRef.value); });
-    }
+	const storedSessionId = localStorage.getItem(LS_SESSION_ID_KEY);
+	if (storedSessionId) {
+		sessionId.value = storedSessionId;
+		const storedMessages = localStorage.getItem(LS_CHAT_MESSAGES_KEY);
+		if (storedMessages) {
+			try {
+				chatMessages.value = JSON.parse(storedMessages);
+			} catch (e) {
+				localStorage.removeItem(LS_CHAT_MESSAGES_KEY);
+				chatMessages.value = [];
+			}
+		} else chatMessages.value = [];
+	} else {
+		sessionId.value = generateNewSessionId();
+		localStorage.setItem(LS_SESSION_ID_KEY, sessionId.value);
+		chatMessages.value = [];
+	}
+	if (isPopupOpen.value) {
+		nextTick(() => {
+			scrollToBottom();
+			activeTextareaRef.value?.focus();
+			setupPromptCarousel();
+			adjustTextareaHeight(activeTextareaRef.value);
+		});
+	}
 };
 
 const saveChatToLocalStorage = () => {
-    localStorage.setItem(LS_CHAT_MESSAGES_KEY, JSON.stringify(chatMessages.value));
-    if (sessionId.value) localStorage.setItem(LS_SESSION_ID_KEY, sessionId.value);
+	localStorage.setItem(
+		LS_CHAT_MESSAGES_KEY,
+		JSON.stringify(chatMessages.value),
+	);
+	if (sessionId.value) localStorage.setItem(LS_SESSION_ID_KEY, sessionId.value);
 };
 
 watch(chatMessages, saveChatToLocalStorage, { deep: true });
-watch(sessionId, (newId) => { if (newId) localStorage.setItem(LS_SESSION_ID_KEY, newId); });
+watch(sessionId, (newId) => {
+	if (newId) localStorage.setItem(LS_SESSION_ID_KEY, newId);
+});
 
 const openPopup = () => {
-    isPopupOpen.value = true;
-    loadChatFromLocalStorage();
-    cleanupOldSummaries();
+	isPopupOpen.value = true;
+	loadChatFromLocalStorage();
+	cleanupOldSummaries();
 
-    if (chatMessages.value.length === 0) {
-        setTimeout(() => {
-            const randomGreeting = NAIT_GREETINGS[Math.floor(Math.random() * NAIT_GREETINGS.length)];
-            const naitGreetingMessageId = `nait_greeting_${Date.now()}`;
+	if (chatMessages.value.length === 0) {
+		setTimeout(() => {
+			const randomGreeting =
+				NAIT_GREETINGS[Math.floor(Math.random() * NAIT_GREETINGS.length)];
+			const naitGreetingMessageId = `nait_greeting_${Date.now()}`;
 
-            // Add an empty message first, which will be populated by simulateStreaming
-            chatMessages.value.push({
-                id: naitGreetingMessageId,
-                text: '', // Start with empty text
-                isNait: true
-            });
-            const naitMessageIndex = chatMessages.value.length - 1;
-            scrollToBottom(); // Scroll to show the (currently empty) bubble area
+			// Add an empty message first, which will be populated by simulateStreaming
+			chatMessages.value.push({
+				id: naitGreetingMessageId,
+				text: "", // Start with empty text
+				isNait: true,
+			});
+			const naitMessageIndex = chatMessages.value.length - 1;
+			scrollToBottom(); // Scroll to show the (currently empty) bubble area
 
-            // Use simulateStreaming to make the greeting appear typed out
-            // simulateStreaming will set isSummarizing to true, disabling input temporarily
-            simulateStreaming(
-                randomGreeting,
-                (chunk) => {
-                    // Ensure the message still exists and is the one we are targeting
-                    if (chatMessages.value[naitMessageIndex]?.id === naitGreetingMessageId) {
-                        chatMessages.value[naitMessageIndex].text += chunk;
-                        scrollToBottom();
-                    }
-                },
-                () => { // onComplete for simulateStreaming
-                    // isSummarizing and isSimulatingStream are reset to false by simulateStreaming
-                        nextTick(() => {
-                            activeTextareaRef.value?.focus(); // Focus input after greeting
-                        });
-                    
-                },
-                75 // Use a slightly faster speed for greetings (default is 30ms)
-            );
-        }, 1000);
-    }
+			// Use simulateStreaming to make the greeting appear typed out
+			// simulateStreaming will set isSummarizing to true, disabling input temporarily
+			simulateStreaming(
+				randomGreeting,
+				(chunk) => {
+					// Ensure the message still exists and is the one we are targeting
+					if (
+						chatMessages.value[naitMessageIndex]?.id === naitGreetingMessageId
+					) {
+						chatMessages.value[naitMessageIndex].text += chunk;
+						scrollToBottom();
+					}
+				},
+				() => {
+					// onComplete for simulateStreaming
+					// isSummarizing and isSimulatingStream are reset to false by simulateStreaming
+					nextTick(() => {
+						activeTextareaRef.value?.focus(); // Focus input after greeting
+					});
+				},
+				75, // Use a slightly faster speed for greetings (default is 30ms)
+			);
+		}, 1000);
+	}
 };
-watch(actualExamplePrompts, () => { if (isPopupOpen.value) nextTick(setupPromptCarousel); }, { immediate: true, deep: true });
+watch(
+	actualExamplePrompts,
+	() => {
+		if (isPopupOpen.value) nextTick(setupPromptCarousel);
+	},
+	{ immediate: true, deep: true },
+);
 
 const toggleMaximize = () => {
-    isMaximized.value = !isMaximized.value;
-    nextTick(() => {
-        scrollToBottom(); // Adjust scroll after resize
-        if (activeTextareaRef.value) {
-            adjustTextareaHeight(activeTextareaRef.value); // Adjust textarea height
-        }
-        setupPromptCarousel(); // Re-initialize carousel for new dimensions
-    });
+	isMaximized.value = !isMaximized.value;
+	nextTick(() => {
+		scrollToBottom(); // Adjust scroll after resize
+		if (activeTextareaRef.value) {
+			adjustTextareaHeight(activeTextareaRef.value); // Adjust textarea height
+		}
+		setupPromptCarousel(); // Re-initialize carousel for new dimensions
+	});
 };
 
 const closePopup = () => {
-    isPopupOpen.value = false;
-    isMaximized.value = false; // Reset maximized state when closing
+	isPopupOpen.value = false;
+	isMaximized.value = false; // Reset maximized state when closing
 };
 
 const clearAndCloseSession = () => {
-    stopTypingIndicator(); chatMessages.value = []; userInput.value = '';
-    isLoading.value = false; isSummarizing.value = false;
-    // isMaximized.value = false; // Retain current maximized state on session clear
-    sessionId.value = generateNewSessionId(); saveChatToLocalStorage();
-    cleanupOldSummaries(); // Also cleanup summaries on full session clear
-    nextTick(() => {
-        if (isPopupOpen.value && activeTextareaRef.value) {
-            activeTextareaRef.value.focus();
-        }
-    });
-    // Optionally, close the popup as well: isPopupOpen.value = false;
+	stopTypingIndicator();
+	chatMessages.value = [];
+	userInput.value = "";
+	isLoading.value = false;
+	isSummarizing.value = false;
+	// isMaximized.value = false; // Retain current maximized state on session clear
+	sessionId.value = generateNewSessionId();
+	saveChatToLocalStorage();
+	cleanupOldSummaries(); // Also cleanup summaries on full session clear
+	nextTick(() => {
+		if (isPopupOpen.value && activeTextareaRef.value) {
+			activeTextareaRef.value.focus();
+		}
+	});
+	// Optionally, close the popup as well: isPopupOpen.value = false;
 };
 
 let themeObserver: MutationObserver | null = null;
 
 onMounted(() => {
-    let storedId = localStorage.getItem(LS_SESSION_ID_KEY);
-    if (!storedId) { storedId = generateNewSessionId(); localStorage.setItem(LS_SESSION_ID_KEY, storedId); }
-    sessionId.value = storedId;
-    window.addEventListener('mouseup', globalMouseUpListenerBubble);
-    window.addEventListener('touchend', globalTouchEndListenerBubble);
+	let storedId = localStorage.getItem(LS_SESSION_ID_KEY);
+	if (!storedId) {
+		storedId = generateNewSessionId();
+		localStorage.setItem(LS_SESSION_ID_KEY, storedId);
+	}
+	sessionId.value = storedId;
+	window.addEventListener("mouseup", globalMouseUpListenerBubble);
+	window.addEventListener("touchend", globalTouchEndListenerBubble);
 
-    // Check initial theme
-    isDarkMode.value = document.documentElement.classList.contains('dark');
+	// Check initial theme
+	isDarkMode.value = document.documentElement.classList.contains("dark");
 
-    // Observe theme changes
-    themeObserver = new MutationObserver((mutationsList) => {
-        for (const mutation of mutationsList) {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                isDarkMode.value = document.documentElement.classList.contains('dark');
-            }
-        }
-    });
-    themeObserver.observe(document.documentElement, { attributes: true });
+	// Observe theme changes
+	themeObserver = new MutationObserver((mutationsList) => {
+		for (const mutation of mutationsList) {
+			if (
+				mutation.type === "attributes" &&
+				mutation.attributeName === "class"
+			) {
+				isDarkMode.value = document.documentElement.classList.contains("dark");
+			}
+		}
+	});
+	themeObserver.observe(document.documentElement, { attributes: true });
 
-    cleanupOldSummaries();
+	cleanupOldSummaries();
 });
-onBeforeUnmount(() => { window.removeEventListener('mouseup', globalMouseUpListenerBubble); window.removeEventListener('touchend', globalTouchEndListenerBubble); });
-
+onBeforeUnmount(() => {
+	window.removeEventListener("mouseup", globalMouseUpListenerBubble);
+	window.removeEventListener("touchend", globalTouchEndListenerBubble);
+});
 
 const updateCaretVisibility = () => {
-    if (!promptsScrollRef.value) return;
-    if (promptsScrollRef.value.offsetWidth === 0 && promptsScrollRef.value.offsetHeight === 0) {
-        showLeftCaret.value = false; showRightCaret.value = false; return;
-    }
-    const { scrollLeft: current, scrollWidth, clientWidth } = promptsScrollRef.value;
-    showLeftCaret.value = current > 1;
-    showRightCaret.value = scrollWidth > clientWidth && current < (scrollWidth - clientWidth - 1);
+	if (!promptsScrollRef.value) return;
+	if (
+		promptsScrollRef.value.offsetWidth === 0 &&
+		promptsScrollRef.value.offsetHeight === 0
+	) {
+		showLeftCaret.value = false;
+		showRightCaret.value = false;
+		return;
+	}
+	const {
+		scrollLeft: current,
+		scrollWidth,
+		clientWidth,
+	} = promptsScrollRef.value;
+	showLeftCaret.value = current > 1;
+	showRightCaret.value =
+		scrollWidth > clientWidth && current < scrollWidth - clientWidth - 1;
 };
 
 const handleScroll = () => updateCaretVisibility();
-const scrollPrompts = (dir: 'left' | 'right') => {
-    if (!promptsScrollRef.value) return;
-    const amount = promptsScrollRef.value.clientWidth * 0.8;
-    promptsScrollRef.value.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' });
-    setTimeout(updateCaretVisibility, 350);
+const scrollPrompts = (dir: "left" | "right") => {
+	if (!promptsScrollRef.value) return;
+	const amount = promptsScrollRef.value.clientWidth * 0.8;
+	promptsScrollRef.value.scrollBy({
+		left: dir === "left" ? -amount : amount,
+		behavior: "smooth",
+	});
+	setTimeout(updateCaretVisibility, 350);
 };
 
 const onMouseDown = (e: MouseEvent) => {
-    if (!promptsScrollRef.value) return;
-    isDragging.value = true; startX.value = e.pageX - promptsScrollRef.value.offsetLeft;
-    scrollLeft.value = promptsScrollRef.value.scrollLeft;
-    promptsScrollRef.value.style.cursor = 'grabbing'; promptsScrollRef.value.style.scrollBehavior = 'auto';
+	if (!promptsScrollRef.value) return;
+	isDragging.value = true;
+	startX.value = e.pageX - promptsScrollRef.value.offsetLeft;
+	scrollLeft.value = promptsScrollRef.value.scrollLeft;
+	promptsScrollRef.value.style.cursor = "grabbing";
+	promptsScrollRef.value.style.scrollBehavior = "auto";
 };
-const onMouseLeave = () => { /* Handled by global */ };
+const onMouseLeave = () => {
+	/* Handled by global */
+};
 const onMouseUp = () => {
-    if (!isDragging.value || !promptsScrollRef.value) return;
-    isDragging.value = false; promptsScrollRef.value.style.cursor = 'grab';
-    promptsScrollRef.value.style.scrollBehavior = 'smooth';
+	if (!isDragging.value || !promptsScrollRef.value) return;
+	isDragging.value = false;
+	promptsScrollRef.value.style.cursor = "grab";
+	promptsScrollRef.value.style.scrollBehavior = "smooth";
 };
 const onMouseMove = (e: MouseEvent) => {
-    if (!isDragging.value || !promptsScrollRef.value) return; e.preventDefault();
-    const x = e.pageX - promptsScrollRef.value.offsetLeft;
-    const walk = (x - startX.value) * 1.5;
-    promptsScrollRef.value.scrollLeft = scrollLeft.value - walk; updateCaretVisibility();
+	if (!isDragging.value || !promptsScrollRef.value) return;
+	e.preventDefault();
+	const x = e.pageX - promptsScrollRef.value.offsetLeft;
+	const walk = (x - startX.value) * 1.5;
+	promptsScrollRef.value.scrollLeft = scrollLeft.value - walk;
+	updateCaretVisibility();
 };
 const setupPromptCarousel = () => {
-    nextTick(() => {
-        if (promptsScrollRef.value && actualExamplePrompts.value.length > 0) {
-            promptsScrollRef.value.style.cursor = 'grab';
-            promptsScrollRef.value.style.scrollBehavior = 'smooth';
-            promptsScrollRef.value.scrollLeft = 0; updateCaretVisibility();
-        } else if (promptsScrollRef.value) { showLeftCaret.value = false; showRightCaret.value = false; }
-    });
+	nextTick(() => {
+		if (promptsScrollRef.value && actualExamplePrompts.value.length > 0) {
+			promptsScrollRef.value.style.cursor = "grab";
+			promptsScrollRef.value.style.scrollBehavior = "smooth";
+			promptsScrollRef.value.scrollLeft = 0;
+			updateCaretVisibility();
+		} else if (promptsScrollRef.value) {
+			showLeftCaret.value = false;
+			showRightCaret.value = false;
+		}
+	});
 };
 
 const onTouchStart = (event: TouchEvent) => {
-    if (!promptsScrollRef.value || event.touches.length === 0) return;
-    isDragging.value = true;
-    startX.value = event.touches[0].pageX - promptsScrollRef.value.offsetLeft;
-    scrollLeft.value = promptsScrollRef.value.scrollLeft;
-    promptsScrollRef.value.style.scrollBehavior = 'auto';
+	if (!promptsScrollRef.value || event.touches.length === 0) return;
+	isDragging.value = true;
+	startX.value = event.touches[0].pageX - promptsScrollRef.value.offsetLeft;
+	scrollLeft.value = promptsScrollRef.value.scrollLeft;
+	promptsScrollRef.value.style.scrollBehavior = "auto";
 };
 const onTouchMove = (event: TouchEvent) => {
-    if (!isDragging.value || !promptsScrollRef.value || event.touches.length === 0) return;
-    event.preventDefault(); // Prevent page scroll
-    const x = event.touches[0].pageX - promptsScrollRef.value.offsetLeft;
-    const walk = (x - startX.value) * 1.5; // Adjust multiplier for sensitivity
-    promptsScrollRef.value.scrollLeft = scrollLeft.value - walk;
-    updateCaretVisibility();
+	if (
+		!isDragging.value ||
+		!promptsScrollRef.value ||
+		event.touches.length === 0
+	)
+		return;
+	event.preventDefault(); // Prevent page scroll
+	const x = event.touches[0].pageX - promptsScrollRef.value.offsetLeft;
+	const walk = (x - startX.value) * 1.5; // Adjust multiplier for sensitivity
+	promptsScrollRef.value.scrollLeft = scrollLeft.value - walk;
+	updateCaretVisibility();
 };
 const onTouchEnd = () => {
-    if (!isDragging.value || !promptsScrollRef.value) return;
-    isDragging.value = false;
-    promptsScrollRef.value.style.scrollBehavior = 'smooth';
+	if (!isDragging.value || !promptsScrollRef.value) return;
+	isDragging.value = false;
+	promptsScrollRef.value.style.scrollBehavior = "smooth";
 };
 
-const globalMouseUpListenerBubble = () => { if (isDragging.value) onMouseUp(); };
-const globalTouchEndListenerBubble = () => { if (isDragging.value) onTouchEnd(); };
+const globalMouseUpListenerBubble = () => {
+	if (isDragging.value) onMouseUp();
+};
+const globalTouchEndListenerBubble = () => {
+	if (isDragging.value) onTouchEnd();
+};
 
-const parseMarkdown = (text: string) => text ? marked.parse(text, { gfm: true, breaks: true }) : '';
-const scrollToBottom = () => nextTick(() => { if (chatMessagesContainerRef.value) chatMessagesContainerRef.value.scrollTop = chatMessagesContainerRef.value.scrollHeight; });
+const parseMarkdown = (text: string) =>
+	text ? marked.parse(text, { gfm: true, breaks: true }) : "";
+const scrollToBottom = () =>
+	nextTick(() => {
+		if (chatMessagesContainerRef.value)
+			chatMessagesContainerRef.value.scrollTop =
+				chatMessagesContainerRef.value.scrollHeight;
+	});
 watch(chatMessages, scrollToBottom, { deep: true });
 
-const adjustTextareaHeight = (el: HTMLTextAreaElement | null) => { if (!el) return; el.style.height = 'auto'; const minH = parseInt(el.style.minHeight || '0', 10); el.style.height = `${Math.max(minH, el.scrollHeight)}px`; };
-watch(userInput, () => { if (isPopupOpen.value) adjustTextareaHeight(activeTextareaRef.value); });
+const adjustTextareaHeight = (el: HTMLTextAreaElement | null) => {
+	if (!el) return;
+	el.style.height = "auto";
+	const minH = parseInt(el.style.minHeight || "0", 10);
+	el.style.height = `${Math.max(minH, el.scrollHeight)}px`;
+};
+watch(userInput, () => {
+	if (isPopupOpen.value) adjustTextareaHeight(activeTextareaRef.value);
+});
 
-const handleEnter = (e: KeyboardEvent) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (userInput.value.trim() && !isLoading.value && !isSummarizing.value) sendMessage(); } };
-const handleExamplePromptClick = (prompt: ExamplePrompt) => { if (prompt.action === 'summarize') handleSummarizePage(); else sendExampleChatPrompt(prompt.text); };
-const sendExampleChatPrompt = (promptText: string) => { userInput.value = promptText; nextTick(() => { activeTextareaRef.value?.focus(); sendMessage(); }); };
+const handleEnter = (e: KeyboardEvent) => {
+	if (e.key === "Enter" && !e.shiftKey) {
+		e.preventDefault();
+		if (userInput.value.trim() && !isLoading.value && !isSummarizing.value)
+			sendMessage();
+	}
+};
+const handleExamplePromptClick = (prompt: ExamplePrompt) => {
+	if (prompt.action === "summarize") handleSummarizePage();
+	else sendExampleChatPrompt(prompt.text);
+};
+const sendExampleChatPrompt = (promptText: string) => {
+	userInput.value = promptText;
+	nextTick(() => {
+		activeTextareaRef.value?.focus();
+		sendMessage();
+	});
+};
 
-const sendMessage = async () => { // Standard chat message sending
-    const messageText = userInput.value.trim();
-    if (!messageText || isLoading.value || isSummarizing.value) return;
+const sendMessage = async () => {
+	// Standard chat message sending
+	const messageText = userInput.value.trim();
+	if (!messageText || isLoading.value || isSummarizing.value) return;
 
-    chatMessages.value.push({ id: `msg_popup_${Date.now()}`, text: messageText, isNait: false });
-    userInput.value = '';
-    nextTick(() => adjustTextareaHeight(activeTextareaRef.value));
+	chatMessages.value.push({
+		id: `msg_popup_${Date.now()}`,
+		text: messageText,
+		isNait: false,
+	});
+	userInput.value = "";
+	nextTick(() => adjustTextareaHeight(activeTextareaRef.value));
 
-    isLoading.value = true;
-    const naitMessageId = `nait_popup_stream_${Date.now()}`;
-    chatMessages.value.push({ id: naitMessageId, text: '', isNait: true });
-    const naitMessageIndex = chatMessages.value.length - 1;
-    startTypingIndicator(naitMessageIndex); // Default "Nait is thinking"
-    let firstChunkReceived = false;
+	isLoading.value = true;
+	const naitMessageId = `nait_popup_stream_${Date.now()}`;
+	chatMessages.value.push({ id: naitMessageId, text: "", isNait: true });
+	const naitMessageIndex = chatMessages.value.length - 1;
+	startTypingIndicator(naitMessageIndex); // Default "Nait is thinking"
+	let firstChunkReceived = false;
 
-    try {
-        const apiHost = import.meta.env.VITE_API_HOST || '';
-        let url = `${apiHost}api/nait/chat`;
-        if (!apiHost && typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV) {
-            url = 'http://localhost:3001/api/nait/chat';
-        } else if (!apiHost) { throw new Error("API host not configured for chat."); }
+	try {
+		const apiHost = import.meta.env.VITE_API_HOST || "";
+		let url = `${apiHost}api/nait/chat`;
+		if (
+			!apiHost &&
+			typeof import.meta !== "undefined" &&
+			import.meta.env &&
+			import.meta.env.DEV
+		) {
+			url = "http://localhost:3001/api/nait/chat";
+		} else if (!apiHost) {
+			throw new Error("API host not configured for chat.");
+		}
 
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: messageText, sessionId: sessionId.value }),
-        });
+		const response = await fetch(url, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				message: messageText,
+				sessionId: sessionId.value,
+			}),
+		});
 
-        stopTypingIndicator(); // Stop once response/stream starts or fails
+		stopTypingIndicator(); // Stop once response/stream starts or fails
 
-        if (!response.ok || !response.body) {
-            const errorText = response.ok ? "Response body is null." : await response.text();
-            if (chatMessages.value[naitMessageIndex]?.id === naitMessageId) chatMessages.value[naitMessageIndex].text = `Sorry, Nait encountered an error. (${response.status})`;
-            throw new Error(`Chat API Error: ${response.status} ${errorText}`);
-        }
-        if (chatMessages.value[naitMessageIndex]) chatMessages.value[naitMessageIndex].text = "";
+		if (!response.ok || !response.body) {
+			const errorText = response.ok
+				? "Response body is null."
+				: await response.text();
+			if (chatMessages.value[naitMessageIndex]?.id === naitMessageId)
+				chatMessages.value[naitMessageIndex].text =
+					`Sorry, Nait encountered an error. (${response.status})`;
+			throw new Error(`Chat API Error: ${response.status} ${errorText}`);
+		}
+		if (chatMessages.value[naitMessageIndex])
+			chatMessages.value[naitMessageIndex].text = "";
 
+		const reader = response.body.getReader();
+		const decoder = new TextDecoder();
+		let done = false;
+		let partialChunk = "";
 
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let done = false;
-        let partialChunk = '';
+		while (!done) {
+			const { value, done: readerDone } = await reader.read();
+			done = readerDone;
+			const chunkString =
+				partialChunk + decoder.decode(value, { stream: !done });
+			const sseMessages = chunkString.split("\n\n");
+			if (!done) partialChunk = sseMessages.pop() || "";
+			else partialChunk = "";
 
-        while (!done) {
-            const { value, done: readerDone } = await reader.read();
-            done = readerDone;
-            const chunkString = partialChunk + decoder.decode(value, { stream: !done });
-            const sseMessages = chunkString.split('\n\n');
-            if (!done) partialChunk = sseMessages.pop() || ''; else partialChunk = '';
-
-            for (const sseMessage of sseMessages) {
-                if (sseMessage.startsWith('data: ')) {
-                    const jsonData = sseMessage.substring(5).trim();
-                    if (jsonData) {
-                        try {
-                            const parsedData = JSON.parse(jsonData);
-                            if (parsedData.type === "stream_end") { done = true; break; }
-                            if (parsedData.text && chatMessages.value[naitMessageIndex]?.id === naitMessageId) {
-                                if (!firstChunkReceived) firstChunkReceived = true;
-                                chatMessages.value[naitMessageIndex].text += parsedData.text;
-                            }
-                        } catch (e) { console.error("NaitBubble: Error parsing JSON from chat stream:", jsonData, e); }
-                    }
-                }
-            }
-        }
-        if (!firstChunkReceived && chatMessages.value[naitMessageIndex]?.id === naitMessageId && chatMessages.value[naitMessageIndex].text === '') {
-            chatMessages.value[naitMessageIndex].text = "[Nait finished processing. No text content was streamed.]";
-        }
-    } catch (error) {
-        console.error('NaitBubble Chat Fetch/Stream Error:', error);
-        if (chatMessages.value[naitMessageIndex]?.id === naitMessageId) chatMessages.value[naitMessageIndex].text = 'Sorry, an issue occurred with Nait chat.';
-    } finally {
-        isLoading.value = false;
-        stopTypingIndicator();
-        nextTick(() => { if (isPopupOpen.value && activeTextareaRef.value) activeTextareaRef.value.focus(); });
-    }
+			for (const sseMessage of sseMessages) {
+				if (sseMessage.startsWith("data: ")) {
+					const jsonData = sseMessage.substring(5).trim();
+					if (jsonData) {
+						try {
+							const parsedData = JSON.parse(jsonData);
+							if (parsedData.type === "stream_end") {
+								done = true;
+								break;
+							}
+							if (
+								parsedData.text &&
+								chatMessages.value[naitMessageIndex]?.id === naitMessageId
+							) {
+								if (!firstChunkReceived) firstChunkReceived = true;
+								chatMessages.value[naitMessageIndex].text += parsedData.text;
+							}
+						} catch (e) {
+							console.error(
+								"NaitBubble: Error parsing JSON from chat stream:",
+								jsonData,
+								e,
+							);
+						}
+					}
+				}
+			}
+		}
+		if (
+			!firstChunkReceived &&
+			chatMessages.value[naitMessageIndex]?.id === naitMessageId &&
+			chatMessages.value[naitMessageIndex].text === ""
+		) {
+			chatMessages.value[naitMessageIndex].text =
+				"[Nait finished processing. No text content was streamed.]";
+		}
+	} catch (error) {
+		console.error("NaitBubble Chat Fetch/Stream Error:", error);
+		if (chatMessages.value[naitMessageIndex]?.id === naitMessageId)
+			chatMessages.value[naitMessageIndex].text =
+				"Sorry, an issue occurred with Nait chat.";
+	} finally {
+		isLoading.value = false;
+		stopTypingIndicator();
+		nextTick(() => {
+			if (isPopupOpen.value && activeTextareaRef.value)
+				activeTextareaRef.value.focus();
+		});
+	}
 };
 </script>
 
