@@ -240,7 +240,7 @@ const scoreClass = computed(() => {
 
 const generateQuiz = () => {
   let selectedQuestions = [];
-  // For chapters 1-7, pick one random question from each chapter's bank
+  // For each chapter, pick two random questions from its bank
   for (let i = 0; i < allQuestions.length; i++) { // Iterate through all chapters
     const chapterQuestions = [...allQuestions[i].questions]; // Create a shallow copy to shuffle
     // Shuffle the questions for the current chapter
@@ -248,9 +248,16 @@ const generateQuiz = () => {
       const k = Math.floor(Math.random() * (j + 1));
       [chapterQuestions[j], chapterQuestions[k]] = [chapterQuestions[k], chapterQuestions[j]];
     }
-    // Take the first two unique questions (assuming each chapter has at least 2 questions)
-    selectedQuestions.push(chapterQuestions[0]);
-    selectedQuestions.push(chapterQuestions[1]);
+    // Take the first two unique questions and shuffle their options
+    [chapterQuestions[0], chapterQuestions[1]].forEach(q => {
+      const newQuestion = { ...q, options: [...q.options] }; // Create copies to avoid mutating original data
+      // Shuffle options using the Fisher-Yates algorithm
+      for (let i = newQuestion.options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newQuestion.options[i], newQuestion.options[j]] = [newQuestion.options[j], newQuestion.options[i]];
+      }
+      selectedQuestions.push(newQuestion);
+    });
   }
   quizQuestions.value = selectedQuestions;
   userAnswers.value = {};
