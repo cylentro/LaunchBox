@@ -17,7 +17,14 @@ import NaitBubble from "../../components/assistant/NaitBubble.vue";
 
 const { Layout } = DefaultTheme;
 const { page } = useData();
-const pagesToHideBubble = ["index.md", "license.md", '404.md','gaillery/prompting-101/quiz.md'];
+const pagesToHideBubble = [
+  "index.md", 
+  "license.md", 
+  '404.md',
+  
+  'courses/index.md',
+  'courses/prompting-101/quiz.md', 
+];
 const isBubbleHiddenPage = computed(() => {
 	return pagesToHideBubble.includes(page.value.relativePath);
 });
