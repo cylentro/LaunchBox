@@ -21,11 +21,9 @@ const pagesToHideBubble = [
   "index.md", 
   "license.md", 
   '404.md',
-  
   'courses/index.md',
-  'courses/prompting-101/quiz.md', 
 ];
 const isBubbleHiddenPage = computed(() => {
-	return pagesToHideBubble.includes(page.value.relativePath);
+  return pagesToHideBubble.includes(page.value.relativePath) || page.value.relativePath.endsWith('quiz.md');
 });
 </script>
