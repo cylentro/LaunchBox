@@ -11,8 +11,8 @@ prev:
   text: "Convo 2: The Architecture of the Interview - Deconstructing the 'How'"
   link: /courses/the-art-of-the-ask/convo-2_the-architecture-of-the-interview
 next:
-  text: "Convo 4: Synthesizing Insights - Making Sense of the Stories"
-  link: /courses/the-art-of-the-ask/convo-4_synthesizing-insights
+  text: "Convo 4: In the Arena - Conducting Interviews with Finesse"
+  link: /courses/the-art-of-the-ask/convo-4_conducting-interviews-with-finesse
 ---
 # Convo 3: The Art of the Question - Crafting Probes That Uncover Truth
 
@@ -113,10 +113,9 @@ This is a gentle, open-ended invitation for the user to elaborate on a topic. It
 This probe is essential for grounding abstract statements or generalizations in concrete reality. Users often speak in generalities, but design decisions must be based on specific use cases. Asking for an example forces the user to recall a real event, which is always richer in detail than an abstract opinion.
 
 * **User:** *"The customer support process is usually pretty slow."*
-::: tip Pro-Tip: The "Show Me" Imperative
-Whenever a user makes a general statement about a process or a problem, immediately follow up with an "Example" or "Last Time" probe. This shifts the conversation from abstract opinions to concrete behaviors, which are far more reliable and insightful.
-:::
-
+  ::: tip Pro-Tip: The "Show Me" Imperative
+  Whenever a user makes a general statement about a process or a problem, immediately follow up with an "Example" or "Last Time" probe. This shifts the conversation from abstract opinions to concrete behaviors, which are far more reliable and insightful.
+  :::
 * **Interviewer:** *"Could you give me an example of a time you found it to be slow?"*
 * **Potential Insight:** The user's story might reveal that the "slowness" wasn't the agent's response time, but the time it took to find the support contact information in the first place, or the number of times they were transferred between departments. The example pinpoints the *actual* source of the friction.
 

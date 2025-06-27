@@ -11,8 +11,8 @@ prev:
   text: "Convo 3: The Art of the Question - Crafting Probes That Uncover Truth"
   link: /courses/the-art-of-the-ask/convo-3_the-art-of-the-question
 next:
-  text: "Convo 5: Synthesizing Insights - Making Sense of the Stories"
-  link: /courses/the-art-of-the-ask/convo-5_synthesizing-insights
+  text: "Convo 5: The Synthesis - From Raw Data to Actionable Gold"
+  link: /courses/the-art-of-the-ask/convo-5_from-raw-data-to-actionable-gold
 ---
 # Convo 4: In the Arena - Conducting Interviews with Finesse
 
@@ -77,10 +77,10 @@ These are the silent signals of engagement.
 * **Maintaining Eye Contact:** Appropriate eye contact shows that the interviewer is focused on the participant, not distracted by notes or a screen.
 
 #### Verbal Cues:
+
 ::: tip Pro-Tip: The Power of the Pause
 When a participant finishes a thought, especially a critical one, resist the urge to immediately jump in. A strategic pause (even 3-5 seconds) often prompts the participant to elaborate further, providing more detail and context without you having to ask another question.
 :::
-
 
 These are brief, unobtrusive vocalizations that affirm the listener's attention.
 

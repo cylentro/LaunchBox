@@ -27,8 +27,10 @@ Many beginners interact with AI as if it's a search engine, typing in a few keyw
 ### The Recipe Analogy
 
 Think of a prompt as a recipe you're giving to a master chef (the AI).
-<br/>If you give a vague recipe like, "Make me some food," the chef might make you anything—a sandwich, a soup, a dessert. The result is unpredictable. However, if you provide a detailed recipe like, "Bake a three-layer chocolate cake with dark chocolate frosting, topped with fresh raspberries, and write 'Happy Birthday' on it," you're going to get exactly what you envisioned.
-<br/><br/>A prompt works the same way. The more specific and detailed your instructions, the better and more relevant the AI's output will be.
+
+If you give a vague recipe like, "Make me some food," the chef might make you anything—a sandwich, a soup, a dessert. The result is unpredictable. However, if you provide a detailed recipe like, "Bake a three-layer chocolate cake with dark chocolate frosting, topped with fresh raspberries, and write 'Happy Birthday' on it," you're going to get exactly what you envisioned.
+
+A prompt works the same way. The more specific and detailed your instructions, the better and more relevant the AI's output will be.
 
 ### The Anatomy of a Good Prompt
 
@@ -97,11 +99,11 @@ In this lab, you'll practice building a high-quality prompt from scratch to solv
   - **Review the output.** It will likely be generic and missing key details.
   - **The Detailed Prompt:** Now, let's build a better prompt using the anatomy we learned. In a new chat, type the following:
     ::: info Prompt
-    I am the project manager for the 'Apollo Project'. My team is working on a tight deadline. **(Context)**
-    <br/>Draft an email to my team announcing a mandatory meeting. **(Task)**
-    <br/>The meeting is tomorrow at 10 AM via Zoom to discuss an urgent update to the project budget. The tone should be direct and professional, but also apologize for the short notice. Keep the email under 100 words. **(Specificity)**
-    <br/>The subject line should be 'Urgent Meeting: Apollo Project Budget'. Include this placeholder for the meeting link: [Zoom Link Here]. **(Format)**
-    :::
+    - I am the project manager for the 'Apollo Project'. My team is working on a tight deadline. **(Context)**
+    - Draft an email to my team announcing a mandatory meeting. **(Task)**
+    - The meeting is tomorrow at 10 AM via Zoom to discuss an urgent update to the project budget. The tone should be direct and professional, but also apologize for the short notice. Keep the email under 100 words. **(Specificity)**
+    - The subject line should be 'Urgent Meeting: Apollo Project Budget'. Include this placeholder for the meeting link: [Zoom Link Here]. **(Format)**
+      :::
   - **Compare the Results:** Look at the two emails the AI generated. The second one is ready to send, while the first one would require heavy editing. This exercise demonstrates that the time you invest in writing a good prompt is saved tenfold in editing and rework.
 
 ## Summary & Key Takeaways

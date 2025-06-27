@@ -1,9 +1,9 @@
 <template>
   <Layout>
     <template #layout-bottom>
-      <SpotifyBubble />
+      <SpotifyBubble v-if="!isSpotifyBubbleHiddenPage" />
       <!-- Conditionally render NaitBubble: hide if on index.md -->
-      <NaitBubble v-if="!isBubbleHiddenPage" />
+      <NaitBubble v-if="!isNaitBubbleHiddenPage" />
     </template>
   </Layout>
 </template>
@@ -21,9 +21,11 @@ const pagesToHideBubble = [
   "index.md", 
   "license.md", 
   '404.md',
-  'courses/index.md',
 ];
-const isBubbleHiddenPage = computed(() => {
-  return pagesToHideBubble.includes(page.value.relativePath) || page.value.relativePath.endsWith('quiz.md');
+const isNaitBubbleHiddenPage = computed(() => {
+  return pagesToHideBubble.includes(page.value.relativePath) || page.value.relativePath.includes('courses/');
+});
+const isSpotifyBubbleHiddenPage = computed(() => {
+  return page.value.relativePath.includes('courses/');
 });
 </script>

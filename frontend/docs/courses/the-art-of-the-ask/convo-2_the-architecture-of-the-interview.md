@@ -11,8 +11,8 @@ prev:
   text: "Convo 1: The Soul of the Interview - Mastering the 'Why'"
   link: /courses/the-art-of-the-ask/convo-1_the-soul-of-the-interview
 next:
-  text: "Convo 3: Mastering the Interview Conversation"
-  link: /courses/the-art-of-the-ask/convo-3_mastering-the-interview-conversation
+  text: "Convo 3: The Art of the Question - Crafting Probes That Uncover Truth"
+  link: /courses/the-art-of-the-ask/convo-3_the-art-of-the-question
 ---
 # Convo 2: The Architecture of the Interview - Deconstructing the 'How'
 
@@ -41,7 +41,7 @@ Before writing a single question, the team must define what it needs to learn. T
 
 * **Bad Objective:** "We want to talk to some freelancers to see if they like our app idea."
 * **Good Objective (SMART):** "To understand the current financial tracking habits, tools, and frustrations of freelance graphic designers in Indonesia with 2-5 years of experience. The goal is to identify specific, unmet needs related to invoicing and expense management that our app can solve in the next six months."
-  <br/>This objective is:
+  `<br/>`This objective is:
   * **Specific:** freelance graphic designers in Indonesia,
   * **Measurable:** unmet needs identified,
   * **Achievable:** within a defined scope,
@@ -79,13 +79,19 @@ This is the execution phase where the researcher meets with the recruited partic
 
 Immediately after the interviews, the analysis process begins. This is where raw data (transcripts, notes) is transformed into meaningful patterns and insights. The most common method is thematic analysis, often facilitated by affinity mapping.
 
-* **Analysis for Freenancer:** The research team transcribes the interviews. They then read through the transcripts, highlighting key quotes and observations. Using a digital whiteboard, they write each observation on a virtual sticky note. They collaboratively group these notes into clusters based on similarity, identifying emerging themes like "Invoice Anxiety," "The Multi-App Juggle," "Fear of Tax Time," and "Blurry Lines Between Personal and Business Finances.".
+#### Analysis for Freenancer
+
+The research team transcribes the interviews. They then read through the transcripts, highlighting key quotes and observations. Using a digital whiteboard, they write each observation on a virtual sticky note. 
+
+They collaboratively group these notes into clusters based on similarity, identifying emerging themes like "Invoice Anxiety," "The Multi-App Juggle," "Fear of Tax Time," and "Blurry Lines Between Personal and Business Finances.".
 
 ### Step 8: Create & Share Report
 
 The final step is to communicate the findings to the broader team and stakeholders in a way that drives action. A dry report or a full transcript is rarely effective. The report should be a compelling narrative that tells the story of the user, supported by evidence.
 
-**Report for Freenancer:** Instead of sending out transcripts, the researcher creates a thematic report. It includes:
+#### Report for Freenancer 
+
+Instead of sending out transcripts, the researcher creates a thematic report. It includes:
 
 * An executive summary of the key insights.
 * Detailed sections for each theme (e.g., "Invoice Anxiety"), illustrated with powerful, anonymous quotes from participants.
@@ -114,10 +120,10 @@ A screener survey is a short questionnaire designed to filter a large pool of po
 * **Provide Clear, Mutually Exclusive Answers:** Ensure that answer choices for multiple-choice questions are unambiguous and do not overlap. For example, use age ranges like "25-34" and "35-44," not "25-35" and "35-45." Always include an "I prefer not to say" or "None of the above" option where appropriate.
 
 ### Recruitment Channel Analysis
+
 ::: tip Pro-Tip: Don't Skimp on Recruitment
 The quality of your insights is directly proportional to the quality of your participants. Investing in rigorous recruitment, even if it costs more upfront, saves significant time and resources later by preventing you from building the wrong product based on flawed data.
 :::
-
 
 Once you have a solid screener, the next step is to decide where to find your participants. The choice of recruitment channel is a strategic one, involving trade-offs between cost, speed, and participant quality. There is no single "best" channel; the optimal choice depends on the specific research goals, budget, and timeline.
 

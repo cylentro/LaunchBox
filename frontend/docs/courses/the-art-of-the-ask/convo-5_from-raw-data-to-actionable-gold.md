@@ -65,10 +65,10 @@ A user persona is a fictional, composite character that represents a key user se
 This persona, "Anisa," is now a data-driven representation of a key user segment. When the team discusses new features, they can ask, "How would this help Anisa achieve her goals?" or "Would this solve one of Anisa's key frustrations?" The persona transforms an abstract user base into a relatable human being, grounding every design and development decision in real user needs.
 
 ### Mapping the User's Reality
+
 ::: tip Pro-Tip: Journey Maps for Alignment
 Use journey maps not just for analysis, but as a powerful communication tool. They visually align stakeholders on the user's current experience, highlighting shared pain points and creating a common understanding of where product improvements are most needed.
 :::
-
 
 A user journey map is a visualization of the process that a person goes through in order to accomplish a goal. It is a powerful tool for synthesizing interview data because it maps a user's actions, thoughts, and feelings over time, revealing critical moments of friction and opportunity.Using the interview transcripts from the **Freenancer** research, the team can construct a journey map for the "Invoicing and Getting Paid" process. The map would be structured as a timeline with several key lanes:
 

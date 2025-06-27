@@ -11,8 +11,8 @@ prev:
   text: 'The Art of the Ask'
   link: /courses/the-art-of-the-ask
 next:
-  text: "Convo 2: The Interviewer's Toolkit"
-  link: /courses/the-art-of-the-ask/convo-2_the-interviewers-toolkit
+  text: "Convo 2: The Architecture of the Interview - Deconstructing the 'How'"
+  link: /courses/the-art-of-the-ask/convo-2_the-architecture-of-the-interview
 ---
 # Convo 1: The Soul of the Interview - Mastering the 'Why'
 

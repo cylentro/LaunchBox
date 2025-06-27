@@ -95,7 +95,7 @@ watch(isPanelOpen, (newVal) => {
 
 <style scoped>
 .spotify-caret-button {
-    width: 25px;
+    width: 23px;
     height: 60px;
     background-color: rgba(29, 185, 84, 0.5);
     backdrop-filter: blur(10px);
