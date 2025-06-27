@@ -46,6 +46,6 @@ const showReadOMeter = computed(() => {
 const showProgressBar = computed(() => {
   const path = page.value.relativePath;
   // Show on course pages, but not on the course index or quiz pages.
-  return path.includes('courses/') && !path.endsWith('quiz.md');
+  return path.includes('courses/') && !path.endsWith('quiz.md') && !path.match('courses/index.md');
 });
 </script>
