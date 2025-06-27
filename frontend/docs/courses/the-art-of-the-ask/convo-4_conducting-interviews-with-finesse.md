@@ -34,7 +34,7 @@ The interviewer begins with a warm, friendly greeting and some light, non-work-r
 
 They then clearly and transparently explain the purpose and structure of the session, emphasizing the participant's role as the expert.
 
-* Interviewer: *"Just to give you a quick overview, we're here today to learn about your experience with managing finances as a freelancer. I work on the Freenancer team, and our goal is simply to understand your world better so we can build more helpful tools. There are absolutely no right or wrong answers here. We haven't built anything yet, so you can't break anything or hurt anyone's feelings. Your honest perspective is the most valuable thing you can give us. We're just here to learn from you."*
+**Interviewer:** *"Just to give you a quick overview, we're here today to learn about your experience with managing finances as a freelancer. I work on the Freenancer team, and our goal is simply to understand your world better so we can build more helpful tools. There are absolutely no right or wrong answers here. We haven't built anything yet, so you can't break anything or hurt anyone's feelings. Your honest perspective is the most valuable thing you can give us. We're just here to learn from you."*
 
 #### The Result
 
@@ -52,7 +52,7 @@ The interviewer is cold, clinical, and jumps straight into the business of the i
 
 They frame the session as a test of the product, which implicitly frames it as a test of the user.
 
-* Interviewer: *"Hello. Thank you for participating. We are testing a new design to see if it works. I am going to ask you a series of questions about this prototype."*
+**Interviewer:** *"Hello. Thank you for participating. We are testing a new design to see if it works. I am going to ask you a series of questions about this prototype."*
 
 #### The Result
 
@@ -68,7 +68,7 @@ Once rapport is established, the interviewer's primary job shifts to active list
 
 Active listening is more than just hearing words; it is the practice of showing the participant that they are being heard and understood. This encourages them to continue sharing and provides reassurance that their contributions are valued. Effective active listening involves both non-verbal and verbal cues.
 
-#### Non-Verbal Cues:
+#### Non-Verbal Cues
 
 These are the silent signals of engagement.
 
@@ -76,7 +76,7 @@ These are the silent signals of engagement.
 * **Open Body Posture:** Avoiding crossed arms or legs signals openness and receptivity. Leaning slightly forward can convey interest and attentiveness.
 * **Maintaining Eye Contact:** Appropriate eye contact shows that the interviewer is focused on the participant, not distracted by notes or a screen.
 
-#### Verbal Cues:
+#### Verbal Cues
 
 ::: tip Pro-Tip: The Power of the Pause
 When a participant finishes a thought, especially a critical one, resist the urge to immediately jump in. A strategic pause (even 3-5 seconds) often prompts the participant to elaborate further, providing more detail and context without you having to ask another question.
@@ -95,9 +95,12 @@ One of the most challenging moments in an interview is when a participant provid
 
 Here is how different interviewers might respond:
 
-* **Bad (Biased) Interviewer:** *"Oh, really? It's right there in the top-right corner. We put it there because that's the standard. Most people find it pretty easily."*
-  * **Analysis:** This response is disastrous for several reasons. It invalidates the user's experience ("Most people find it"). It becomes defensive ("We put it there because..."). It corrects the user ("It's right there"). The participant now feels foolish and is highly unlikely to offer any more critical feedback for the remainder of the session. The interview's value has been destroyed.
-* **Good (Neutral) Interviewer:** *\[Pauses for a moment, nods slowly\]* *"Thank you for sharing that with me. That's really helpful feedback. Can you tell me more about what you were expecting to see in that moment?"*
-  * **Analysis:** This response is effective because it does several things correctly. It validates the user's feeling without agreeing with their conclusion ("Thank you for sharing that"). It reframes their criticism as "helpful feedback," encouraging more of it. Most importantly, it uses the feedback as a springboard for a deeper, neutral probe ("What were you expecting to see?"). This question seeks to understand the user's mental model—the underlying expectation that led to their confusion. The interviewer has remained a neutral learner, and the participant feels safe to continue sharing their honest thoughts.
+> **Bad (Biased) Interviewer:** *"Oh, really? It's right there in the top-right corner. We put it there because that's the standard. Most people find it pretty easily."*
+
+**Analysis:** This response is disastrous for several reasons. It invalidates the user's experience ("Most people find it"). It becomes defensive ("We put it there because..."). It corrects the user ("It's right there"). The participant now feels foolish and is highly unlikely to offer any more critical feedback for the remainder of the session. The interview's value has been destroyed.
+
+> **Good (Neutral) Interviewer:** *\[Pauses for a moment, nods slowly\]* *"Thank you for sharing that with me. That's really helpful feedback. Can you tell me more about what you were expecting to see in that moment?"*
+
+**Analysis:** This response is effective because it does several things correctly. It validates the user's feeling without agreeing with their conclusion ("Thank you for sharing that"). It reframes their criticism as "helpful feedback," encouraging more of it. Most importantly, it uses the feedback as a springboard for a deeper, neutral probe ("What were you expecting to see?"). This question seeks to understand the user's mental model—the underlying expectation that led to their confusion. The interviewer has remained a neutral learner, and the participant feels safe to continue sharing their honest thoughts.
 
 Another powerful tool for maintaining neutrality is the strategic use of silence. When a participant finishes a thought, especially a critical one, an inexperienced interviewer might rush to fill the silence. An expert waits. This pause often prompts the participant to elaborate further, providing more detail and context without the interviewer having to ask another question. Neutrality is not passivity; it is the active discipline of prioritizing the user's unvarnished truth above the interviewer's own ego or assumptions.

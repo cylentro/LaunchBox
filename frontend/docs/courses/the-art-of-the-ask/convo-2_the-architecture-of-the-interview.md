@@ -81,7 +81,7 @@ Immediately after the interviews, the analysis process begins. This is where raw
 
 #### Analysis for Freenancer
 
-The research team transcribes the interviews. They then read through the transcripts, highlighting key quotes and observations. Using a digital whiteboard, they write each observation on a virtual sticky note. 
+The research team transcribes the interviews. They then read through the transcripts, highlighting key quotes and observations. Using a digital whiteboard, they write each observation on a virtual sticky note.
 
 They collaboratively group these notes into clusters based on similarity, identifying emerging themes like "Invoice Anxiety," "The Multi-App Juggle," "Fear of Tax Time," and "Blurry Lines Between Personal and Business Finances.".
 
@@ -89,7 +89,7 @@ They collaboratively group these notes into clusters based on similarity, identi
 
 The final step is to communicate the findings to the broader team and stakeholders in a way that drives action. A dry report or a full transcript is rarely effective. The report should be a compelling narrative that tells the story of the user, supported by evidence.
 
-#### Report for Freenancer 
+#### Report for Freenancer
 
 Instead of sending out transcripts, the researcher creates a thematic report. It includes:
 
@@ -107,7 +107,9 @@ The quality of your research insights is directly dependent on the quality of yo
 
 ### The Science of Screener Surveys
 
-A screener survey is a short questionnaire designed to filter a large pool of potential participants down to those who precisely match your target audience criteria. The art of a good screener lies in gathering the necessary information to qualify or disqualify candidates without revealing the "correct" answers, which can encourage people to misrepresent themselves to receive an incentive.**Key Principles for Effective Screener Design:
+A screener survey is a short questionnaire designed to filter a large pool of potential participants down to those who precisely match your target audience criteria. The art of a good screener lies in gathering the necessary information to qualify or disqualify candidates without revealing the "correct" answers, which can encourage people to misrepresent themselves to receive an incentive.
+
+#### Key Principles for Effective Screener Design:
 
 * **Keep it Short and Simple:** A long, complex screener will lead to high drop-off rates. Aim for only the most essential questions needed to verify a participant's fit.
 * **Avoid Leading Questions:** Never phrase a question in a way that signals the desired answer.

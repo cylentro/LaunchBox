@@ -34,14 +34,20 @@ Elicit a brief, specific response, often a single word or a selection from prede
 
 #### Open-ended questions
 
-Encourage detailed, expansive responses that go beyond a simple 'yes' or 'no'. They often begin with words like "Tell me about...", "Walk me through...", "How...", "What...", or "Why...". They invite the user to tell a story in their own words.
+Encourage detailed, expansive responses that go **beyond a simple 'yes' or 'no'.** They often begin with words like **"Tell me about...", "Walk me through...", "How...", "What...", or "Why..."**. They invite the user to tell a story in their own words.
 
 * **Examples:** *"Tell me about your process for managing client invoices."*, *"What are some of the things you consider when deciding to purchase a new gadget?"*, *"Walk me through the last time you tried to find something on our website."*
   * **Pros:** They elicit rich, detailed stories and uncover motivations, pain points, and context that closed questions cannot. They are the primary engine of qualitative insight.
   * **Cons:** The responses can be long and sometimes unfocused, requiring more effort from both the participant to answer and the researcher to analyze.
 
 ::: info Strategic Use
-A common and effective pattern is to use a closed-ended question to establish a fact, followed immediately by an open-ended question to explore the context behind it. For example: *"Did you use the search feature on your last visit? (Closed)... Can you tell me more about what you were trying to find? (Open)"*
+A common and effective pattern is to use a closed-ended question to establish a fact, followed immediately by an open-ended question to explore the context behind it.
+
+For example:
+
+* **Closed:** Did you use the search feature on your last visit?
+* **Open:** Can you tell me more about what you were trying to find?
+
 :::
 
 ### Leading vs. Neutral Questions
@@ -112,10 +118,11 @@ This is a gentle, open-ended invitation for the user to elaborate on a topic. It
 
 This probe is essential for grounding abstract statements or generalizations in concrete reality. Users often speak in generalities, but design decisions must be based on specific use cases. Asking for an example forces the user to recall a real event, which is always richer in detail than an abstract opinion.
 
+::: tip Pro-Tip: The "Show Me" Imperative
+Whenever a user makes a general statement about a process or a problem, immediately follow up with an "Example" or "Last Time" probe. This shifts the conversation from abstract opinions to concrete behaviors, which are far more reliable and insightful.
+:::
+
 * **User:** *"The customer support process is usually pretty slow."*
-  ::: tip Pro-Tip: The "Show Me" Imperative
-  Whenever a user makes a general statement about a process or a problem, immediately follow up with an "Example" or "Last Time" probe. This shifts the conversation from abstract opinions to concrete behaviors, which are far more reliable and insightful.
-  :::
 * **Interviewer:** *"Could you give me an example of a time you found it to be slow?"*
 * **Potential Insight:** The user's story might reveal that the "slowness" wasn't the agent's response time, but the time it took to find the support contact information in the first place, or the number of times they were transferred between departments. The example pinpoints the *actual* source of the friction.
 
