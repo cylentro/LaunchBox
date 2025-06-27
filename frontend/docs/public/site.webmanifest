@@ -1,6 +1,6 @@
 {
-	"name": "MyWebSite",
-	"short_name": "MySite",
+	"name": "Christian Hadianto's Portfolio",
+	"short_name": "Christian",
 	"icons": [
 		{
 			"src": "/web-app-manifest-192x192.png",

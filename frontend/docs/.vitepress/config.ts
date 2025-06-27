@@ -6,8 +6,10 @@ export default defineConfig({
 	titleTemplate: ":title",
 	description:
 		"Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
+	cleanUrls: true, // Ensures URLs are generated without .html extensions
 
 	head: [
+		// --- SEO and Behavior Tags ---
 		["meta", { name: "robots", content: "index, follow" }],
 		[
 			"meta",
@@ -19,55 +21,23 @@ export default defineConfig({
 		],
 		["meta", { name: "author", content: "Christian Hadianto" }],
 
-		// Canonical URL will be handled by transformHead for page-specificity
-		// ["link", { rel: "canonical", href: "https://bychris.me" }], // Remove or comment out global canonical
-
-		// --- Open Graph (OG) Tags for Social Sharing ---
-		[
-			"meta",
-			{
-				property: "og:title",
-				content: "Christian Hadianto | Product Manager & AI Enthusiast",
-			},
-		],
-		[
-			"meta",
-			{
-				property: "og:description",
-				content:
-					"Explore the portfolio of Christian Hadianto, a Product Manager with 10 years of experience in logistics and a passion for building innovative products with Generative AI.",
-			},
-		],
+		// --- Open Graph (OG) Site-wide Defaults ---
+		// These tags are not generated in `transformHead` and serve as good defaults.
 		["meta", { property: "og:type", content: "website" }],
 		[
 			"meta",
 			{ property: "og:image", content: "https://bychris.me/self_banner.jpg" },
 		],
-		["meta", { property: "og:url", content: "https://bychris.me" }],
 		["meta", { property: "og:locale", content: "en_US" }],
 
-		// --- Twitter Card Tags ---
+		// --- Twitter Card Site-wide Defaults ---
 		["meta", { name: "twitter:card", content: "summary_large_image" }],
-		[
-			"meta",
-			{
-				name: "twitter:title",
-				content: "Christian Hadianto | Product Manager & AI Enthusiast",
-			},
-		],
-		[
-			"meta",
-			{
-				name: "twitter:description",
-				content:
-					"Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
-			},
-		],
 		[
 			"meta",
 			{ name: "twitter:image", content: "https://bychris.me/self_banner.jpg" },
 		],
 
+		// --- Favicon and App Icons ---
 		[
 			"link",
 			{
@@ -110,9 +80,10 @@ export default defineConfig({
 		],
 		["link", { rel: "manifest", href: "/site.webmanifest" }],
 
+		// --- Theme and PWA Tags ---
 		["link", { rel: "mask-icon", href: "/favicon.svg", color: "#1e88e5" }],
 		["meta", { name: "msapplication-TileColor", content: "#1e88e5" }],
-		["meta", { name: "theme-color", content: "#1e88e5" }], // Sets the browser toolbar color
+		["meta", { name: "theme-color", content: "#1e88e5" }],
 
 		// --- Structured Data ---
 		[
@@ -158,36 +129,35 @@ export default defineConfig({
 
 	async transformHead({ pageData, siteData }) {
 		const newHead: HeadConfig[] = [];
+		const siteUrl = "https://bychris.me";
 
-		const siteUrl = "https://bychris.me"; // Your site's base URL
-		// Ensure clean URLs: remove .html, and index.html for root/section paths
-		let pagePath = pageData.relativePath.replace(/\.md$/, ".html");
-		if (pagePath.endsWith("index.html")) {
-			pagePath = pagePath.substring(0, pagePath.length - "index.html".length);
-		} else if (pagePath.endsWith(".html")) {
-			pagePath = pagePath.substring(0, pagePath.length - ".html".length);
+		// This logic correctly removes .md and index.md to create clean URLs
+		// (e.g., 'profile/resume.md' -> 'profile/resume')
+		let pagePath = pageData.relativePath.replace(/\.md$/, "");
+		if (pagePath.endsWith("index")) {
+			pagePath = pagePath.slice(0, -5);
 		}
-		const pageUrl = `${siteUrl}/${pagePath}`.replace(/\/$/, ""); // Remove trailing slash if any, except for base URL
 
-		// Page Title (pageData.title is already formatted by titleTemplate)
+		const pageUrl = `${siteUrl}/${pagePath}`.replace(/\/$/, "");
+
+		// Dynamically get the title and description for the current page
 		const title = pageData.title || siteData.title;
-
-		// Page Description (VitePress uses pageData.frontmatter.description for <meta name="description">, falling back to siteData.description)
 		const description =
 			pageData.frontmatter.description || siteData.description;
 
-		// Override canonical URL
-		newHead.push(["link", { rel: "canonical", href: pageUrl }]);
+		// Set the primary meta description for search engines. This is crucial.
+		newHead.push([
+			"meta", { name: "description", content: description }
+		]);
 
-		// Override OG tags
+		// Add page-specific, canonical, and OG tags. This is the single source of truth.
+		newHead.push(["link", { rel: "canonical", href: pageUrl }]);
+		newHead.push(["meta", { property: "og:url", content: pageUrl }]);
 		newHead.push(["meta", { property: "og:title", content: title }]);
 		newHead.push([
 			"meta",
 			{ property: "og:description", content: description },
 		]);
-		newHead.push(["meta", { property: "og:url", content: pageUrl }]);
-
-		// Override Twitter tags
 		newHead.push(["meta", { name: "twitter:title", content: title }]);
 		newHead.push([
 			"meta",
@@ -196,6 +166,7 @@ export default defineConfig({
 
 		return newHead;
 	},
+
 	themeConfig: {
 		logo: "/logo.png",
 		nav: [
@@ -232,7 +203,7 @@ export default defineConfig({
 			"/courses/prompting-101/": [
 				{
 					text: "Prompting 101: The Playbook for Everyone",
-					link: "/courses/prompting-101",
+					link: "/courses/prompting-101/",
 				},
 				{
 					text: "The Complete Course Manuscript",
@@ -380,4 +351,5 @@ export default defineConfig({
 	sitemap: {
 		hostname: "https://bychris.me",
 	},
+	
 });
