@@ -1,4 +1,26 @@
 import { defineConfig, type HeadConfig } from "vitepress";
+import fs from "fs";
+import path from "path";
+
+function getReadingTime(content) {
+	if (!content) {
+		return 0;
+	}
+	const wordsPerMinute = 225;
+	// Remove frontmatter, script/style blocks, HTML tags, and code blocks
+	const text = content
+		.replace(/---[\s\S]*?---/, "") // Remove frontmatter
+		.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "") // Remove script tags
+		.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "") // Remove style tags
+		.replace(/<[^>]*>/g, "") // Remove remaining HTML tags
+		.replace(/```[\s\S]*?```/g, "") // Remove code blocks
+		.replace(/`[^`]*`/g, "") // Remove inline code
+		.replace(/[#*~_>|]/g, ""); // Remove markdown characters
+
+	const wordCount = text.match(/\w+/g)?.length || 0;
+	const readingTime = Math.ceil(wordCount / wordsPerMinute);
+	return readingTime;
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,7 +34,7 @@ export default defineConfig({
 		[
 			"script",
 			{
-				async: '',
+				async: "",
 				src: "https://www.googletagmanager.com/gtag/js?id=G-T7FNRFF9EE",
 			},
 		],
@@ -170,8 +192,7 @@ export default defineConfig({
 
 		// Use frontmatter for custom OG tags, with fallbacks to generated titles/descriptions
 		const ogTitle = pageData.frontmatter.ogTitle || socialTitle;
-		const ogDescription =
-			pageData.frontmatter.ogDescription || pageDescription;
+		const ogDescription = pageData.frontmatter.ogDescription || pageDescription;
 
 		// Set the primary meta description for search engines. This is crucial.
 		newHead.push(["meta", { name: "description", content: pageDescription }]);
@@ -180,11 +201,34 @@ export default defineConfig({
 		newHead.push(["link", { rel: "canonical", href: pageUrl }]);
 		newHead.push(["meta", { property: "og:url", content: pageUrl }]);
 		newHead.push(["meta", { property: "og:title", content: ogTitle }]);
-		newHead.push(["meta", { property: "og:description", content: ogDescription }]);
+		newHead.push([
+			"meta",
+			{ property: "og:description", content: ogDescription },
+		]);
 		newHead.push(["meta", { name: "twitter:title", content: ogTitle }]);
-		newHead.push(["meta", { name: "twitter:description", content: ogDescription }]);
+		newHead.push([
+			"meta",
+			{ name: "twitter:description", content: ogDescription },
+		]);
 
 		return newHead;
+	},
+	transformPageData(pageData) {
+		const docsRoot = path.resolve(__dirname, "..");
+		const fullFilePath = path.join(docsRoot, pageData.relativePath);
+
+		// We only want to calculate reading time for course content pages
+		if (
+			pageData.relativePath.startsWith("courses/") &&
+			!pageData.relativePath.endsWith("index.md")
+		) {
+			try {
+				const content = fs.readFileSync(fullFilePath, "utf-8");
+				pageData.frontmatter.readingTime = getReadingTime(content);
+			} catch (e) {
+				console.error(`Could not read file for reading time: ${fullFilePath}`, e);
+			}
+		}
 	},
 
 	themeConfig: {
@@ -371,5 +415,4 @@ export default defineConfig({
 	sitemap: {
 		hostname: "https://bychris.me",
 	},
-	
 });
