@@ -1,7 +1,10 @@
 ---
-title: Prompt Frameworks
 layout: doc
+title: Prompt Frameworks
 description: View the resume of Christian Hadianto, a Product Manager with 7+ years of experience leveraging Generative AI to scale digital products and enhance customer experiences.
+
+ogTitle: Prompt Frameworks
+ogDescription: View the resume of Christian Hadianto, a Product Manager with 7+ years of experience leveraging Generative AI to scale digital products and enhance customer experiences.
 ---
 
 # CHRISTIAN HADIANTO

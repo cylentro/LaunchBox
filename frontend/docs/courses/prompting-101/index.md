@@ -4,6 +4,9 @@ layout: home
 title: Prompting 101 - The Playbook for Everyone
 description: Feeling lost in AI jargon? My 'Prompting 101' course is your personal, jargon-free guide to mastering Generative AI, designed specifically for beginners and non-technical users. Learn to prompt effectively for real-world productivity and creativity!
 
+ogTitle: Prompting 101 - The Playbook for Everyone
+ogDescription: Feeling lost in AI jargon? My 'Prompting 101' course is your personal, jargon-free guide to mastering Generative AI, designed specifically for beginners and non-technical users. Learn to prompt effectively for real-world productivity and creativity!
+
 hero:
   name: "Prompting 101"
   text: "The Playbook for Everyone"

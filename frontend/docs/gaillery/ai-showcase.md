@@ -1,8 +1,12 @@
 ---
-title: My AI Playground
 layout: doc
 aside: false
+
+title: My AI Playground
 description: See Christian Hadianto's Generative AI projects in action. Explore innovative AI showcases, including custom agents, RAG implementations, and more.
+
+ogTitle: My AI Playground
+ogDescription: See Christian Hadianto's Generative AI projects in action. Explore innovative AI showcases, including custom agents, RAG implementations, and more.
 ---
 # My AI Playground
 

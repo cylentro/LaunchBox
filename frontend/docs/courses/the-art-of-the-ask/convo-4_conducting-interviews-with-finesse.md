@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: "Convo 4: In the Arena - Conducting Interviews with Finesse"
 description: "Master the art of conducting user interviews with finesse. Learn to build rapport, practice active listening, maintain neutrality, and handle challenging situations to gather authentic and reliable insights."
+
+ogTitle: "Convo 4: In the Arena - Conducting Interviews with Finesse"
+ogDescription: "Master the art of conducting user interviews with finesse. Learn to build rapport, practice active listening, maintain neutrality, and handle challenging situations to gather authentic and reliable insights."
+
 prev:
   text: "Convo 3: The Art of the Question - Crafting Probes That Uncover Truth"
   link: /courses/the-art-of-the-ask/convo-3_the-art-of-the-question

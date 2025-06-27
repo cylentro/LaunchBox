@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: "Convo 1: The Soul of the Interview - Mastering the 'Why'"
 description: "Discover the power of asking 'why' in user interviews. Learn to uncover deep user needs, use empathy as a design tool, and conduct effective interviews for early-stage products."
+
+ogTitle: "Convo 1: The Soul of the Interview - Mastering the 'Why'"
+ogDescription: "Discover the power of asking 'why' in user interviews. Learn to uncover deep user needs, use empathy as a design tool, and conduct effective interviews for early-stage products."
+
 prev:
   text: 'The Art of the Ask'
   link: /courses/the-art-of-the-ask

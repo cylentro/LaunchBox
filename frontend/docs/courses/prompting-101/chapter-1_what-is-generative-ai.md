@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: Chapter 1 - What is Generative AI?
 description: What is Generative AI? Learn the core concepts, explore different types like text and image generation, and create your first AI content with a hands-on lab for beginners.
+
+ogTitle: Chapter 1 - What is Generative AI?
+ogDescription: What is Generative AI? Learn the core concepts, explore different types like text and image generation, and create your first AI content with a hands-on lab for beginners.
+
 prev:
   text: Prompting 101 - The Playbook for Everyone
   link: /courses/prompting-101

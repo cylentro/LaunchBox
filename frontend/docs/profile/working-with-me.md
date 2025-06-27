@@ -1,8 +1,13 @@
 ---
-title: Working with Christian - The Playbook
 layout: doc
 aside: false
+
+title: Working with Christian - The Playbook
 description: Discover Christian Hadianto's collaboration style, problem-solving approach, and communication preferences in this personal playbook.
+
+ogTitle: Working with Christian - The Playbook
+ogDescription: Discover Christian Hadianto's collaboration style, problem-solving approach, and communication preferences in this personal playbook.
+
 ---
 # Working with Christian: The Playbook
 

@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: Recommended Teaching Methodology
 description: Discover the hands-on, project-based teaching methodology for our AI prompting course, designed to build practical skills and confidence through real-world application.
+
+ogTitle: Recommended Teaching Methodology
+ogDescription: Discover the hands-on, project-based teaching methodology for our AI prompting course, designed to build practical skills and confidence through real-world application.
+
 prev:
   text: Knowledge Check Quiz
   link: /courses/prompting-101/quiz

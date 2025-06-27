@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: Chapter 7 - The Future is Now - What's Next?
 description: Explore the exciting future of AI! Discover key trends like Multimodal AI, autonomous AI Agents, and the democratization of AI, and understand how these will shape your interactions with technology.
+
+ogTitle: Chapter 7 - The Future is Now - What's Next?
+ogDescription: Explore the exciting future of AI! Discover key trends like Multimodal AI, autonomous AI Agents, and the democratization of AI, and understand how these will shape your interactions with technology.
+
 prev:
   text: Chapter 6 - Staying Safe and Smart - Ethics & Limitations
   link: /courses/prompting-101/chapter-6_staying-safe-and-smart

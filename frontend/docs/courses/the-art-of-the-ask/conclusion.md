@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: "Conclusion: Mastering the Art of the Ask"
 description: "Summarize the key takeaways from the course, reinforcing the importance of empathy, ethical practice, and structured synthesis in building products that solve real human problems."
+
+ogTitle: "Conclusion: Mastering the Art of the Ask"
+ogDescription: "Summarize the key takeaways from the course, reinforcing the importance of empathy, ethical practice, and structured synthesis in building products that solve real human problems."
+
 prev:
   text: "Convo 7: Learning from Failure - In-Depth Case Studies"
   link: /courses/the-art-of-the-ask/convo-7_learning-from-failure

@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: Chapter 2 - The Art of the Conversation - Your First Prompts
 description: Master the art of AI conversation. This guide for beginners teaches how to write effective prompts by breaking down their core anatomy—context, task, specificity—with practical, real-world examples.
+
+ogTitle: Chapter 2 - The Art of the Conversation - Your First Prompts
+ogDescription: Master the art of AI conversation. This guide for beginners teaches how to write effective prompts by breaking down their core anatomy—context, task, specificity—with practical, real-world examples.
+
 prev:
   text: Chapter 1 - What is Generative AI?
   link: /courses/prompting-101/chapter-1_what-is-generative-ai

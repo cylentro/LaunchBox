@@ -4,6 +4,9 @@ layout: home
 title: The Art of the Ask - A Comprehensive Guide to Effective User Interviews
 description: A comprehensive guide to mastering user interviews, focusing on uncovering the deep 'why' behind user behavior to build truly valuable and intuitive products.
 
+ogTitle: The Art of the Ask - A Comprehensive Guide to Effective User Interviews
+ogDescription: A comprehensive guide to mastering user interviews, focusing on uncovering the deep 'why' behind user behavior to build truly valuable and intuitive products.
+
 hero:
   name: "The Art of the Ask"
   text: "A Comprehensive Guide to Effective User Interviews"

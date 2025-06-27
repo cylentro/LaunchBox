@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: "Convo 6: Advanced Modules & Essential Considerations"
 description: "Explore advanced research techniques like Contextual Inquiry and JTBD, understand ethical responsibilities like informed consent, and learn to communicate findings for maximum impact."
+
+ogTitle: "Convo 6: Advanced Modules & Essential Considerations"
+ogDescription: "Explore advanced research techniques like Contextual Inquiry and JTBD, understand ethical responsibilities like informed consent, and learn to communicate findings for maximum impact."
+
 prev:
   text: "Convo 5: The Synthesis - From Raw Data to Actionable Gold"
   link: /courses/the-art-of-the-ask/convo-5_from-raw-data-to-actionable-gold

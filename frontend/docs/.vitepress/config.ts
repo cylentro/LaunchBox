@@ -2,13 +2,25 @@ import { defineConfig, type HeadConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-	title: "Christian Hadianto", // This is the main title of your site
-	titleTemplate: ":title",
+	title: "Christian Hadianto",
+	titleTemplate: ":title | Christian Hadianto",
 	description:
 		"Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
 	cleanUrls: true, // Ensures URLs are generated without .html extensions
 
 	head: [
+		[
+			"script",
+			{
+				async: '',
+				src: "https://www.googletagmanager.com/gtag/js?id=G-T7FNRFF9EE",
+			},
+		],
+		[
+			"script",
+			{}, // Empty attributes object for the second script tag
+			`window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-T7FNRFF9EE');`,
+		],
 		// --- SEO and Behavior Tags ---
 		["meta", { name: "robots", content: "index, follow" }],
 		[
@@ -130,39 +142,47 @@ export default defineConfig({
 	async transformHead({ pageData, siteData }) {
 		const newHead: HeadConfig[] = [];
 		const siteUrl = "https://bychris.me";
+		const siteTitle = siteData.title;
 
 		// This logic correctly removes .md and index.md to create clean URLs
-		// (e.g., 'profile/resume.md' -> 'profile/resume')
 		let pagePath = pageData.relativePath.replace(/\.md$/, "");
 		if (pagePath.endsWith("index")) {
-			pagePath = pagePath.slice(0, -5);
+			pagePath = pagePath.slice(0, -5); // 'courses/index' -> 'courses/'
 		}
+		// Remove trailing slash for non-root paths to create clean URLs
+		pagePath = pagePath.replace(/\/$/, ""); // 'courses/' -> 'courses'
 
-		const pageUrl = `${siteUrl}/${pagePath}`.replace(/\/$/, "");
+		// Construct the full, canonical URL for the current page.
+		// This ensures the root URL doesn't have a trailing slash.
+		const pageUrl = pagePath ? `${siteUrl}/${pagePath}` : siteUrl;
 
 		// Dynamically get the title and description for the current page
-		const title = pageData.title || siteData.title;
-		const description =
-			pageData.frontmatter.description || siteData.description;
+		const pageTitle = pageData.title || siteTitle;
+		const pageDescription =
+			pageData.frontmatter.description || siteData.description; // Fallback to site description
+
+		// Create a more descriptive title for sharing.
+		// For the home layout, use the page title directly. For others, append site title.
+		const socialTitle =
+			pageData.frontmatter.layout === "home" || pageTitle === siteTitle
+				? pageTitle
+				: `${pageTitle} | ${siteTitle}`;
+
+		// Use frontmatter for custom OG tags, with fallbacks to generated titles/descriptions
+		const ogTitle = pageData.frontmatter.ogTitle || socialTitle;
+		const ogDescription =
+			pageData.frontmatter.ogDescription || pageDescription;
 
 		// Set the primary meta description for search engines. This is crucial.
-		newHead.push([
-			"meta", { name: "description", content: description }
-		]);
+		newHead.push(["meta", { name: "description", content: pageDescription }]);
 
 		// Add page-specific, canonical, and OG tags. This is the single source of truth.
 		newHead.push(["link", { rel: "canonical", href: pageUrl }]);
 		newHead.push(["meta", { property: "og:url", content: pageUrl }]);
-		newHead.push(["meta", { property: "og:title", content: title }]);
-		newHead.push([
-			"meta",
-			{ property: "og:description", content: description },
-		]);
-		newHead.push(["meta", { name: "twitter:title", content: title }]);
-		newHead.push([
-			"meta",
-			{ name: "twitter:description", content: description },
-		]);
+		newHead.push(["meta", { property: "og:title", content: ogTitle }]);
+		newHead.push(["meta", { property: "og:description", content: ogDescription }]);
+		newHead.push(["meta", { name: "twitter:title", content: ogTitle }]);
+		newHead.push(["meta", { name: "twitter:description", content: ogDescription }]);
 
 		return newHead;
 	},

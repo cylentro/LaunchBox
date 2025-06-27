@@ -1,4 +1,5 @@
 ---
+title: Nait
 layout: page
 aside: false
 footer: false

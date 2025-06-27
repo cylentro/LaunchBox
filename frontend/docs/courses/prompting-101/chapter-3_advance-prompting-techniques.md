@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: Chapter 3 - Leveling Up - Advanced Prompting Techniques
 description: Go beyond basic prompts. Learn advanced AI prompting techniques like Role-Playing, Few-Shot, and Chain-of-Thought to solve complex problems and get more accurate, creative results.
+
+ogTitle: Chapter 3 - Leveling Up - Advanced Prompting Techniques
+ogDescription: Go beyond basic prompts. Learn advanced AI prompting techniques like Role-Playing, Few-Shot, and Chain-of-Thought to solve complex problems and get more accurate, creative results.
+
 prev:
   text: Chapter 2 - The Art of the Conversation - Your First Prompts
   link: /courses/prompting-101/chapter-2_the-art-of-the-conversation_your-first-prompts

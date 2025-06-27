@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: "Convo 3: The Art of the Question - Crafting Probes That Uncover Truth"
 description: "Master the art of questioning in user interviews. Learn to craft open-ended, neutral questions, apply the funnel approach, and use powerful probing techniques like 'why,' 'tell me more,' and 'last time' to uncover deep, truthful insights."
+
+ogTitle: "Convo 3: The Art of the Question - Crafting Probes That Uncover Truth"
+ogDescription: "Master the art of questioning in user interviews. Learn to craft open-ended, neutral questions, apply the funnel approach, and use powerful probing techniques like 'why,' 'tell me more,' and 'last time' to uncover deep, truthful insights."
+
 prev:
   text: "Convo 2: The Architecture of the Interview - Deconstructing the 'How'"
   link: /courses/the-art-of-the-ask/convo-2_the-architecture-of-the-interview

@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: Chapter 5 - A Peek Under the Hood (The Non-Technical "How")
 description: How does AI work? This non-technical guide explains core concepts like Large Language Models (LLMs), training data, and the 'black box' problem using simple analogies.
+
+ogTitle: Chapter 5 - A Peek Under the Hood (The Non-Technical "How")
+ogDescription: How does AI work? This non-technical guide explains core concepts like Large Language Models (LLMs), training data, and the 'black box' problem using simple analogies.
+
 prev:
   text: Chapter 4 - Practical Magic - AI in Your Daily Workflow
   link: /courses/prompting-101/chapter-4_ai-in-your-daily-workflow

@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: Chapter 4 - Practical Magic - AI in Your Daily Workflow
 description: Boost productivity by integrating AI into your daily workflow. Learn practical uses for email, meeting notes, brainstorming, and planning to save time and work smarter.
+
+ogTitle: Chapter 4 - Practical Magic - AI in Your Daily Workflow
+ogDescription: Boost productivity by integrating AI into your daily workflow. Learn practical uses for email, meeting notes, brainstorming, and planning to save time and work smarter.
+
 prev:
   text: Chapter 3 - Leveling Up - Advanced Prompting Techniques
   link: /courses/prompting-101/chapter-3_advance-prompting-techniques

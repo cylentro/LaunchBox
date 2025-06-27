@@ -1,8 +1,13 @@
 ---
-title: My Work and Wanderings
 layout: doc
 aside: false
+
+title: My Work and Wanderings
 description: Explore a curated list of Christian Hadianto's key projects in Product Management, AI development, and logistics, demonstrating practical application and innovation.
+
+ogTitle: My Work and Wanderings
+ogDescription: Explore a curated list of Christian Hadianto's key projects in Product Management, AI development, and logistics, demonstrating practical application and innovation.
+
 ---
 # My Work and Wanderings
 

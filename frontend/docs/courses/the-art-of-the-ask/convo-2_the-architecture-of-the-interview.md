@@ -1,7 +1,12 @@
 ---
 layout: doc
+
 title: "Convo 2: The Architecture of the Interview - Deconstructing the 'How'"
 description: "Learn the structured, 8-step lifecycle of a successful user interview project, from goal setting to reporting. Master recruitment strategies, including designing effective screener surveys and choosing the right channels to find your ideal participants."
+
+ogTitle: "Convo 2: The Architecture of the Interview - Deconstructing the 'How'"
+ogDescription: "Learn the structured, 8-step lifecycle of a successful user interview project, from goal setting to reporting. Master recruitment strategies, including designing effective screener surveys and choosing the right channels to find your ideal participants."
+
 prev:
   text: "Convo 1: The Soul of the Interview - Mastering the 'Why'"
   link: /courses/the-art-of-the-ask/convo-1_the-soul-of-the-interview

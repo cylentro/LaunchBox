@@ -1,7 +1,11 @@
 ---
-title: Prompt Frameworks
 layout: doc
+
+title: Prompt Frameworks
 description: A complete guide to advanced prompt engineering frameworks like CASTR, RIDER, PICTURE, and PRISM for improving AI-generated text, images, and agents.
+
+ogTitle: Prompt Frameworks
+ogDescription: A complete guide to advanced prompt engineering frameworks like CASTR, RIDER, PICTURE, and PRISM for improving AI-generated text, images, and agents.
 
 ---
 
