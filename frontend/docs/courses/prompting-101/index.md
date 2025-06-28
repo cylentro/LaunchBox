@@ -28,7 +28,7 @@ This course is designed for anyone with a computer and curiosity, but no technic
 Absolutely none! All you need is a willingness to learn, access to a computer with an internet connection, and the ability to use a web browser. No coding, no math, no prior tech experience is required.
 :::
 
-## Learning Objectives
+## Course Objectives
 
 Upon completion of this course, you will be able to:
 

@@ -15,7 +15,7 @@ next:
   link: /courses/prompting-101/recommended-teaching-methodology
 ---
 <script setup>
-import Prompting101Quiz from '../../components/course-interactive/Prompting101Quiz.vue'
+import Prompting101Quiz from '../../components/course-elements/quiz/Prompting101Quiz.vue'
 </script>
 
 <Prompting101Quiz />

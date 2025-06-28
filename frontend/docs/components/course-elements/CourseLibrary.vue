@@ -33,6 +33,14 @@ const courses = ref([
     categories: ['User Research', 'Product Management', 'UX/UI Design'],
     levels: ['Intermediate'],
   },
+  {
+    title: 'Metrics Mastery for Product Managers',
+    description: 'Transform your product practice from intuition-led to data-informed. This course forges you into a strategic leader who wields data to understand user behavior, measure what matters, and drive sustainable product growth.',
+    link: '/courses/metrics-mastery-for-product-managers',
+    image: '/courses/metrics-mastery-for-product-managers.png',
+    categories: ['Product Management', 'Data & Analytics', 'Strategy'],
+    levels: ['Intermediate'],
+  },
 ]);
 
 // --- Filtering Logic ---

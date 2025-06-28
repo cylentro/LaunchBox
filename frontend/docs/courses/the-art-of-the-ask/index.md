@@ -27,7 +27,7 @@ We will deconstruct the entire interview lifecycle, from setting clear objective
 This is more than a course on asking questions; it's a masterclass in understanding human needs. By the end, you will be equipped to transform raw conversations into actionable insights, creating evidence-backed personas and journey maps that drive product decisions and lead to the creation of solutions that don't just work, but resonate.
 
 ::: info Prerequisites
-This course is designed for aspiring and current product managers, UX/UI designers, user researchers, and entrepreneurs. 
+This course is designed for aspiring and current product managers, UX/UI designers, user researchers, and entrepreneurs.
 
 No deep technical expertise is required. The only prerequisites are:
 
@@ -36,7 +36,7 @@ No deep technical expertise is required. The only prerequisites are:
 - A commitment to building products that genuinely serve their users.
   :::
 
-## Learning Objectives
+## Course Objectives
 
 Upon completing this course, you will be able to:
 

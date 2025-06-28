@@ -9,7 +9,7 @@ ogDescription: Explore a collection of courses designed to enhance your skills i
 ---
 
 <script setup>
-import CourseLibrary from '../components/course-interactive/CourseLibrary.vue'
+import CourseLibrary from '../components/course-elements/CourseLibrary.vue'
 </script>
 
 <CourseLibrary />

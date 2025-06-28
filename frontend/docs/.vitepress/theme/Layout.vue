@@ -21,8 +21,8 @@ import { useData } from "vitepress";
 import { computed } from "vue";
 import SpotifyBubble from "../../components/SpotifyBubble.vue";
 import NaitBubble from "../../components/assistant/NaitBubble.vue";
-import ReadOMeter from '../../components/course-interactive/ReadOMeter.vue';
-import ScrollProgressBar from '../../components/course-interactive/ScrollProgressBar.vue';
+import ReadOMeter from '../../components/course-elements/ReadOMeter.vue';
+import ScrollProgressBar from '../../components/course-elements/ScrollProgressBar.vue';
 
 const { Layout } = DefaultTheme;
 const { page } = useData();

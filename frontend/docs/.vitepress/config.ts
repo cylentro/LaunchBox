@@ -159,6 +159,24 @@ export default defineConfig({
 				}),
 			},
 		],
+		// --- Custom Style Overrides for Footer Margin ---
+		// This style block conditionally adds padding to the bottom of the content area
+		// ONLY when the page has a .VPDocFooter (i.e., when prev/next links are present).
+		// It uses the :has() pseudo-class for modern browser compatibility.
+		[
+			"style",
+			{},
+			`
+			.VPDocFooter{
+				margin-bottom: 0px !important;
+			}
+			@media (min-width: 960px) {
+				.VPDocFooter{
+					margin-bottom: 64px !important;
+				}
+			}
+			`,
+		],
 	],
 
 	async transformHead({ pageData, siteData }) {
@@ -226,7 +244,10 @@ export default defineConfig({
 				const content = fs.readFileSync(fullFilePath, "utf-8");
 				pageData.frontmatter.readingTime = getReadingTime(content);
 			} catch (e) {
-				console.error(`Could not read file for reading time: ${fullFilePath}`, e);
+				console.error(
+					`Could not read file for reading time: ${fullFilePath}`,
+					e,
+				);
 			}
 		}
 	},
@@ -386,6 +407,60 @@ export default defineConfig({
 						{
 							text: "Glossary of Terms",
 							link: "/courses/the-art-of-the-ask/glossary",
+						},
+					],
+				},
+			],
+			"/courses/metrics-mastery-for-product-managers/": [
+				{
+					text: "Metrics Mastery for Product Managers",
+					link: "/courses/metrics-mastery-for-product-managers/",
+				},
+				{
+					text: "The Complete Course Manuscript",
+					collapsed: false,
+					items: [
+						{
+							text: "Metrics 1: The Philosophy of Measurement",
+							link: "/courses/metrics-mastery-for-product-managers/metrics-1_the-philosophy-of-measurement",
+						},
+						{
+							text: "Metrics 2: The North Star Framework",
+							link: "/courses/metrics-mastery-for-product-managers/metrics-2_the-north-star-framework-a-system-for-strategic-alignment",
+						},
+						{
+							text: "Metrics 3: Setting and Communicating Targets",
+							link: "/courses/metrics-mastery-for-product-managers/metrics-3_setting-and-communicating-targets",
+						},
+						{
+							text: "Metrics 4: Frameworks for Funnel & UX",
+							link: "/courses/metrics-mastery-for-product-managers/metrics-4_frameworks-for-the-funnel-and-user-experience",
+						},
+						{
+							text: "Metrics 5: The Execution Toolkit",
+							link: "/courses/metrics-mastery-for-product-managers/metrics-5_from-metrics-to-mandates-setting-and-communicating-targets",
+						},
+						{
+							text: "Metrics 6: Applied Metrics Case Studies",
+							link: "/courses/metrics-mastery-for-product-managers/metrics-6_applied-metrics-in-depth-case-studies",
+						},
+					],
+				},
+				{
+					text: "Conclusion",
+					link: "/courses/metrics-mastery-for-product-managers/conclusion",
+				},
+				{
+					text: "Knowledge Check Quiz",
+					link: "/courses/metrics-mastery-for-product-managers/quiz",
+				},
+				{
+					text: "Additional Resources",
+					collapsed: false,
+					items: [
+						{
+							text: "Glossary of Terms",
+							link: "/courses/metrics-mastery-for-product-managers/glossary",
 						},
 					],
 				},

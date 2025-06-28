@@ -118,7 +118,7 @@ Let's put it all together. In this lab, you'll combine all three advanced techni
     <br/>1 Patagonia: It connects the brand to a sense of adventure and the natural world.
     <br/>2 Allbirds: It suggests the use of natural, gentle materials.
     
-    Based on these examples, generate a list of 10 potential names for my coffee brand. *#(Few-Shot Prompting)*
+    Based on these examples, generate a list of 10 potential names for my coffee brand. *#w(Few-Shot Prompting)*
     <br/>For each name you generate, explain the reasoning behind it in one sentence, showing your thought process. *#(Chain-of-Thought)*
     :::
 - Execute the prompt and analyze the results. Notice how the output is not just a list of names. The names are creative and on-brand (thanks to the role-play and examples), and each one comes with a clear justification (thanks to the chain-of-thought). This is a far more valuable and actionable result than a simple list.

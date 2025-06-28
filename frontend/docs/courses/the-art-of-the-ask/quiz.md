@@ -15,7 +15,7 @@ next:
   link: /courses/the-art-of-the-ask/glossary
 ---
 <script setup>
-import TheArtOfTheAsk from '../../components/course-interactive/TheArtOfTheAsk.vue'
+import TheArtOfTheAskQuiz from '../../components/course-elements/quiz/TheArtOfTheAskQuiz.vue'
 </script>
 
-<TheArtOfTheAsk />
+<TheArtOfTheAskQuiz />
