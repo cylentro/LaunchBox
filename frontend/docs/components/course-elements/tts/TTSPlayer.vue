@@ -138,6 +138,7 @@ const createUtterance = (textToSpeak) => {
   utt.onstart = () => {
     isPlaying.value = true;
     isPaused.value = false;
+    showRemainingTime.value = true;
   };
 
   utt.onpause = () => {
@@ -230,6 +231,7 @@ const stop = () => {
     isPaused.value = false;
     isPlaying.value = false;
     showSpeedPopup.value = false; // Close speed popup on stop
+    showRemainingTime.value = false; // Set to false when stopped
     window.speechSynthesis.cancel();
   }
 };
