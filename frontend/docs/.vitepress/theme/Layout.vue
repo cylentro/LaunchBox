@@ -55,30 +55,6 @@ const showProgressBar = computed(() => {
   return path.includes('courses/') && !path.endsWith('quiz.md') && !path.match('courses/index.md');
 });
 
-const courseHelpersContainer = ref(null);
-
-const moveCourseHelpers = async () => {
-  // Ensure we are on a page where helpers should be shown
-  if (!showCourseHelper.value) return;
-
-  // Wait for the DOM to be ready
-  await nextTick();
-
-  const h1 = document.querySelector('.VPDoc h1');
-  const container = courseHelpersContainer.value;
-
-  if (h1 && container) {
-    // Move the container to be right after the H1 tag
-    h1.after(container);
-  }
-};
-
-// Watch for route changes to re-run the move logic
-watch(() => route.path, () => {
-  if (typeof document !== 'undefined') {
-    moveCourseHelpers();
-  }
-}, { immediate: true });
 </script>
 
 <style>
