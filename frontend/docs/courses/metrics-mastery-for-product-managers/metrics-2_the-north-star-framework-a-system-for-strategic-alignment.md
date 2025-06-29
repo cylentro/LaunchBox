@@ -4,12 +4,6 @@ title: 'Metrics 2: The North Star Framework'
 description: 'Learn how the North Star Framework aligns a company on a single metric representing core customer value, creating focus and accelerating data-informed decision-making for sustainable growth.'
 ogTitle: 'Metrics 2: The North Star Framework'
 ogDescription: 'Learn how the North Star Framework aligns a company on a single metric representing core customer value, creating focus and accelerating data-informed decision-making for sustainable growth.'
-prev:
-  text: 'Metrics 1: The Philosophy of Measurement'
-  link: '/courses/metrics-mastery-for-product-managers/metrics-1_the-philosophy-of-measurement'
-next:
-  text: 'Metrics 3: Setting and Communicating Targets'
-  link: '/courses/metrics-mastery-for-product-managers/metrics-3_setting-and-communicating-targets'
 ---
 # Metrics 2: The North Star Framework: A System for Strategic Alignment
 
@@ -240,3 +234,15 @@ It is crucial to set the expectation that the workshop is the *beginning* of the
   * A draft metric tree for the primary candidate, including Level 1 inputs.
   * A list of critical counter-metrics.
 * **Next Steps:** The product and analytics teams are tasked with the follow-up work. This involves taking the hypothesized NSM and its inputs and validating them with historical data. They must analyze whether changes in the proposed input metrics have historically correlated with changes in long-term retention and revenue. This data-driven validation step is critical for confirming that the chosen NSM is indeed a true leading indicator of business success.
+
+## Key Takeaways
+
+* **Define One North Star Metric (NSM):** Align your entire company around a single metric that represents the core value you deliver to customers. It must be a leading indicator of revenue, not a lagging one like MRR.
+* **Deconstruct the NSM into a Metric Tree:** Break your NSM (an output) down into a hierarchy of actionable input metrics (e.g., breadth, depth, frequency). This shows every team how their daily work drives the company's strategy.
+* **Inputs are Actionable, Outputs are Results:** Your teams can't directly change the NSM. They can only influence the input metrics through their features and experiments. Focus on moving the inputs to drive the output.
+* **Protect Your Strategy with Counter-Metrics:** For every key metric you optimize, pair it with a counter-metric (or guardrail) to prevent unintended harm. Healthy growth is balanced growth.
+* **Make it a Collaborative Process:** Defining your North Star is a strategic exercise, not an analytical one. Use a cross-functional workshop to build shared understanding and buy-in from the start.
+
+## Remember This Even If You Forget Everything Else
+
+Your North Star Metric is not just a number; it's your company's story of value creation, written in the language of data. It answers the question, "If our users are successful, what number goes up?" Deconstructing it into a metric tree gives every team a map showing exactly how their work contributes to that success story. If you get the North Star right, you stop arguing about what to do next and start aligning on how to get there, faster.

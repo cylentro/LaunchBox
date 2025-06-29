@@ -14,6 +14,10 @@ const props = defineProps({
   quizDescription: {
     type: String,
     default: "You've completed the course, now it's time to prove your mastery! Let's see what you've learned."
+  },
+  questionsPerChapter: {
+    type: Number,
+    default: 2
   }
 });
 
@@ -34,28 +38,30 @@ const scoreClass = computed(() => {
   return 'score-high';
 });
 
+const shuffle = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 const generateQuiz = () => {
-  let selectedQuestions = [];
-  // Randomly select 2 questions from each chapter
-  props.questionsData.forEach(chapter => {
-    const chapterQuestions = [...chapter.questions];
-    // Shuffle chapter questions
-    for (let j = chapterQuestions.length - 1; j > 0; j--) {
-      const k = Math.floor(Math.random() * (j + 1));
-      [chapterQuestions[j], chapterQuestions[k]] = [chapterQuestions[k], chapterQuestions[j]];
-    }
-    // Take the first two unique questions and shuffle their options
-    [chapterQuestions[0], chapterQuestions[1]].forEach(q => {
-      const newQuestion = { ...q, options: [...q.options] };
-      // Shuffle options
-      for (let i = newQuestion.options.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newQuestion.options[i], newQuestion.options[j]] = [newQuestion.options[j], newQuestion.options[i]];
-      }
-      selectedQuestions.push(newQuestion);
-    });
+  const selectedQuestions = props.questionsData.flatMap(chapter => {
+    // Shuffle questions in the chapter and pick the first two
+    const chapterQuestions = shuffle(chapter.questions).slice(0, props.questionsPerChapter);
+    // For each selected question, create a new object with shuffled options
+    return chapterQuestions.map(q => ({
+      ...q,
+      options: shuffle(q.options),
+    }));
   });
-  quizQuestions.value = selectedQuestions;
+
+  // Shuffle the final list of questions
+  quizQuestions.value = shuffle(selectedQuestions);
+
+  // Reset state
   userAnswers.value = {};
   score.value = 0;
   submitted.value = false;

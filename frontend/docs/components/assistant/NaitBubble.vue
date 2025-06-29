@@ -1,144 +1,145 @@
 <template>
-    <div class="nait-bubble-widget">
-        <button v-show="!isPopupOpen" @click="openPopup"
-            class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 z-50 transition-opacity duration-1000 ease-in-out"
-            aria-label="Open Nait" title="Open Nait">
-            <img class="m-3" :src="naitIconSrc" alt="Nait Icon">
-        </button>
+	<div class="nait-bubble-widget">
+		<button v-show="!isPopupOpen" @click="openPopup"
+			class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 z-50 transition-opacity duration-1000 ease-in-out"
+			aria-label="Open Nait" title="Open Nait">
+			<img class="m-3" :src="naitIconSrc" alt="Nait Icon">
+		</button>
 
-        <Transition name="popup-slide-fade">
-            <div v-if="isPopupOpen"
-                 :class="[
-                    'fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700 transition-all duration-300 ease-in-out',
-                    isMaximized
-                        ? 'inset-0 sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[80vw] sm:h-[85vh] sm:max-h-[800px] sm:rounded-lg' /* Maximized state */
-                        : 'inset-0 rounded-none sm:inset-auto sm:bottom-8 sm:right-8 sm:w-[400px] sm:h-[70vh] sm:max-h-[600px] sm:rounded-lg' /* Normal state */
-                 ]"
-                 :style="{ zIndex: 60 }">
-                <div
-                    class="p-3 border-b border-slate-200 dark:border-neutral-700 flex justify-between items-center flex-shrink-0">
-                    <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100" style="margin-top:0">Nait
-                    </h3>
-                    <div class="flex items-center">
-                        <button @click="clearAndCloseSession"
-                            class="text-xs bg-red-600 text-white hover:bg-red-700 mr-2 p-1 rounded"
-                            title="Clear Session">
-                            Clear Session
-                        </button>
-                        <button @click="toggleMaximize"
-                            class="p-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-700 hidden sm:flex items-center justify-center mr-1.5"
-                            :title="isMaximized ? 'Restore Down' : 'Maximize'"
-                            :aria-label="isMaximized ? 'Restore chat popup to normal size' : 'Maximize chat popup'">
-                            <!-- Maximize Icon -->
-                            <svg v-if="!isMaximized" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75v4.5m0-4.5h-4.5m4.5 0L15 9m5.25 11.25v-4.5m0 4.5h-4.5m4.5 0L15 15" />
-                            </svg>
-                            <!-- Restore Down Icon -->
-                            <svg v-if="isMaximized" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9V4.5M15 9h4.5M15 9l5.25-5.25M15 15v4.5M15 15h4.5M15 15l5.25 5.25" />
-                            </svg>
-                        </button>
-                        <button @click="closePopup"
-                            class="p-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-700 flex items-center justify-center"
-                            aria-label="Close chat popup" title="Close chat">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="w-6 h-6">
-                                <path fill-rule="evenodd"
-                                    d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+		<Transition name="popup-slide-fade">
+			<div v-if="isPopupOpen" :class="[
+				'fixed bg-white dark:bg-neutral-800 shadow-2xl flex flex-col z-50 border border-slate-300 dark:border-neutral-700 transition-all duration-300 ease-in-out',
+				isMaximized
+					? 'inset-0 sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[80vw] sm:h-[85vh] sm:max-h-[800px] sm:rounded-lg' /* Maximized state */
+					: 'inset-0 rounded-none sm:inset-auto sm:bottom-8 sm:right-8 sm:w-[400px] sm:h-[70vh] sm:max-h-[600px] sm:rounded-lg' /* Normal state */
+			]" :style="{ zIndex: 60 }">
+				<div
+					class="p-3 border-b border-slate-200 dark:border-neutral-700 flex justify-between items-center flex-shrink-0">
+					<h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100" style="margin-top:0">Nait
+					</h3>
+					<div class="flex items-center">
+						<button @click="clearAndCloseSession"
+							class="text-xs bg-red-600 text-white hover:bg-red-700 mr-2 p-1 rounded"
+							title="Clear Session">
+							Clear Session
+						</button>
+						<button @click="toggleMaximize"
+							class="p-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-700 hidden sm:flex items-center justify-center mr-1.5"
+							:title="isMaximized ? 'Restore Down' : 'Maximize'"
+							:aria-label="isMaximized ? 'Restore chat popup to normal size' : 'Maximize chat popup'">
+							<!-- Maximize Icon -->
+							<svg v-if="!isMaximized" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+								stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+								<path stroke-linecap="round" stroke-linejoin="round"
+									d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75v4.5m0-4.5h-4.5m4.5 0L15 9m5.25 11.25v-4.5m0 4.5h-4.5m4.5 0L15 15" />
+							</svg>
+							<!-- Restore Down Icon -->
+							<svg v-if="isMaximized" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+								stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+								<path stroke-linecap="round" stroke-linejoin="round"
+									d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9V4.5M15 9h4.5M15 9l5.25-5.25M15 15v4.5M15 15h4.5M15 15l5.25 5.25" />
+							</svg>
+						</button>
+						<button @click="closePopup"
+							class="p-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-700 flex items-center justify-center"
+							aria-label="Close chat popup" title="Close chat">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+								class="w-6 h-6">
+								<path fill-rule="evenodd"
+									d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+									clip-rule="evenodd" />
+							</svg>
+						</button>
+					</div>
+				</div>
 
-                <div ref="chatMessagesContainerRef"
-                    class="chat-messages flex-grow overflow-y-auto px-4 space-y-3 py-4 min-h-0 flex flex-col"
-                    :class="{ 'justify-center': !chatMessages.length && !isLoading && !isSummarizing }">
-                    <div v-if="!chatMessages.length && !isLoading && !isSummarizing"
-                        class="text-center text-slate-500 dark:text-slate-400 py-8 text-lg">
-                        Ask me about Chris. 
-                        <br />
-                        My memory is better than his.
-                        <br />
-                        <br />
-                        Or, I can give you the highlights. 
-                        <br />
-                        He tends to be... <i>thorough</i>.
-                    </div>
-                    <TransitionGroup name="bubble-popup" tag="div">
-                        <div v-for="(chat, index) in chatMessages" :key="chat.id || index" :class="['message-bubble flex flex-col py-2 px-3 rounded-lg shadow w-fit break-words',
-                            chat.isNait ? 'bg-sky-100 text-sky-900 self-start text-left dark:bg-sky-700 dark:text-sky-100 max-w-[85%]'
-                                : 'bg-blue-500 text-white self-end text-right ml-auto dark:bg-blue-600 max-w-[85%]']">
-                            <strong class="font-semibold block mb-0.5">{{ chat.isNait ? 'Nait' : 'You' }}:</strong>
-                            <div v-if="chat.isNait"
-                                class="prose prose-sm max-w-none dark:prose-invert first:mt-0 last:mb-0"
-                                v-html="parseMarkdown(chat.text)"></div>
-                            <div v-else
-                                class="prose prose-sm max-w-none dark:prose-invert first:mt-0 last:mb-0 whitespace-pre-wrap">
-                                {{
-                                    chat.text }}</div>
-                        </div>
-                    </TransitionGroup>
-                </div>
+				<div ref="chatMessagesContainerRef"
+					class="chat-messages flex-grow overflow-y-auto px-4 space-y-3 py-4 min-h-0 flex flex-col"
+					:class="{ 'justify-center': !chatMessages.length && !isLoading && !isSummarizing }">
+					<div v-if="!chatMessages.length && !isLoading && !isSummarizing"
+						class="text-center text-slate-500 dark:text-slate-400 py-8 text-lg">
+						Ask me about Chris.
+						<br />
+						My memory is better than his.
+						<br />
+						<br />
+						Or, I can give you the highlights.
+						<br />
+						He tends to be... <i>thorough</i>.
+					</div>
+					<TransitionGroup name="bubble-popup" tag="div">
+						<div v-for="(chat, index) in chatMessages" :key="chat.id || index" :class="['message-bubble flex flex-col py-2 px-3 rounded-lg shadow w-fit break-words',
+							chat.isNait ? 'bg-sky-100 text-sky-900 self-start text-left dark:bg-sky-700 dark:text-sky-100 max-w-[85%]'
+								: 'bg-blue-500 text-white self-end text-right ml-auto dark:bg-blue-600 max-w-[85%]']">
+							<strong class="font-semibold block mb-0.5">{{ chat.isNait ? 'Nait' : 'You' }}:</strong>
+							<div v-if="chat.isNait"
+								class="prose prose-sm max-w-none dark:prose-invert first:mt-0 last:mb-0"
+								v-html="parseMarkdown(chat.text)"></div>
+							<div v-else
+								class="prose prose-sm max-w-none dark:prose-invert first:mt-0 last:mb-0 whitespace-pre-wrap">
+								{{
+									chat.text }}</div>
+						</div>
+					</TransitionGroup>
+				</div>
 
-                <div v-if="actualExamplePrompts.length > 0"
-                    class="example-prompts-in-popup pl-0.5 pr-0.5 pt-2 pb-2 border-t border-slate-200 dark:border-neutral-700 flex-shrink-0">
-                    <div class="prompts-carousel-wrapper relative flex items-center">
-                        <button :disabled="!showLeftCaret" @click="scrollPrompts('left')"
-                            class="caret-btn absolute left-1 top-1/2 -translate-y-1/2 z-10 p-1.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
+				<div v-if="actualExamplePrompts.length > 0"
+					class="example-prompts-in-popup pl-0.5 pr-0.5 pt-2 pb-2 border-t border-slate-200 dark:border-neutral-700 flex-shrink-0">
+					<div class="prompts-carousel-wrapper relative flex items-center">
+						<button :disabled="!showLeftCaret" @click="scrollPrompts('left')"
+							class="caret-btn absolute left-1 top-1/2 -translate-y-1/2 z-10 p-1.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
                                        disabled:opacity-50 disabled:cursor-not-allowed disabled:text-slate-300 dark:disabled:text-neutral-600" aria-label="Scroll left">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                stroke="currentColor" class="w-4 h-4 text-slate-600 dark:text-slate-300">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                            </svg>
-                        </button>
-                        <div ref="promptsScrollRef"
-                            class="prompts-scroll-container overflow-x-hidden whitespace-nowrap select-none mx-7"
-                            @scroll="handleScroll" @mousedown="onMouseDown" 
-                            @mouseleave="onMouseLeave" @mouseup="onMouseUp" @mousemove="onMouseMove"
-                            @touchstart.passive="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd"
-                            >
-                            <div ref="promptsInnerRef"
-                                class="prompts-inner-container inline-flex gap-1.5 px-0.5 py-0.5">
-                                <button v-for="prompt in actualExamplePrompts" :key="prompt.text"
-                                    @click="handleExamplePromptClick(prompt)"
-                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium py-1 px-2.5 rounded-full transition-colors focus:outline-none focus:ring-1 focus:ring-slate-400 dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-slate-200 dark:focus:ring-neutral-500 whitespace-nowrap flex-shrink-0">
-                                    {{ prompt.text }}
-                                </button>
-                            </div>
-                        </div>
-                        <button :disabled="!showRightCaret" @click="scrollPrompts('right')"
-                            class="caret-btn absolute right-1 top-1/2 -translate-y-1/2 z-10 p-1.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+								stroke="currentColor" class="w-4 h-4 text-slate-600 dark:text-slate-300">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+							</svg>
+						</button>
+						<div ref="promptsScrollRef"
+							class="prompts-scroll-container overflow-x-hidden whitespace-nowrap select-none mx-7"
+							@scroll="handleScroll" @mousedown="onMouseDown" @mouseleave="onMouseLeave"
+							@mouseup="onMouseUp" @mousemove="onMouseMove" @touchstart.passive="onTouchStart"
+							@touchmove="onTouchMove" @touchend="onTouchEnd">
+							<div ref="promptsInnerRef"
+								class="prompts-inner-container inline-flex gap-1.5 px-0.5 py-0.5">
+								<button v-for="prompt in actualExamplePrompts" :key="prompt.text"
+									@click="handleExamplePromptClick(prompt)"
+									class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium py-1 px-2.5 rounded-full transition-colors focus:outline-none focus:ring-1 focus:ring-slate-400 dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-slate-200 dark:focus:ring-neutral-500 whitespace-nowrap flex-shrink-0">
+									{{ prompt.text }}
+								</button>
+							</div>
+						</div>
+						<button :disabled="!showRightCaret" @click="scrollPrompts('right')"
+							class="caret-btn absolute right-1 top-1/2 -translate-y-1/2 z-10 p-1.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-full shadow-md hover:bg-slate-100 dark:hover:bg-neutral-700 transition-colors
                                        disabled:opacity-50 disabled:cursor-not-allowed disabled:text-slate-300 dark:disabled:text-neutral-600" aria-label="Scroll right">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                                stroke="currentColor" class="w-4 h-4 text-slate-600 dark:text-slate-300">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+								stroke="currentColor" class="w-4 h-4 text-slate-600 dark:text-slate-300">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+							</svg>
+						</button>
+					</div>
+				</div>
 
-                <div
-                    class="chat-input-form-popup p-3 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 mt-auto flex-shrink-0 sm:rounded-b-lg items-center">
-                    <form @submit.prevent="sendMessage" class="flex items-start relative">
-                        <textarea ref="activeTextareaRef" v-model="userInput" @keydown.enter="handleEnter" :rows="1"
-                            :placeholder="dynamicInitialPlaceholder" :disabled="isLoading || isSummarizing"
-                            class="w-full p-3 pr-12 text-base border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none dark:bg-neutral-700 dark:text-slate-100 dark:border-neutral-600 dark:placeholder-slate-400 max-h-28 overflow-y-auto"
-                            style="min-height: 52px;"></textarea>
-                        <button type="submit" :disabled="isLoading || isSummarizing || !userInput.trim()"
-                            class="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-40"
-                            aria-label="Send message" title="Send message">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                :class="['w-6 h-6 transition-colors', userInput.trim() ? 'text-blue-600 dark:text-blue-500' : 'text-slate-400 dark:text-slate-500']">
-                                <path
-                                    d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </Transition>
-    </div>
+				<div
+					class="chat-input-form-popup p-3 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 mt-auto flex-shrink-0 sm:rounded-b-lg items-center">
+					<form @submit.prevent="sendMessage" class="flex items-start relative">
+						<textarea ref="activeTextareaRef" v-model="userInput" @keydown.enter="handleEnter" :rows="1"
+							:placeholder="dynamicInitialPlaceholder" :disabled="isLoading || isSummarizing"
+							class="w-full p-3 pr-12 text-base border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none dark:bg-neutral-700 dark:text-slate-100 dark:border-neutral-600 dark:placeholder-slate-400 max-h-28 overflow-y-auto"
+							style="min-height: 52px;"></textarea>
+						<button type="submit" :disabled="isLoading || isSummarizing || !userInput.trim()"
+							class="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-40"
+							aria-label="Send message" title="Send message">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+								:class="['w-6 h-6 transition-colors', userInput.trim() ? 'text-blue-600 dark:text-blue-500' : 'text-slate-400 dark:text-slate-500']">
+								<path
+									d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+							</svg>
+						</button>
+					</form>
+				</div>
+			</div>
+		</Transition>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -1026,101 +1027,101 @@ const sendMessage = async () => {
 
 <style scoped>
 .prompts-carousel-wrapper {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 
 .prompts-carousel-wrapper .caret-btn {
-    transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 /* Chat messages scroll styling */
 .chat-messages::-webkit-scrollbar {
-    width: 6px;
+	width: 6px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
 }
 
 .chat-messages::-webkit-scrollbar-track {
-    background: transparent;
+	background: transparent;
 }
 
 .chat-messages {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-    min-height: 0;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+	min-height: 0;
 }
 
 .message-bubble .prose> :first-child {
-    margin-top: 0;
+	margin-top: 0;
 }
 
 .message-bubble .prose> :last-child {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .message-bubble {
-    margin-top: 8px;
+	margin-top: 8px;
 }
 
 /* Popup Transition Styles */
 .popup-slide-fade-enter-active,
 .popup-slide-fade-leave-active {
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .popup-slide-fade-enter-from,
 .popup-slide-fade-leave-to {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
+	opacity: 0;
+	transform: translateY(20px) scale(0.95);
 }
 
 @media (min-width: 640px) {
 
-    .popup-slide-fade-enter-from,
-    .popup-slide-fade-leave-to {
-        transform: translate(20px, 20px) scale(0.95);
-    }
+	.popup-slide-fade-enter-from,
+	.popup-slide-fade-leave-to {
+		transform: translate(20px, 20px) scale(0.95);
+	}
 }
 
 .popup-slide-fade-enter-to,
 .popup-slide-fade-leave-from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+	opacity: 1;
+	transform: translateY(0) scale(1);
 }
 
 @media (min-width: 640px) {
 
-    .popup-slide-fade-enter-to,
-    .popup-slide-fade-leave-from {
-        transform: translate(0, 0) scale(1);
-    }
+	.popup-slide-fade-enter-to,
+	.popup-slide-fade-leave-from {
+		transform: translate(0, 0) scale(1);
+	}
 }
 
 /* Bubble Animation for Popup */
 .bubble-popup-enter-active {
-    transition: all 0.4s ease-out;
+	transition: all 0.4s ease-out;
 }
 
 .bubble-popup-leave-active {
-    transition: all 0.3s ease-in;
-    position: absolute;
+	transition: all 0.3s ease-in;
+	position: absolute;
 }
 
 .bubble-popup-enter-from {
-    opacity: 0;
-    transform: translateY(30px);
+	opacity: 0;
+	transform: translateY(30px);
 }
 
 .bubble-popup-leave-to {
-    opacity: 0;
-    transform: translateX(20px);
+	opacity: 0;
+	transform: translateX(20px);
 }
 
 .bubble-popup-move {
-    transition: transform 0.4s ease;
+	transition: transform 0.4s ease;
 }
 </style>

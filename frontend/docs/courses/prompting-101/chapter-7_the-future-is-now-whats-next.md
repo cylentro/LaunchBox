@@ -6,13 +6,6 @@ description: Explore the exciting future of AI! Discover key trends like Multimo
 
 ogTitle: Chapter 7 - The Future is Now - What's Next?
 ogDescription: Explore the exciting future of AI! Discover key trends like Multimodal AI, autonomous AI Agents, and the democratization of AI, and understand how these will shape your interactions with technology.
-
-prev:
-  text: Chapter 6 - Staying Safe and Smart - Ethics & Limitations
-  link: /courses/prompting-101/chapter-6_staying-safe-and-smart
-next: 
-  text: Knowledge Check Quiz
-  link: /courses/prompting-101/quiz
 ---
 # Module 7: The Future is Now: What's Next?
 
@@ -67,10 +60,14 @@ The best way to understand the future is to imagine it. In this final lab, you'l
      * **Sequence of Actions:** What is the step-by-step plan the agent would follow to achieve its goal? (e.g., "1. Check my calendar for busy nights. 2. Browse recipe sites for quick, healthy meals. 3. Ask me for final approval. 4. Generate a shopping list organized by aisle. 5. Place the order for pickup.").
   4. This creative exercise will help solidify your understanding of how agentic AI works and encourage you to think about the future of automation in a practical, personalized way.
 
-## Summary & Key Takeaways
+## Key Takeaways
 
-You are now prepared not just for the AI of today, but for the AI of tomorrow. Let's summarize the future outlook:
+* **The future of AI is multimodal:** It will see, hear, and speak, allowing for richer, more intuitive interactions with technology.
+* **AI is evolving into autonomous agents:** The next step is AI that can understand high-level goals and take action across multiple apps to complete complex tasks for you.
+* **The interaction model is changing:** We are moving from a "command-and-response" model to a "goal-and-execution" model, where you state your objective and the AI handles the steps.
+* **AI literacy is becoming a fundamental skill:** As AI is integrated into everyday tools, the ability to use it effectively is becoming as essential as computer literacy.
+* **Continuous learning is key:** The best way to stay ahead is to remain curious, dedicate small amounts of time to learning, and experiment with new tools as they emerge.
 
-* The future of AI is **multimodal**—it will see, hear, and speak, leading to more natural and powerful interactions.
-* AI is evolving from a chat partner into an autonomous **"agent"** that can understand goals and perform complex tasks for you.
-* **AI literacy is a crucial skill for the future**, and by completing this course, you have built a strong foundation and are already ahead of the curve. Welcome to the future—you're ready for it.
+## Remember This Even If You Forget Everything Else
+
+The way we use computers is shifting from giving step-by-step commands to stating high-level goals. The next wave of AI will be defined by **autonomous agents** that can plan and execute complex tasks on your behalf. Your role is evolving from a prompter to a director of these powerful new assistants.

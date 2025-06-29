@@ -6,11 +6,6 @@ description: A comprehensive glossary defining key Artificial Intelligence (AI) 
 
 ogTitle: Glossary of AI Terms
 ogDescription: A comprehensive glossary defining key Artificial Intelligence (AI) and Generative AI terms used in the Prompting 101 course, from LLMs to prompting techniques.
-
-prev:
-  text: Capstone Project - Develop Your 'Personal AI Assistant Playbook'
-  link: /courses/prompting-101/capstone-project
-next: false
 ---
 # Glossary of AI Terms
 

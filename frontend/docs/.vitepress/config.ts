@@ -30,6 +30,18 @@ export default defineConfig({
 		"Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
 	cleanUrls: true, // Ensures URLs are generated without .html extensions
 
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks(id) {
+					if (id.includes('node_modules')) {
+						return 'vendor';
+					}
+				}
+			}
+		}
+	},
+
 	head: [
 		[
 			"script",
@@ -350,6 +362,10 @@ export default defineConfig({
 							text: "Glossary of AI Terms",
 							link: "/courses/prompting-101/glossary",
 						},
+						{
+							text: "Prompting Frameworks Cheat Sheet",
+							link: "/courses/prompting-101/prompt-cheatsheet",
+						},
 					],
 				},
 			],
@@ -408,6 +424,26 @@ export default defineConfig({
 							text: "Glossary of Terms",
 							link: "/courses/the-art-of-the-ask/glossary",
 						},
+						{
+							text: "Interview Cheat Sheet",
+							link: "/courses/the-art-of-the-ask/interview-cheatsheet",
+						},
+						{
+							text: "Persona Template",
+							link: "/courses/the-art-of-the-ask/persona-template",
+						},
+						{
+							text: "Journey Map Template",
+							link: "/courses/the-art-of-the-ask/journey-map-template",
+						},
+						{
+							text: "Stakeholder Communication Template",
+							link: "/courses/the-art-of-the-ask/stakeholder-communication-template",
+						},
+						{
+							text: "Common Research Pitfalls",
+							link: "/courses/the-art-of-the-ask/common-research-pitfalls",
+						},
 					],
 				},
 			],
@@ -461,6 +497,96 @@ export default defineConfig({
 						{
 							text: "Glossary of Terms",
 							link: "/courses/metrics-mastery-for-product-managers/glossary",
+						},
+						{
+							text: "Frameworks Cheat Sheet",
+							link: "/courses/metrics-mastery-for-product-managers/framework-cheatsheet",
+						},
+						{
+							text: "NSM Workshop Template",
+							link: "/courses/metrics-mastery-for-product-managers/nsm-workshop-template",
+						},
+					],
+				},
+			],
+			"/courses/ab-testing-from-hypothesis-to-high-impact/": [
+				{
+					text: "A/B Testing from Hypothesis to High-Impact",
+					link: "/courses/ab-testing-from-hypothesis-to-high-impact/",
+				},
+				{
+					text: "The Complete Course Manuscript",
+					collapsed: false,
+					items: [
+						{
+							text: "Variant 1: Foundations of High-Impact A/B Testing",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-1_foundations-of-high-impact-ab-testing",
+						},
+						{
+							text: "Variant 2: Defining Success: Metrics and Goal Setting",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-2_defining-success-metrics-and-goal-setting",
+						},
+						{
+							text: "Variant 3: The Art of the Hypothesis",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-3_the-art-of-the-hypothesis",
+						},
+						{
+							text: "Variant 4: The Blueprint: How to Define and Design an A/B Test",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-4_how-to-define-and-design-an-ab-test",
+						},
+						{
+							text: "Variant 5: Running Your Experiment",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-5_running-your-experiment",
+						},
+						{
+							text: "Variant 6: Analysis, Interpretation, and Learning",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-6_analysis-interpretation-and-learning",
+						},
+						{
+							text: "Variant 7: Understanding the Result of an A/B Test",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-7_understanding-the-result-of-an-ab-test",
+						},
+						{
+							text: "Variant 8: Communicating Results and Driving Action",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-8_communicating-results-and-driving-action",
+						},
+						{
+							text: "Variant 9: Scaling Experimentation and Building a Culture",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-9_scaling-experimentation-and-building-a-culture",
+						},
+						{
+							text: "Variant 10: Tips, Tricks, and Common Pitfalls",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-10_tips-tricks-and-common-pitfalls",
+						},
+						{
+							text: "Variant 11: A/B Testing in Action: 5 Practical Examples",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-11_ab-testing-in-action-5-practical-examples",
+						},
+						{
+							text: "Conclusion",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/conclusion",
+						},
+					],
+				},
+				{
+					text: "Knowledge Check Quiz",
+					link: "/courses/ab-testing-from-hypothesis-to-high-impact/quiz",
+				},
+				{
+					text: "Additional Resources",
+					collapsed: false,
+					items: [
+						{
+							text: "Glossary of A/B Testing Terms",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/glossary",
+						},
+						{
+							text: "A/B Testing Cheat Sheet",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/ab-testing-cheatsheet",
+						},
+						{
+							text: "Client-Side vs. Server-Side Testing",
+							link: "/courses/ab-testing-from-hypothesis-to-high-impact/client-side-vs-server-side-testing",
 						},
 					],
 				},

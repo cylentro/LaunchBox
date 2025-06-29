@@ -6,13 +6,6 @@ description: Learn to use AI responsibly. This guide covers critical issues like
 
 ogTitle: Chapter 6 - Staying Safe and Smart - Ethics & Limitations
 ogDescription: Learn to use AI responsibly. This guide covers critical issues like AI hallucinations, bias, and copyright, providing an essential safety checklist for smart and ethical AI use.
-
-prev:
-  text: Chapter 5 - A Peek Under the Hood (The Non-Technical "How")
-  link: /courses/prompting-101/chapter-5_a-peek-under-the-hood
-next:
-  text: Chapter 7 - The Future is Now - What's Next?
-  link: /courses/prompting-101/chapter-7_the-future-is-now-whats-next
 ---
 # Chapter 6: Staying Safe and Smart: Ethics & Limitations
 
@@ -83,11 +76,14 @@ In this lab, you'll practice the essential skill of verifying information from a
      * Look for results from reliable sources. Good sources would include the official White House Historical Association website, presidential library archives (.gov sites), the Smithsonian Institution, or reputable encyclopedias and history websites (.edu sites).
   4. The Discovery: You will quickly find that while the story is popular, most credible historical sources confirm it is a long-standing myth with no primary evidence to support it. This exercise demonstrates perfectly why you can never take an AI's factual claims at face value.
 
-## Summary & Key Takeaways
+## Key Takeaways
 
-Being a smart AI user means being a skeptical and responsible one. Remember these key rules to stay safe and smart:
+* **AI can "hallucinate":** It can confidently state false information. Your most important safety habit is to **always verify critical facts** with reliable, independent sources before using them.
+* **AI inherits human bias:** Because it learns from the internet, AI can reproduce and amplify stereotypes. Be a critical thinker and question one-sided or unfair representations.
+* **Copyright is about human authorship:** In the U.S., purely AI-generated content generally cannot be copyrighted. Use AI as a tool for ideation, but add your own significant creative input to claim ownership of the final work.
+* **You are the pilot:** You are always responsible for the final output, both ethically and legally. Never blindly trust or copy-paste without careful review.
+* **Use the safety checklist:** Before using any important AI output, make it a habit to: 1) Verify facts, 2) Check for bias, and 3) Consider copyright.
 
-* AI can **"hallucinate"** or make up facts. **Always verify important information.**
-* AI can be **biased** because it learns from biased human data. Be a critical thinker and question its outputs.
+## Remember This Even If You Forget Everything Else
 
-You are the pilot. You are ultimately **responsible** for how you use the content that AI generates, both ethically and legally.
+AI is a powerful tool, but it is not a source of truth. It can make things up (hallucinate) and reflect human biases. Your most important job as a smart user is to **be skeptical**. Always **verify critical information** before you use it. You are responsible for the final output.

@@ -4,9 +4,6 @@ title: 'Glossary of Terms'
 description: "A comprehensive glossary of key terms and concepts from the Metrics Mastery for Product Managers course, from A/B Testing to the North Star Framework."
 ogTitle: 'Glossary of Terms'
 ogDescription: "A comprehensive glossary of key terms and concepts from the Metrics Mastery for Product Managers course, from A/B Testing to the North Star Framework."
-prev:
-  text: "Knowledge Check Quiz"
-  link: /courses/metrics-mastery-for-product-managers/quiz
 ---
 # Glossary of Terms
 

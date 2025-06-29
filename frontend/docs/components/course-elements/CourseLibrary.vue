@@ -1,47 +1,9 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
+import { coursesData } from './data/courses';
 
 // --- Course Data ---
-// In a real application, this would likely come from a CMS or API.
-const courses = ref([
-
-  // {
-  //   title: 'title',
-  //   description: 'description',
-  //   link: 'link',
-  //   image: 'image', 
-  //   categories: ['category 1', 'category 2'],
-  //   levels: ['level 1', 'level 2'],
-  //   series: { name: 'series name', part: 1 },
-  //   recommended: true,
-  //   pinOrder: orderNo
-  //   relatedCourses: ['related course link 1', 'related course link 2'] 
-  // },
-  {
-    title: 'Prompting 101: The Playbook for Everyone',
-    description: 'A jargon-free guide to mastering Generative AI, designed for beginners and non-technical users to boost real-world productivity and creativity.',
-    link: '/courses/prompting-101',
-    image: '/courses/prompting-101.png', 
-    categories: ['Generative AI', 'Productivity', 'Professional Development'],
-    levels: ['Beginner'],
-  },
-  {
-    title: 'The Art of the Ask: A Comprehensive Guide to Effective User Interviews',
-    description: 'A comprehensive guide to mastering user interviews, focusing on a deep \'why\' behind user behavior to build truly valuable and intuitive products.',
-    link: '/courses/the-art-of-the-ask',
-    image: '/courses/the-art-of-the-ask.png',
-    categories: ['User Research', 'Product Management', 'UX/UI Design'],
-    levels: ['Intermediate'],
-  },
-  {
-    title: 'Metrics Mastery for Product Managers',
-    description: 'Transform your product practice from intuition-led to data-informed. This course forges you into a strategic leader who wields data to understand user behavior, measure what matters, and drive sustainable product growth.',
-    link: '/courses/metrics-mastery-for-product-managers',
-    image: '/courses/metrics-mastery-for-product-managers.png',
-    categories: ['Product Management', 'Data & Analytics', 'Strategy'],
-    levels: ['Intermediate'],
-  },
-]);
+const courses = ref(coursesData);
 
 // --- Filtering Logic ---
 // Use arrays to store multiple selections from checkboxes
@@ -167,9 +129,8 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
   <div class="course-gallery mt-8 px-4 sm:px-8 lg:px-12 xl:px-16 pb-16">
     <div class="mb-8">
       <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Course Library</h1>
-      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">Welcome to the course library! Here you'll
-        find a curated collection of courses to help you navigate and master new technologies and skills. Use the
-        filters below to find the course that's right for your learning journey.
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+        Welcome to the course library! Here you'll find a curated collection of courses to help you navigate and master new technologies and skills. Use the filters below to find the course that's right for your learning journey. All courses are free—if you find them valuable, you can <a href="https://coff.ee/christianh5" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 hover:underline dark:text-blue-400">buy me a coffee</a> to support my work.
       </p>
     </div>
 
@@ -350,7 +311,7 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 768px) {
   .course-grid {
     /* 2 columns for md/lg screens within the main content area */
     grid-template-columns: repeat(2, 1fr);

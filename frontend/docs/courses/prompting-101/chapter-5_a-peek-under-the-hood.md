@@ -7,12 +7,6 @@ description: How does AI work? This non-technical guide explains core concepts l
 ogTitle: Chapter 5 - A Peek Under the Hood (The Non-Technical "How")
 ogDescription: How does AI work? This non-technical guide explains core concepts like Large Language Models (LLMs), training data, and the 'black box' problem using simple analogies.
 
-prev:
-  text: Chapter 4 - Practical Magic - AI in Your Daily Workflow
-  link: /courses/prompting-101/chapter-4_ai-in-your-daily-workflow
-next:
-  text: Chapter 6 - Staying Safe and Smart - Ethics & Limitations
-  link: /courses/prompting-101/chapter-6_staying-safe-and-smart
 ---
 # Chapter 5: A Peek Under the Hood (The Non-Technical "How")
 
@@ -62,23 +56,25 @@ Addressing these ethical challenges is an active area of research and policy-mak
 
 This simple exercise is designed to give you an intuitive feel for the core function of an LLM: predicting the next word.
 
-* **Objective:** To intuitively understand the concept of "predicting the next token."
-* **Tool:** A piece of paper and a pen, or a simple text editor.
-* **Steps:**
+- **Objective:** To intuitively understand the concept of "predicting the next token."
+- **Tool:** A piece of paper and a pen, or a simple text editor.
+- **Steps:**
   1. Read the following sentence fragments and, without overthinking, write down the very first word that comes to mind to complete the phrase:
-     * The grass is always greener on the other...
-     * For breakfast, I had a cup of...
-     * The first person to walk on the moon was Neil...
+     - The grass is always greener on the other...
+     - For breakfast, I had a cup of...
+     - The first person to walk on the moon was Neil...
   2. Notice how for each of these, there's a very high-probability next word. Your brain, like the AI, made a quick prediction based on patterns you've learned over your lifetime.
   3. Now consider a more ambiguous prompt: The detective opened the door and saw...
   4. What could come next? "a body," "his long-lost brother," "nothing," "a clue." There are many possibilities, each with a different probability. The AI's job is to weigh these probabilities based on its training data (all the detective stories it has read) and choose a path to continue the story. This simple game mirrors the fundamental process happening inside an AI model.
 
-## Summary & Key Takeaways
+## Key Takeaways
 
-Having peeked under the hood, you now have a much more sophisticated understanding of how AI works.
+- **AI is a prediction engine:** At its core, an LLM is constantly guessing the most statistically probable next word in a sequence based on the patterns it has learned.
+- **Its knowledge comes from its training data:** The AI's capabilities and biases are a direct reflection of the massive "library" of internet text and images it was trained on.
+- **AI "thinks" in tokens:** It processes language by breaking it down into smaller pieces called tokens, not as complete words or sentences.
+- **It's a "black box":** The internal reasoning of a large AI model is so complex that it's often impossible to trace exactly why it gave a specific answer, making human oversight and critical thinking essential.
+- **This explains AI's behavior:** Understanding these concepts helps explain why AI can be incredibly fluent and creative, but also why it can make mistakes or "hallucinate" facts.
 
-* At its core, Generative AI is a powerful **"prediction engine"** that is constantly guessing the most likely next word.
-* It learns its patterns from a massive **"library"** of training data, which is the source of both its strengths and its flaws.
-* AI processes language by breaking it down into **"tokens,"** or word-bricks.
+## Remember This Even If You Forget Everything Else
 
-Its inner workings are often a **"black box,"** which is why critical thinking and verification are non-negotiable skills for any AI user.
+AI doesn't "know" things like a person does. It's a powerful prediction machine that's incredibly good at guessing the next word in a sentence. This is why it can write so fluently but also why it can confidently make things up. Your job as a smart user is to leverage its creative power while always verifying its claims.

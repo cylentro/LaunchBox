@@ -6,11 +6,6 @@ description: "A comprehensive glossary of key terms and concepts related to user
 
 ogTitle: "Glossary - The Art of the Ask"
 ogDescription: "A comprehensive glossary of key terms and concepts related to user interviewing and qualitative research, as covered in 'The Art of the Ask' course."
-
-prev:
-  text: "Knowledge Check Quiz"
-  link: /courses/the-art-of-the-ask/quiz
-next: false
 ---
 # Glossary
 

@@ -4,12 +4,6 @@ title: 'Metrics 3: Setting and Communicating Targets'
 description: "Learn to transform metrics into mandates by setting clear, SMART targets. This guide covers methods for calculating and communicating targets to drive focus, alignment, and growth."
 ogTitle: 'Metrics 3: Setting and Communicating Targets'
 ogDescription: "Learn to transform metrics into mandates by setting clear, SMART targets. This guide covers methods for calculating and communicating targets to drive focus, alignment, and growth."
-prev:
-  text: 'Metrics 2: The North Star Framework'
-  link: '/courses/metrics-mastery-for-product-managers/metrics-2_the-north-star-framework-a-system-for-strategic-alignment'
-next:
-  text: 'Metrics 4: Frameworks for Funnel & UX'
-  link: '/courses/metrics-mastery-for-product-managers/metrics-4_frameworks-for-the-funnel-and-user-experience'
 ---
 # Metrics 3: From Metrics to Mandates - Setting and Communicating Targets
 
@@ -276,3 +270,15 @@ Don't wait for the end of the quarter to discuss targets. In your weekly team me
 | **Celebrate progress and learning.** Acknowledge effort and insights, not just hitting the final number.        | **Punish failure to meet a target.** This discourages risk-taking and honesty. |
 
 By combining rigorous methods with empathetic communication, product teams can set targets that are both ambitious and achievable, fostering a culture of data-driven decision-making and continuous improvement.
+
+## Key Takeaways
+
+* **Use SMART Criteria:** Ensure every target is Specific, Measurable, Achievable, Relevant, and Time-bound. This eliminates ambiguity and creates a clear definition of success.
+* **Calculate, Don't Guess:** Set targets using data-informed methods like historical trends, competitive benchmarks, or resource-based planning. Avoid pulling numbers out of thin air.
+* **Triangulate for Robustness:** The most reliable targets are created by "triangulating" between multiple methods (e.g., a bottom-up plan checked against a top-down goal). This balances ambition with realism.
+* **Communicate the "Why," Not Just the "What":** A number is meaningless without context. Frame targets within a larger strategic narrative to motivate your team and secure stakeholder buy-in.
+* **Establish a Review Cadence:** Use a regular, transparent review process (like a weekly "Red-Yellow-Green" check-in) to track progress, create accountability, and solve problems proactively.
+
+## Remember This Even If You Forget Everything Else
+
+A metric without a target is a passive observation; a target turns a metric into an active mandate. Setting a target is an act of leadership that declares, "This is where we are going, and this is what success looks like." The methods for calculating the number are important, but communicating the "why" behind it is what transforms a number on a slide into a shared mission for your team.

@@ -6,13 +6,6 @@ description: What is Generative AI? Learn the core concepts, explore different t
 
 ogTitle: Chapter 1 - What is Generative AI?
 ogDescription: What is Generative AI? Learn the core concepts, explore different types like text and image generation, and create your first AI content with a hands-on lab for beginners.
-
-prev:
-  text: Prompting 101 - The Playbook for Everyone
-  link: /courses/prompting-101
-next:
-  text: Chapter 2 - The Art of the Conversation - Your First Prompts
-  link: /courses/prompting-101/chapter-2_the-art-of-the-conversation_your-first-prompts
 ---
 # Chapter 1: What is Generative AI?
 
@@ -72,10 +65,16 @@ It's time to move from theory to practice! In this lab, you'll have your first c
   - The AI will take a moment and then generate one or more images based on your description.
   - **Reflection**: Look at what you've created. Was the output what you expected? How did it feel to generate a poem and an image just by typing a few words? Congratulations, you've just used Generative AI!
 
-## Summary & Key Takeaways
+## Key Takeaways
 
-You've successfully completed the first module and taken your first steps into the world of AI. Let's recap the most important ideas:
+- **Generative AI creates new, original content** (text, images, audio, code) by learning from vast amounts of existing data.
+- The **"Co-Pilot" analogy** is the most helpful mindset: You are always the pilot in control, and the AI is your powerful assistant. You are responsible for the final output.
+- AI comes in different **"flavors"** for different tasks. The main types are Text, Image, Audio, and Code generation.
+- Different AI models (like Gemini vs. Copilot) have different **"personalities"** and strengths. It's worth trying the same prompt on multiple platforms to find the one that best suits your needs.
+- The best way to learn is by **doing**. Start with simple, hands-on tasks to get a feel for how these tools work.
 
-- Generative AI is a technology that **creates new content** (text, images, etc.) based on patterns it learned from vast amounts of data.
-- It's best to think of AI as a **"Co-Pilot"**—it's a powerful assistant, but you are always in control and responsible for the final output.
-- AI comes in different **"flavors"** for different creative tasks, including text, image, audio, and code generation.
+## Remember This Even If You Forget Everything Else
+
+Generative AI is a tool that creates new content based on your instructions. The most important concept to grasp is the **"Co-Pilot" mindset**: you are always the pilot in control. The AI is your powerful assistant, but you are ultimately responsible for the final output. Start with simple prompts, and you'll quickly discover what's possible.
+
+You've successfully completed the first module and taken your first steps into the world of AI. Welcome!

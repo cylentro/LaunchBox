@@ -6,13 +6,6 @@ description: Go beyond basic prompts. Learn advanced AI prompting techniques lik
 
 ogTitle: Chapter 3 - Leveling Up - Advanced Prompting Techniques
 ogDescription: Go beyond basic prompts. Learn advanced AI prompting techniques like Role-Playing, Few-Shot, and Chain-of-Thought to solve complex problems and get more accurate, creative results.
-
-prev:
-  text: Chapter 2 - The Art of the Conversation - Your First Prompts
-  link: /courses/prompting-101/chapter-2_the-art-of-the-conversation_your-first-prompts
-next:
-  text: Chapter 4 - Practical Magic - AI in Your Daily Workflow
-  link: /courses/prompting-101/chapter-4_ai-in-your-daily-workflow
 ---
 # Chapter 3: Leveling Up: Advanced Prompting Techniques
 
@@ -59,8 +52,8 @@ Now, classify this review:
 <br/>Review: "The acting was great, but the story was slow and boring."
 <br/>Sentiment:
 
->The AI will correctly identify the pattern and output: Mixed.
-:::
+> The AI will correctly identify the pattern and output: Mixed.
+> :::
 
 ### Technique 3: Chain-of-Thought ("Show Your Work")
 
@@ -78,22 +71,22 @@ What is 25% of 348?
 Calculate 25% of 348. Show your reasoning step-by-step.
 
 > The AI would then output something like:
-> 
+>
 > - Step 1: 25% is the same as the fraction 1/4.
 > - Step 2: To find 1/4 of a number, you divide the number by 4.
 > - Step 3: 348 divided by 4 is 87.
 >
 > Therefore, 25% of 348 is 87.
-:::
+> :::
 
 ## Advanced Prompting Cheat Sheet
 
 To help you remember when to use these powerful techniques, here is a quick reference guide.
 
-| Technique          | Use This When You Want To...                                                                             | Simple Prompt Example                                                                                            |
-| ------------------ | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **Role-Playing**       | Get expert-level advice, adopt a specific writing style, or analyze a problem from a unique perspective. | Act as a financial advisor. Review this investment plan and list its top 3 risks.                                |
-| **Few-Shot Prompting** | Enforce a specific format, translate text in a certain style, or classify information based on examples. | Translate English to French.sea otter => loutre de mercheese => fromagepuppy =>???                               |
+| Technique                    | Use This When You Want To...                                                                             | Simple Prompt Example                                                                                          |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **Role-Playing**       | Get expert-level advice, adopt a specific writing style, or analyze a problem from a unique perspective. | Act as a financial advisor. Review this investment plan and list its top 3 risks.                              |
+| **Few-Shot Prompting** | Enforce a specific format, translate text in a certain style, or classify information based on examples. | Translate English to French.sea otter => loutre de mercheese => fromagepuppy =>???                             |
 | **Chain-of-Thought**   | Solve math problems, logic puzzles, or any multi-step task where accuracy is critical.                   | A customer buys 3 items at $4. each and pays with a $20 bill. How much change do they get? Think step-by-step. |
 
 ## Hands-On Lab 3: The Multi-Technique Challenge
@@ -108,26 +101,35 @@ Let's put it all together. In this lab, you'll combine all three advanced techni
 - **Tool:** Any text-generation AI.
 - **Scenario**: You are launching a new brand of sustainable, eco-friendly coffee and need help brainstorming some creative and meaningful brand names.
 - **Steps:**
+
   1. Open your AI tool and prepare to build a single, multi-part prompt.
   2. Start by combining the techniques into one instruction. Type the following prompt into the chat box:
-    ::: info Prompt
-    Act as a world-class branding expert. *#(Role-Playing)*
-    <br/>I am looking for names for a new brand of sustainable coffee. 
-    
-    Here are two examples of brand names I admire and why:
-    <br/>1 Patagonia: It connects the brand to a sense of adventure and the natural world.
-    <br/>2 Allbirds: It suggests the use of natural, gentle materials.
-    
-    Based on these examples, generate a list of 10 potential names for my coffee brand. *#w(Few-Shot Prompting)*
-    <br/>For each name you generate, explain the reasoning behind it in one sentence, showing your thought process. *#(Chain-of-Thought)*
-    :::
+     ::: info Prompt
+     Act as a world-class branding expert. *#(Role-Playing)*
+     <br/>I am looking for names for a new brand of sustainable coffee.
+
+  Here are two examples of brand names I admire and why:
+  <br/>1 Patagonia: It connects the brand to a sense of adventure and the natural world.
+  <br/>2 Allbirds: It suggests the use of natural, gentle materials.
+
+  Based on these examples, generate a list of 10 potential names for my coffee brand. *#w(Few-Shot Prompting)*
+  <br/>For each name you generate, explain the reasoning behind it in one sentence, showing your thought process. *#(Chain-of-Thought)*
+  :::
 - Execute the prompt and analyze the results. Notice how the output is not just a list of names. The names are creative and on-brand (thanks to the role-play and examples), and each one comes with a clear justification (thanks to the chain-of-thought). This is a far more valuable and actionable result than a simple list.
 
-## Summary & Key Takeaways
+## Key Takeaways
 
-You've now added three powerful techniques to your AI toolkit. Mastering them will transform the way you work with these tools.
+- **Use Role-Playing to get expert advice:** Start your prompt with "Act as a..." to tap into the AI's knowledge for a specific persona (e.g., "Act as a seasoned copywriter"). This is the easiest way to get more sophisticated, stylized responses.
+- **Use Few-Shot Prompting for specific formats:** Show, don't just tell. Provide a few examples of the input/output pattern you want, and the AI will follow your lead. This is perfect for tasks requiring a consistent structure.
+- **Use Chain-of-Thought for complex problems:** For math, logic, or planning tasks, instruct the AI to "think step-by-step." This forces a more rigorous process, improving accuracy and making its reasoning transparent.
+- **Stack techniques for maximum control:** The most advanced prompts combine these methods. For example, assign a role, provide examples, and then ask for a step-by-step explanation to get highly tailored and reliable results.
 
-- To get expert-level, stylized responses, tell the AI to **"Act as..."** a specific role.
-- To teach the AI a specific format or pattern, show it examples using **Few-Shot Prompting.**
-- To improve accuracy on complex problems and see the AI's logic, ask it to **"think step-by-step."**
-- Combining these techniques can lead to exceptionally high-quality and insightful results.
+## Remember This Even If You Forget Everything Else
+
+To level up your prompting, guide the AI's thinking process. Remember these three power moves:
+
+1. **Give it a role** ("Act as a...").
+2. **Give it examples** ("Here's what I mean...").
+3. **Make it show its work** ("Think step-by-step...").
+
+Mastering these three techniques—Role-Playing, Few-Shot, and Chain-of-Thought—is the key to unlocking more accurate, creative, and complex results from any AI.

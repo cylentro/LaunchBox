@@ -2,12 +2,6 @@
 layout: doc
 title: "Convo 7: Learning from Failure - In-Depth Case Studies"
 description: "Explore real-world case studies of user research failures to understand common pitfalls like confirmation bias and flawed recruitment, and learn how to avoid them."
-prev:
-  text: "Convo 6: Advanced Modules & Essential Considerations"
-  link: /courses/the-art-of-the-ask/convo-6_advance-module-essential-consideration
-next:
-  text: "Conclusion"
-  link: /courses/the-art-of-the-ask/conclusion
 ---
 # Convo 7: Learning from Failure - In-Depth Case Studies
 
@@ -89,3 +83,15 @@ Never compromise on recruitment. A perfectly executed interview with the wrong p
 :::
 
 Who you talk to is as important as, if not more important than, what you ask. A perfectly executed interview with the wrong participant is worse than a poorly executed interview with the right participant, because it creates the illusion of valid data. This leads teams to build the wrong product with confidence. Recruitment is not a corner that can be cut. Rigorous, careful screening to ensure that participants truly represent the target audience is the bedrock of credible user research.
+
+## Key Takeaways
+
+* **Observe Behavior, Not Just Words:** When a user struggles to articulate their process, ask them to "show you, don't tell you." Observing their actual workflow often reveals insights they could never verbalize.
+* **Actively Fight Confirmation Bias:** The goal of research is to find out *if* you are right, not to *prove* you are right. Actively seek disconfirming evidence and be willing to let the data kill your darlings.
+* **Recruitment is Foundational:** Talking to the wrong people guarantees you will get the wrong answers. The quality of your insights is capped by the quality of your participants. Never cut corners on screening.
+* **Leading Questions Create False Positives:** Asking questions that suggest a desired answer will get you polite agreement, not the truth. This creates a false sense of validation that leads directly to product failure.
+* **"Good Enough" is Your Real Competitor:** Often, the biggest reason users don't adopt a new solution is that their existing, messy workaround (like a complex spreadsheet) is "good enough." Your solution must be demonstrably better to overcome their inertia.
+
+## Remember This Even If You Forget Everything Else
+
+The most expensive mistakes are made when research is used to prove an idea is right, rather than to find out *if* it's right. Your job is not to be a salesperson for your ideas; it's to be a detective for the truth. Learn to love being wrong in a user interview; it's the cheapest and fastest way to learn what you need to build to be right in the market.
