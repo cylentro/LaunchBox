@@ -37,7 +37,7 @@ const pagesToHideBubble = [
   '404.md',
 ];
 const isNaitBubbleHiddenPage = computed(() => {
-  return pagesToHideBubble.includes(page.value.relativePath) || page.value.relativePath.endsWith('quiz.md');
+  return pagesToHideBubble.includes(page.value.relativePath) || page.value.relativePath.includes('courses/');
 });
 const isSpotifyBubbleHiddenPage = computed(() => {
   return page.value.relativePath.includes('courses/');
@@ -48,6 +48,7 @@ const showCourseHelper = computed(() => {
   // Corrected logic: Show on course pages, but NOT on the course index OR quiz pages.
   return path.includes('courses/') && !path.endsWith('index.md') && !path.endsWith('quiz.md');
 });
+
 const showProgressBar = computed(() => {
   const path = page.value.relativePath;
   // Show on course pages, but not on the course index or quiz pages.

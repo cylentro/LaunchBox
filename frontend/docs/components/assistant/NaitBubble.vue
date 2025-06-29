@@ -1,9 +1,9 @@
 <template>
 	<div class="nait-bubble-widget">
 		<button v-show="!isPopupOpen" @click="openPopup"
-			class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 z-50 transition-opacity duration-1000 ease-in-out"
+			class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 p-3 flex items-center justify-center shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 z-50 transition-opacity duration-1000 ease-in-out"
 			aria-label="Open Nait" title="Open Nait">
-			<img class="m-3" :src="naitIconSrc" alt="Nait Icon">
+			<img :src="naitIconSrc" alt="Nait Icon" class="w-full h-full" />
 		</button>
 
 		<Transition name="popup-slide-fade">

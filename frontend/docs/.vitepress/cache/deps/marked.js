@@ -2,7 +2,7 @@ import {
   __publicField
 } from "./chunk-V6TY7KAL.js";
 
-// node_modules/.pnpm/marked@15.0.12/node_modules/marked/lib/marked.esm.js
+// node_modules/marked/lib/marked.esm.js
 function _getDefaults() {
   return {
     async: false,
