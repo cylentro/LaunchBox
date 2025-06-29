@@ -5,5 +5,11 @@
       "use": "@vercel/static-build",
       "config": { "outputDirectory": "docs/.vitepress/dist" }
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path((?!.*\\.html$).*)",
+      "destination": "/:path.html"
+    }
   ]
 }
