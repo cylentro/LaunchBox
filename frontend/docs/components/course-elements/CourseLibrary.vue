@@ -189,7 +189,7 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div v-show="isCategoryFilterOpen" class="mt-3 space-y-2">
+            <div v-show="isCategoryFilterOpen" class="mt-3 space-y-2" :class="{ 'h-[11.9rem] overflow-y-auto': allCategories.length > 7 }">
               <div v-for="category in allCategories" :key="category" class="flex items-center">
                 <input type="checkbox" :id="`cat-${category}`" :value="category" v-model="selectedCategories"
                   class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
@@ -210,7 +210,7 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div v-show="isLevelFilterOpen" class="mt-3 space-y-2">
+            <div v-show="isLevelFilterOpen" class="mt-3 space-y-2" :class="{ 'h-[11.9rem] overflow-y-auto': allLevels.length > 7 }">
               <div v-for="level in allLevels" :key="level" class="flex items-center">
                 <input type="checkbox" :id="`level-${level}`" :value="level" v-model="selectedLevels"
                   class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
@@ -232,7 +232,7 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div v-show="isSeriesFilterOpen" class="mt-3 space-y-2">
+              <div v-show="isSeriesFilterOpen" class="mt-3 space-y-2" :class="{ 'h-[11.9rem] overflow-y-auto': allSeries.length > 7 }">
                 <div v-for="seriesName in allSeries" :key="seriesName" class="flex items-center">
                   <input type="radio" :id="`series-${seriesName}`" :value="seriesName"
                     :checked="selectedSeries === seriesName" @click="toggleSeries(seriesName)"
