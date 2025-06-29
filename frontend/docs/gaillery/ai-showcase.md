@@ -45,6 +45,7 @@ Welcome to my AI playground! This is where I experiment, build, and explore the 
     <div class="mt-6">
       <h3 class="text-xl font-semibold mb-2 text-center">The Result</h3>
       <iframe style="border-radius:12px"
+        class="mt-6"
         src="https://open.spotify.com/embed/show/6uiSJvabU9E0R4RCK9IRCb?utm_source=generator" width="100%" height="152"
         frameBorder="0" allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
