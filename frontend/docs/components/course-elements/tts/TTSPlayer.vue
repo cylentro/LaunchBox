@@ -91,7 +91,7 @@ const utterance = ref(null);
 const currentTime = ref(0);
 const duration = ref(0);
 const volume = ref(1);
-const playbackRate = ref(1);
+const playbackRate = ref(1.15);
 const originalText = ref('');
 const textLength = ref(0);
 const charIndex = ref(0); // Track the current character index
@@ -181,12 +181,40 @@ onMounted(() => {
       const contentClone = mainContentElement.cloneNode(true);
       const selectorsToExclude = '.course-helpers-container, .header-anchor, .custom-block-title, .edit-link, .VPDocFooter, .tts-player-container, .tts-player-unsupported';
       contentClone.querySelectorAll(selectorsToExclude).forEach(el => el.remove());
-      originalText.value = contentClone.innerText;
+
+      let processedTextSegments = [];
+      // Select all relevant block-level elements
+      const elementsToProcess = contentClone.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, blockquote');
+
+      elementsToProcess.forEach(el => {
+        let text = el.textContent.trim();
+        if (text) {
+          // Add a period if the text doesn't end with punctuation
+          if (!/[.!?]$/.test(text)) {
+            text += '.';
+          }
+          processedTextSegments.push(text);
+        }
+      });
+
+      // Handle direct text nodes that might be outside block elements
+      // This is less common in well-structured markdown but good for robustness
+      Array.from(contentClone.childNodes).forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+          let text = node.textContent.trim();
+          if (!/[.!?]$/.test(text)) {
+            text += '.';
+          }
+          processedTextSegments.push(text);
+        }
+      });
+
+      originalText.value = processedTextSegments.join(' ');
       textLength.value = originalText.value.length;
 
       const words = originalText.value.trim().split(/\s+/).length;
       const wpm = 180;
-      duration.value = (words / wpm) * 60;
+      duration.value = (words / wpm) * 60 / playbackRate.value;
 
       createUtterance(originalText.value);
     }
@@ -274,7 +302,7 @@ const toggleMute = () => {
 const changeSpeed = (delta) => {
   if (!utterance.value) return;
   const newRate = parseFloat((playbackRate.value + delta).toFixed(2));
-  if (newRate >= 0.5 && newRate <= 2) {
+  if (newRate >= 0.65 && newRate <= 2.15) {
     playbackRate.value = newRate;
 
     if (isPlaying.value) {

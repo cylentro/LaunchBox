@@ -1,7 +1,7 @@
 <template>
   <div class="speed-control-popup" :class="{ 'disabled': !isPlaying }">
     <button @click="changeSpeed(-0.25)" :disabled="!isPlaying || playbackRate <= 0.5">-</button>
-    <span>{{ playbackRate.toFixed(2) }}x</span>
+    <span>{{ (playbackRate - 0.15).toFixed(2) }}x</span>
     <button @click="changeSpeed(0.25)" :disabled="!isPlaying || playbackRate >= 2">+</button>
   </div>
 </template>
