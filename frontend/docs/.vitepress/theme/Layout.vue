@@ -12,7 +12,7 @@
       <!-- Container for course helpers that will be moved under the H1 tag -->
       <div ref="courseHelpersContainer" v-if="showCourseHelper" class="course-helpers-container">
         <ReadOMeter :key="page.relativePath + '-readometer'" />
-        <!-- <TTSPlayer :key="page.relativePath + '-tts'" /> -->
+        <TTSPlayer :key="page.relativePath + '-tts'" />
       </div>
     </template>
   </Layout>
@@ -26,7 +26,7 @@ import SpotifyBubble from "../../components/SpotifyBubble.vue";
 import NaitBubble from "../../components/assistant/NaitBubble.vue";
 import ReadOMeter from '../../components/course-elements/ReadOMeter.vue';
 import ScrollProgressBar from '../../components/course-elements/ScrollProgressBar.vue';
-// import TTSPlayer from '../../components/course-elements/tts/TTSPlayer.vue';
+import TTSPlayer from '../../components/course-elements/tts/TTSPlayer.vue';
 
 const { Layout } = DefaultTheme;
 const { page } = useData();
