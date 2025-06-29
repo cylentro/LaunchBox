@@ -130,7 +130,13 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
     <div class="mb-8">
       <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Course Library</h1>
       <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-        Welcome to the course library! Here you'll find a curated collection of courses to help you navigate and master new technologies and skills. Use the filters below to find the course that's right for your learning journey. All courses are free—if you find them valuable, you can <a href="https://coff.ee/christianh5" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 hover:underline dark:text-blue-400">buy me a coffee</a> to support my work.
+        Welcome to the course library! Here you'll find a curated collection of courses to help you navigate and master
+        new technologies and skills. Use the filters below to find the course that's right for your learning journey.
+      </p>
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      All courses are free—if you find them valuable, you can <a href="https://coff.ee/christianh5" target="_blank"
+        rel="noopener noreferrer" class="font-semibold text-blue-600 hover:underline dark:text-blue-400">buy me a
+        coffee</a> to support my work.
       </p>
     </div>
 
@@ -174,9 +180,12 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
 
           <!-- Category Filter -->
           <div class="py-4 border-t border-gray-200 dark:border-gray-700">
-            <button @click="isCategoryFilterOpen = !isCategoryFilterOpen" class="flex justify-between items-center w-full text-left">
+            <button @click="isCategoryFilterOpen = !isCategoryFilterOpen"
+              class="flex justify-between items-center w-full text-left">
               <h3 class="font-semibold text-gray-800 dark:text-gray-200">Category</h3>
-              <svg :class="{'rotate-180': isCategoryFilterOpen}" class="w-5 h-5 text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <svg :class="{ 'rotate-180': isCategoryFilterOpen }"
+                class="w-5 h-5 text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
@@ -184,16 +193,20 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
               <div v-for="category in allCategories" :key="category" class="flex items-center">
                 <input type="checkbox" :id="`cat-${category}`" :value="category" v-model="selectedCategories"
                   class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
-                <label :for="`cat-${category}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{ category }}</label>
+                <label :for="`cat-${category}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{
+                  category }}</label>
               </div>
             </div>
           </div>
 
           <!-- Level Filter -->
           <div class="py-4 border-t border-gray-200 dark:border-gray-700">
-            <button @click="isLevelFilterOpen = !isLevelFilterOpen" class="flex justify-between items-center w-full text-left">
+            <button @click="isLevelFilterOpen = !isLevelFilterOpen"
+              class="flex justify-between items-center w-full text-left">
               <h3 class="font-semibold text-gray-800 dark:text-gray-200">Level</h3>
-              <svg :class="{'rotate-180': isLevelFilterOpen}" class="w-5 h-5 text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <svg :class="{ 'rotate-180': isLevelFilterOpen }"
+                class="w-5 h-5 text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
@@ -201,7 +214,8 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
               <div v-for="level in allLevels" :key="level" class="flex items-center">
                 <input type="checkbox" :id="`level-${level}`" :value="level" v-model="selectedLevels"
                   class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
-                <label :for="`level-${level}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{ level }}</label>
+                <label :for="`level-${level}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{
+                  level }}</label>
               </div>
             </div>
           </div>
@@ -209,9 +223,12 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
           <!-- Series Filter - Hidden if no series exist -->
           <div v-if="allSeries.length > 0">
             <div class="py-4 border-t border-gray-200 dark:border-gray-700">
-              <button @click="isSeriesFilterOpen = !isSeriesFilterOpen" class="flex justify-between items-center w-full text-left">
+              <button @click="isSeriesFilterOpen = !isSeriesFilterOpen"
+                class="flex justify-between items-center w-full text-left">
                 <h3 class="font-semibold text-gray-800 dark:text-gray-200">Series</h3>
-                <svg :class="{'rotate-180': isSeriesFilterOpen}" class="w-5 h-5 text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg :class="{ 'rotate-180': isSeriesFilterOpen }"
+                  class="w-5 h-5 text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg"
+                  fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -220,7 +237,8 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
                   <input type="radio" :id="`series-${seriesName}`" :value="seriesName"
                     :checked="selectedSeries === seriesName" @click="toggleSeries(seriesName)"
                     class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
-                  <label :for="`series-${seriesName}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{ seriesName }}</label>
+                  <label :for="`series-${seriesName}`"
+                    class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{ seriesName }}</label>
                 </div>
               </div>
             </div>
@@ -244,17 +262,18 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
                 <div class="course-tags">
                   <span v-for="level in course.levels" :key="level" class="tag level-tag">{{ level }}</span>
                   <span v-for="category in course.categories" :key="category" class="tag category-tag">{{ category
-                    }}</span>
+                  }}</span>
                 </div>
 
                 <!-- Related Courses Section -->
-                <div v-if="course.relatedCourses && course.relatedCourses.length > 0" class="related-courses mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <div v-if="course.relatedCourses && course.relatedCourses.length > 0"
+                  class="related-courses mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                   <p class="font-semibold text-gray-700 dark:text-gray-300 mb-2">Related Courses:</p>
                   <div class="flex flex-wrap gap-2">
                     <a v-for="relatedLink in course.relatedCourses" :key="relatedLink" :href="relatedLink"
                       class="related-course-chip">
-                        {{ getCourseByLink(relatedLink)?.title || 'Unknown Course' }}
-                      </a>
+                      {{ getCourseByLink(relatedLink)?.title || 'Unknown Course' }}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -273,12 +292,11 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
             Previous
           </button>
           <template v-for="page in totalPages" :key="page">
-            <button @click="currentPage = page"
-              :class="{
-                'px-4 py-2 rounded-lg font-semibold': true,
-                'bg-blue-600 text-white': currentPage === page,
-                'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700': currentPage !== page
-              }">
+            <button @click="currentPage = page" :class="{
+              'px-4 py-2 rounded-lg font-semibold': true,
+              'bg-blue-600 text-white': currentPage === page,
+              'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700': currentPage !== page
+            }">
               {{ page }}
             </button>
           </template>
@@ -443,30 +461,45 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
 }
 
 .related-course-chip {
-  font-size: 0.7rem; /* Slightly larger than tags for readability */
+  font-size: 0.7rem;
+  /* Slightly larger than tags for readability */
   padding: 0.25rem 0.5rem;
-  border-radius: 9999px; /* Pill shape */
+  border-radius: 9999px;
+  /* Pill shape */
   font-weight: 500;
-  background-color: var(--vp-c-brand-soft); /* Use a brand-related soft color */
-  color: var(--vp-c-brand-1); /* Use brand color for text */
-  border: 1px solid var(--vp-c-brand-2); /* A slightly darker brand border */
-  text-decoration: none; /* Remove underline */
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; /* Smooth transitions */
-  max-width: 100%; /* Ensure the chip doesn't exceed its parent's width */
-  overflow: hidden; /* Hide overflowing content */
-  text-overflow: ellipsis; /* Show ellipsis for truncated text */
-  white-space: nowrap; /* Keep text on a single line */
+  background-color: var(--vp-c-brand-soft);
+  /* Use a brand-related soft color */
+  color: var(--vp-c-brand-1);
+  /* Use brand color for text */
+  border: 1px solid var(--vp-c-brand-2);
+  /* A slightly darker brand border */
+  text-decoration: none;
+  /* Remove underline */
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  /* Smooth transitions */
+  max-width: 100%;
+  /* Ensure the chip doesn't exceed its parent's width */
+  overflow: hidden;
+  /* Hide overflowing content */
+  text-overflow: ellipsis;
+  /* Show ellipsis for truncated text */
+  white-space: nowrap;
+  /* Keep text on a single line */
 }
 
 .related-course-chip:hover {
-  background-color: var(--vp-c-brand-1); /* Darker background on hover */
-  color: var(--vp-c-white); /* White text on hover */
+  background-color: var(--vp-c-brand-1);
+  /* Darker background on hover */
+  color: var(--vp-c-white);
+  /* White text on hover */
   border-color: var(--vp-c-brand-1);
 }
 
 /* Dark mode adjustments for related course chips */
 .dark .related-course-chip {
-  background-color: var(--vp-c-brand-dark); /* Darker brand soft for dark mode */
-  color: var(--vp-c-brand-3); /* Lighter brand color for text */
+  background-color: var(--vp-c-brand-dark);
+  /* Darker brand soft for dark mode */
+  color: var(--vp-c-brand-3);
+  /* Lighter brand color for text */
 }
 </style>
