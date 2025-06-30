@@ -13,102 +13,120 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch, nextTick, onUpdated } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch, nextTick } from 'vue';
 import { useData } from 'vitepress';
 
 const { page } = useData();
 const showToast = ref(false);
-const toastState = ref('continue'); // 'continue' or 'finished'
-let scrollPositionKey = 'scroll-position-' + page.value.relativePath;
-let finishedKey = 'finished-' + page.value.relativePath;
+const toastState = ref('continue');
 
-let scrollTimeout = null;
+// --- CHANGE 1: Add a flag to track automatic scrolling ---
+const isAutoScrolling = ref(false);
+
+const scrollPositionKey = ref('');
+const finishedKey = ref('');
+
+let progressScrollTimeout = null;
 let toastTimeout = null;
 
-const handleScroll = () => {
-  if (scrollTimeout) {
-    clearTimeout(scrollTimeout);
-  }
-  scrollTimeout = setTimeout(() => {
+const handleScrollProgress = () => {
+  if (!scrollPositionKey.value || isAutoScrolling.value) return;
+
+  if (progressScrollTimeout) clearTimeout(progressScrollTimeout);
+  
+  progressScrollTimeout = setTimeout(() => {
     const scrollY = window.scrollY;
-    const scrollableHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollableHeight <= 0) return;
 
-    if (scrollableHeight <= 0) return; // Not scrollable
-
-    // If user scrolls to the top, reset progress
     if (scrollY < 50) {
-      localStorage.removeItem(scrollPositionKey);
-      localStorage.removeItem(finishedKey);
+      localStorage.removeItem(scrollPositionKey.value);
+      localStorage.removeItem(finishedKey.value);
       return;
     }
 
     const scrollPercent = (scrollY / scrollableHeight) * 100;
-
-    if (scrollPercent > 2) {
-      localStorage.setItem(scrollPositionKey, scrollY.toString());
-    }
-
-    if (scrollPercent >= 98) {
-      localStorage.setItem(finishedKey, 'true');
-    }
+    if (scrollPercent > 2) localStorage.setItem(scrollPositionKey.value, scrollY.toString());
+    if (scrollPercent >= 98) localStorage.setItem(finishedKey.value, 'true');
   }, 100);
 };
 
-const autoScrollAndShowToast = () => {
-  const savedPosition = localStorage.getItem(scrollPositionKey);
-  const isFinished = localStorage.getItem(finishedKey);
+// --- CHANGE 2: The dismiss function now checks the flag ---
+const dismissToastOnScroll = () => {
+  // If we are auto-scrolling, ignore this event and do nothing.
+  if (isAutoScrolling.value) return;
 
-  if (savedPosition) {
+  if (showToast.value) {
+    showToast.value = false;
+  }
+};
+
+const checkProgressAndShowToast = () => {
+  if (!scrollPositionKey.value) return;
+
+  const savedPosition = localStorage.getItem(scrollPositionKey.value);
+  const isFinished = localStorage.getItem(finishedKey.value);
+
+  if (savedPosition != null) {
     nextTick(() => {
+      // --- CHANGE 3: This is the block you identified, now with the flag logic ---
       setTimeout(() => {
+        // Set the flag to true right before we scroll
+        isAutoScrolling.value = true;
+
         window.scrollTo({ top: parseInt(savedPosition, 10), behavior: 'smooth' });
         toastState.value = isFinished ? 'finished' : 'continue';
         showToast.value = true;
 
-        if (toastTimeout) {
-          clearTimeout(toastTimeout);
-        }
-        toastTimeout = setTimeout(() => {
-          showToast.value = false;
-        }, 5000);
+        // After 1 second (enough time for the scroll to finish),
+        // set the flag back to false.
+        setTimeout(() => {
+          isAutoScrolling.value = false;
+        }, 1000);
       }, 200);
     });
   }
 };
 
-onMounted(() => {
-  autoScrollAndShowToast();
-  window.addEventListener('scroll', handleScroll);
+const restart = () => {
+  if (!scrollPositionKey.value) return;
+  localStorage.removeItem(scrollPositionKey.value);
+  localStorage.removeItem(finishedKey.value);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  showToast.value = false;
+};
+
+const initializeForPage = (path) => {
+  scrollPositionKey.value = `scroll-position-${path}`;
+  finishedKey.value = `finished-${path}`;
+  showToast.value = false;
+  checkProgressAndShowToast();
+};
+
+watch(showToast, (isVisible) => {
+  if (isVisible) {
+    window.addEventListener('scroll', dismissToastOnScroll);
+    toastTimeout = setTimeout(() => { showToast.value = false; }, 3000);
+  } else {
+    window.removeEventListener('scroll', dismissToastOnScroll);
+    if (toastTimeout) clearTimeout(toastTimeout);
+  }
 });
 
-onUpdated(() => {
-  autoScrollAndShowToast();
+watch(() => page.value.relativePath, (newPath) => {
+  initializeForPage(newPath);
+});
+
+onMounted(() => {
+  initializeForPage(page.value.relativePath);
+  window.addEventListener('scroll', handleScrollProgress);
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll);
-  if (scrollTimeout) {
-    clearTimeout(scrollTimeout);
-  }
-  if (toastTimeout) {
-    clearTimeout(toastTimeout);
-  }
-});
-
-const restart = () => {
-  localStorage.removeItem(scrollPositionKey);
-  localStorage.removeItem(finishedKey);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  showToast.value = false;
-  if (toastTimeout) {
-    clearTimeout(toastTimeout);
-  }
-};
-
-watch(() => page.value.relativePath, (newPath) => {
-  scrollPositionKey = 'scroll-position-' + newPath;
-  finishedKey = 'finished-' + newPath;
-  autoScrollAndShowToast();
+  window.removeEventListener('scroll', handleScrollProgress);
+  window.removeEventListener('scroll', dismissToastOnScroll);
+  if (progressScrollTimeout) clearTimeout(progressScrollTimeout);
+  if (toastTimeout) clearTimeout(toastTimeout);
 });
 </script>
 
