@@ -363,6 +363,10 @@ export default defineConfig({
 							link: "/courses/prompting-101/glossary",
 						},
 						{
+							text: "Getting Started with Prompt Design",
+							link: "/courses/prompting-101/getting-started-with-prompt-design",
+						},
+						{
 							text: "Prompting Frameworks Cheat Sheet",
 							link: "/courses/prompting-101/prompt-cheatsheet",
 						},

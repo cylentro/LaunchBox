@@ -132,7 +132,30 @@ Generating video requires thinking in scenes, movement, and sound. The ACTION fr
 * **Overtone & Orchestra:** "Peaceful and satisfying. Accompany with a gentle, calming lo-fi instrumental track. No jarring sound effects or dialogue."
 * **N - Nuances & Nots:** "Nuance: show sunlight streaming through the window, catching dust motes in the air. Nots: Do not show any trash being discarded, only items being put away neatly. Avoid harsh shadows."
 
-## PRISM: Your Blueprint for Defining AI Agents 🤖
+## SCENE: Your Storyteller's Compass 📖
+
+When you need to generate a compelling narrative, short story, or any piece of creative fiction, the SCENE framework is your director's chair. It guides the AI through the essential elements of storytelling, ensuring a rich and coherent result.
+
+*   **S - Subject & Characters:** Who is the story about? Detail their personalities, goals, and core relationships.
+*   **C - Conflict & Core Plot:** What is the central problem? Outline the main story beats and the primary obstacle.
+*   **E - Environment & Setting:** Where and when does this happen? Paint a picture of the atmosphere, time, and place.
+*   **N - Narrative Style & Tone:** How should the story be told? Define the perspective (first-person, third-person) and the mood (suspenseful, whimsical, somber).
+*   **E - Ending & Emotion:** How does it all resolve? Specify the desired conclusion and the emotional impact on the reader.
+
+### SCENE in Action: The Librarian's Secret
+
+#### 👎 The "Just Write a Story" (Bad) Example:
+
+**Prompt:** "Write a story about a librarian who can talk to books."
+
+#### 👍 The SCENE Story-Spinner (Good) Example:
+
+**Prompt:**
+*   **Subject & Characters:** "A young, timid librarian named Elara who discovers she can talk to books. Her antagonist is a shadowy figure who wants to steal this power."
+*   **Conflict & Core Plot:** "Elara must learn to control her ability to protect a legendary, sentient book from the antagonist, who believes it holds the key to ultimate knowledge. The plot involves a chase through ancient libraries and hidden archives."
+*   **Environment & Setting:** "A vast, labyrinthine library with towering shelves, dusty forgotten corners, and a magical, glowing section where the most powerful books reside. The time is a timeless, alternate reality."
+*   **Narrative Style & Tone:** "Third-person limited perspective, following Elara. The tone should be magical, full of wonder, but with an undercurrent of suspense and danger."
+*   **Ending & Emotion:** "Elara outsmarts the antagonist not with power, but with her deep knowledge of stories. She doesn't defeat him, but traps him within a book of his own making. The reader should feel a sense of triumph and the magic of storytelling."
 
 Building a custom AI agent? PRISM helps you lay down the law. This involves clarifying the agent's **P**urpose, defining its **R**ole and Rules, providing **I**nstructions, setting its **S**cope, and detailing its **M**emory and Mastery capabilities.
 
@@ -141,6 +164,9 @@ Building a custom AI agent? PRISM helps you lay down the law. This involves clar
 * **I - Instructions:** What are the step-by-step processes it follows?
 * **S - Scope & Service:** What is its specific area of expertise, and what can it do?
 * **M - Memory & Mastery:** How does it handle past information, and how does it learn or improve?
+
+
+## PRISM: Your Blueprint for Defining AI Agents 🤖
 
 ### PRISM in Action: [The "Portfolio Pal" Agent](ai-showcase#instagram-ai-agents)
 
@@ -157,3 +183,111 @@ Building a custom AI agent? PRISM helps you lay down the law. This involves clar
 * **Instructions:** "1. Greet the user and introduce yourself. 2. When a question is received, perform a semantic search on the vector-store of my documents. 3. Synthesize the retrieved information into a concise, helpful answer. 4. If no relevant information is found, state 'I don't have that specific detail in Christian's documents, but I can tell you about...' and suggest a related topic."
 * **Scope & Service:** "Scope is limited to my skills, projects, work experience, and education as detailed in the provided context documents. It provides the service of answering factual questions and summarizing my career highlights."
 * **Memory & Mastery:** "Memory: The agent will maintain a short-term memory for the duration of a single user session to understand follow-up questions. It will not retain user data across sessions. Mastery: The agent does not learn or adapt on its own. Its knowledge base is updated only when I manually update the source documents."
+
+## Core Prompting Techniques
+
+Beyond the full frameworks, there are several powerful, flexible techniques you can weave into almost any prompt to dramatically improve the results. Think of these as the fundamental skills of an AI whisperer.
+
+### Chain of Thought (CoT): Show Your Work 🧠
+
+For any problem that requires multiple steps of reasoning—like math problems, logic puzzles, or complex planning tasks—the Chain of Thought technique is your best friend. Instead of letting the AI "jump" to a conclusion, you instruct it to explain its reasoning step-by-step.
+
+**Why it works:** This forces the AI to slow down and simulate a more deliberate, logical thought process. It reduces errors caused by skipping intermediate steps and makes the AI's reasoning transparent, allowing you to easily check its work.
+
+**How to use it:** Simply append a phrase like "Let's think step by step," or "Show your reasoning" to your prompt.
+
+#### Example: The Simple Math Problem
+
+> **Prompt:** "I have 5 apples. I give 2 to my friend and then buy 4 more. I then eat one. How many apples do I have left? Let's think step by step."
+>
+> **Expected AI Reasoning:**
+>
+> 1.  Start with 5 apples.
+> 2.  Give 2 away: 5 - 2 = 3 apples.
+> 3.  Buy 4 more: 3 + 4 = 7 apples.
+> 4.  Eat one: 7 - 1 = 6 apples.
+>
+> **Final Answer:** You have 6 apples left.
+
+### Few-Shot Prompting: Learn by Example 🎯
+
+When you need the AI to follow a very specific format, style, or pattern, showing is always better than telling. With Few-Shot Prompting, you provide a few examples (the "shots") of the input-output pattern you want, and the AI learns to replicate it on the fly.
+
+**Why it works:** This is a powerful form of "in-context learning." It's one of the most effective ways to get structured data, perform custom classifications, or enforce a consistent style without needing to write complex instructions.
+
+**How to use it:** Structure your prompt with 2-3 examples of what you want, then provide the final input for the AI to process.
+
+#### Example: Sentiment Classification
+
+> **Prompt:**
+> "Your task is to classify the sentiment of a customer review as Positive, Negative, or Neutral.
+>
+> Review: 'The battery life on this is incredible!'
+> Sentiment: Positive
+>
+> Review: 'The screen scratches way too easily.'
+> Sentiment: Negative
+>
+> Now, classify this review:
+> Review: 'It works as advertised, but the design is a bit boring.'
+> Sentiment:"
+
+### Self-Critique: The Iterative Refiner 🧐
+
+The first draft is rarely the best one, even for an AI. The Self-Critique technique turns the AI into its own editor. You ask it to generate a response, then follow up by asking it to critique its own work and, finally, to rewrite it based on that critique.
+
+**Why it works:** This meta-technique forces a multi-step process of generation, reflection, and refinement, leading to higher-quality, more polished results. It's perfect for improving clarity, tone, and accuracy.
+
+**How to use it:** Use a three-prompt sequence: an initial prompt, a critique prompt, and a refinement prompt.
+
+#### Example: Refining an Explanation
+
+> **1. Initial Prompt:** "Explain the concept of photosynthesis for a 5th grader."
+>
+> **2. Critique Prompt:** "Please critique your explanation. Is it simple enough? Does it use any jargon that a 5th grader might not understand? Is the analogy clear?"
+>
+> **3. Refinement Prompt:** "Good. Now, rewrite the explanation based on your critique to make it even better and easier to understand."
+
+## Stacking Techniques: The Expert-Level Combo 🧑‍🍳
+
+The true power of prompt engineering is unlocked when you stop seeing these frameworks and techniques as separate tools and start using them as building blocks. "Stacking" is the art of combining multiple techniques into a single, super-powered prompt. This allows for an unparalleled level of control and precision, letting you guide the AI's persona, process, and output format all at once.
+
+### Stacking in Action: CASTR + Few-Shot Prompting
+
+Let's combine the structure of **CASTR** with the pattern-matching power of **Few-Shot Prompting** to generate social media copy in a very specific style.
+
+**Goal:** Generate a LinkedIn post announcing a new feature for our SaaS product.
+
+**The Stacked Prompt:**
+
+*   **Context:** "We are a B2B SaaS company called 'Insightify' launching a new AI-powered feature named 'Predictive Analytics'."
+*   **Act as:** "A senior B2B tech copywriter with a knack for making complex features sound simple and exciting."
+*   **Steps:** "1. Write a compelling hook. 2. Explain the core benefit for product managers. 3. Include a call-to-action to a blog post. 4. Add 3-5 relevant hashtags."
+*   **Task:** "Generate a new LinkedIn post announcing our 'Predictive Analytics' feature. It's crucial that you match the tone and structure of the examples below."
+*   **Result:** "The post must be under 150 words and formatted for LinkedIn."
+
+---
+**Few-Shot Examples:**
+
+**Example 1 (for a different feature):**
+> "Stop guessing, start knowing. Our new 'User Journey Mapping' feature is here to show you exactly how customers interact with your product. Find the friction, fix the flow. 👉 [Link to blog post] #UX #ProductManagement #SaaS"
+
+**Example 2 (for another feature):**
+> "Tired of manual bug reports? Our 'Automated Anomaly Detection' saves you hours by flagging critical issues before your users do. Ship with confidence. 🚀 [Link to blog post] #DevOps #SaaS #AI #Product"
+---
+
+**Now, generate the post for the new 'Predictive Analytics' feature.**
+
+---
+
+## General Best Practices
+
+Beyond frameworks, keep these universal tips in mind:
+
+*   **Be Specific & Clear:** Vague prompts lead to vague answers. The more details, constraints, and context you provide, the better the result. Think about length, format, and key elements to include.
+*   **Assign a Persona:** As seen in many frameworks (`Act as...`), telling the AI *who* to be (e.g., "an expert copywriter," "a sarcastic historian") dramatically shapes the tone, style, and knowledge base of the response.
+*   **Stack Your Techniques:** The most powerful prompts often combine frameworks and techniques. Don't be afraid to start with a `CASTR` structure, embed `Few-Shot` examples within it, and ask for a `Chain-of-Thought` explanation. Layering your instructions gives you maximum control.
+*   **Iterate, Iterate, Iterate:** Your first prompt is rarely your best. Treat prompting as a conversation. Use the AI's output to refine your next prompt, adding clarifications or correcting its course.
+*   **Use Negative Prompts:** Sometimes it's easier to state what you *don't* want. Use phrases like "Do not include...," "Avoid talking about...," or "Exclude any mention of..." to steer the AI away from certain topics or styles.
+
+Happy prompting! The best way to master these skills is to experiment by mixing and matching frameworks and techniques to see what works best for your needs.
