@@ -14,6 +14,7 @@
         <ReadOMeter :key="page.relativePath + '-readometer'" />
         <TTSPlayer :key="page.relativePath + '-tts'" />
       </div>
+      <ContinueReadingToast v-if="showCourseHelper" />
     </template>
   </Layout>
 </template>
@@ -27,6 +28,7 @@ import NaitBubble from "../../components/assistant/NaitBubble.vue";
 import ReadOMeter from '../../components/course-elements/ReadOMeter.vue';
 import ScrollProgressBar from '../../components/course-elements/ScrollProgressBar.vue';
 import TTSPlayer from '../../components/course-elements/tts/TTSPlayer.vue';
+import ContinueReadingToast from '../../components/course-elements/ContinueReadingToast.vue';
 
 const { Layout } = DefaultTheme;
 const { page } = useData();
