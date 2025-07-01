@@ -136,12 +136,12 @@ onBeforeUnmount(() => {
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  background-color: #2c2c2c; /* Sleek dark grey */
+  background-color: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
   padding: 15px 20px;
-  border-radius: 8px; /* Slightly less rounded */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Softer shadow */
-  border: none; /* Remove border */
+  border-radius: 8px;
+  box-shadow: var(--vp-shadow-2);
+  border: 1px solid var(--vp-c-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -175,18 +175,18 @@ onBeforeUnmount(() => {
 
 .toast-button:hover {
   background-color: var(--vp-c-brand);
-  color: white;
+  color: var(--vp-c-white);
 }
 
 .toast-button.restart {
-  border-color: #E24A4A;
-  color: #E24A4A;
+  border-color: var(--vp-c-danger-1);
+  color: var(--vp-c-danger-1);
 }
 
 .toast-button.restart:hover {
-  background-color: #E24A4A;
-  border-color: #E24A4A;
-  color: white;
+  background-color: var(--vp-c-danger-1);
+  border-color: var(--vp-c-danger-1);
+  color: var(--vp-c-white);
 }
 
 .toast-enter-active,
