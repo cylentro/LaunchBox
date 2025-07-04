@@ -12,6 +12,7 @@ const selectedLevels = ref([]);
 const selectedSeries = ref(''); // Using a string for single-select radio buttons
 const showRecommendedOnly = ref(false);
 const isFilterVisible = ref(false); // State for mobile filter visibility
+const searchQuery = ref('');
 
 // Pagination state
 const currentPage = ref(1);
@@ -79,7 +80,12 @@ const filteredCourses = computed(() => {
     const categoryMatch = selectedCategories.value.length === 0 || course.categories.some(cat => selectedCategories.value.includes(cat));
     const levelMatch = selectedLevels.value.length === 0 || course.levels.some(level => selectedLevels.value.includes(level));
     const recommendedMatch = !showRecommendedOnly.value || course.recommended;
-    return categoryMatch && levelMatch && recommendedMatch;
+    const searchMatch = searchQuery.value === '' ||
+      course.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      course.categories.some(cat => cat.toLowerCase().includes(searchQuery.value.toLowerCase())) ||
+      course.levels.some(level => level.toLowerCase().includes(searchQuery.value.toLowerCase()));
+    return categoryMatch && levelMatch && recommendedMatch && searchMatch;
   });
 });
 
@@ -102,6 +108,7 @@ function resetFilters() {
   selectedLevels.value = [];
   selectedSeries.value = '';
   showRecommendedOnly.value = false;
+  searchQuery.value = '';
   currentPage.value = 1; // Reset page on filter clear
 }
 
@@ -120,7 +127,7 @@ function toggleSeries(seriesName) {
 }
 
 // Watch filters to reset current page when filters change
-watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries], () => {
+watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries, searchQuery], () => {
   currentPage.value = 1;
 })
 </script>
@@ -165,6 +172,13 @@ watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries],
               class="text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
               Clear All
             </button>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="py-4 border-t border-gray-200 dark:border-gray-700">
+            <label for="course-search" class="sr-only">Search Courses</label>
+            <input type="text" id="course-search" v-model="searchQuery" placeholder="Search courses..."
+              class="w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
           </div>
 
           <!-- Recommended Filter -->
