@@ -4,6 +4,8 @@ title: 'North Star Workshop Facilitator Template'
 description: "A step-by-step, fill-in-the-blanks template for product leaders to facilitate a North Star Framework definition workshop. Align your team and define your key metric."
 ogTitle: 'North Star Workshop Facilitator Template'
 ogDescription: "A step-by-step, fill-in-the-blanks template for product leaders to facilitate a North Star Framework definition workshop. Align your team and define your key metric."
+
+keywords: North Star Metric workshop, product strategy template, metric definition, product management workshop, team alignment, KPI workshop
 ---
 # North Star Workshop Facilitator's Template
 

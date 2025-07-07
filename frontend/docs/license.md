@@ -1,6 +1,10 @@
 ---
 title: MIT License
 layout: doc
+description: The MIT License for the open-source software and code provided on this website.
+ogTitle: MIT License | bychris.me
+ogDescription: The MIT License for the open-source software and code provided on this website.
+keywords: MIT license, open source license, software license
 ---
 
 # MIT License

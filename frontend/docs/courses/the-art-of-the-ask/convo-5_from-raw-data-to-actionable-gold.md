@@ -6,6 +6,8 @@ description: "Learn to transform raw interview data into actionable insights usi
 
 ogTitle: "Convo 5: The Synthesis - From Raw Data to Actionable Gold"
 ogDescription: "Learn to transform raw interview data into actionable insights using thematic analysis. Discover how to build evidence-backed user personas and user journey maps to bring research findings to life and drive product strategy."
+
+keywords: thematic analysis, user research synthesis, user personas, user journey mapping, qualitative data analysis, actionable insights
 ---
 # Convo 5: The Synthesis - From Raw Data to Actionable Gold
 

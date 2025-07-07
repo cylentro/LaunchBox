@@ -5,6 +5,8 @@ description: Learn how to scale an experimentation practice from ad-hoc tests to
 
 ogTitle: Scaling Experimentation and Building a Culture
 ogDescription: Learn how to scale an experimentation practice from ad-hoc tests to a high-velocity program, foster a culture of curiosity, and navigate the ethical responsibilities of A/B testing.
+
+keywords: experimentation culture, scaling A/B testing, high-velocity testing, product experimentation, data-informed culture, ethical A/B testing, personalization
 ---
 # Variant 9: Scaling Experimentation and Building a Culture
 

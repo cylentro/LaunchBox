@@ -4,6 +4,8 @@ title: 'Metrics 2: The North Star Framework'
 description: 'Learn how the North Star Framework aligns a company on a single metric representing core customer value, creating focus and accelerating data-informed decision-making for sustainable growth.'
 ogTitle: 'Metrics 2: The North Star Framework'
 ogDescription: 'Learn how the North Star Framework aligns a company on a single metric representing core customer value, creating focus and accelerating data-informed decision-making for sustainable growth.'
+
+keywords: North Star Metric, NSM, product strategy, metric tree, input metrics, output metrics, counter-metrics, product-led growth, strategic alignment
 ---
 # Metrics 2: The North Star Framework: A System for Strategic Alignment
 

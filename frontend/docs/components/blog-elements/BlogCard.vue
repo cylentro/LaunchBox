@@ -1,11 +1,15 @@
 <template>
   <div class="blog-card">
     <a :href="post.url">
-      <h3>{{ post.frontmatter.title }}</h3>
-      <p class="subtitle">{{ post.frontmatter.subtitle }}</p>
-      <div class="card-meta">
-        <span class="category">{{ post.frontmatter.category }}</span>
-        <span class="date">{{ new Date(post.frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}</span>
+      <img v-if="post.frontmatter.image" :src="post.frontmatter.image" :alt="post.frontmatter.title" class="blog-card-image" />
+      <div class="blog-card-content">
+        <h3>{{ post.frontmatter.title }}</h3>
+        <p class="author" v-if="post.frontmatter.author">By {{ post.frontmatter.author }}</p>
+        <p class="subtitle">{{ post.frontmatter.subtitle }}</p>
+        <div class="card-meta">
+          <span class="category">{{ post.frontmatter.category }}</span>
+          <span class="date">{{ new Date(post.frontmatter.date || post.lastUpdated).toLocaleDateString('en-US', { year: 'numeric',month: 'short', day: 'numeric' }) }}</span>
+        </div>
       </div>
     </a>
   </div>
@@ -20,9 +24,27 @@ const { post } = defineProps(["post"]);
   background-color: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 8px;
-  padding: 1.5rem;
   margin-bottom: 1.5rem;
   transition: all 0.2s ease-in-out;
+  overflow: hidden; /* Ensures image corners are rounded with card */
+}
+
+.blog-card-image {
+  width: 100%;
+  height: 200px; /* Or whatever height you prefer */
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 0; /* Remove margin here, padding will be on content */
+}
+
+.blog-card-content {
+  padding: 1.5rem;
+}
+
+.blog-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Make the whole card clickable */
 }
 
 .blog-card:hover {
@@ -38,9 +60,16 @@ const { post } = defineProps(["post"]);
 h3 {
   font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
   line-height: 1.3;
   color: #333;
+}
+
+.author {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 0.8rem;
+  font-style: italic;
 }
 
 .subtitle {

@@ -7,6 +7,10 @@ description: Learn more about Christian Hadianto, his journey as a Product Manag
 ogTitle: Christian Hadianto | Product Manager & GenAI Enthusiast
 ogDescription: Dive into the professional world of Christian Hadianto, a Product Manager with a passion for logistics and Generative AI. Explore his projects, courses, and philosophy.
 
+keywords: Christian Hadianto, Product Manager, GenAI, Generative AI, AI, Logistics, Product Management, Singapore, Anteraja, Moonlay Technologies, QRIM Express, Product Philosophy, AI Projects, AI Courses
+
+lastUpdated: false
+
 hero:
   name: "Christian Hadianto"
   text: "Product Manager | GenAI"

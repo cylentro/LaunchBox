@@ -132,6 +132,7 @@ function updateTagFilter(tag) {
   gap: 2rem;
   max-width: 1152px;
   margin: 2rem auto;
+  align-items: start; /* Align grid items to the top */
 }
 
 .main-content {
@@ -144,7 +145,10 @@ function updateTagFilter(tag) {
 }
 
 .sidebar {
-  width: 100%;
+  position: sticky;
+  top: var(--vp-nav-height); /* Adjust for VitePress nav bar */
+  padding-top: 1rem; /* Add some padding to align with content */
+  width: 100%; /* Ensure it takes full width of its grid column */
 }
 
 .no-posts-message-full {
@@ -173,7 +177,7 @@ function updateTagFilter(tag) {
   }
 
   .sidebar {
-    width: 200px; /* Set a specific width for the sidebar */
+    width: 100%; /* Ensure it takes full width of its grid column */
   }
 }
 </style>

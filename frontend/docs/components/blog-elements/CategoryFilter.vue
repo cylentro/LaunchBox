@@ -109,7 +109,7 @@ const onDrag = (e) => {
 <style scoped>
 .category-filter-wrapper {
   position: sticky;
-  top: 0;
+  top: 3.6rem; /* Adjust for VitePress nav bar */
   z-index: 10; /* Ensure it stays on top */
   background-color: white; /* Add a background to prevent content showing through */
   padding: 1rem 0; /* Add some padding for visual separation */

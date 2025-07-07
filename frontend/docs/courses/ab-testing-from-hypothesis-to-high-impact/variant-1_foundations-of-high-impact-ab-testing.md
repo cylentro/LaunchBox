@@ -5,6 +5,8 @@ description: Learn the core concepts of A/B, A/B/n, and multivariate testing. Un
 
 ogTitle: Foundations of High-Impact A/B Testing
 ogDescription: Learn the core concepts of A/B, A/B/n, and multivariate testing. Understand the business case for experimentation and the key roles and team structures for success.
+
+keywords: A/B testing, multivariate testing, MVT, experimentation, data-informed culture, product management, CRO, split testing
 ---
 # Variant 1: Foundations of High-Impact A/B Testing
 

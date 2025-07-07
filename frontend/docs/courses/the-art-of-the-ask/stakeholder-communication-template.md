@@ -4,6 +4,8 @@ title: 'Stakeholder Communication Templates'
 description: "Learn to drive action with your research. Use these fill-in-the-blanks templates to effectively communicate user interview findings to executives, engineers, and designers."
 ogTitle: 'Stakeholder Communication Templates'
 ogDescription: "Learn to drive action with your research. Use these fill-in-the-blanks templates to effectively communicate user interview findings to executives, engineers, and designers."
+
+keywords: stakeholder communication, research communication, user research report, executive summary template, product management templates
 ---
 # Stakeholder Communication Templates
 

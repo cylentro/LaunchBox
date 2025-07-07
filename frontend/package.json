@@ -28,6 +28,7 @@
 		}
 	},
 	"dependencies": {
-		"marked": "^15.0.12"
+		"marked": "^15.0.12",
+		"vitepress-mermaid-renderer": "^1.0.14"
 	}
 }

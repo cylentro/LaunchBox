@@ -6,6 +6,8 @@ description: "Explore advanced research techniques like Contextual Inquiry and J
 
 ogTitle: "Convo 6: Advanced Modules & Essential Considerations"
 ogDescription: "Explore advanced research techniques like Contextual Inquiry and JTBD, understand ethical responsibilities like informed consent, and learn to communicate findings for maximum impact."
+
+keywords: contextual inquiry, jobs-to-be-done, JTBD, user research ethics, informed consent, research bias, stakeholder communication
 ---
 # Convo 6: Advanced Modules & Essential Considerations
 

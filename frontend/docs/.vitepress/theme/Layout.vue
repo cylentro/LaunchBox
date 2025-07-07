@@ -5,6 +5,15 @@
       <!-- ReadOMeter is now rendered in the layout-bottom slot and moved with JS -->
     </template>
 
+    <template #doc-after>
+      <div v-if="page.lastUpdated" class="last-updated">
+        Last updated: {{ new Date(page.lastUpdated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
+      </div>
+      <div v-if="page.frontmatter.layout === 'doc' && page.relativePath.startsWith('blog/')" class="blog-post-footer">
+        Written by <a href="/about/about-me">Christian Hadianto</a> — Product guy, weekend coder, lifelong learner.
+      </div>
+    </template>
+
     <template #layout-bottom>
       <SpotifyBubble v-if="!isSpotifyBubbleHiddenPage" />
       <!-- Conditionally render NaitBubble: hide if on index.md -->
@@ -115,4 +124,41 @@ watch(
     display: none !important;
   }
 }
+
+.last-updated {
+  margin-top: 2rem;
+  text-align: right;
+  font-size: 0.9em;
+  color: var(--vp-c-text-2);
+}
+
+figure {
+  margin: 2em 0; /* Add some vertical spacing */
+  text-align: center; /* Center the image and caption */
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Remove extra space below image */
+  margin: 0 auto; /* Center the image itself */
+  border-radius: 8px; /* Optional: match your blog card image style */
+}
+
+figcaption {
+  font-size: 0.9em;
+  color: var(--vp-c-text-2);
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+.blog-post-footer {
+  margin-bottom: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 0.9em;
+  color: var(--vp-c-text-2);
+  text-align: center;
+}
+
 </style>

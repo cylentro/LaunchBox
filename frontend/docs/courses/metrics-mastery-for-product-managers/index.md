@@ -16,6 +16,8 @@ ogDescription: Transform your product practice from intuition-led to data-inform
 
 duration: 50.66
 
+keywords: product management course, metrics for product managers, data-informed product management, North Star Metric, AARRR, HEART framework, product strategy, data analytics
+
 hero:
   name: "Metrics Mastery"
   text: "for Product Managers"
@@ -63,4 +65,4 @@ Upon successful completion of this course, you will be able to:
 * **Tell Compelling Stories with Data:** Transform raw data into persuasive narratives. You will learn a structured approach to data storytelling that contextualizes numbers, reveals the "so what" behind the insights, and drives clear, actionable recommendations.
 * **Design Effective Dashboards:** Apply core design principles to build simple, effective dashboards that provide a clear, at-a-glance understanding of your product's health, focusing on trends and actionable insights over a sea of numbers.
 
-`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`
+<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />

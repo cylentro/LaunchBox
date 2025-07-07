@@ -5,6 +5,8 @@ description: Learn to formulate powerful, evidence-based hypotheses for your A/B
 
 ogTitle: 'The Art of the Hypothesis'
 ogDescription: Learn to formulate powerful, evidence-based hypotheses for your A/B tests. This module covers the anatomy of a strong hypothesis, gathering data, and using PIE/ICE frameworks for prioritization.
+
+keywords: A/B testing hypothesis, experimentation, product hypothesis, data-driven hypothesis, PIE framework, ICE framework, JTBD, jobs to be done, product management
 ---
 # Variant 3: The Art of the Hypothesis
 

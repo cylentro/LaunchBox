@@ -4,7 +4,10 @@ title: 'Metrics 4: Frameworks for the Funnel and User Experience'
 description: "Explore tactical frameworks like AARRR for funnel diagnostics and HEART for user experience measurement. Learn how to integrate them with the North Star Framework for a complete product growth system."
 ogTitle: 'Metrics 4: Frameworks for the Funnel and User Experience'
 ogDescription: "Explore tactical frameworks like AARRR for funnel diagnostics and HEART for user experience measurement. Learn how to integrate them with the North Star Framework for a complete product growth system."
+
+keywords: AARRR framework, HEART framework, pirate metrics, user experience metrics, product funnel, customer lifecycle, UX measurement, product management
 ---
+
 # Metrics 4: Frameworks for the Funnel and User Experience
 
 While the North Star Framework provides the high-level strategic direction, product leaders need more granular, tactical frameworks to diagnose specific problems and guide day-to-day improvements. This section explores two of the most powerful tactical frameworks—AARRR and HEART—and, most importantly, provides a unified model for how they work together with the North Star to create a comprehensive measurement system.

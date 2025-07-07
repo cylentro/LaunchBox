@@ -4,6 +4,8 @@ title: 'User Interview Cheat Sheet'
 description: "A one-page, downloadable summary of the key do's and don'ts for conducting effective user interviews, from planning and questioning to synthesis and reporting."
 ogTitle: 'User Interview Cheat Sheet'
 ogDescription: "A one-page, downloadable summary of the key do's and don'ts for conducting effective user interviews, from planning and questioning to synthesis and reporting."
+
+keywords: user interview cheat sheet, interview tips, qualitative research, user research guide, interview questions, research best practices
 ---
 # User Interview Cheat Sheet
 

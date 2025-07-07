@@ -2,6 +2,8 @@
 layout: doc
 title: Getting Started with Prompt Design
 description: Learn the fundamental anatomy of a good AI prompt. This guide covers the core components—Context, Task, and Specificity—to help you write clear instructions for better results.
+
+keywords: prompt design, prompt engineering basics, how to write AI prompts, prompt anatomy, AI instructions, better AI results
 ---
 
 # Getting Started with Prompt Design

@@ -6,6 +6,8 @@ description: "Master the art of questioning in user interviews. Learn to craft o
 
 ogTitle: "Convo 3: The Art of the Question - Crafting Probes That Uncover Truth"
 ogDescription: "Master the art of questioning in user interviews. Learn to craft open-ended, neutral questions, apply the funnel approach, and use powerful probing techniques like 'why,' 'tell me more,' and 'last time' to uncover deep, truthful insights."
+
+keywords: user interview questions, open-ended questions, probing questions, neutral questions, funnel approach, qualitative research methods
 ---
 # Convo 3: The Art of the Question - Crafting Probes That Uncover Truth
 

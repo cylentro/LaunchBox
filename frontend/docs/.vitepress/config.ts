@@ -2,6 +2,7 @@ import { defineConfig, type HeadConfig } from "vitepress";
 import fs from "fs";
 import path from "path";
 
+
 function getReadingTime(content) {
 	if (!content) {
 		return 0;
@@ -26,9 +27,14 @@ function getReadingTime(content) {
 export default defineConfig({
 	title: "Christian Hadianto",
 	titleTemplate: ":title | Christian Hadianto",
-	description:
-		"Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
+	description: "Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
+	
+	lastUpdated: true,
+
 	cleanUrls: true, // Ensures URLs are generated without .html extensions
+	rewrites: {
+		"blog/posts/:post": "blog/:post",
+	},
 
 	build: {
 		rollupOptions: {
@@ -196,18 +202,23 @@ export default defineConfig({
 		const siteUrl = "https://bychris.me";
 		const siteTitle = siteData.title;
 
-		// This logic correctly removes .md and index.md to create clean URLs
-		let pagePath = pageData.relativePath.replace(/\.md$/, "");
-		if (pagePath.endsWith("index")) {
-			pagePath = pagePath.slice(0, -5); // 'courses/index' -> 'courses/'
+		// Reconstruct the public URL path from the file's relative path.
+		// This is necessary because `pageData.route` is not available in this build hook.
+		let pagePath = pageData.relativePath
+			.replace(/\.md$/, "") // remove .md extension
+			.replace(/index$/, ""); // remove trailing 'index'
+
+		// Apply the specific rewrite rule for blog posts
+		if (pagePath.startsWith("blog/posts/")) {
+			pagePath = pagePath.replace("blog/posts/", "blog/");
 		}
-		// Remove trailing slash for non-root paths to create clean URLs
-		pagePath = pagePath.replace(/\/$/, ""); // 'courses/' -> 'courses'
 
-		// Construct the full, canonical URL for the current page.
-		// This ensures the root URL doesn't have a trailing slash.
+		// Ensure a consistent path by removing any trailing slash
+		if (pagePath.endsWith("/") && pagePath.length > 1) {
+			pagePath = pagePath.slice(0, -1);
+		}
+
 		const pageUrl = pagePath ? `${siteUrl}/${pagePath}` : siteUrl;
-
 		// Dynamically get the title and description for the current page
 		const pageTitle = pageData.title || siteTitle;
 		const pageDescription =

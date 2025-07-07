@@ -5,6 +5,11 @@ title: My Digital Toolbox & Stacks
 description: Discover the technology stacks Christian Hadianto utilizes, from produt management tools to Generative AI tools like LangChain and Gemini.
 ogTitle: My Digital Toolbox & Stacks
 ogDescription: Discover the technology stacks Christian Hadianto utilizes, from produt management tools to Generative AI tools like LangChain and Gemini.
+
+keywords: technology stack, product management tools, AI tools, design tools, development stack, Christian Hadianto, tech stack
+
+lastUpdated: false
+
 ---
 # My Digital Toolbox & Other Shiny Things
 

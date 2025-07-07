@@ -6,6 +6,8 @@ description: Learn to use AI responsibly. This guide covers critical issues like
 
 ogTitle: Chapter 6 - Staying Safe and Smart - Ethics & Limitations
 ogDescription: Learn to use AI responsibly. This guide covers critical issues like AI hallucinations, bias, and copyright, providing an essential safety checklist for smart and ethical AI use.
+
+keywords: AI ethics, responsible AI, AI safety, AI hallucinations, AI bias, AI copyright, AI limitations, fact-checking AI
 ---
 # Chapter 6: Staying Safe and Smart: Ethics & Limitations
 

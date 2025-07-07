@@ -6,6 +6,8 @@ description: "Learn the structured, 8-step lifecycle of a successful user interv
 
 ogTitle: "Convo 2: The Architecture of the Interview - Deconstructing the 'How'"
 ogDescription: "Learn the structured, 8-step lifecycle of a successful user interview project, from goal setting to reporting. Master recruitment strategies, including designing effective screener surveys and choosing the right channels to find your ideal participants."
+
+keywords: user interview process, interview lifecycle, user research planning, recruitment for user research, screener surveys, research objectives
 ---
 # Convo 2: The Architecture of the Interview - Deconstructing the 'How'
 

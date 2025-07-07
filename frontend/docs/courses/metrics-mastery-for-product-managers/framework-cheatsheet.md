@@ -4,6 +4,8 @@ title: 'Metrics Frameworks Cheat Sheet'
 description: "A one-page, downloadable summary of the key product metric frameworks: North Star, AARRR, and HEART. Your quick reference for strategic product management."
 ogTitle: 'Metrics Frameworks Cheat Sheet'
 ogDescription: "A one-page, downloadable summary of the key product metric frameworks: North Star, AARRR, and HEART. Your quick reference for strategic product management."
+
+keywords: product metrics, metrics framework, North Star framework, AARRR metrics, HEART framework, product management cheat sheet, KPI framework
 ---
 # Metrics Frameworks Cheat Sheet
 

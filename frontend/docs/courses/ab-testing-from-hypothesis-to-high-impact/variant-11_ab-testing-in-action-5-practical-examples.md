@@ -5,6 +5,8 @@ description: See A/B testing theory in practice with 5 real-world examples, from
 
 ogTitle: 'A/B Testing in Action: 5 Practical Examples'
 ogDescription: See A/B testing theory in practice with 5 real-world examples, from e-commerce buttons and SaaS pricing pages to mobile app onboarding and email subject lines.
+
+keywords: A/B testing examples, CRO case studies, e-commerce optimization, SaaS pricing page test, mobile app onboarding, email marketing testing, product management examples
 ---
 # Variant 11: A/B Testing in Action - 5 Practical Examples
 

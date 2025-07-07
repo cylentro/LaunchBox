@@ -16,6 +16,8 @@ ogDescription: Master A/B testing from start to finish. This practical guide tea
 
 duration: 76.44
 
+keywords: A/B testing course, learn A/B testing, experimentation, product management, data-driven decisions, conversion rate optimization, CRO, hypothesis testing, statistical significance
+
 hero:
   name: "A/B Testing from Hypothesis to High-Impact"
   text: "A Practical Guide"
@@ -55,4 +57,4 @@ Upon completing this course, you will be able to:
 * **Interpret Results with Confidence:** Understand the core statistical concepts behind A/B testing so you can confidently analyze outcomes, differentiate between a true winner and random chance, and avoid common analytical pitfalls.
 * **Communicate Learnings to Drive Action:** Develop the ability to translate test results into compelling data stories that create alignment, turning every outcome—win, loss, or inconclusive—into actionable intelligence for your organization.
 
-`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`
+<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />

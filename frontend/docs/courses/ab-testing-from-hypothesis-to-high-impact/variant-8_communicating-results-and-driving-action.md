@@ -5,6 +5,8 @@ description: Learn to transform A/B test results into action. This module covers
 
 ogTitle: 'Communicating Results and Driving Action'
 ogDescription: Learn to transform A/B test results into action. This module covers data storytelling, tailoring your message for executives and stakeholders, and creating reports that drive decisions.
+
+keywords: A/B testing communication, data storytelling, stakeholder management, experiment results, product management, data visualization, CRO reporting
 ---
 # Variant 8: Communicating Results and Driving Action
 

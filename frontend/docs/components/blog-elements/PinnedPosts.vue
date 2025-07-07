@@ -50,6 +50,14 @@ h3 {
 
 .pinned-post-link:hover {
   background-color: var(--vp-c-bg-mute);
-  font-weight: bold ; 
+  font-weight: bold; 
+}
+
+@media (max-width: 768px) {
+  .pinned-posts {
+    position: static; /* Remove sticky on mobile */
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 </style>

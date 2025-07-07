@@ -6,6 +6,8 @@ description: Discover the hands-on, project-based teaching methodology for our A
 
 ogTitle: Recommended Teaching Methodology
 ogDescription: Discover the hands-on, project-based teaching methodology for our AI prompting course, designed to build practical skills and confidence through real-world application.
+
+keywords: teaching methodology, project-based learning, hands-on learning, AI education, prompting course, instructional design
 ---
 # Recommended Teaching Methodology
 

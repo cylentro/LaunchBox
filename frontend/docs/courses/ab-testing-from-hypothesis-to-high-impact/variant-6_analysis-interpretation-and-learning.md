@@ -5,6 +5,8 @@ description: Learn to analyze A/B test results, handle inconclusive outcomes, an
 
 ogTitle: 'Analysis, Interpretation, and Learning'
 ogDescription: Learn to analyze A/B test results, handle inconclusive outcomes, and avoid common statistical traps like regression to the mean and the novelty effect to make sound, data-informed decisions.
+
+keywords: A/B test analysis, interpret A/B test results, inconclusive A/B test, regression to the mean, novelty effect, statistical traps, data analysis
 ---
 # Variant 6: Analysis, Interpretation, and Learning
 

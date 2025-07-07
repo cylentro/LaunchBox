@@ -4,6 +4,8 @@ title: 'Metrics 1: The Philosophy of Measurement'
 description: 'Learn the foundational mindset for modern product management, evolving from gut-feel to a data-informed culture that balances quantitative and qualitative inputs for strategic decision-making.'
 ogTitle: 'Metrics 1: The Philosophy of Measurement'
 ogDescription: 'Learn the foundational mindset for modern product management, evolving from gut-feel to a data-informed culture that balances quantitative and qualitative inputs for strategic decision-making.'
+
+keywords: data-informed, data-driven, product management philosophy, decision making, product sense, gut-feel, local optimization, hypothesis testing
 ---
 # Metrics 1: The Philosophy of Measurement: From Data-Driven to Data-Informed
 

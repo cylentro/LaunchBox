@@ -6,6 +6,8 @@ description: "Master the art of conducting user interviews with finesse. Learn t
 
 ogTitle: "Convo 4: In the Arena - Conducting Interviews with Finesse"
 ogDescription: "Master the art of conducting user interviews with finesse. Learn to build rapport, practice active listening, maintain neutrality, and handle challenging situations to gather authentic and reliable insights."
+
+keywords: conducting user interviews, active listening, building rapport, interview techniques, qualitative research, user research skills
 ---
 ## The First Five Minutes: Mastering Rapport
 

@@ -8,6 +8,10 @@ description: Explore a curated list of Christian Hadianto's key projects in Prod
 ogTitle: My Work and Wanderings
 ogDescription: Explore a curated list of Christian Hadianto's key projects in Product Management, AI development, and logistics, demonstrating practical application and innovation.
 
+keywords: product management portfolio, AI projects, logistics projects, Christian Hadianto, professional portfolio, personal projects, generative AI
+
+lastUpdated: false
+
 ---
 # My Work and Wanderings
 

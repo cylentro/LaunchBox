@@ -4,6 +4,8 @@ title: 'User Journey Map Template'
 description: "A fill-in-the-blanks template for visualizing a user's process. Map user actions, thoughts, and emotions to uncover key pain points and opportunities for improvement."
 ogTitle: 'User Journey Map Template'
 ogDescription: "A fill-in-the-blanks template for visualizing a user's process. Map user actions, thoughts, and emotions to uncover key pain points and opportunities for improvement."
+
+keywords: user journey map, journey map template, customer journey mapping, UX design, user experience, product management
 ---
 # User Journey Map Template
 

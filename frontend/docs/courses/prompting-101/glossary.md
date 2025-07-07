@@ -6,6 +6,8 @@ description: A comprehensive glossary defining key Artificial Intelligence (AI) 
 
 ogTitle: Glossary of AI Terms
 ogDescription: A comprehensive glossary defining key Artificial Intelligence (AI) and Generative AI terms used in the Prompting 101 course, from LLMs to prompting techniques.
+
+keywords: AI glossary, generative AI terms, LLM, prompt engineering, AI definitions, AI terminology, RAG, few-shot prompting
 ---
 # Glossary of AI Terms
 

@@ -5,6 +5,8 @@ description: A detailed guide explaining the key differences between client-side
 
 ogTitle: 'Client-Side vs. Server-Side A/B Testing Explained'
 ogDescription: A detailed guide explaining the key differences between client-side and server-side A/B testing, including how they work, their pros and cons, and when to use each method.
+
+keywords: client-side A/B testing, server-side A/B testing, experimentation, CRO, flicker effect, feature flagging, product management, web optimization
 ---
 # Client-Side vs. Server-Side A/B Testing: A Detailed Guide
 

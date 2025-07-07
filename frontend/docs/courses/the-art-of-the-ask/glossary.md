@@ -6,6 +6,8 @@ description: "A comprehensive glossary of key terms and concepts related to user
 
 ogTitle: "Glossary - The Art of the Ask"
 ogDescription: "A comprehensive glossary of key terms and concepts related to user interviewing and qualitative research, as covered in 'The Art of the Ask' course."
+
+keywords: user interview glossary, qualitative research terms, user research terminology, thematic analysis, user persona, journey map
 ---
 # Glossary
 

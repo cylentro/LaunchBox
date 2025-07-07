@@ -4,6 +4,8 @@ title: 'Common Research Pitfalls Cheat Sheet'
 description: "A quick-reference table summarizing the most common and costly pitfalls in user research, from confirmation bias to flawed recruitment, with actionable advice on how to avoid them."
 ogTitle: 'Common Research Pitfalls Cheat Sheet'
 ogDescription: "A quick-reference table summarizing the most common and costly pitfalls in user research, from confirmation bias to flawed recruitment, with actionable advice on how to avoid them."
+
+keywords: user research, research pitfalls, confirmation bias, flawed recruitment, leading questions, user interviews, qualitative research, research mistakes
 ---
 # Common Research Pitfalls Cheat Sheet
 

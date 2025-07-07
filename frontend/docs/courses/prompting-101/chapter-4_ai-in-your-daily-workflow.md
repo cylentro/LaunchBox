@@ -6,6 +6,8 @@ description: Boost productivity by integrating AI into your daily workflow. Lear
 
 ogTitle: Chapter 4 - Practical Magic - AI in Your Daily Workflow
 ogDescription: Boost productivity by integrating AI into your daily workflow. Learn practical uses for email, meeting notes, brainstorming, and planning to save time and work smarter.
+
+keywords: AI for productivity, AI workflow, AI email assistant, AI meeting notes, AI brainstorming, AI travel planner, AI tutor
 ---
 # Chapter 4: Practical Magic: AI in Your Daily Workflow
 

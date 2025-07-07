@@ -6,6 +6,8 @@ description: What is Generative AI? Learn the core concepts, explore different t
 
 ogTitle: Chapter 1 - What is Generative AI?
 ogDescription: What is Generative AI? Learn the core concepts, explore different types like text and image generation, and create your first AI content with a hands-on lab for beginners.
+
+keywords: what is generative AI, generative AI for beginners, AI concepts, text generation, image generation, AI co-pilot, learn AI
 ---
 # Chapter 1: What is Generative AI?
 

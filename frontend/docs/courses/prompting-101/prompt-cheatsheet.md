@@ -2,6 +2,8 @@
 layout: doc
 title: Prompting Frameworks Cheatsheet
 description: A quick reference guide to powerful prompt engineering frameworks like CASTR, RIDER, PICTURE, ACTION, and PRISM for better AI results.
+
+keywords: prompt engineering, prompt frameworks, AI prompts, CASTR framework, RIDER framework, PICTURE framework, ACTION framework, PRISM framework, chain of thought, few-shot prompting
 ---
 
 # Prompting Frameworks Cheatsheet 🚀

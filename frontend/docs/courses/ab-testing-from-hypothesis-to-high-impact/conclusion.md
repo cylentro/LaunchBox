@@ -6,6 +6,7 @@ description: A summary of the key takeaways from the A/B testing course, reinfor
 ogTitle: 'Conclusion: From Hypothesis to High-Impact'
 ogDescription: A summary of the key takeaways from the A/B testing course, reinforcing the journey from a single hypothesis to building a culture of experimentation and data-informed decision-making.
 
+keywords: A/B testing course, experimentation culture, data-informed decisions, product growth, hypothesis testing, learning velocity, product management
 ---
 # Conclusion
 

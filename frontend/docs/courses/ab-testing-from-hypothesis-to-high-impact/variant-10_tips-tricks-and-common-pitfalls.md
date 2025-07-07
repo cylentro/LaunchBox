@@ -5,6 +5,8 @@ description: Learn best practices for high-impact A/B testing and how to avoid c
 
 ogTitle: 'Tips, Tricks, and Common Pitfalls'
 ogDescription: Learn best practices for high-impact A/B testing and how to avoid common pitfalls like peeking, ignoring significance, and testing trivial changes to ensure the validity of your results.
+
+keywords: A/B testing pitfalls, experimentation best practices, peeking, statistical significance, guardrail metrics, CRO tips, product experimentation
 ---
 # Variant 10: Tips, Tricks, and Common Pitfalls
 

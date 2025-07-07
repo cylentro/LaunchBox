@@ -2,6 +2,8 @@
 layout: doc
 title: "Convo 7: Learning from Failure - In-Depth Case Studies"
 description: "Explore real-world case studies of user research failures to understand common pitfalls like confirmation bias and flawed recruitment, and learn how to avoid them."
+
+keywords: user research mistakes, research failure case studies, confirmation bias example, recruitment mistakes, research pitfalls
 ---
 # Convo 7: Learning from Failure - In-Depth Case Studies
 

@@ -5,6 +5,8 @@ description: Learn how to interpret the three possible outcomes of an A/B testâ€
 
 ogTitle: 'Understanding the Result of an A/B Test'
 ogDescription: Learn how to interpret the three possible outcomes of an A/B testâ€”win, lose, or inconclusive. This module provides a decision framework for each scenario, emphasizing how to derive value and learning from every result.
+
+keywords: A/B test results, interpret A/B test, inconclusive A/B test, statistical significance, product experimentation, CRO, data analysis
 ---
 # Variant 7: Understanding the Result of an A/B Test
 

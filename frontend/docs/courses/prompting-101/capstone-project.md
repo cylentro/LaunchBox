@@ -6,6 +6,8 @@ description: Apply your AI prompting skills in our capstone project. Develop a '
 
 ogTitle: Capstone Project - Develop Your 'Personal AI Assistant Playbook'
 ogDescription: Apply your AI prompting skills in our capstone project. Develop a 'Personal AI Assistant Playbook' by curating tools, building a prompt library, and defining your own AI workflow.
+
+keywords: AI project, prompting project, AI playbook, prompt library, AI workflow, generative AI project, AI for productivity
 ---
 # Capstone Project: Develop Your 'Personal AI Assistant Playbook'
 

@@ -14,6 +14,8 @@ ogDescription: A comprehensive guide to mastering user interviews, focusing on u
 
 duration: 52.88
 
+keywords: user interviews, user research, qualitative research, product management, UX design, customer discovery, empathy, asking why
+
 hero:
   name: "The Art of the Ask"
   text: "A Comprehensive Guide to Effective User Interviews"
@@ -56,4 +58,4 @@ Upon completing this course, you will be able to:
 - Apply advanced interview techniques like Contextual Inquiry and Jobs-to-be-Done to uncover deeper contextual insights.
 - Uphold the highest ethical standards in research, including securing informed consent and protecting participant data.
 
-`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`
+<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />

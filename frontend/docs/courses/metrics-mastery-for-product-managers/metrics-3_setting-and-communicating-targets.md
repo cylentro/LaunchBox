@@ -4,6 +4,8 @@ title: 'Metrics 3: Setting and Communicating Targets'
 description: "Learn to transform metrics into mandates by setting clear, SMART targets. This guide covers methods for calculating and communicating targets to drive focus, alignment, and growth."
 ogTitle: 'Metrics 3: Setting and Communicating Targets'
 ogDescription: "Learn to transform metrics into mandates by setting clear, SMART targets. This guide covers methods for calculating and communicating targets to drive focus, alignment, and growth."
+
+keywords: product management, goal setting, SMART goals, KPI targets, OKRs, metric communication, product strategy, performance targets
 ---
 # Metrics 3: From Metrics to Mandates - Setting and Communicating Targets
 

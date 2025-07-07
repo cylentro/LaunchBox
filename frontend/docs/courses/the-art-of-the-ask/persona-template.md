@@ -4,6 +4,8 @@ title: 'User Persona Template'
 description: "A fill-in-the-blanks template for creating evidence-backed user personas. Transform your research data into a powerful, relatable archetype to guide product decisions."
 ogTitle: 'User Persona Template'
 ogDescription: "A fill-in-the-blanks template for creating evidence-backed user personas. Transform your research data into a powerful, relatable archetype to guide product decisions."
+
+keywords: user persona template, persona template, customer persona, user research, product management, UX design
 ---
 # User Persona Template
 

@@ -4,6 +4,8 @@ title: 'Metrics 6: Applied Metrics - In-Depth Case Studies'
 description: "Explore detailed case studies on applying metric frameworks to real-world product challenges, from launching a new B2C app to optimizing a B2B SaaS onboarding flow and reviving a mature product."
 ogTitle: 'Metrics 6: Applied Metrics - In-Depth Case Studies'
 ogDescription: "Explore detailed case studies on applying metric frameworks to real-world product challenges, from launching a new B2C app to optimizing a B2B SaaS onboarding flow and reviving a mature product."
+
+keywords: product management case studies, metrics case studies, AARRR framework example, HEART framework example, SaaS metrics, e-commerce metrics, product launch strategy
 ---
 # Metrics 6: Applied Metrics - In-Depth Case Studies
 

@@ -5,6 +5,8 @@ description: "Summarizes the integrated approach to product metrics, from the No
 
 ogTitle: 'Conclusion: The Path to Product Leadership'
 ogDescription: "Summarizes the integrated approach to product metrics, from the North Star Framework to AARRR and HEART, empowering leaders to make better decisions and drive sustainable, customer-centric growth."
+
+keywords: product leadership, product metrics, data-informed decisions, North Star Framework, AARRR, HEART framework, product strategy, customer-centric growth
 ---
 # Conclusion: The Path to Product Leadership
 

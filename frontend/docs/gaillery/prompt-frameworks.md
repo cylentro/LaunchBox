@@ -7,6 +7,8 @@ description: A complete guide to advanced prompt engineering frameworks like CAS
 ogTitle: Prompt Frameworks
 ogDescription: A complete guide to advanced prompt engineering frameworks like CASTR, RIDER, PICTURE, and PRISM for improving AI-generated text, images, and agents.
 
+keywords: prompt engineering, prompt frameworks, AI prompts, CASTR framework, RIDER framework, PICTURE framework, ACTION framework, PRISM framework, chain of thought, few-shot prompting
+
 ---
 
 # Prompt Frameworks: Your AI Whisperer Toolkit 🤫

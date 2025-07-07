@@ -6,6 +6,8 @@ description: "Summarize the key takeaways from the course, reinforcing the impor
 
 ogTitle: "Conclusion: Mastering the Art of the Ask"
 ogDescription: "Summarize the key takeaways from the course, reinforcing the importance of empathy, ethical practice, and structured synthesis in building products that solve real human problems."
+
+keywords: user interview course, mastering user interviews, empathy in design, ethical user research, qualitative data synthesis, product design, user-centered design
 ---
 # Conclusion
 

@@ -6,6 +6,8 @@ description: Master the art of AI conversation. This guide for beginners teaches
 
 ogTitle: Chapter 2 - The Art of the Conversation - Your First Prompts
 ogDescription: Master the art of AI conversation. This guide for beginners teaches how to write effective prompts by breaking down their core anatomy—context, task, specificity—with practical, real-world examples.
+
+keywords: how to write prompts, effective prompts, AI conversation, prompt engineering for beginners, prompt anatomy, AI prompts
 ---
 # Chapter 2: The Art of the Conversation - Your First Prompts
 

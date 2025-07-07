@@ -5,6 +5,8 @@ description: Follow a 4-step blueprint for designing rigorous A/B tests. Learn t
 
 ogTitle: 'The Blueprint: How to Define and Design an A/B Test'
 ogDescription: Follow a 4-step blueprint for designing rigorous A/B tests. Learn to start with data-driven observations, define your control and variants, target the right audience, and calculate the correct sample size and duration for trustworthy results.
+
+keywords: A/B test design, experiment design, hypothesis testing, sample size calculation, A/B testing blueprint, product experimentation, CRO process
 ---
 # Variant 4: The Blueprint - How to Define and Design an A/B Test
 

@@ -15,6 +15,8 @@ ogDescription: Feeling lost in AI jargon? My 'Prompting 101' course is your pers
 
 duration: 28.44
 
+keywords: prompting 101, generative AI course, AI for beginners, learn prompting, AI productivity, AI for non-technical users, creative AI
+
 hero:
   name: "Prompting 101"
   text: "The Playbook for Everyone"
@@ -48,4 +50,4 @@ Upon completion of this course, you will be able to:
 - **Evaluate** AI-generated content for common pitfalls like bias and misinformation.
 - **Develop** a personal "AI Playbook" for using these tools effectively and responsibly.
 
-`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`
+<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />

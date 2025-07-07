@@ -8,7 +8,12 @@ description: Discover Christian Hadianto's collaboration style, problem-solving 
 ogTitle: Working with Christian - The Playbook
 ogDescription: Discover Christian Hadianto's collaboration style, problem-solving approach, and communication preferences in this personal playbook.
 
+keywords: working with me, collaboration style, communication preferences, product management style, Christian Hadianto, personal playbook
+
+lastUpdated: false
+
 ---
+
 # Working with Christian: The Playbook
 
 So, you're curious about what it's like to have me on your team? Let's skip the corporate jargon. Here’s the real deal on how I operate, collaborate, and solve problems.

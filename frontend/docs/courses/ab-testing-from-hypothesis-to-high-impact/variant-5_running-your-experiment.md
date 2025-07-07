@@ -5,6 +5,8 @@ description: Learn the practical steps of running an A/B test, from understandin
 
 ogTitle: 'Running Your Experiment'
 ogDescription: Learn the practical steps of running an A/B test, from understanding core statistical concepts like significance and p-values to comparing Frequentist vs. Bayesian methods and choosing the right testing tools.
+
+keywords: A/B testing statistics, statistical significance, p-value, confidence interval, Bayesian vs Frequentist, A/B testing tools, Optimizely, VWO
 ---
 # Variant 5: Running Your Experiment
 

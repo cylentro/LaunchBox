@@ -6,6 +6,8 @@ description: Explore the exciting future of AI! Discover key trends like Multimo
 
 ogTitle: Chapter 7 - The Future is Now - What's Next?
 ogDescription: Explore the exciting future of AI! Discover key trends like Multimodal AI, autonomous AI Agents, and the democratization of AI, and understand how these will shape your interactions with technology.
+
+keywords: future of AI, AI trends, multimodal AI, AI agents, autonomous AI, democratization of AI, AI literacy
 ---
 # Module 7: The Future is Now: What's Next?
 

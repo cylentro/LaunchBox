@@ -6,6 +6,8 @@ description: Go beyond basic prompts. Learn advanced AI prompting techniques lik
 
 ogTitle: Chapter 3 - Leveling Up - Advanced Prompting Techniques
 ogDescription: Go beyond basic prompts. Learn advanced AI prompting techniques like Role-Playing, Few-Shot, and Chain-of-Thought to solve complex problems and get more accurate, creative results.
+
+keywords: advanced prompting, prompt engineering, role-playing prompt, few-shot prompting, chain-of-thought prompting, AI techniques
 ---
 # Chapter 3: Leveling Up: Advanced Prompting Techniques
 

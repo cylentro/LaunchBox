@@ -5,6 +5,8 @@ description: A one-page summary of the entire A/B testing lifecycle, from hypoth
 
 ogTitle: A/B Testing Process Cheat Sheet
 ogDescription: A one-page summary of the entire A/B testing lifecycle, from hypothesis and design to analysis and communication. Your quick reference for running high-impact experiments.
+
+keywords: A/B testing, experimentation, conversion rate optimization, CRO, hypothesis testing, statistical significance, product management, marketing optimization, data-informed decisions
 ---
 # A/B Testing Process Cheat Sheet
 

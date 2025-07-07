@@ -5,6 +5,8 @@ description: Learn how to define success for your A/B tests. This module covers 
 
 ogTitle: 'Defining Success: Metrics and Goal Setting'
 ogDescription: Learn how to define success for your A/B tests. This module covers the North Star Metric framework, metric trees, AARRR, HEART, and how to set SMART goals with primary and guardrail metrics.
+
+keywords: A/B testing metrics, North Star Metric, metric tree, AARRR, HEART framework, primary metric, guardrail metrics, SMART goals, product management
 ---
 # Variant 2: Defining Success: Metrics and Goal Setting
 

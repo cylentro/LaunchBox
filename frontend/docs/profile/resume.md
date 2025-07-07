@@ -5,6 +5,11 @@ description: View the resume of Christian Hadianto, a Product Manager with 7+ ye
 
 ogTitle: Christian Hadianto's Resume
 ogDescription: View the resume of Christian Hadianto, a Product Manager with 7+ years of experience leveraging Generative AI to scale digital products and enhance customer experiences.
+
+keywords: product manager resume, Christian Hadianto resume, generative AI product manager, logistics product manager, AI projects, product strategy, resume
+
+lastUpdated: false
+
 ---
 
 # CHRISTIAN HADIANTO

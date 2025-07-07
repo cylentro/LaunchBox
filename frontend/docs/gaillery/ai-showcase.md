@@ -7,6 +7,11 @@ description: See Christian Hadianto's Generative AI projects in action. Explore 
 
 ogTitle: My AI Playground
 ogDescription: See Christian Hadianto's Generative AI projects in action. Explore innovative AI showcases, including custom agents, RAG implementations, and more.
+
+keywords: AI projects, generative AI showcase, AI portfolio, RAG, LangChain, Gemini API, AI podcast, AI agents, conversational AI
+
+lastUpdated: false
+
 ---
 # My AI Playground
 

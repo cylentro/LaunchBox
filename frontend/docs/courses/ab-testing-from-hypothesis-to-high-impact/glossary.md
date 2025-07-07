@@ -6,6 +6,7 @@ description: A comprehensive glossary defining key A/B testing and experimentati
 ogTitle: Glossary of A/B Testing Terms
 ogDescription: A comprehensive glossary defining key A/B testing and experimentation terms used in the 'A/B Testing - From Hypothesis to High-Impact' course.
 
+keywords: A/B testing glossary, experimentation terms, CRO terminology, statistical significance, p-value, confidence interval, guardrail metric, North Star Metric, hypothesis testing
 ---
 # Glossary of A/B Testing Terms
 
