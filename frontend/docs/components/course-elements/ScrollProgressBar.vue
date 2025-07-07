@@ -5,36 +5,36 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from "vue";
 
-const progressBarWidth = ref('0%');
+const progressBarWidth = ref("0%");
 
 const calculateScrollProgress = () => {
-  // Get the total scrollable height of the document
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  const scrollableHeight = scrollHeight - clientHeight;
+	// Get the total scrollable height of the document
+	const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+	const scrollableHeight = scrollHeight - clientHeight;
 
-  if (scrollableHeight > 0) {
-    // Calculate the scroll percentage
-    const scrolled = (scrollTop / scrollableHeight) * 100;
-    // Ensure the width stays between 0 and 100%
-    progressBarWidth.value = `${Math.min(100, Math.max(0, scrolled))}%`;
-  } else {
-    // If there's no scrollable content (page fits in viewport), set to 0%
-    progressBarWidth.value = '0%';
-  }
+	if (scrollableHeight > 0) {
+		// Calculate the scroll percentage
+		const scrolled = (scrollTop / scrollableHeight) * 100;
+		// Ensure the width stays between 0 and 100%
+		progressBarWidth.value = `${Math.min(100, Math.max(0, scrolled))}%`;
+	} else {
+		// If there's no scrollable content (page fits in viewport), set to 0%
+		progressBarWidth.value = "0%";
+	}
 };
 
 onMounted(() => {
-  // Add scroll event listener when the component is mounted
-  window.addEventListener('scroll', calculateScrollProgress);
-  // Perform an initial calculation in case the page is already scrolled on load
-  calculateScrollProgress();
+	// Add scroll event listener when the component is mounted
+	window.addEventListener("scroll", calculateScrollProgress);
+	// Perform an initial calculation in case the page is already scrolled on load
+	calculateScrollProgress();
 });
 
 onUnmounted(() => {
-  // Remove scroll event listener when the component is unmounted to prevent memory leaks
-  window.removeEventListener('scroll', calculateScrollProgress);
+	// Remove scroll event listener when the component is unmounted to prevent memory leaks
+	window.removeEventListener("scroll", calculateScrollProgress);
 });
 </script>
 

@@ -34,12 +34,12 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				manualChunks(id) {
-					if (id.includes('node_modules')) {
-						return 'vendor';
+					if (id.includes("node_modules")) {
+						return "vendor";
 					}
-				}
-			}
-		}
+				},
+			},
+		},
 	},
 
 	head: [
@@ -287,6 +287,10 @@ export default defineConfig({
 			{
 				text: "Courses",
 				link: "/courses",
+			},
+			{
+				text: "Blog",
+				link: "/blog",
 			},
 			{
 				text: "About",

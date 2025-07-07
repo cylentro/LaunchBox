@@ -80,8 +80,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
-import SpeedControlPopup from './SpeedControlPopup.vue';
+import { ref, onMounted, onUnmounted, computed } from "vue";
+import SpeedControlPopup from "./SpeedControlPopup.vue";
 
 const isSupported = ref(false);
 const isPlaying = ref(false);
@@ -92,248 +92,255 @@ const currentTime = ref(0);
 const duration = ref(0);
 const volume = ref(1);
 const playbackRate = ref(1.15);
-const originalText = ref('');
+const originalText = ref("");
 const textLength = ref(0);
 const charIndex = ref(0); // Track the current character index
 const showRemainingTime = ref(false);
 const showSpeedPopup = ref(false);
 
 const sliderStyle = computed(() => {
-  const progress = (duration.value > 0) ? (currentTime.value / duration.value) * 100 : 0;
-  return {
-    background: `linear-gradient(to right, var(--vp-c-brand-1) ${progress}%, var(--vp-c-divider) ${progress}%)`
-  };
+	const progress =
+		duration.value > 0 ? (currentTime.value / duration.value) * 100 : 0;
+	return {
+		background: `linear-gradient(to right, var(--vp-c-brand-1) ${progress}%, var(--vp-c-divider) ${progress}%)`,
+	};
 });
 
 const cleanup = () => {
-  if (isSupported.value) {
-    window.speechSynthesis.cancel();
-  }
+	if (isSupported.value) {
+		window.speechSynthesis.cancel();
+	}
 };
 
 const formatTime = (seconds) => {
-  if (isNaN(seconds) || seconds < 0) {
-    seconds = 0;
-  }
-  const minutes = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+	if (isNaN(seconds) || seconds < 0) {
+		seconds = 0;
+	}
+	const minutes = Math.floor(seconds / 60);
+	const secs = Math.floor(seconds % 60);
+	return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
 };
 
 const formattedTime = computed(() => {
-  if (showRemainingTime.value) {
-    const remaining = duration.value - currentTime.value;
-    return `-${formatTime(remaining)}`;
-  } else {
-    return formatTime(currentTime.value);
-  }
+	if (showRemainingTime.value) {
+		const remaining = duration.value - currentTime.value;
+		return `-${formatTime(remaining)}`;
+	} else {
+		return formatTime(currentTime.value);
+	}
 });
 
 const createUtterance = (textToSpeak) => {
-  const utt = new SpeechSynthesisUtterance(textToSpeak);
-  utt.lang = 'en-US';
-  utt.rate = playbackRate.value;
-  utt.volume = volume.value;
+	const utt = new SpeechSynthesisUtterance(textToSpeak);
+	utt.lang = "en-US";
+	utt.rate = playbackRate.value;
+	utt.volume = volume.value;
 
-  utt.onstart = () => {
-    isPlaying.value = true;
-    isPaused.value = false;
-    showRemainingTime.value = true;
-  };
+	utt.onstart = () => {
+		isPlaying.value = true;
+		isPaused.value = false;
+		showRemainingTime.value = true;
+	};
 
-  utt.onpause = () => {
-    isPaused.value = true;
-  };
+	utt.onpause = () => {
+		isPaused.value = true;
+	};
 
-  utt.onresume = () => {
-    isPaused.value = false;
-  };
+	utt.onresume = () => {
+		isPaused.value = false;
+	};
 
-  utt.onboundary = (event) => {
-    charIndex.value = (originalText.value.length - textToSpeak.length) + event.charIndex;
-    if (duration.value > 0 && textLength.value > 0) {
-      currentTime.value = (charIndex.value / textLength.value) * duration.value;
-    }
-  };
+	utt.onboundary = (event) => {
+		charIndex.value =
+			originalText.value.length - textToSpeak.length + event.charIndex;
+		if (duration.value > 0 && textLength.value > 0) {
+			currentTime.value = (charIndex.value / textLength.value) * duration.value;
+		}
+	};
 
-  utt.onend = () => {
-    isPlaying.value = false;
-    isPaused.value = false;
-    currentTime.value = 0;
-    charIndex.value = 0;
-  };
+	utt.onend = () => {
+		isPlaying.value = false;
+		isPaused.value = false;
+		currentTime.value = 0;
+		charIndex.value = 0;
+	};
 
-  utterance.value = utt;
-  return utt;
+	utterance.value = utt;
+	return utt;
 };
 
 onMounted(() => {
-  // Guard against being called in a non-browser environment.
-  // onMounted should only run on the client, but this is a defensive measure
-  // to make the dependency on browser APIs explicit.
-  if (typeof window === 'undefined') return;
-  isSupported.value = 'speechSynthesis' in window;
-  if (!isSupported.value) return;
+	// Guard against being called in a non-browser environment.
+	// onMounted should only run on the client, but this is a defensive measure
+	// to make the dependency on browser APIs explicit.
+	if (typeof window === "undefined") return;
+	isSupported.value = "speechSynthesis" in window;
+	if (!isSupported.value) return;
 
-  const prepareText = () => {
-    const mainContentElement = document.querySelector('.VPDoc .main');
-    if (mainContentElement) {
-      const contentClone = mainContentElement.cloneNode(true);
-      const selectorsToExclude = '.course-helpers-container, .header-anchor, .custom-block-title, .edit-link, .VPDocFooter, .tts-player-container, .tts-player-unsupported';
-      contentClone.querySelectorAll(selectorsToExclude).forEach(el => el.remove());
+	const prepareText = () => {
+		const mainContentElement = document.querySelector(".VPDoc .main");
+		if (mainContentElement) {
+			const contentClone = mainContentElement.cloneNode(true);
+			const selectorsToExclude =
+				".course-helpers-container, .header-anchor, .custom-block-title, .edit-link, .VPDocFooter, .tts-player-container, .tts-player-unsupported";
+			contentClone
+				.querySelectorAll(selectorsToExclude)
+				.forEach((el) => el.remove());
 
-      let processedTextSegments = [];
-      // Select all relevant block-level elements
-      const elementsToProcess = contentClone.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, blockquote');
+			let processedTextSegments = [];
+			// Select all relevant block-level elements
+			const elementsToProcess = contentClone.querySelectorAll(
+				"h1, h2, h3, h4, h5, h6, p, li, blockquote",
+			);
 
-      elementsToProcess.forEach(el => {
-        let text = el.textContent.trim();
-        if (text) {
-          // Add a period if the text doesn't end with punctuation
-          if (!/[.!?]$/.test(text)) {
-            text += '.';
-          }
-          processedTextSegments.push(text);
-        }
-      });
+			elementsToProcess.forEach((el) => {
+				let text = el.textContent.trim();
+				if (text) {
+					// Add a period if the text doesn't end with punctuation
+					if (!/[.!?]$/.test(text)) {
+						text += ".";
+					}
+					processedTextSegments.push(text);
+				}
+			});
 
-      // Handle direct text nodes that might be outside block elements
-      // This is less common in well-structured markdown but good for robustness
-      Array.from(contentClone.childNodes).forEach(node => {
-        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-          let text = node.textContent.trim();
-          if (!/[.!?]$/.test(text)) {
-            text += '.';
-          }
-          processedTextSegments.push(text);
-        }
-      });
+			// Handle direct text nodes that might be outside block elements
+			// This is less common in well-structured markdown but good for robustness
+			Array.from(contentClone.childNodes).forEach((node) => {
+				if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+					let text = node.textContent.trim();
+					if (!/[.!?]$/.test(text)) {
+						text += ".";
+					}
+					processedTextSegments.push(text);
+				}
+			});
 
-      originalText.value = processedTextSegments.join(' ');
-      textLength.value = originalText.value.length;
+			originalText.value = processedTextSegments.join(" ");
+			textLength.value = originalText.value.length;
 
-      const words = originalText.value.trim().split(/\s+/).length;
-      const wpm = 180;
-      duration.value = (words / wpm) * 60 / playbackRate.value;
+			const words = originalText.value.trim().split(/\s+/).length;
+			const wpm = 180;
+			duration.value = ((words / wpm) * 60) / playbackRate.value;
 
-      createUtterance(originalText.value);
-    }
-  };
+			createUtterance(originalText.value);
+		}
+	};
 
-  if (window.speechSynthesis.getVoices().length === 0) {
-    window.speechSynthesis.onvoiceschanged = prepareText;
-  } else {
-    prepareText();
-  }
+	if (window.speechSynthesis.getVoices().length === 0) {
+		window.speechSynthesis.onvoiceschanged = prepareText;
+	} else {
+		prepareText();
+	}
 
-  window.addEventListener('beforeunload', cleanup);
+	window.addEventListener("beforeunload", cleanup);
 });
 
 onUnmounted(() => {
-  cleanup();
-  window.removeEventListener('beforeunload', cleanup);
+	cleanup();
+	window.removeEventListener("beforeunload", cleanup);
 });
 
 const togglePlayPause = () => {
-  if (!isSupported.value || !utterance.value) return;
+	if (!isSupported.value || !utterance.value) return;
 
-  showSpeedPopup.value = false; // Close speed popup on play/pause
+	showSpeedPopup.value = false; // Close speed popup on play/pause
 
-  if (window.speechSynthesis.speaking) {
-    if (isPaused.value) {
-      window.speechSynthesis.resume();
-    } else {
-      window.speechSynthesis.pause();
-    }
-  } else {
-    const textToSpeak = originalText.value.substring(charIndex.value);
-    const utt = createUtterance(textToSpeak);
-    window.speechSynthesis.speak(utt);
-  }
+	if (window.speechSynthesis.speaking) {
+		if (isPaused.value) {
+			window.speechSynthesis.resume();
+		} else {
+			window.speechSynthesis.pause();
+		}
+	} else {
+		const textToSpeak = originalText.value.substring(charIndex.value);
+		const utt = createUtterance(textToSpeak);
+		window.speechSynthesis.speak(utt);
+	}
 };
 
 const stop = () => {
-  if (isSupported.value) {
-    charIndex.value = 0;
-    currentTime.value = 0;
-    isPaused.value = false;
-    isPlaying.value = false;
-    showSpeedPopup.value = false; // Close speed popup on stop
-    showRemainingTime.value = false; // Set to false when stopped
-    window.speechSynthesis.cancel();
-  }
+	if (isSupported.value) {
+		charIndex.value = 0;
+		currentTime.value = 0;
+		isPaused.value = false;
+		isPlaying.value = false;
+		showSpeedPopup.value = false; // Close speed popup on stop
+		showRemainingTime.value = false; // Set to false when stopped
+		window.speechSynthesis.cancel();
+	}
 };
 
 const restartSpeech = (shouldContinuePlaying) => {
-  if (!originalText.value) return;
+	if (!originalText.value) return;
 
-  const wasPaused = isPaused.value;
-  window.speechSynthesis.cancel();
+	const wasPaused = isPaused.value;
+	window.speechSynthesis.cancel();
 
-  setTimeout(() => {
-    const textToSpeak = originalText.value.substring(charIndex.value);
-    if (!textToSpeak) return;
+	setTimeout(() => {
+		const textToSpeak = originalText.value.substring(charIndex.value);
+		if (!textToSpeak) return;
 
-    const newUtterance = createUtterance(textToSpeak);
-    if (shouldContinuePlaying) {
-      window.speechSynthesis.speak(newUtterance);
-      if (wasPaused) {
-        setTimeout(() => window.speechSynthesis.pause(), 50);
-      }
-    }
-  }, 100);
+		const newUtterance = createUtterance(textToSpeak);
+		if (shouldContinuePlaying) {
+			window.speechSynthesis.speak(newUtterance);
+			if (wasPaused) {
+				setTimeout(() => window.speechSynthesis.pause(), 50);
+			}
+		}
+	}, 100);
 };
 
 const toggleMute = () => {
-  if (volume.value > 0) {
-    volume.value = 0;
-  } else {
-    volume.value = 1;
-  }
-  if (utterance.value) {
-    utterance.value.volume = volume.value;
-    if (isPlaying.value) {
-      restartSpeech(true);
-    }
-  }
-  showSpeedPopup.value = false; // Close speed popup on mute/unmute
+	if (volume.value > 0) {
+		volume.value = 0;
+	} else {
+		volume.value = 1;
+	}
+	if (utterance.value) {
+		utterance.value.volume = volume.value;
+		if (isPlaying.value) {
+			restartSpeech(true);
+		}
+	}
+	showSpeedPopup.value = false; // Close speed popup on mute/unmute
 };
 
 const changeSpeed = (delta) => {
-  if (!utterance.value) return;
-  const newRate = parseFloat((playbackRate.value + delta).toFixed(2));
-  if (newRate >= 0.65 && newRate <= 2.15) {
-    playbackRate.value = newRate;
+	if (!utterance.value) return;
+	const newRate = parseFloat((playbackRate.value + delta).toFixed(2));
+	if (newRate >= 0.65 && newRate <= 2.15) {
+		playbackRate.value = newRate;
 
-    if (isPlaying.value) {
-      restartSpeech(true);
-    } else {
-      utterance.value.rate = newRate;
-    }
-  }
+		if (isPlaying.value) {
+			restartSpeech(true);
+		} else {
+			utterance.value.rate = newRate;
+		}
+	}
 };
 
 const onSliderInput = (e) => {
-  currentTime.value = parseFloat(e.target.value);
+	currentTime.value = parseFloat(e.target.value);
 };
 
 const onSliderChange = (e) => {
-  const newTime = parseFloat(e.target.value);
-  charIndex.value = Math.floor((newTime / duration.value) * textLength.value);
+	const newTime = parseFloat(e.target.value);
+	charIndex.value = Math.floor((newTime / duration.value) * textLength.value);
 
-  const wasPlaying = isPlaying.value && !isPaused.value;
-  restartSpeech(wasPlaying);
-  showSpeedPopup.value = false; // Close speed popup on seek
+	const wasPlaying = isPlaying.value && !isPaused.value;
+	restartSpeech(wasPlaying);
+	showSpeedPopup.value = false; // Close speed popup on seek
 };
 
 const toggleTimeFormat = () => {
-  if (isPlaying.value || isPaused.value) {
-    showRemainingTime.value = !showRemainingTime.value;
-  }
+	if (isPlaying.value || isPaused.value) {
+		showRemainingTime.value = !showRemainingTime.value;
+	}
 };
 
 const toggleSpeedPopup = () => {
-  showSpeedPopup.value = !showSpeedPopup.value;
+	showSpeedPopup.value = !showSpeedPopup.value;
 };
 </script>
 

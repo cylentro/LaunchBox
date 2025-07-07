@@ -1,6 +1,6 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
-import { coursesData } from './data/courses';
+import { ref, computed, watch } from "vue";
+import { coursesData } from "./data/courses.ts.deprecated";
 
 // --- Course Data ---
 const courses = ref(coursesData);
@@ -9,10 +9,10 @@ const courses = ref(coursesData);
 // Use arrays to store multiple selections from checkboxes
 const selectedCategories = ref([]);
 const selectedLevels = ref([]);
-const selectedSeries = ref(''); // Using a string for single-select radio buttons
+const selectedSeries = ref(""); // Using a string for single-select radio buttons
 const showRecommendedOnly = ref(false);
 const isFilterVisible = ref(false); // State for mobile filter visibility
-const searchQuery = ref('');
+const searchQuery = ref("");
 
 // Pagination state
 const currentPage = ref(1);
@@ -22,114 +22,149 @@ const isSeriesFilterOpen = ref(true); // State for series filter collapsible
 
 // Get unique categories and levels for filter options
 const allCategories = computed(() => {
-  const categories = new Set();
-  courses.value.forEach(course => {
-    course.categories.forEach(cat => categories.add(cat));
-  });
-  // No 'All' needed for checkboxes
-  return Array.from(categories).sort();
+	const categories = new Set();
+	courses.value.forEach((course) => {
+		course.categories.forEach((cat) => categories.add(cat));
+	});
+	// No 'All' needed for checkboxes
+	return Array.from(categories).sort();
 });
 
 const allLevels = computed(() => {
-  const levels = new Set();
-  courses.value.forEach(course => {
-    course.levels.forEach(level => levels.add(level));
-  });
-  // No 'All' needed for checkboxes
-  return Array.from(levels).sort();
+	const levels = new Set();
+	courses.value.forEach((course) => {
+		course.levels.forEach((level) => levels.add(level));
+	});
+	// No 'All' needed for checkboxes
+	return Array.from(levels).sort();
 });
 
 const allSeries = computed(() => {
-  const seriesNames = new Set();
-  courses.value.forEach(course => {
-    if (course.series) {
-      seriesNames.add(course.series.name);
-    }
-  });
-  return Array.from(seriesNames).sort();
+	const seriesNames = new Set();
+	courses.value.forEach((course) => {
+		if (course.series) {
+			seriesNames.add(course.series.name);
+		}
+	});
+	return Array.from(seriesNames).sort();
 });
 
 // Filter courses based on selections
 const filteredCourses = computed(() => {
-  const allCourses = [...courses.value];
+	const allCourses = [...courses.value];
 
-  // If a series is selected, we have a completely different sorting/filtering rule.
-  if (selectedSeries.value) {
-    return allCourses
-      .filter(course => {
-        // Must match the selected series
-        const seriesMatch = course.series && course.series.name === selectedSeries.value;
-        if (!seriesMatch) return false;
+	// If a series is selected, we have a completely different sorting/filtering rule.
+	if (selectedSeries.value) {
+		return allCourses
+			.filter((course) => {
+				// Must match the selected series
+				const seriesMatch =
+					course.series && course.series.name === selectedSeries.value;
+				if (!seriesMatch) return false;
 
-        // And must match other filters
-        const categoryMatch = selectedCategories.value.length === 0 || course.categories.some(cat => selectedCategories.value.includes(cat));
-        const levelMatch = selectedLevels.value.length === 0 || course.levels.some(level => selectedLevels.value.includes(level));
-        const recommendedMatch = !showRecommendedOnly.value || course.recommended;
-        return categoryMatch && levelMatch && recommendedMatch;
-      })
-      .sort((a, b) => a.series.part - b.series.part); // Sort by series part
-  }
+				// And must match other filters
+				const categoryMatch =
+					selectedCategories.value.length === 0 ||
+					course.categories.some((cat) =>
+						selectedCategories.value.includes(cat),
+					);
+				const levelMatch =
+					selectedLevels.value.length === 0 ||
+					course.levels.some((level) => selectedLevels.value.includes(level));
+				const recommendedMatch =
+					!showRecommendedOnly.value || course.recommended;
+				return categoryMatch && levelMatch && recommendedMatch;
+			})
+			.sort((a, b) => a.series.part - b.series.part); // Sort by series part
+	}
 
-  // If no series is selected, use the original logic.
-  const pinnedCourses = allCourses.filter(course => course.pinOrder !== undefined && course.pinOrder !== null).sort((a, b) => a.pinOrder - b.pinOrder).slice(0, 3);
-  const unpinnedCourses = allCourses.filter(course => course.pinOrder === undefined || course.pinOrder === null);
-  const sortedUnpinnedCourses = unpinnedCourses.reverse();
-  const combinedCourses = [...pinnedCourses, ...sortedUnpinnedCourses];
+	// If no series is selected, use the original logic.
+	const pinnedCourses = allCourses
+		.filter(
+			(course) => course.pinOrder !== undefined && course.pinOrder !== null,
+		)
+		.sort((a, b) => a.pinOrder - b.pinOrder)
+		.slice(0, 3);
+	const unpinnedCourses = allCourses.filter(
+		(course) => course.pinOrder === undefined || course.pinOrder === null,
+	);
+	const sortedUnpinnedCourses = unpinnedCourses.reverse();
+	const combinedCourses = [...pinnedCourses, ...sortedUnpinnedCourses];
 
-  return combinedCourses.filter(course => {
-    const categoryMatch = selectedCategories.value.length === 0 || course.categories.some(cat => selectedCategories.value.includes(cat));
-    const levelMatch = selectedLevels.value.length === 0 || course.levels.some(level => selectedLevels.value.includes(level));
-    const recommendedMatch = !showRecommendedOnly.value || course.recommended;
-    const searchMatch = searchQuery.value === '' ||
-      course.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-      course.categories.some(cat => cat.toLowerCase().includes(searchQuery.value.toLowerCase())) ||
-      course.levels.some(level => level.toLowerCase().includes(searchQuery.value.toLowerCase()));
-    return categoryMatch && levelMatch && recommendedMatch && searchMatch;
-  });
+	return combinedCourses.filter((course) => {
+		const categoryMatch =
+			selectedCategories.value.length === 0 ||
+			course.categories.some((cat) => selectedCategories.value.includes(cat));
+		const levelMatch =
+			selectedLevels.value.length === 0 ||
+			course.levels.some((level) => selectedLevels.value.includes(level));
+		const recommendedMatch = !showRecommendedOnly.value || course.recommended;
+		const searchMatch =
+			searchQuery.value === "" ||
+			course.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+			course.description
+				.toLowerCase()
+				.includes(searchQuery.value.toLowerCase()) ||
+			course.categories.some((cat) =>
+				cat.toLowerCase().includes(searchQuery.value.toLowerCase()),
+			) ||
+			course.levels.some((level) =>
+				level.toLowerCase().includes(searchQuery.value.toLowerCase()),
+			);
+		return categoryMatch && levelMatch && recommendedMatch && searchMatch;
+	});
 });
 
 // Pagination logic
 const itemsPerPage = 15;
 
 const totalPages = computed(() => {
-  return Math.ceil(filteredCourses.value.length / itemsPerPage);
+	return Math.ceil(filteredCourses.value.length / itemsPerPage);
 });
 
 const paginatedCourses = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return filteredCourses.value.slice(start, end);
+	const start = (currentPage.value - 1) * itemsPerPage;
+	const end = start + itemsPerPage;
+	return filteredCourses.value.slice(start, end);
 });
 
 // Function to reset all filters
 function resetFilters() {
-  selectedCategories.value = [];
-  selectedLevels.value = [];
-  selectedSeries.value = '';
-  showRecommendedOnly.value = false;
-  searchQuery.value = '';
-  currentPage.value = 1; // Reset page on filter clear
+	selectedCategories.value = [];
+	selectedLevels.value = [];
+	selectedSeries.value = "";
+	showRecommendedOnly.value = false;
+	searchQuery.value = "";
+	currentPage.value = 1; // Reset page on filter clear
 }
 
 // Helper function to get a course object by its link
 function getCourseByLink(link) {
-  return courses.value.find(c => c.link === link);
+	return courses.value.find((c) => c.link === link);
 }
 
 // Function to toggle series selection. Allows unchecking a radio button.
 function toggleSeries(seriesName) {
-  if (selectedSeries.value === seriesName) {
-    selectedSeries.value = ''; // If the same series is clicked, unselect it
-  } else {
-    selectedSeries.value = seriesName; // Otherwise, select the new series
-  }
+	if (selectedSeries.value === seriesName) {
+		selectedSeries.value = ""; // If the same series is clicked, unselect it
+	} else {
+		selectedSeries.value = seriesName; // Otherwise, select the new series
+	}
 }
 
 // Watch filters to reset current page when filters change
-watch([selectedCategories, selectedLevels, showRecommendedOnly, selectedSeries, searchQuery], () => {
-  currentPage.value = 1;
-})
+watch(
+	[
+		selectedCategories,
+		selectedLevels,
+		showRecommendedOnly,
+		selectedSeries,
+		searchQuery,
+	],
+	() => {
+		currentPage.value = 1;
+	},
+);
 </script>
 
 <template>

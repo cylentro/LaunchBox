@@ -4,8 +4,15 @@ layout: home
 title: The Art of the Ask - A Comprehensive Guide to Effective User Interviews
 description: A comprehensive guide to mastering user interviews, focusing on uncovering the deep 'why' behind user behavior to build truly valuable and intuitive products.
 
+courseOrder: 3
+
+categories: ["User Research", "Product Management", "UX/UI Design"]
+levels: ["Intermediate"]
+
 ogTitle: The Art of the Ask - A Comprehensive Guide to Effective User Interviews
 ogDescription: A comprehensive guide to mastering user interviews, focusing on uncovering the deep 'why' behind user behavior to build truly valuable and intuitive products.
+
+duration: 52.88
 
 hero:
   name: "The Art of the Ask"
@@ -49,4 +56,4 @@ Upon completing this course, you will be able to:
 - Apply advanced interview techniques like Contextual Inquiry and Jobs-to-be-Done to uncover deeper contextual insights.
 - Uphold the highest ethical standards in research, including securing informed consent and protecting participant data.
 
-<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />
+`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`

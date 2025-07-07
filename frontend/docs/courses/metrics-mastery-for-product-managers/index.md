@@ -4,8 +4,17 @@ layout: home
 title: Metrics Mastery for Product Managers
 description: Transform your product practice from intuition-led to data-informed. This course forges you into a strategic leader who wields data to understand user behavior, measure what matters, and drive sustainable product growth.
 
+courseOrder: 2
+
+categories: ["Product Management", "Data & Analytics", "Strategy"]
+levels: ["Intermediate"]
+series: { name: "Data-Driven Product Management", part: 1 }
+relatedCourses: ["/courses/ab-testing-from-hypothesis-to-high-impact"]
+
 ogTitle: Metrics Mastery for Product Managers
 ogDescription: Transform your product practice from intuition-led to data-informed. This course forges you into a strategic leader who wields data to understand user behavior, measure what matters, and drive sustainable product growth.
+
+duration: 50.66
 
 hero:
   name: "Metrics Mastery"
@@ -54,4 +63,4 @@ Upon successful completion of this course, you will be able to:
 * **Tell Compelling Stories with Data:** Transform raw data into persuasive narratives. You will learn a structured approach to data storytelling that contextualizes numbers, reveals the "so what" behind the insights, and drives clear, actionable recommendations.
 * **Design Effective Dashboards:** Apply core design principles to build simple, effective dashboards that provide a clear, at-a-glance understanding of your product's health, focusing on trends and actionable insights over a sea of numbers.
 
-<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />
+`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`

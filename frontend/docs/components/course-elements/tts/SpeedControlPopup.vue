@@ -8,14 +8,14 @@
 
 <script setup>
 const props = defineProps({
-  isPlaying: Boolean,
-  playbackRate: Number,
+	isPlaying: Boolean,
+	playbackRate: Number,
 });
 
-const emit = defineEmits(['changeSpeed']);
+const emit = defineEmits(["changeSpeed"]);
 
 const changeSpeed = (delta) => {
-  emit('changeSpeed', delta);
+	emit("changeSpeed", delta);
 };
 </script>
 

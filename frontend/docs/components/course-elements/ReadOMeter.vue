@@ -8,8 +8,8 @@
 </template>
 
 <script setup>
-import { useData } from 'vitepress';
-import { computed } from 'vue';
+import { useData } from "vitepress";
+import { computed } from "vue";
 
 const { page } = useData();
 

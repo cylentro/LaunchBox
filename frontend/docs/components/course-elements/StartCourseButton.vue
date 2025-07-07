@@ -1,14 +1,13 @@
 <script setup>
-
 const props = defineProps({
-  link: {
-    type: String,
-    required: true
-  },
-  text: {
-    type: String,
-    default: 'Get Started' // Default text for the button
-  }
+	link: {
+		type: String,
+		required: true,
+	},
+	text: {
+		type: String,
+		default: "Get Started", // Default text for the button
+	},
 });
 </script>
 

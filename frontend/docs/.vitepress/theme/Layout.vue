@@ -25,62 +25,74 @@ import { useData, useRoute } from "vitepress";
 import { computed, ref, watch, nextTick } from "vue";
 import SpotifyBubble from "../../components/SpotifyBubble.vue";
 import NaitBubble from "../../components/assistant/NaitBubble.vue";
-import ReadOMeter from '../../components/course-elements/ReadOMeter.vue';
-import ScrollProgressBar from '../../components/course-elements/ScrollProgressBar.vue';
-import TTSPlayer from '../../components/course-elements/tts/TTSPlayer.vue';
-import ContinueReadingToast from '../../components/course-elements/ContinueReadingToast.vue';
+import ReadOMeter from "../../components/course-elements/ReadOMeter.vue";
+import ScrollProgressBar from "../../components/course-elements/ScrollProgressBar.vue";
+import TTSPlayer from "../../components/course-elements/tts/TTSPlayer.vue";
+import ContinueReadingToast from "../../components/course-elements/ContinueReadingToast.vue";
 
 const { Layout } = DefaultTheme;
 const { page } = useData();
 const route = useRoute();
-const pagesToHideBubble = [
-  "index.md", 
-  "license.md", 
-  '404.md',
-];
+const pagesToHideBubble = ["index.md", "license.md", "404.md"];
 const isNaitBubbleHiddenPage = computed(() => {
-  return pagesToHideBubble.includes(page.value.relativePath) || page.value.relativePath.includes('courses/');
+	return (
+		pagesToHideBubble.includes(page.value.relativePath) ||
+		page.value.relativePath.includes("courses/") ||
+		page.value.relativePath.includes("blog/")
+	);
 });
 const isSpotifyBubbleHiddenPage = computed(() => {
-  return page.value.relativePath.includes('courses/');
+	return page.value.relativePath.includes("courses/");
 });
 
 const showCourseHelper = computed(() => {
-  const path = page.value.relativePath;
-  // Corrected logic: Show on course pages, but NOT on the course index OR quiz pages.
-  return path.includes('courses/') && !path.endsWith('index.md') && !path.endsWith('quiz.md');
+	const path = page.value.relativePath;
+	// Corrected logic: Show on course pages, but NOT on the course index OR quiz pages.
+	return (
+		path.includes("courses/") &&
+		!path.endsWith("index.md") &&
+		!path.endsWith("quiz.md")
+	);
 });
 
 const showProgressBar = computed(() => {
-  const path = page.value.relativePath;
-  // Show on course pages, but not on the course index or quiz pages.
-  return path.includes('courses/') && !path.endsWith('quiz.md') && !path.match('courses/index.md');
+	const path = page.value.relativePath;
+	// Show on course pages, but not on the course index or quiz pages.
+	return (
+		path.includes("courses/") &&
+		!path.endsWith("quiz.md") &&
+		!path.match("courses/index.md")
+	);
 });
 
 const courseHelpersContainer = ref(null);
 
 const moveCourseHelpers = async () => {
-  // Ensure we are on a page where helpers should be shown
-  if (!showCourseHelper.value) return;
+	// Ensure we are on a page where helpers should be shown
+	if (!showCourseHelper.value) return;
 
-  // Wait for the DOM to be ready
-  await nextTick();
+	// Wait for the DOM to be ready
+	await nextTick();
 
-  const h1 = document.querySelector('.VPDoc h1');
-  const container = courseHelpersContainer.value;
+	const h1 = document.querySelector(".VPDoc h1");
+	const container = courseHelpersContainer.value;
 
-  if (h1 && container) {
-    // Move the container to be right after the H1 tag
-    h1.after(container);
-  }
+	if (h1 && container) {
+		// Move the container to be right after the H1 tag
+		h1.after(container);
+	}
 };
 
 // Watch for route changes to re-run the move logic
-watch(() => route.path, () => {
-  if (typeof document !== 'undefined') {
-    moveCourseHelpers();
-  }
-}, { immediate: true });
+watch(
+	() => route.path,
+	() => {
+		if (typeof document !== "undefined") {
+			moveCourseHelpers();
+		}
+	},
+	{ immediate: true },
+);
 </script>
 
 <style>

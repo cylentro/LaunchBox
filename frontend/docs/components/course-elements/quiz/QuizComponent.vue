@@ -1,24 +1,25 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from "vue";
 
 // Accept allQuestions as a prop
 const props = defineProps({
-  questionsData: {
-    type: Array,
-    required: true
-  },
-  quizTitle: {
-    type: String,
-    default: "Test Your Knowledge!"
-  },
-  quizDescription: {
-    type: String,
-    default: "You've completed the course, now it's time to prove your mastery! Let's see what you've learned."
-  },
-  questionsPerChapter: {
-    type: Number,
-    default: 2
-  }
+	questionsData: {
+		type: Array,
+		required: true,
+	},
+	quizTitle: {
+		type: String,
+		default: "Test Your Knowledge!",
+	},
+	quizDescription: {
+		type: String,
+		default:
+			"You've completed the course, now it's time to prove your mastery! Let's see what you've learned.",
+	},
+	questionsPerChapter: {
+		type: Number,
+		default: 2,
+	},
 });
 
 const quizQuestions = ref([]);
@@ -27,61 +28,64 @@ const score = ref(0);
 const submitted = ref(false);
 
 const scoreClass = computed(() => {
-  if (!submitted.value) return '';
-  const percentage = (score.value / quizQuestions.value.length) * 100;
-  if (percentage < 40) {
-    return 'score-low';
-  }
-  if (percentage < 75) {
-    return 'score-medium';
-  }
-  return 'score-high';
+	if (!submitted.value) return "";
+	const percentage = (score.value / quizQuestions.value.length) * 100;
+	if (percentage < 40) {
+		return "score-low";
+	}
+	if (percentage < 75) {
+		return "score-medium";
+	}
+	return "score-high";
 });
 
 const shuffle = (array) => {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
+	const shuffled = [...array];
+	for (let i = shuffled.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+	}
+	return shuffled;
 };
 
 const generateQuiz = () => {
-  const selectedQuestions = props.questionsData.flatMap(chapter => {
-    // Shuffle questions in the chapter and pick the first two
-    const chapterQuestions = shuffle(chapter.questions).slice(0, props.questionsPerChapter);
-    // For each selected question, create a new object with shuffled options
-    return chapterQuestions.map(q => ({
-      ...q,
-      options: shuffle(q.options),
-    }));
-  });
+	const selectedQuestions = props.questionsData.flatMap((chapter) => {
+		// Shuffle questions in the chapter and pick the first two
+		const chapterQuestions = shuffle(chapter.questions).slice(
+			0,
+			props.questionsPerChapter,
+		);
+		// For each selected question, create a new object with shuffled options
+		return chapterQuestions.map((q) => ({
+			...q,
+			options: shuffle(q.options),
+		}));
+	});
 
-  // Shuffle the final list of questions
-  quizQuestions.value = shuffle(selectedQuestions);
+	// Shuffle the final list of questions
+	quizQuestions.value = shuffle(selectedQuestions);
 
-  // Reset state
-  userAnswers.value = {};
-  score.value = 0;
-  submitted.value = false;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+	// Reset state
+	userAnswers.value = {};
+	score.value = 0;
+	submitted.value = false;
+	window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 const submitQuiz = () => {
-  let correctAnswers = 0;
-  quizQuestions.value.forEach((q, index) => {
-    if (userAnswers.value[index] === q.answer) {
-      correctAnswers++;
-    }
-  });
-  score.value = correctAnswers;
-  submitted.value = true;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+	let correctAnswers = 0;
+	quizQuestions.value.forEach((q, index) => {
+		if (userAnswers.value[index] === q.answer) {
+			correctAnswers++;
+		}
+	});
+	score.value = correctAnswers;
+	submitted.value = true;
+	window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 onMounted(() => {
-  generateQuiz();
+	generateQuiz();
 });
 </script>
 

@@ -6,8 +6,8 @@ import NaitBubble from "../../components/assistant/NaitBubble.vue";
 import Timeline from "../../components/Timeline.vue";
 import SpotifyBubble from "../../components/SpotifyBubble.vue";
 import Layout from "./Layout.vue";
-import StartCourseButton from "../../components/course-elements/StartCourseButton.vue"; 
-import TTSPlayer from "../../components/course-elements/tts/TTSPlayer.vue"; 
+import StartCourseButton from "../../components/course-elements/StartCourseButton.vue";
+import TTSPlayer from "../../components/course-elements/tts/TTSPlayer.vue";
 
 export default {
 	...DefaultTheme,
@@ -17,6 +17,6 @@ export default {
 		app.component("Timeline", Timeline);
 		app.component("SpotifyBubble", SpotifyBubble);
 		app.component("StartCourseButton", StartCourseButton);
-    	app.component('TTSPlayer', TTSPlayer)
+		app.component("TTSPlayer", TTSPlayer);
 	},
 };

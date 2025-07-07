@@ -232,7 +232,7 @@ const examplePrompts = ref([
 	"How to contact Chris?",
 	"Tell me about 'Prompting 101'",
 	"What are Chris' key skills?",
-	"What's Chris' working style?"
+	"What's Chris' working style?",
 ]);
 
 // --- Refs for Prompt Carousels ---

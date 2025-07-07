@@ -1,6 +1,6 @@
 <script setup>
-import QuizComponent from './QuizComponent.vue'; // Adjust path as needed
-import { ABTestingQuestions } from '../data/ABTestingQuestions'; // Adjust path as needed
+import QuizComponent from "./QuizComponent.vue"; // Adjust path as needed
+import { ABTestingQuestions } from "../data/ABTestingQuestions"; // Adjust path as needed
 </script>
 
 <template>
