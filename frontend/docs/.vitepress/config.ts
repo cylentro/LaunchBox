@@ -33,21 +33,8 @@ export default defineConfig({
 
 	cleanUrls: true, // Ensures URLs are generated without .html extensions
 	rewrites: {
-		"blog/posts/:post.md": "blog/:post",
+		"blog/posts/:post": "blog/:post",
 	},
-
-	build: {
-		rollupOptions: {
-			output: {
-				manualChunks(id) {
-					if (id.includes("node_modules")) {
-						return "vendor";
-					}
-				},
-			},
-		},
-	},
-
 	head: [
 		[
 			"script",
