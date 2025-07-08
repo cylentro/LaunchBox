@@ -32,9 +32,7 @@ export default defineConfig({
 	lastUpdated: true,
 
 	cleanUrls: true, // Ensures URLs are generated without .html extensions
-	rewrites: {
-		"blog/posts/:post": "blog/:post",
-	},
+
 	head: [
 		[
 			"script",
@@ -195,10 +193,6 @@ export default defineConfig({
 			.replace(/\.md$/, "") // remove .md extension
 			.replace(/index$/, ""); // remove trailing 'index'
 
-		// Apply the specific rewrite rule for blog posts
-		if (pagePath.startsWith("blog/posts/")) {
-			pagePath = pagePath.replace("blog/posts/", "blog/");
-		}
 
 		// Ensure a consistent path by removing any trailing slash
 		if (pagePath.endsWith("/") && pagePath.length > 1) {

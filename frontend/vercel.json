@@ -7,10 +7,7 @@
 		}
 	],
 	"rewrites": [
-		{
-			"source": "/blog/:post",
-			"destination": "/blog/posts/:post.html"
-		},
+
 		{
 			"source": "/:path((?!.*\\.html$).*)",
 			"destination": "/:path.html"

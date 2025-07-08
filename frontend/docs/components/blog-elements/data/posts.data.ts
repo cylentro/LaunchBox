@@ -18,14 +18,9 @@ declare const data: ContentData<Post>[] & {
 export default createContentLoader("blog/posts/*.md", {
 	excerpt: true,
 	transform(rawData) {
-		return rawData
-			.map((post) => {
-				post.url = post.url.replace("/posts", "");
-				return post;
-			})
-			.sort((a, b) => {
-				return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date);
-			}) as ContentData<Post>[] & {
+		return rawData.sort((a, b) => {
+			return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date);
+		}) as ContentData<Post>[] & {
 			path: string;
 			url: string;
 			frontmatter: Post;

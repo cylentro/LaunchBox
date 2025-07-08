@@ -201,9 +201,9 @@ Despite the hype, AI coding tools aren’t ready to fully replace human develope
 
 ### Trusted Perspectives
 
-* **AI can’t understand full systems** or adapt to changing business rules without help ([Forbes]()).
-* **GitHub’s CEO** stated AI will  *increase* , not decrease, the need for good engineers ([Business Insider]()).
-* **Real-world dev** requires logic, ethics, debugging, teamwork—things AI can’t do alone ([Built In]()).
+* **AI can’t understand full systems** or adapt to changing business rules without help ([Forbes](https://www.forbes.com/forbestechcouncil/)).
+* **GitHub’s CEO** stated AI will  *increase* , not decrease, the need for good engineers ([Business Insider](https://www.businessinsider.com/github-ceo-smartest-companies-hire-more-software-engineers-2025-7)).
+* **Real-world dev** requires logic, ethics, debugging, teamwork—things AI can’t do alone ([Built In](https://builtin.com/articles/ai-will-never-replace-software-developers)).
 
 AI helps. But it doesn’t replace *intuition* or *judgment*.
 
