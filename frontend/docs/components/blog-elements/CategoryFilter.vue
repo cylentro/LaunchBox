@@ -111,7 +111,7 @@ const onDrag = (e) => {
   position: sticky;
   top: 3.6rem; /* Adjust for VitePress nav bar */
   z-index: 10; /* Ensure it stays on top */
-  background-color: white; /* Add a background to prevent content showing through */
+  background-color: var(--vp-c-bg);
   padding: 1rem 0; /* Add some padding for visual separation */
   display: flex;
   align-items: center;
@@ -131,12 +131,12 @@ const onDrag = (e) => {
 
 .category-filter-wrapper::before {
   left: 0;
-  background: linear-gradient(to right, #fff 30%, rgba(255, 255, 255, 0));
+  background: linear-gradient(to right, var(--vp-c-bg) 30%, transparent);
 }
 
 .category-filter-wrapper::after {
   right: 0;
-  background: linear-gradient(to left, #fff 30%, rgba(255, 255, 255, 0));
+  background: linear-gradient(to left, var(--vp-c-bg) 30%, transparent);
 }
 
 .category-filter-wrapper.fade-left::before {
@@ -169,27 +169,29 @@ const onDrag = (e) => {
 
 button {
   background: none;
-  border: 1px solid #ccc;
+  border: 1px solid var(--vp-c-divider);
   border-radius: 20px;
   padding: 0.5rem 1rem;
   margin-right: 0.5rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  color: var(--vp-c-text-2);
 }
 
 button:hover {
-  border-color: #333;
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
 }
 
 button.active {
-  background: #333;
-  color: white;
-  border-color: #333;
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-brand-1);
 }
 
 .scroll-btn {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -201,11 +203,12 @@ button.active {
   justify-content: center;
   align-items: center;
   padding: 0;
-  color: #333;
+  color: var(--vp-c-text-2);
 }
 
 .scroll-btn:hover {
-    border-color: #a0a0a0;
+    border-color: var(--vp-c-brand-1);
+    color: var(--vp-c-text-1);
 }
 
 .scroll-btn svg {

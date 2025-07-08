@@ -25,12 +25,25 @@ function changePage(page) {
   margin-top: 2rem;
 }
 
+span {
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
+}
+
 button {
-  background: #eee;
-  border: none;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover:not(:disabled) {
+    background: var(--vp-c-bg-soft-up);
+    border-color: var(--vp-c-brand-1);
 }
 
 button:disabled {

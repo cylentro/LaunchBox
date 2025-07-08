@@ -21,8 +21,8 @@ const { post } = defineProps(["post"]);
 
 <style scoped>
 .blog-card {
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   margin-bottom: 1.5rem;
   transition: all 0.2s ease-in-out;
@@ -52,6 +52,10 @@ const { post } = defineProps(["post"]);
   transform: translateY(-2px);
 }
 
+html.dark .blog-card:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
 .blog-card a {
   text-decoration: none;
   color: inherit;
@@ -62,19 +66,19 @@ h3 {
   font-weight: 700;
   margin-bottom: 0.4rem;
   line-height: 1.3;
-  color: #333;
+  color: var(--vp-c-text-1);
 }
 
 .author {
   font-size: 0.95rem;
-  color: #777;
+  color: var(--vp-c-text-2);
   margin-bottom: 0.8rem;
   font-style: italic;
 }
 
 .subtitle {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--vp-c-text-2);
   margin-bottom: 1.2rem;
   line-height: 1.5;
 }
@@ -84,12 +88,12 @@ h3 {
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
-  color: #999;
+  color: var(--vp-c-text-3);
 }
 
 .category {
   font-weight: 600;
-  color: #555;
+  color: var(--vp-c-text-2);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }

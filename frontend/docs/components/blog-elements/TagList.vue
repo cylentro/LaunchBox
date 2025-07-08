@@ -38,27 +38,28 @@ h3 {
 }
 
 .tag-item {
-  background-color: var(--vp-c-bg); /* Match BlogCard background */
-  border: 1px solid #e6e6e6; /* Use BlogCard's lighter border color */
-  border-radius: 8px; /* Match BlogCard border-radius */
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
   padding: 0.5rem 1rem;
   font-size: 0.95rem;
   color: var(--vp-c-text-2);
   transition: all 0.2s ease-in-out;
-  /* Removed initial box-shadow */
   cursor: pointer;
 }
 
 .tag-item:hover {
-  background-color: var(--vp-c-bg); /* Keep same background on hover */
-  color: var(--vp-c-text-2); /* Keep same text color on hover */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Match BlogCard hover shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+html.dark .tag-item:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
 }
 
 .tag-item.active {
-  background: #333;
-  color: white;
-  border-color: #333;
+  background: var(--vp-c-brand-1);
+  color: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-brand-1);
 }
 </style>
