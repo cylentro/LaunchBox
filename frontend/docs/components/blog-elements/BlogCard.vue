@@ -61,6 +61,27 @@ html.dark .blog-card:hover {
   color: inherit;
 }
 
+@media (max-width: 768px) {
+  .blog-card a {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    user-select: none; /* Disable text selection highlight on long press */
+  }
+
+  .blog-card a:active {
+    background-color: transparent !important; /* Ensure no background change on active state */
+  }
+
+  .blog-card:hover {
+    box-shadow: none;
+    transform: none;
+  }
+
+  html.dark .blog-card:hover {
+    box-shadow: none;
+  }
+}
+
 h3 {
   font-size: 1.6rem;
   font-weight: 700;
