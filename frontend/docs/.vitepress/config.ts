@@ -16,7 +16,7 @@ function getReadingTime(content) {
 		.replace(/<[^>]*>/g, "") // Remove remaining HTML tags
 		.replace(/```[\s\S]*?```/g, "") // Remove code blocks
 		.replace(/`[^`]*`/g, "") // Remove inline code
-		.replace(/[#*~_>|]/g, ""); // Remove markdown characters
+		.replace(/[#1B1A1E*~_>|]/g, ""); // Remove markdown characters
 
 	const wordCount = text.match(/\w+/g)?.length || 0;
 	const readingTime = Math.ceil(wordCount / wordsPerMinute);
@@ -108,9 +108,9 @@ export default defineConfig({
 		["link", { rel: "manifest", href: "/site.webmanifest" }],
 
 		// --- Theme and PWA Tags ---
-		["link", { rel: "mask-icon", href: "/favicon.svg", color: "#1e88e5" }],
-		["meta", { name: "msapplication-TileColor", content: "#1e88e5" }],
-		["meta", { name: "theme-color", content: "#1e88e5" }],
+		["link", { rel: "mask-icon", href: "/favicon.svg", color: "#1B1A1E" }],
+		["meta", { name: "msapplication-TileColor", content: "#1B1A1E" }],
+		["meta", { name: "theme-color", content: "#1B1A1E" }],
 
 		// --- Structured Data ---
 		[
