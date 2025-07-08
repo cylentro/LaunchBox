@@ -33,7 +33,7 @@ export default defineConfig({
 
 	cleanUrls: true, // Ensures URLs are generated without .html extensions
 	rewrites: {
-		"blog/posts/:post": "blog/:post",
+		"blog/posts/:post.md": "blog/:post",
 	},
 
 	build: {
