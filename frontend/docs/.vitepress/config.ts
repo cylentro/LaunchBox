@@ -58,21 +58,11 @@ export default defineConfig({
 		],
 		["meta", { name: "author", content: "Christian Hadianto" }],
 
-		// --- Open Graph (OG) Site-wide Defaults ---
-		// These tags are not generated in `transformHead` and serve as good defaults.
-		["meta", { property: "og:type", content: "website" }],
-		[
-			"meta",
-			{ property: "og:image", content: "https://bychris.me/self_banner.jpg" },
-		],
+		// --- Open Graph (OG) and Twitter Card Site-wide Defaults ---
+		// OG and Twitter tags are now dynamically generated in the `transformHead` function.
+		// This ensures each page has specific, accurate metadata.
 		["meta", { property: "og:locale", content: "en_US" }],
-
-		// --- Twitter Card Site-wide Defaults ---
 		["meta", { name: "twitter:card", content: "summary_large_image" }],
-		[
-			"meta",
-			{ name: "twitter:image", content: "https://bychris.me/self_banner.jpg" },
-		],
 
 		// --- Favicon and App Icons ---
 		[
@@ -186,9 +176,9 @@ export default defineConfig({
 		const newHead: HeadConfig[] = [];
 		const siteUrl = "https://bychris.me";
 		const siteTitle = siteData.title;
+		const defaultImage = `${siteUrl}/self_banner.jpg`;
 
 		// Reconstruct the public URL path from the file's relative path.
-		// This is necessary because `pageData.route` is not available in this build hook.
 		let pagePath = pageData.relativePath
 			.replace(/\.md$/, "") // remove .md extension
 			.replace(/index$/, ""); // remove trailing 'index'
@@ -205,16 +195,18 @@ export default defineConfig({
 		const pageDescription =
 			pageData.frontmatter.description || siteData.description; // Fallback to site description
 
-		// Create a more descriptive title for sharing.
-		// For the home layout, use the page title directly. For others, append site title.
-		const socialTitle =
-			pageData.frontmatter.layout === "home" || pageTitle === siteTitle
-				? pageTitle
-				: `${pageTitle} | ${siteTitle}`;
-
-		// Use frontmatter for custom OG tags, with fallbacks to generated titles/descriptions
+		// Use the page title directly for social sharing.
+		// The site name is added via `og:site_name`.
+		const socialTitle = pageTitle;
 		const ogTitle = pageData.frontmatter.ogTitle || socialTitle;
 		const ogDescription = pageData.frontmatter.ogDescription || pageDescription;
+		const ogImage = pageData.frontmatter.image
+			? `${siteUrl}/${pageData.frontmatter.image}`
+			: defaultImage;
+		const ogType = pageData.relativePath.startsWith("blog/")
+			? "article"
+			: "website";
+
 
 		// Set the primary meta description for search engines. This is crucial.
 		newHead.push(["meta", { name: "description", content: pageDescription }]);
@@ -222,16 +214,20 @@ export default defineConfig({
 		// Add page-specific, canonical, and OG tags. This is the single source of truth.
 		newHead.push(["link", { rel: "canonical", href: pageUrl }]);
 		newHead.push(["meta", { property: "og:url", content: pageUrl }]);
+		newHead.push(["meta", { property: "og:site_name", content: siteTitle }]);
+		newHead.push(["meta", { property: "og:type", content: ogType }]);
 		newHead.push(["meta", { property: "og:title", content: ogTitle }]);
 		newHead.push([
 			"meta",
 			{ property: "og:description", content: ogDescription },
 		]);
+		newHead.push(["meta", { property: "og:image", content: ogImage }]);
 		newHead.push(["meta", { name: "twitter:title", content: ogTitle }]);
 		newHead.push([
 			"meta",
 			{ name: "twitter:description", content: ogDescription },
 		]);
+		newHead.push(["meta", { name: "twitter:image", content: ogImage }]);
 
 		return newHead;
 	},
