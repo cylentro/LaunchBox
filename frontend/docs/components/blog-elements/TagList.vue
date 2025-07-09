@@ -3,7 +3,7 @@
     <h3>Tags</h3>
     <div class="tags-container">
       <span 
-        v-for="tag in tags" 
+        v-for="tag in sortedTags" 
         :key="tag" 
         class="tag-item"
         :class="{ active: selectedTag === tag }"
@@ -14,8 +14,21 @@
 </template>
 
 <script setup>
-const { tags, selectedTag } = defineProps(["tags", "selectedTag"]);
+import { computed } from 'vue';
+
+const { tags, selectedTag, tagCountsMap } = defineProps(["tags", "selectedTag", "tagCountsMap"]);
 const emit = defineEmits(["tag-clicked"]);
+
+const sortedTags = computed(() => {
+  if (!tagCountsMap) {
+    return tags;
+  }
+  return [...tags].sort((a, b) => {
+    const countA = tagCountsMap[a] || 0;
+    const countB = tagCountsMap[b] || 0;
+    return countB - countA; // Descending order
+  });
+});
 </script>
 
 <style scoped>

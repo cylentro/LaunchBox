@@ -56,9 +56,9 @@ const isSpotifyBubbleHiddenPage = computed(() => {
 
 const showCourseHelper = computed(() => {
 	const path = page.value.relativePath;
-	// Corrected logic: Show on course pages, but NOT on the course index OR quiz pages.
+	// Corrected logic: Show on course pages and blog pages, but NOT on the course index OR quiz pages.
 	return (
-		path.includes("courses/") &&
+		(path.includes("courses/") || path.includes("blog/")) &&
 		!path.endsWith("index.md") &&
 		!path.endsWith("quiz.md")
 	);
@@ -66,11 +66,12 @@ const showCourseHelper = computed(() => {
 
 const showProgressBar = computed(() => {
 	const path = page.value.relativePath;
-	// Show on course pages, but not on the course index or quiz pages.
+	// Show on course pages and blog pages, but not on the course index or quiz pages.
 	return (
-		path.includes("courses/") &&
+		(path.includes("courses/") || path.includes("blog/")) &&
 		!path.endsWith("quiz.md") &&
-		!path.match("courses/index.md")
+		!path.match("courses/index.md") &&
+		!path.match("blog/index.md")
 	);
 });
 

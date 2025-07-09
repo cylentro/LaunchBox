@@ -97,6 +97,7 @@ const textLength = ref(0);
 const charIndex = ref(0); // Track the current character index
 const showRemainingTime = ref(false);
 const showSpeedPopup = ref(false);
+const isSeeking = ref(false);
 
 const sliderStyle = computed(() => {
 	const progress =
@@ -151,6 +152,7 @@ const createUtterance = (textToSpeak) => {
 	};
 
 	utt.onboundary = (event) => {
+		if (isSeeking.value) return;
 		charIndex.value =
 			originalText.value.length - textToSpeak.length + event.charIndex;
 		if (duration.value > 0 && textLength.value > 0) {
@@ -182,7 +184,7 @@ onMounted(() => {
 		if (mainContentElement) {
 			const contentClone = mainContentElement.cloneNode(true);
 			const selectorsToExclude =
-				".course-helpers-container, .header-anchor, .custom-block-title, .edit-link, .VPDocFooter, .tts-player-container, .tts-player-unsupported";
+				".page-helpers-container, .header-anchor, .custom-block-title, .edit-link, .VPDocFooter, .tts-player-container, .tts-player-unsupported";
 			contentClone
 				.querySelectorAll(selectorsToExclude)
 				.forEach((el) => el.remove());
@@ -265,6 +267,7 @@ const stop = () => {
 		currentTime.value = 0;
 		isPaused.value = false;
 		isPlaying.value = false;
+		isSeeking.value = false;
 		showSpeedPopup.value = false; // Close speed popup on stop
 		showRemainingTime.value = false; // Set to false when stopped
 		window.speechSynthesis.cancel();
@@ -321,10 +324,12 @@ const changeSpeed = (delta) => {
 };
 
 const onSliderInput = (e) => {
+	isSeeking.value = true;
 	currentTime.value = parseFloat(e.target.value);
 };
 
 const onSliderChange = (e) => {
+	isSeeking.value = false;
 	const newTime = parseFloat(e.target.value);
 	charIndex.value = Math.floor((newTime / duration.value) * textLength.value);
 
@@ -456,7 +461,7 @@ input[type="range"].time-bar::-webkit-slider-thumb {
 input[type="range"].time-bar::-webkit-slider-runnable-track {
   width: 100%;
   height: 4px;
-  background: var(--vp-c-divider);
+  background: transparent;
   border-radius: 2px;
 }
 
@@ -473,7 +478,7 @@ input[type="range"].time-bar::-moz-range-thumb {
 input[type="range"].time-bar::-moz-range-track {
   width: 100%;
   height: 4px;
-  background: var(--vp-c-divider);
+  background: transparent;
   border-radius: 2px;
 }
 
