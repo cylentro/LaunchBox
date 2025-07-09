@@ -237,7 +237,7 @@ export default defineConfig({
 
 		// We only want to calculate reading time for course content pages
 		if (
-			pageData.relativePath.startsWith("courses/") &&
+			(pageData.relativePath.startsWith("courses/") || pageData.relativePath.startsWith("blog/")) &&
 			!pageData.relativePath.endsWith("index.md")
 		) {
 			try {

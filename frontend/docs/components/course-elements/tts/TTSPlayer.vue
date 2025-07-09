@@ -91,7 +91,7 @@ const utterance = ref(null);
 const currentTime = ref(0);
 const duration = ref(0);
 const volume = ref(1);
-const playbackRate = ref(1.15);
+const playbackRate = ref(1);
 const originalText = ref("");
 const textLength = ref(0);
 const charIndex = ref(0); // Track the current character index
@@ -312,7 +312,7 @@ const toggleMute = () => {
 const changeSpeed = (delta) => {
 	if (!utterance.value) return;
 	const newRate = parseFloat((playbackRate.value + delta).toFixed(2));
-	if (newRate >= 0.65 && newRate <= 2.15) {
+	if (newRate >= 0.5 && newRate <= 2) {
 		playbackRate.value = newRate;
 
 		if (isPlaying.value) {
