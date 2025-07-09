@@ -14,20 +14,24 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from "vue";
 
-const { tags, selectedTag, tagCountsMap } = defineProps(["tags", "selectedTag", "tagCountsMap"]);
+const { tags, selectedTag, tagCountsMap } = defineProps([
+	"tags",
+	"selectedTag",
+	"tagCountsMap",
+]);
 const emit = defineEmits(["tag-clicked"]);
 
 const sortedTags = computed(() => {
-  if (!tagCountsMap) {
-    return tags;
-  }
-  return [...tags].sort((a, b) => {
-    const countA = tagCountsMap[a] || 0;
-    const countB = tagCountsMap[b] || 0;
-    return countB - countA; // Descending order
-  });
+	if (!tagCountsMap) {
+		return tags;
+	}
+	return [...tags].sort((a, b) => {
+		const countA = tagCountsMap[a] || 0;
+		const countB = tagCountsMap[b] || 0;
+		return countB - countA; // Descending order
+	});
 });
 </script>
 

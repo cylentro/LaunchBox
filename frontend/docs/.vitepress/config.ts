@@ -2,7 +2,6 @@ import { defineConfig, type HeadConfig } from "vitepress";
 import fs from "fs";
 import path from "path";
 
-
 function getReadingTime(content) {
 	if (!content) {
 		return 0;
@@ -27,8 +26,9 @@ function getReadingTime(content) {
 export default defineConfig({
 	title: "Christian Hadianto",
 	titleTemplate: ":title | Christian Hadianto",
-	description: "Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
-	
+	description:
+		"Explore the portfolio of Christian Hadianto, a Product Manager with 10+ years of experience in logistics and a passion for building innovative products with Generative AI.",
+
 	lastUpdated: true,
 
 	cleanUrls: true, // Ensures URLs are generated without .html extensions
@@ -183,7 +183,6 @@ export default defineConfig({
 			.replace(/\.md$/, "") // remove .md extension
 			.replace(/index$/, ""); // remove trailing 'index'
 
-
 		// Ensure a consistent path by removing any trailing slash
 		if (pagePath.endsWith("/") && pagePath.length > 1) {
 			pagePath = pagePath.slice(0, -1);
@@ -206,7 +205,6 @@ export default defineConfig({
 		const ogType = pageData.relativePath.startsWith("blog/")
 			? "article"
 			: "website";
-
 
 		// Set the primary meta description for search engines. This is crucial.
 		newHead.push(["meta", { name: "description", content: pageDescription }]);
@@ -237,7 +235,8 @@ export default defineConfig({
 
 		// We only want to calculate reading time for course content pages
 		if (
-			(pageData.relativePath.startsWith("courses/") || pageData.relativePath.startsWith("blog/")) &&
+			(pageData.relativePath.startsWith("courses/") ||
+				pageData.relativePath.startsWith("blog/")) &&
 			!pageData.relativePath.endsWith("index.md")
 		) {
 			try {

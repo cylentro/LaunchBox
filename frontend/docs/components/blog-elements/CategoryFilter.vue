@@ -24,9 +24,14 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
-const { categories, selectedCategories } = defineProps(["categories", "selectedCategories"]);
+const { categories, selectedCategories } = defineProps([
+	"categories",
+	"selectedCategories",
+]);
 const emit = defineEmits(["filter-change"]);
-const selected = ref(selectedCategories.length > 0 ? selectedCategories : ["All"]);
+const selected = ref(
+	selectedCategories.length > 0 ? selectedCategories : ["All"],
+);
 const scrollContainer = ref(null);
 const showLeftArrow = ref(false);
 const showRightArrow = ref(false);

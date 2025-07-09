@@ -140,15 +140,17 @@ function resetFilters() {
 
 // Helper function to get a course object by its link
 function getCourseByLink(link) {
-	if (!link || typeof link !== 'string') {
+	if (!link || typeof link !== "string") {
 		return undefined;
 	}
 	// Normalize the link to ensure no trailing slashes for consistent comparison
-	const normalizedSearchLink = link.endsWith('/') ? link.slice(0, -1) : link;
+	const normalizedSearchLink = link.endsWith("/") ? link.slice(0, -1) : link;
 
 	return courses.value.find((c) => {
 		// Normalize the course's link from the data for consistent comparison
-		const normalizedCourseLink = c.link.endsWith('/') ? c.link.slice(0, -1) : c.link;
+		const normalizedCourseLink = c.link.endsWith("/")
+			? c.link.slice(0, -1)
+			: c.link;
 		return normalizedCourseLink === normalizedSearchLink;
 	});
 }
@@ -164,18 +166,18 @@ function toggleSeries(seriesName) {
 
 // Function to format duration
 function formatDuration(minutes) {
-  if (minutes === null || minutes === undefined) {
-    return '';
-  }
-  if (minutes < 60) {
-    // Round to nearest 15 minutes
-    const roundedMinutes = Math.round(minutes / 15) * 15;
-    return `${roundedMinutes} mins`;
-  } else {
-    // Round down to nearest hour
-    const hours = Math.floor(minutes / 60);
-    return `${hours} hours`;
-  }
+	if (minutes === null || minutes === undefined) {
+		return "";
+	}
+	if (minutes < 60) {
+		// Round to nearest 15 minutes
+		const roundedMinutes = Math.round(minutes / 15) * 15;
+		return `${roundedMinutes} mins`;
+	} else {
+		// Round down to nearest hour
+		const hours = Math.floor(minutes / 60);
+		return `${hours} hours`;
+	}
 }
 
 // Watch filters to reset current page when filters change
@@ -331,6 +333,9 @@ watch(
                 <img :src="course.image" :alt="`${course.title} cover image`" class="course-image" />
                 <span v-if="course.recommended" class="absolute top-2 left-2 tag recommended-tag">Recommended</span>
                 <span v-if="course.duration" class="absolute bottom-2 right-2 tag duration-tag">{{ formatDuration(course.duration) }}</span>
+                <span v-if="course.pinOrder !== undefined && course.pinOrder !== null" class="absolute top-2 right-2 tag pin-tag">
+                  <img src="/icons/pin.png" alt="Pinned" class="w-4 h-4" />
+                </span>
               </div>
               <div class="card-content">
                 <h3 class="course-title">{{ course.title }}</h3>
@@ -590,5 +595,28 @@ watch(
   background-color: #065f46; /* emerald-900 */
   color: #a7f3d0; /* emerald-200 */
   border-color: #34d399; /* emerald-400 */
+}
+
+.pin-tag {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white for glass effect */
+  color: initial; /* Reset color to default */
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+
+.dark .pin-tag {
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black for dark mode glass effect */
+  color: initial; /* Reset color to default */
+}
+
+.dark .pin-tag img {
+  filter: invert(1);
 }
 </style>

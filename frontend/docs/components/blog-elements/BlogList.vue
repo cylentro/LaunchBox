@@ -32,96 +32,102 @@ const pinnedPost = 7;
 const selectedCategories = ref([]);
 const selectedTag = ref(null);
 
-
-
 const allPosts = computed(() => {
-  return posts.sort(
-    (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
-  );
+	return posts.sort(
+		(a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
+	);
 });
 
 const availableCategories = computed(() => {
-  let postsToConsider = allPosts.value;
-  if (selectedTag.value) {
-    postsToConsider = postsToConsider.filter(
-      (post) =>
-        post.frontmatter.tags &&
-        post.frontmatter.tags.includes(selectedTag.value),
-    );
-  }
-  const categories = new Set(postsToConsider.map((p) => p.frontmatter.category));
-  return ["All", ...Array.from(categories)];
+	let postsToConsider = allPosts.value;
+	if (selectedTag.value) {
+		postsToConsider = postsToConsider.filter(
+			(post) =>
+				post.frontmatter.tags &&
+				post.frontmatter.tags.includes(selectedTag.value),
+		);
+	}
+	const categories = new Set(
+		postsToConsider.map((p) => p.frontmatter.category),
+	);
+	return ["All", ...Array.from(categories)];
 });
 
 const availableTags = computed(() => {
-  let postsToConsider = allPosts.value;
-  if (selectedCategories.value.length > 0 && !selectedCategories.value.includes("All")) {
-    postsToConsider = postsToConsider.filter((post) =>
-      selectedCategories.value.includes(post.frontmatter.category),
-    );
-  }
-  const tags = new Set();
-  postsToConsider.forEach((p) => {
-    if (p.frontmatter.tags) {
-      p.frontmatter.tags.forEach((t) => tags.add(t));
-    }
-  });
-  return Array.from(tags);
+	let postsToConsider = allPosts.value;
+	if (
+		selectedCategories.value.length > 0 &&
+		!selectedCategories.value.includes("All")
+	) {
+		postsToConsider = postsToConsider.filter((post) =>
+			selectedCategories.value.includes(post.frontmatter.category),
+		);
+	}
+	const tags = new Set();
+	postsToConsider.forEach((p) => {
+		if (p.frontmatter.tags) {
+			p.frontmatter.tags.forEach((t) => tags.add(t));
+		}
+	});
+	return Array.from(tags);
 });
 
 const filteredPosts = computed(() => {
-  let filtered = allPosts.value;
+	let filtered = allPosts.value;
 
-  if (selectedCategories.value.length > 0 && !selectedCategories.value.includes("All")) {
-    filtered = filtered.filter((post) =>
-      selectedCategories.value.includes(post.frontmatter.category),
-    );
-  }
+	if (
+		selectedCategories.value.length > 0 &&
+		!selectedCategories.value.includes("All")
+	) {
+		filtered = filtered.filter((post) =>
+			selectedCategories.value.includes(post.frontmatter.category),
+		);
+	}
 
-  if (selectedTag.value) {
-    filtered = filtered.filter(
-      (post) =>
-        post.frontmatter.tags &&
-        post.frontmatter.tags.includes(selectedTag.value),
-    );
-  }
+	if (selectedTag.value) {
+		filtered = filtered.filter(
+			(post) =>
+				post.frontmatter.tags &&
+				post.frontmatter.tags.includes(selectedTag.value),
+		);
+	}
 
-  return filtered;
+	return filtered;
 });
 
 const totalPages = computed(() => {
-  return Math.ceil(filteredPosts.value.length / postsPerPage);
+	return Math.ceil(filteredPosts.value.length / postsPerPage);
 });
 
 const paginatedPosts = computed(() => {
-  const start = (currentPage.value - 1) * postsPerPage;
-  const end = start + postsPerPage;
-  return filteredPosts.value.slice(start, end);
+	const start = (currentPage.value - 1) * postsPerPage;
+	const end = start + postsPerPage;
+	return filteredPosts.value.slice(start, end);
 });
 
 const pinnedPosts = computed(() => {
-  return posts
-    .filter((p) => p.frontmatter.pinned)
-    .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
-    .slice(0, pinnedPost);
+	return posts
+		.filter((p) => p.frontmatter.pinned)
+		.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+		.slice(0, pinnedPost);
 });
 
 function updateFilter(newCategories) {
-  selectedCategories.value = newCategories;
-  currentPage.value = 1;
+	selectedCategories.value = newCategories;
+	currentPage.value = 1;
 }
 
 function changePage(page) {
-  currentPage.value = page;
+	currentPage.value = page;
 }
 
 function updateTagFilter(tag) {
-  if (selectedTag.value === tag) {
-    selectedTag.value = null; // Deselect if already selected
-  } else {
-    selectedTag.value = tag;
-  }
-  currentPage.value = 1;
+	if (selectedTag.value === tag) {
+		selectedTag.value = null; // Deselect if already selected
+	} else {
+		selectedTag.value = tag;
+	}
+	currentPage.value = 1;
 }
 </script>
 

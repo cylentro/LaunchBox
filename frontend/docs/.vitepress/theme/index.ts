@@ -28,7 +28,7 @@ export default {
 				nextTick(() => mermaidRenderer.renderMermaidDiagrams());
 			};
 		}
-		
+
 		app.component("NaitBubble", NaitBubble);
 		app.component("Timeline", Timeline);
 		app.component("SpotifyBubble", SpotifyBubble);
