@@ -6,9 +6,6 @@
     </template>
 
     <template #doc-after>
-      <div v-if="page.lastUpdated" class="last-updated">
-        Last updated: {{ new Date(page.lastUpdated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
-      </div>
       <div v-if="page.frontmatter.layout === 'doc' && page.relativePath.startsWith('blog/')" class="blog-post-footer">
         Written by <a href="/about/about-me">Christian Hadianto</a> — Product guy, weekend coder, lifelong learner.
       </div>
