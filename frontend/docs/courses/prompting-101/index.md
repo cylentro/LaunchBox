@@ -4,7 +4,8 @@ layout: home
 title: Prompting 101 - The Playbook for Everyone
 description: Feeling lost in AI jargon? My 'Prompting 101' course is your personal, jargon-free guide to mastering Generative AI, designed specifically for beginners and non-technical users. Learn to prompt effectively for real-world productivity and creativity!
 
-courseOrder: 4
+courseOrder: 1
+pinOrder: 1
 
 categories: ["Generative AI", "Productivity", "Professional Development"]
 recommended: true
@@ -50,4 +51,4 @@ Upon completion of this course, you will be able to:
 - **Evaluate** AI-generated content for common pitfalls like bias and misinformation.
 - **Develop** a personal "AI Playbook" for using these tools effectively and responsibly.
 
-<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />
+`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`

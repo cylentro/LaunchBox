@@ -4,7 +4,7 @@ layout: home
 title: A/B Testing from Hypothesis to High-Impact - A Practical Guide
 description: Master A/B testing from start to finish. This practical guide teaches you to formulate data-driven hypotheses, design rigorous experiments, interpret results with confidence, and drive business growth. Move from guesswork to data-informed decisions.
 
-courseOrder: 1
+courseOrder: 4
 
 categories: ["A/B Testing", "Product Management", "Data & Analytics", "Marketing"]
 levels: ["Advanced"]
@@ -57,4 +57,4 @@ Upon completing this course, you will be able to:
 * **Interpret Results with Confidence:** Understand the core statistical concepts behind A/B testing so you can confidently analyze outcomes, differentiate between a true winner and random chance, and avoid common analytical pitfalls.
 * **Communicate Learnings to Drive Action:** Develop the ability to translate test results into compelling data stories that create alignment, turning every outcome—win, loss, or inconclusive—into actionable intelligence for your organization.
 
-<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />
+`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`

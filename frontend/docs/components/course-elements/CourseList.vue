@@ -88,7 +88,7 @@ const filteredCourses = computed(() => {
 	const unpinnedCourses = allCourses.filter(
 		(course) => course.pinOrder === undefined || course.pinOrder === null,
 	);
-	const sortedUnpinnedCourses = unpinnedCourses.reverse();
+	const sortedUnpinnedCourses = unpinnedCourses;
 	const combinedCourses = [...pinnedCourses, ...sortedUnpinnedCourses];
 
 	return combinedCourses.filter((course) => {
