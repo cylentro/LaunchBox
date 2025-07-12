@@ -2,88 +2,105 @@
 import { ref, computed, watch } from "vue";
 
 const props = defineProps({
-	courses: { type: Array, required: true },
-	selectedCategories: { type: Array, required: true },
-	selectedLevels: { type: Array, required: true },
-	selectedSeries: { type: String, required: true },
-	showRecommendedOnly: { type: Boolean, required: true },
-	searchQuery: { type: String, required: true },
+  courses: {
+    type: Array,
+    required: true,
+  },
 });
 
 const emit = defineEmits([
-	"update:selectedCategories",
-	"update:selectedLevels",
-	"update:selectedSeries",
-	"update:showRecommendedOnly",
-	"update:searchQuery",
-	"resetFilters",
+  "update:filters",
 ]);
 
+// --- Filtering Logic ---
+const selectedCategories = ref([]);
+const selectedLevels = ref([]);
+const selectedSeries = ref("");
+const showRecommendedOnly = ref(false);
+const searchQuery = ref("");
+const categorySortType = ref('popularity');
+
+// UI state for filter visibility
 const isFilterVisible = ref(false); // State for mobile filter visibility
-const isCategoryFilterOpen = ref(true); // State for category filter collapsible
-const isLevelFilterOpen = ref(true); // State for level filter collapsible
-const isSeriesFilterOpen = ref(true); // State for series filter collapsible
+const isCategoryFilterOpen = ref(true);
+const isLevelFilterOpen = ref(true);
+const isSeriesFilterOpen = ref(true);
 
 // Get unique categories and levels for filter options
 const allCategories = computed(() => {
-	const categories = new Set();
-	props.courses.forEach((course) => {
-		course.categories.forEach((cat) => categories.add(cat));
-	});
-	return Array.from(categories).sort();
+  const categories = props.courses.flatMap((course) => course.categories);
+  const categoryCount = categories.reduce((acc, cat) => {
+    acc[cat] = (acc[cat] || 0) + 1;
+    return acc;
+  }, {});
+
+  const sortedCategories = Object.keys(categoryCount);
+
+  if (categorySortType.value === 'alphabetical') {
+    sortedCategories.sort((a, b) => a.localeCompare(b));
+  } else {
+    sortedCategories.sort((a, b) => categoryCount[b] - categoryCount[a]);
+  }
+  return sortedCategories;
 });
 
 const allLevels = computed(() => {
-	const levels = new Set();
-	props.courses.forEach((course) => {
-		course.levels.forEach((level) => levels.add(level));
-	});
-	return Array.from(levels).sort();
+  const levels = new Set();
+  props.courses.forEach((course) => {
+    course.levels.forEach((level) => levels.add(level));
+  });
+  return Array.from(levels).sort();
 });
 
 const allSeries = computed(() => {
-	const seriesNames = new Set();
-	props.courses.forEach((course) => {
-		if (course.series) {
-			seriesNames.add(course.series.name);
-		}
-	});
-	return Array.from(seriesNames).sort();
+  const seriesNames = new Set();
+  props.courses.forEach((course) => {
+    if (course.series) {
+      seriesNames.add(course.series.name);
+    }
+  });
+  return Array.from(seriesNames).sort();
 });
 
+// Function to reset all filters
 function resetFilters() {
-	emit("resetFilters");
+  selectedCategories.value = [];
+  selectedLevels.value = [];
+  selectedSeries.value = "";
+  showRecommendedOnly.value = false;
+  searchQuery.value = "";
 }
 
 // Function to toggle series selection. Allows unchecking a radio button.
 function toggleSeries(seriesName) {
-	if (props.selectedSeries === seriesName) {
-		emit("update:selectedSeries", ""); // If the same series is clicked, unselect it
-	} else {
-		emit("update:selectedSeries", seriesName); // Otherwise, select the new series
-	}
+  if (selectedSeries.value === seriesName) {
+    selectedSeries.value = "";
+  } else {
+    selectedSeries.value = seriesName;
+  }
 }
 
-// Internal refs for v-model, which will emit updates to parent
-const internalSelectedCategories = computed({
-	get: () => props.selectedCategories,
-	set: (value) => emit("update:selectedCategories", value),
-});
-
-const internalSelectedLevels = computed({
-	get: () => props.selectedLevels,
-	set: (value) => emit("update:selectedLevels", value),
-});
-
-const internalShowRecommendedOnly = computed({
-	get: () => props.showRecommendedOnly,
-	set: (value) => emit("update:showRecommendedOnly", value),
-});
-
-const internalSearchQuery = computed({
-	get: () => props.searchQuery,
-	set: (value) => emit("update:searchQuery", value),
-});
+// Watch filters to emit changes to parent
+watch(
+  [
+    selectedCategories,
+    selectedLevels,
+    showRecommendedOnly,
+    selectedSeries,
+    searchQuery,
+    categorySortType,
+  ],
+  () => {
+    emit("update:filters", {
+      selectedCategories: selectedCategories.value,
+      selectedLevels: selectedLevels.value,
+      selectedSeries: selectedSeries.value,
+      showRecommendedOnly: showRecommendedOnly.value,
+      searchQuery: searchQuery.value,
+    });
+  },
+  { deep: true, immediate: true } // Immediate to send initial state
+);
 </script>
 
 <template>
@@ -104,7 +121,7 @@ const internalSearchQuery = computed({
     <div id="filters-content" :class="{ 'hidden': !isFilterVisible }" class="lg:block lg:sticky lg:top-24">
       <div class="flex justify-between items-center mb-4">
         <h2 class="hidden lg:block text-xl font-semibold text-gray-900 dark:text-gray-100">Filters</h2>
-        <span class="lg:hidden"></span> <!-- Spacer for mobile layout to push Clear All to right -->
+        <span class="lg:hidden"></span>
         <button @click="resetFilters"
           class="text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
           Clear All
@@ -114,14 +131,14 @@ const internalSearchQuery = computed({
       <!-- Search Bar -->
       <div class="py-4 border-t border-gray-200 dark:border-gray-700">
         <label for="course-search" class="sr-only">Search Courses</label>
-        <input type="text" id="course-search" v-model="internalSearchQuery" placeholder="Search courses..."
+        <input type="text" id="course-search" v-model="searchQuery" placeholder="Search courses..."
           class="w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
       </div>
 
       <!-- Recommended Filter -->
       <div class="py-4 border-t border-gray-200 dark:border-gray-700">
         <div class="flex items-center">
-          <input type="checkbox" id="recommended-filter" v-model="internalShowRecommendedOnly"
+          <input type="checkbox" id="recommended-filter" v-model="showRecommendedOnly"
             class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
           <label for="recommended-filter"
             class="ml-3 text-sm font-semibold text-gray-800 dark:text-gray-200 cursor-pointer">Show Recommended
@@ -140,13 +157,22 @@ const internalSearchQuery = computed({
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div v-show="isCategoryFilterOpen" class="mt-3 space-y-2"
-          :class="{ 'h-[11.9rem] overflow-y-auto': allCategories.length > 7 }">
-          <div v-for="category in allCategories" :key="category" class="flex items-center">
-            <input type="checkbox" :id="`cat-${category}`" :value="category" v-model="internalSelectedCategories"
-              class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
-            <label :for="`cat-${category}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{
-              category }}</label>
+        <div v-show="isCategoryFilterOpen" class="mt-3">
+          <div class="mb-3">
+            <label for="category-sort" class="sr-only">Sort categories</label>
+            <select id="category-sort" v-model="categorySortType"
+              class="w-full text-sm px-2 py-1 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <option value="popularity">Sort by Popularity</option>
+              <option value="alphabetical">Sort Alphabetically</option>
+            </select>
+          </div>
+          <div class="space-y-2" :class="{ 'h-[11.9rem] overflow-y-auto': allCategories.length > 7 }">
+            <div v-for="category in allCategories" :key="category" class="flex items-center">
+              <input type="checkbox" :id="`cat-${category}`" :value="category" v-model="selectedCategories"
+                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
+              <label :for="`cat-${category}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{
+                category }}</label>
+            </div>
           </div>
         </div>
       </div>
@@ -162,10 +188,9 @@ const internalSearchQuery = computed({
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div v-show="isLevelFilterOpen" class="mt-3 space-y-2"
-          :class="{ 'h-[11.9rem] overflow-y-auto': allLevels.length > 7 }">
+        <div v-show="isLevelFilterOpen" class="mt-3 space-y-2" :class="{ 'h-[11.9rem] overflow-y-auto': allLevels.length > 7 }">
           <div v-for="level in allLevels" :key="level" class="flex items-center">
-            <input type="checkbox" :id="`level-${level}`" :value="level" v-model="internalSelectedLevels"
+            <input type="checkbox" :id="`level-${level}`" :value="level" v-model="selectedLevels"
               class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
             <label :for="`level-${level}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{
               level }}</label>
@@ -185,11 +210,10 @@ const internalSearchQuery = computed({
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div v-show="isSeriesFilterOpen" class="mt-3 space-y-2"
-            :class="{ 'h-[11.9rem] overflow-y-auto': allSeries.length > 7 }">
+          <div v-show="isSeriesFilterOpen" class="mt-3 space-y-2" :class="{ 'h-[11.9rem] overflow-y-auto': allSeries.length > 7 }">
             <div v-for="seriesName in allSeries" :key="seriesName" class="flex items-center">
               <input type="radio" :id="`series-${seriesName}`" :value="seriesName"
-                :checked="props.selectedSeries === seriesName" @click="toggleSeries(seriesName)"
+                :checked="selectedSeries === seriesName" @click="toggleSeries(seriesName)"
                 class="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" />
               <label :for="`series-${seriesName}`"
                 class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{ seriesName }}</label>
@@ -200,7 +224,3 @@ const internalSearchQuery = computed({
     </div>
   </aside>
 </template>
-
-<style scoped>
-/* No specific styles for CourseFilter.vue yet, as they are mostly Tailwind classes */
-</style>
