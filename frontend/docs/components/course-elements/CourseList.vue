@@ -13,6 +13,7 @@ const selectedSeries = ref(""); // Using a string for single-select radio button
 const showRecommendedOnly = ref(false);
 const isFilterVisible = ref(false); // State for mobile filter visibility
 const searchQuery = ref("");
+const categorySortType = ref('popularity'); // 'popularity' or 'alphabetical'
 
 // Pagination state
 const currentPage = ref(1);
@@ -22,12 +23,22 @@ const isSeriesFilterOpen = ref(true); // State for series filter collapsible
 
 // Get unique categories and levels for filter options
 const allCategories = computed(() => {
-	const categories = new Set();
-	courses.value.forEach((course) => {
-		course.categories.forEach((cat) => categories.add(cat));
-	});
-	// No 'All' needed for checkboxes
-	return Array.from(categories).sort();
+	const categories = courses.value.flatMap((course) => course.categories);
+	const categoryCount = categories.reduce((acc, cat) => {
+		acc[cat] = (acc[cat] || 0) + 1;
+		return acc;
+	}, {});
+
+	const sortedCategories = Object.keys(categoryCount);
+
+	if (categorySortType.value === 'alphabetical') {
+		sortedCategories.sort((a, b) => a.localeCompare(b));
+	} else {
+		// Default to popularity
+		sortedCategories.sort((a, b) => categoryCount[b] - categoryCount[a]);
+	}
+
+	return sortedCategories;
 });
 
 const allLevels = computed(() => {
@@ -266,12 +277,22 @@ watch(
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div v-show="isCategoryFilterOpen" class="mt-3 space-y-2" :class="{ 'h-[11.9rem] overflow-y-auto': allCategories.length > 7 }">
-              <div v-for="category in allCategories" :key="category" class="flex items-center">
-                <input type="checkbox" :id="`cat-${category}`" :value="category" v-model="selectedCategories"
-                  class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
-                <label :for="`cat-${category}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{
-                  category }}</label>
+            <div v-show="isCategoryFilterOpen" class="mt-3">
+              <div class="mb-3">
+                <label for="category-sort" class="sr-only">Sort categories</label>
+                <select id="category-sort" v-model="categorySortType"
+                  class="w-full text-sm px-2 py-1 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                  <option value="popularity">Sort by Popularity</option>
+                  <option value="alphabetical">Sort Alphabetically</option>
+                </select>
+              </div>
+              <div class="space-y-2" :class="{ 'h-[11.9rem] overflow-y-auto': allCategories.length > 7 }">
+                <div v-for="category in allCategories" :key="category" class="flex items-center">
+                  <input type="checkbox" :id="`cat-${category}`" :value="category" v-model="selectedCategories"
+                    class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
+                  <label :for="`cat-${category}`" class="ml-3 text-sm text-gray-600 dark:text-gray-300 cursor-pointer">{{
+                    category }}</label>
+                </div>
               </div>
             </div>
           </div>

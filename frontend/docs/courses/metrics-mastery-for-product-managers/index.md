@@ -9,7 +9,6 @@ courseOrder: 3
 categories: ["Product Management", "Data & Analytics", "Strategy"]
 levels: ["Intermediate"]
 series: { name: "Data-Driven Product Management", part: 1 }
-relatedCourses: ["/courses/ab-testing-from-hypothesis-to-high-impact"]
 
 ogTitle: Metrics Mastery for Product Managers
 ogDescription: Transform your product practice from intuition-led to data-informed. This course forges you into a strategic leader who wields data to understand user behavior, measure what matters, and drive sustainable product growth.
@@ -39,18 +38,14 @@ The second is the world of the **"Data-Informed PM."** This is a world of clarit
 
 This course is your bridge from World 1 to World 2. It is not designed to turn you into a data scientist. It is designed to forge you into a strategic leader who wields data as their most powerful tool. You will learn to move beyond vanity metrics and surface-level observations to build a robust framework for understanding user behavior, measuring what truly matters, and driving sustainable product growth. Get ready to stop guessing and start leading with ground truth.
 
-::: info Prerequisites
+# Prerequisites
+
 This course is designed to be accessible and transformative for product managers at various stages of their data journey. To ensure you get the most out of this material, you should have:
 
-**Foundational Product Management Experience:** You should have a solid understanding of the product manager's role and be familiar with the core phases of the product development lifecycle (discovery, planning, development, launch). This is not a "How to be a PM" course, but rather a "How to be a more effective PM" course.
-
-**Basic Business Acumen:** A general understanding of core business concepts such as revenue, costs, and profitability will be beneficial. We will connect product metrics to these business outcomes, so a foundational knowledge is helpful.
-
-**An Open and Curious Mindset:** The most important prerequisite is a willingness to move from a purely "gut-feel" approach to a more data-informed one. Come prepared to challenge your assumptions and embrace a new way of thinking about product success.
-
-**No Advanced Math or Statistics Required:** You do not need to be a data scientist or have a background in statistics. This course focuses on the strategic application of metrics, not the complex mathematics behind them. We will cover all necessary concepts in a clear and non-technical way.
-
-:::
+* **Foundational Product Management Experience:** You should have a solid understanding of the product manager's role and be familiar with the core phases of the product development lifecycle (discovery, planning, development, launch). This is not a "How to be a PM" course, but rather a "How to be a more effective PM" course.
+* **Basic Business Acumen:** A general understanding of core business concepts such as revenue, costs, and profitability will be beneficial. We will connect product metrics to these business outcomes, so a foundational knowledge is helpful.
+* **An Open and Curious Mindset:** The most important prerequisite is a willingness to move from a purely "gut-feel" approach to a more data-informed one. Come prepared to challenge your assumptions and embrace a new way of thinking about product success.
+* **No Advanced Math or Statistics Required:** You do not need to be a data scientist or have a background in statistics. This course focuses on the strategic application of metrics, not the complex mathematics behind them. We will cover all necessary concepts in a clear and non-technical way.
 
 # Course Objectives
 
@@ -65,4 +60,4 @@ Upon successful completion of this course, you will be able to:
 * **Tell Compelling Stories with Data:** Transform raw data into persuasive narratives. You will learn a structured approach to data storytelling that contextualizes numbers, reveals the "so what" behind the insights, and drives clear, actionable recommendations.
 * **Design Effective Dashboards:** Apply core design principles to build simple, effective dashboards that provide a clear, at-a-glance understanding of your product's health, focusing on trends and actionable insights over a sea of numbers.
 
-`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`
+<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />

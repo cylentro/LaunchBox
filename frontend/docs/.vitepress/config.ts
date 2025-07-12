@@ -111,6 +111,7 @@ export default defineConfig({
 		["link", { rel: "mask-icon", href: "/favicon.svg", color: "#1B1A1E" }],
 		["meta", { name: "msapplication-TileColor", content: "#1B1A1E" }],
 		["meta", { name: "theme-color", content: "#1B1A1E" }],
+		
 
 		// --- Structured Data ---
 		[
@@ -304,7 +305,7 @@ export default defineConfig({
 						{
 							text: "Chapter 2: The Art of the Conversation",
 							link: "/courses/prompting-101/chapter-2_the-art-of-the-conversation_your-first-prompts",
-						},
+					},
 						{
 							text: "Chapter 3: Advanced Prompting",
 							link: "/courses/prompting-101/chapter-3_advance-prompting-techniques",
@@ -442,6 +443,56 @@ export default defineConfig({
 					],
 				},
 			],
+			"/courses/vibe-coding-building-apps-with-ai-conversation/": [
+				{
+					text: "Vibe Coding: Building Apps with AI Conversation",
+					link: "/courses/vibe-coding-building-apps-with-ai-conversation/",
+				},
+				{
+					text: "The Complete Course Manuscript",
+					collapsed: false,
+					items: [
+						{
+							text: "Code 1: The Basics - What is Vibe Coding?",
+							link: "/courses/vibe-coding-building-apps-with-ai-conversation/code-1-the-basics-what-is-vibe-coding",
+						},
+						{
+							text: "Code 2: The Workflow - From Idea to Application",
+							link: "/courses/vibe-coding-building-apps-with-ai-conversation/code-2-the-workflow-from-idea-to-application",
+						},
+						{
+							text: "Code 3: In-Depth Study Case - Building a Note-Taking App",
+							link: "/courses/vibe-coding-building-apps-with-ai-conversation/code-3-in-depth-study-case-building-a-note-taking-app",
+						},
+						{
+							text: "Code 4: The Art of Debugging with AI",
+							link: "/courses/vibe-coding-building-apps-with-ai-conversation/code-4-the-art-of-debugging-with-ai",
+						},
+						{
+							text: "Code 5: Cornerstone Projects - Build Your Portfolio",
+							link: "/courses/vibe-coding-building-apps-with-ai-conversation/code-5-cornerstone-projects-build-your-portfolio",
+						},
+					],
+				},
+				{
+					text: "Conclusion: Your Journey as a Creator",
+					link: "/courses/vibe-coding-building-apps-with-ai-conversation/conclusion",
+				},
+				{
+					text: "Additional Resources",
+					collapsed: false,
+					items: [
+						{
+							text: "Glossary of Terms",
+							link: "/courses/vibe-coding-building-apps-with-ai-conversation/glossary",
+						},
+						{
+							text: "Vibe Coding Cheat Sheet",
+							link: "/courses/vibe-coding-building-apps-with-ai-conversation/vibe-coding-cheatsheet",
+						},
+					],
+				},
+			],
 			"/courses/metrics-mastery-for-product-managers/": [
 				{
 					text: "Metrics Mastery for Product Managers",
@@ -557,11 +608,11 @@ export default defineConfig({
 							text: "Variant 11: A/B Testing in Action: 5 Practical Examples",
 							link: "/courses/ab-testing-from-hypothesis-to-high-impact/variant-11_ab-testing-in-action-5-practical-examples",
 						},
-						{
-							text: "Conclusion",
-							link: "/courses/ab-testing-from-hypothesis-to-high-impact/conclusion",
-						},
 					],
+				},
+				{
+					text: "Conclusion",
+					link: "/courses/ab-testing-from-hypothesis-to-high-impact/conclusion",
 				},
 				{
 					text: "Knowledge Check Quiz",
@@ -582,6 +633,60 @@ export default defineConfig({
 						{
 							text: "Client-Side vs. Server-Side Testing",
 							link: "/courses/ab-testing-from-hypothesis-to-high-impact/client-side-vs-server-side-testing",
+						},
+					],
+				},
+			],
+			"/courses/product-launch-mastery/": [
+				{
+					text: "Product Launch Mastery",
+					link: "/courses/product-launch-mastery/",
+				},
+				{
+					text: "Course Modules",
+					collapsed: false,
+					items: [
+						{
+							text: "Module 1: Foundations of Product Launch",
+							link: "/courses/product-launch-mastery/module-1-foundations",
+						},
+						{
+							text: "Module 2: Crafting the Product Narrative",
+							link: "/courses/product-launch-mastery/module-2-crafting-product-narrative",
+						},
+						{
+							text: "Module 3: Designing the GTM Strategy",
+							link: "/courses/product-launch-mastery/module-3-designing-gtm-strategy",
+						},
+						{
+							text: "Module 4: Execution & Collaboration",
+							link: "/courses/product-launch-mastery/module-4-execution-operations-collaboration",
+						},
+						{
+							text: "Module 5: Real-World Application & Optimization",
+							link: "/courses/product-launch-mastery/module-5-real-world-application-optimization",
+						},
+					],
+				},
+				{
+					text: "Conclusion: From Story to Market Dominance",
+					link: "/courses/product-launch-mastery/conclusion",
+				},
+				{
+					text: "Knowledge Check Quiz",
+					link: "/courses/product-launch-mastery/quiz",
+				},
+				{
+					text: "Additional Resources",
+					collapsed: false,
+					items: [
+						{
+							text: "Glossary of GTM Terms",
+							link: "/courses/product-launch-mastery/glossary",
+						},
+						{
+							text: "Downloadable: Buyer Persona Template",
+							link: "/courses/product-launch-mastery/downloadable-resource-buyer-persona-template",
 						},
 					],
 				},

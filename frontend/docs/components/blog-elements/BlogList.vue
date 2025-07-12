@@ -33,9 +33,15 @@ const selectedCategories = ref([]);
 const selectedTag = ref(null);
 
 const allPosts = computed(() => {
-	return posts.sort(
-		(a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
-	);
+	const now = new Date();
+	return posts
+		.filter((post) => {
+			const postDate = new Date(post.frontmatter.date);
+			return postDate <= now;
+		})
+		.sort(
+			(a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
+		);
 });
 
 const availableCategories = computed(() => {

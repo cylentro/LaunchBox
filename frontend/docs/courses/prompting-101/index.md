@@ -10,6 +10,7 @@ pinOrder: 1
 categories: ["Generative AI", "Productivity", "Professional Development"]
 recommended: true
 levels: ["Beginner"]
+relatedCourses: ["/courses/vibe-coding-building-apps-with-ai-conversation"]
 
 ogTitle: Prompting 101 - The Playbook for Everyone
 ogDescription: Feeling lost in AI jargon? My 'Prompting 101' course is your personal, jargon-free guide to mastering Generative AI, designed specifically for beginners and non-technical users. Learn to prompt effectively for real-world productivity and creativity!
@@ -35,11 +36,11 @@ Welcome to the next wave of technology! I've designed this course, **Prompting 1
 
 This course is designed for anyone with a computer and curiosity, but no technical background. This includes professionals from any field (marketing, sales, HR, education, healthcare), students, creative individuals, and anyone looking to understand and use the AI tools that are reshaping our world. If you've heard the term "AI" and wondered what it means for you, you're in the right place.
 
-::: info Prerequisites
-Absolutely none! All you need is a willingness to learn, access to a computer with an internet connection, and the ability to use a web browser. No coding, no math, no prior tech experience is required.
-:::
+# Prerequisites
 
-## Course Objectives
+Absolutely none! All you need is a willingness to learn, access to a computer with an internet connection, and the ability to use a web browser. No coding, no math, no prior tech experience is required.
+
+# Course Objectives
 
 Upon completion of this course, you will be able to:
 
@@ -51,4 +52,4 @@ Upon completion of this course, you will be able to:
 - **Evaluate** AI-generated content for common pitfalls like bias and misinformation.
 - **Develop** a personal "AI Playbook" for using these tools effectively and responsibly.
 
-`<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />`
+<br/><StartCourseButton :link="$frontmatter.hero.actions[0].link" text="Get Started" />
