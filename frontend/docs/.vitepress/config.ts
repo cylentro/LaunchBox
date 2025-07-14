@@ -200,9 +200,17 @@ export default defineConfig({
 		const socialTitle = pageTitle;
 		const ogTitle = pageData.frontmatter.ogTitle || socialTitle;
 		const ogDescription = pageData.frontmatter.ogDescription || pageDescription;
-		const ogImage = pageData.frontmatter.image
-			? `${siteUrl}/${pageData.frontmatter.image}`
-			: defaultImage;
+		let ogImage = defaultImage;
+		if (pageData.frontmatter.image) {
+			ogImage = `${siteUrl}/${pageData.frontmatter.image}`;
+		} else if (pageData.frontmatter.hero?.image) {
+			const heroImage = pageData.frontmatter.hero.image;
+			if (typeof heroImage === "string") {
+				ogImage = `${siteUrl}/${heroImage}`;
+			} else if (heroImage.src) {
+				ogImage = `${siteUrl}/${heroImage.src}`;
+			}
+		}
 		const ogType = pageData.relativePath.startsWith("blog/")
 			? "article"
 			: "website";
