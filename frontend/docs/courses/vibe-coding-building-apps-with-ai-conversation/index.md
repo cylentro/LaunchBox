@@ -38,7 +38,7 @@ That era is over.
 
 Today, the barrier to creation is no longer technical skill but clarity of thought. The rise of powerful Artificial Intelligence has led to the democratization of software development, making it accessible to everyone, regardless of their background. You no longer need to be a "coder" to be a "builder." Your ideas are the blueprint; AI is your construction crew. This course will teach you how to be the architect.
 
-This is **Vibe Coding**: the art and science of building functional applications by describing your goal, your intent, and your "vibe" to an AI coding assistant in plain, natural language. It's a methodology where you focus on the *what* and the *why*, leaving the *how* to your AI partner.1
+This is **Vibe Coding**: the art and science of building functional applications by describing your goal, your intent, and your "vibe" to an AI coding assistant in plain, natural language. It's a methodology where you focus on the *what* and the *why*, leaving the *how* to your AI partner.
 
 This course is designed from the ground up for the non-technical creator: the entrepreneur with a game-changing app idea, the designer who wants to build an interactive portfolio, the marketer launching a new product, or the hobbyist who simply loves to build. We will journey through five modules, transforming you from an idea-haver into a prototype-builder. You will learn to command a powerful toolkit of AI assistants, master a simple yet robust workflow for turning thoughts into reality, and build a portfolio of real, working applications from scratch.
 
