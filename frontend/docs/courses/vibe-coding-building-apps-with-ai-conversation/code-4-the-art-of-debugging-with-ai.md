@@ -1,16 +1,16 @@
 ---
 layout: doc
 
-title: "Code 5 - The Art of Debugging with AI"
+title: "Code 4 - The Art of Debugging with AI"
 description: "Learn the essential skill of debugging. Understand how to use browser developer tools, interpret common errors, and craft effective AI prompts to fix bugs and learn from your mistakes."
 
-ogTitle: "Code 5 - The Art of Debugging with AI"
+ogTitle: "Code 4 - The Art of Debugging with AI"
 ogDescription: "Learn the essential skill of debugging. Understand how to use browser developer tools, interpret common errors, and craft effective AI prompts to fix bugs and learn from your mistakes."
 
 keywords: Vibe Coding, debugging, AI debugging, JavaScript errors, developer tools, console errors, bug fixing, error handling, prompt engineering for bugs
 ---
 
-# Module 5: The Art of Debugging with AI
+# Code 4: The Art of Debugging with AI
 
 Welcome to what might be the most important module in this course. So far, you've learned how to build applications when things go right. But in the real world of development, things often go wrong. Code has bugs, features don't work as expected, and error messages appear. This is normal.
 

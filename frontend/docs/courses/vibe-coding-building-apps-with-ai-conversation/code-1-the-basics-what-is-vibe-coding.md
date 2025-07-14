@@ -50,7 +50,7 @@ Don't stick to just one conversational AI. Try giving the same prompt to both Ge
 
 These tools live directly inside your code editor (the software where code is written) and act as an always-on "pair programmer". They see what you're typing and suggest the next line of code, answer questions about your project, and help automate repetitive tasks.
 
-Imagine you're learning to cook. A code assistant is like having a master chef standing over your shoulder.2
+Imagine you're learning to cook. A code assistant is like having a master chef standing over your shoulder.
 
 * When you start a recipe ("I want to make a website header..."), the assistant instantly suggests the ingredients and steps (it autocompletes the code for you).
 * If you see a confusing instruction in a recipe ("What does this line of code do?"), you can ask your assistant, and they will explain it in plain English (using features like Copilot Chat's /explain command).

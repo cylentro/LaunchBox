@@ -10,7 +10,7 @@ ogDescription: "A step-by-step guide to building a complete note-taking web app 
 keywords: Vibe Coding project, build a web app, note-taking app, HTML, CSS, JavaScript, local storage, AI programming, step-by-step tutorial, GitHub Pages
 ---
 
-# Module 3: In-Depth Study Case - Building a Note-Taking App
+# Code 3: In-Depth Study Case - Building a Note-Taking App
 
 Theory is important, but building is where the real learning happens. In this module, we will put everything we've learned into practice by building a complete, functional note-taking web application from scratch. We will follow our 5-step Vibe Coding workflow meticulously, using a chain of prompts to guide our AI partner from a blank slate to a finished, deployable product.
 

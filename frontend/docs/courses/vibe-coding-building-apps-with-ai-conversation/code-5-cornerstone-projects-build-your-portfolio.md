@@ -1,16 +1,16 @@
 ---
 layout: doc
 
-title: "Code 4 - Cornerstone Projects - Build Your Portfolio"
+title: "Code 5 - Cornerstone Projects - Build Your Portfolio"
 description: "Solidify your Vibe Coding skills with three cornerstone projects: an advanced to-do list, a simple budget tracker, and a recipe search app. Build your portfolio and master CRUD operations, state management, and data structuring with AI."
 
-ogTitle: "Code 4 - Cornerstone Projects - Build Your Portfolio"
+ogTitle: "Code 5 - Cornerstone Projects - Build Your Portfolio"
 ogDescription: "Solidify your Vibe Coding skills with three cornerstone projects: an advanced to-do list, a simple budget tracker, and a recipe search app. Build your portfolio and master CRUD operations, state management, and data structuring with AI."
 
 keywords: Vibe Coding projects, developer portfolio, to-do list app, budget tracker app, recipe app, CRUD, state management, local storage, JavaScript projects, AI coding projects
 ---
 
-# Module 4: Cornerstone Projects - Build Your Portfolio
+# Code 4: Cornerstone Projects - Build Your Portfolio
 
 You've learned the workflow and built a complete application alongside your AI partner. Now it's time to solidify your skills and build your own portfolio. These cornerstone projects are designed to reinforce the core concepts you've learned—DOM manipulation, event handling, and data persistence with local storage.
 
@@ -120,12 +120,12 @@ For the recipe app, start by asking the AI to generate a larger, more diverse se
 
 **Features:**
 
-*   A search input field and a "Search" button.
-*   When the user searches, the app will make a request to a free movie API (like The Movie Database - TMDb).
-*   The app will display a grid of movie posters for the search results.
-*   When a user clicks on a movie poster, it shows more details (title, release date, overview).
-*   A loading indicator is shown while the data is being fetched.
-*   A clear error message is displayed if the API call fails or if no movies are found.
+* A search input field and a "Search" button.
+* When the user searches, the app will make a request to a free movie API (like The Movie Database - TMDb).
+* The app will display a grid of movie posters for the search results.
+* When a user clicks on a movie poster, it shows more details (title, release date, overview).
+* A loading indicator is shown while the data is being fetched.
+* A clear error message is displayed if the API call fails or if no movies are found.
 
 **Starter Prompt:**
 
@@ -148,7 +148,7 @@ By completing these projects, you will have not only learned how to prompt an AI
 
 ## Key Takeaways
 
-*   **Solidify your skills with portfolio projects.** The best way to learn is by building. These projects reinforce core concepts like CRUD operations, state management, data handling, and interacting with APIs.
+* **Solidify your skills with portfolio projects.** The best way to learn is by building. These projects reinforce core concepts like CRUD operations, state management, data handling, and interacting with APIs.
 * **Master CRUD (Create, Read, Update, Delete).** The to-do list project is a perfect exercise for understanding these fundamental operations that are the backbone of most web applications.
 * **Learn to handle numbers and conditional styling.** The budget tracker teaches you how to work with numerical data, perform calculations, and visually represent data based on its value (e.g., red for expenses, green for income).
 * **Work with complex data structures.** The recipe app introduces you to structuring data as an array of objects, a common pattern for managing collections of information.

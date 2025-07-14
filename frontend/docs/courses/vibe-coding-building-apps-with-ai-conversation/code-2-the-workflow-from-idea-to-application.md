@@ -10,7 +10,7 @@ ogDescription: "Learn the 5-step iterative Vibe Coding workflow to turn ideas in
 keywords: Vibe Coding workflow, iterative process, prompt engineering, AI development, AI tools, ChatGPT, Gemini, GitHub Copilot, software development process
 ---
 
-# Module 2: The Workflow - From Idea to Application
+# Code 2: The Workflow - From Idea to Application
 
 Having a powerful toolkit is one thing; knowing how to use it is another. This module is about process. You will learn a simple, repeatable workflow for turning any idea into a real, working application. This is the "Architect's Process"—a structured approach that minimizes frustration and maximizes creativity. The centerpiece of this workflow is mastering the art of the prompt, the single most important skill for a Vibe Coder.
 
@@ -45,7 +45,7 @@ Keep a "prompt journal." For each project, create a simple document where you sa
 
 Different phases of the workflow benefit from different AI partners. Using the right tool for the right task will make your process much smoother.
 
-* **When you have an idea but don't know where to start,** use a conversational AI like **Gemini** or **ChatGPT**. They are masters of open-ended brainstorming and can help you flesh out your concept and define your MVP features.3
+* **When you have an idea but don't know where to start,** use a conversational AI like **Gemini** or **ChatGPT**. They are masters of open-ended brainstorming and can help you flesh out your concept and define your MVP features.
 * **When you have a piece of code and need to understand or fix it,** use an AI-native environment like **Cursor** or the chat feature in **GitHub Copilot**. Because these tools can be aware of your project's context, they are excellent for debugging. Research suggests ChatGPT is particularly effective at logical validation and catching edge-case errors.
 * **When you are building step-by-step and need code suggestions as you go,** an in-editor assistant like **GitHub Copilot** or **Gemini Code Assist** is invaluable. They provide real-time suggestions that feel like a natural extension of your thoughts.
 
