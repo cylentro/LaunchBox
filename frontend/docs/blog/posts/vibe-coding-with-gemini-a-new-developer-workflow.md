@@ -4,7 +4,7 @@ aside: false
 
 title: How Vibe Coding with Gemini Helped Me Turn Imagination Into Reality
 subtitle: A deep dive into "vibe coding" – a new, improvisational workflow with AI that transforms how developers create, prototype, and innovate.
-tags: [AI, Gemini, Vibe Coding, Developer Workflow, Prompt Engineering, Prototyping, LLM, Code Generation, RAG, Frontend, Web Development]
+tags: [AI, Gemini, Vibe Coding]
 
 description: Explore "vibe coding," an improvisational AI-augmented development workflow. Learn how Gemini tools (Chat, Code Assist, CLI) facilitate rapid prototyping and turn abstract ideas into functional applications, exemplified by building an AI-powered portfolio website.
 ogTitle: Vibe Coding with Gemini - A New Developer Workflow | Christian Hadianto's Blog

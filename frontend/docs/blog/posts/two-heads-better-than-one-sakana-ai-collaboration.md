@@ -4,7 +4,7 @@ aside: false
 
 title: Two Heads (or LLMs) Are Better Than One - How Sakana AI is Teaching AIs to Collaborate and Solve Hard Problems
 subtitle: A deep dive into Sakana AI's Adaptive Branching Monte Carlo Tree Search (AB-MCTS) and Multi-LLM AB-MCTS, showcasing how AI models can collaborate to solve complex problems.
-tags: [AI, LLM, AB-MCTS, Collaboration, Deep Learning, Inference-Time Scaling, Machine Learning, Multi-LLM, Sakana AI]
+tags: [AI, LLM, Collaboration]
 
 description: Explore Sakana AI's groundbreaking AB-MCTS and Multi-LLM AB-MCTS, demonstrating how multiple AI models can work together to achieve collective intelligence and solve problems beyond individual capabilities, as proven on ARC-AGI-2.
 ogTitle: Two Heads (or LLMs) Are Better Than One - Sakana AI's Collaborative AI | Christian Hadianto's Blog

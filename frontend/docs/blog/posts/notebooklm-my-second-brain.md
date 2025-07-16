@@ -4,7 +4,7 @@ aside: false
 
 title: NotebookLM - My Second Brain for Research, Content & Podcast Creation
 subtitle: How NotebookLM evolved into an AI-powered second brain for research, content creation, and podcast production, with real-world use cases and prompts.
-tags: [AI, NotebookLM, Google, Productivity, Content Creation, Podcast, Research, Prompts, Second Brain]
+tags: [AI, NotebookLM, Productivity]
 
 description: Explore how NotebookLM functions as an AI-powered second brain, helping to digest complex information, generate content, and streamline workflows for research, writing, and podcast production.
 ogTitle: NotebookLM - My AI-Powered Second Brain for Content & Research | Christian Hadianto's Blog
