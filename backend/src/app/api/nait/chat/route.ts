@@ -122,12 +122,17 @@ async function initializeVectorStore() {
 				: "No documents loaded initially.",
 		);
 
-		// Filter out license.md
+		// Filter out license.md and the /course directory
 		docs = docs.filter((doc) => {
-			return doc.metadata.source && !doc.metadata.source.endsWith("license.md");
+			if (!doc.metadata.source) {
+				return false;
+			}
+			const relativePath = path.relative(docsPath, doc.metadata.source);
+			const normalizedPath = relativePath.replace(/\\/g, "/");
+			return !normalizedPath.endsWith("license.md") && !normalizedPath.includes("course/");
 		});
 		console.log(
-			`Filtered down to ${docs.length} documents (excluding license.md).`,
+			`Filtered down to ${docs.length} documents (excluding license.md and /course directory).`,
 		);
 
 		if (docs.length > 0) {
