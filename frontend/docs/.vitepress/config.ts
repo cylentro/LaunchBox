@@ -7,16 +7,24 @@ function getReadingTime(content) {
 		return 0;
 	}
 	const wordsPerMinute = 225;
-	// Remove frontmatter, script/style blocks, HTML tags, and code blocks
+	// To calculate reading time, we need to strip out everything that isn't plain text.
+	// This includes frontmatter, code blocks, HTML, and markdown syntax.
 	const text = content
-		.replace(/---[\s\S]*?---/, "") // Remove frontmatter
-		.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "") // Remove script tags
-		.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "") // Remove style tags
-		.replace(/<[^>]*>/g, "") // Remove remaining HTML tags
-		.replace(/```[\s\S]*?```/g, "") // Remove code blocks
-		.replace(/`[^`]*`/g, "") // Remove inline code
-		.replace(/[#1B1A1E*~_>|]/g, ""); // Remove markdown characters
+		// 1. Remove frontmatter
+		.replace(/---[\s\S]*?---/, "")
+		// 2. Remove script and style blocks using a non-greedy match, which is more performant
+		// and avoids "catastrophic backtracking" on complex or malformed content.
+		.replace(/<script[\s\S]*?<\/script>/gi, "")
+		.replace(/<style[\s\S]*?<\/style>/gi, "")
+		// 3. Remove code blocks
+		.replace(/```[\s\S]*?```/g, "")
+		// 4. Remove remaining HTML tags
+		.replace(/<[^>]+>/g, "")
+		// 5. Remove inline code and other markdown characters
+		.replace(/`[^`]+`/g, "")
+		.replace(/[#*~_>|]/g, "");
 
+	// Match words (sequences of word characters)
 	const wordCount = text.match(/\w+/g)?.length || 0;
 	const readingTime = Math.ceil(wordCount / wordsPerMinute);
 	return readingTime;
@@ -277,7 +285,8 @@ export default defineConfig({
 				text: "G[AI]llery",
 				items: [
 					{ text: "AI Showcase", link: "/gaillery/ai-showcase" },
-					{ text: "Prompt Framework", link: "/gaillery/prompt-frameworks" },
+					{ text: "Core Prompting Techniques", link: "/gaillery/core-prompting-techniques" },
+					{ text: "Prompting Frameworks", link: "/gaillery/prompt-frameworks" },
 				],
 			},
 			{
